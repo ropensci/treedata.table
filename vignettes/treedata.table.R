@@ -9,12 +9,14 @@ class(td) <- c("treedata.table", "list")
 
 `[.treedata.table` <- function(x, ...){
   .dat <- x$dat[,".XID." := 1:nrow(x$dat)]
-  .dat <- x$dat[...]
-  .phy <- drop.tip(x$phy, which(!.dat[,".XID."] %in% 1:nrow(x$dat)))
+  .dat <- .dat[...]
+  .phy <- drop.tip(x$phy, which(!1:nrow(x$dat) %in% .dat[,.XID.]))
   x$phy <- .phy
   x$dat <- .dat
   ## Need to drop ".XID."
   return(x)
 }
 
-td[ecomorph=="TG",]
+td[10:20, ]
+
+td$dat[,SVL]
