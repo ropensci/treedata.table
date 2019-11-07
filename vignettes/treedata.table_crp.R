@@ -32,11 +32,10 @@ as.phy.data.table<-function(tree, data){
     data_not_tree <- "OK"
     tree_not_data <- "OK"
   }
-  comb<-list(phylo=tree, dat=as.data.table(data),
-             data_not_tree=data_not_tree,
-             tree_not_data=tree_not_data,
-             #I need an ID for original/mod objects
-             classD="original")
+  comb<-list(phylo=tree, dat=as.data.table(data))
+  attr(comb,'data_not_tree') <- data_not_tree
+  attr(comb,'tree_not_data') <- tree_not_data
+
   class(comb)<-"phy.data.table"
   return(comb)
 }
@@ -81,6 +80,19 @@ DT.phylo<-function(object, i=NULL, j=NULL, by=NULL ){
 
 
 
+DT.phylo2<-function(object, i=NULL, j=NULL, by=NULL ){
+
+    s = parse(text=paste("(",i,")"))
+    s2 = parse(text=paste("(",j,")"))
+    s3 = parse(text=paste("(",by,")"))
+
+    min_data<-object$dat[eval(s),eval(s2),eval(s3)]
+
+  return(min_data)
+
+}
+
+
 ##tests
 object<-as.phy.data.table(tree=phy, data=df)
 summary.phy.data.table(object)
@@ -92,9 +104,10 @@ DT.phylo(object = object, j = c("one"))
 DT.phylo(object = object, j = c(" .(one,two)"))
 DT.phylo(object = object, j = c(" one+three"))
 DT.phylo(object = object, j = c(" sum( (one - two))> 1000"))
-DT.phylo(object = object, i=c("three == 2L"),
+DT.phylo2(object = object, i=c("three == 2L"),
          j = c(".(m_arr = mean(three), m_dep = mean(two))"))
 DT.phylo(object = object, i = c("one == 1L"), j= c("length(two)"))
+DT.phylo2(object = object, i = c("one == 1L"), j= c("length(two)"))
 
-
+by=NULL
 
