@@ -10,7 +10,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
-  data.table
+  data.table, R (>= 2.10)
 Imports:
   lazyeval, ape, geiger
 RoxygenNote: 6.1.1
