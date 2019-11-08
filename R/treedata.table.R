@@ -29,18 +29,6 @@
 
 
 
-##Examples
-library(data.table)
-library(treeplyr)
-data(anolis)
-td <- as.treedata.table(anolis$phy, anolis$dat)
-td[,SVL]
-td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
-td[["SVL"]]
-td[island == "Cuba",.(Index=SVL+hostility)]
-td[, head(.SD, 1), by = "ecomorph"]
-td[, head(.SD, 1), by = "ecomorph"]
-td[, head(.SD, 1), by = .(ecomorph, island)]
 
 
 
