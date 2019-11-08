@@ -4,7 +4,7 @@
 #'
 #' @param .x An object of class \code{treedata.table}
 #' @param ... Arguments in the structure of \code{data.table} used to perform changes on the \code{treedata.table} object
-#' @return A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using (\code{\link{data.table})'s structure.
+#' @return A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using (\code{\link{data.table}})'s structure.
 #' @seealso \code{\link{data.table}}
 #' @examples
 #' data(anolis)
@@ -27,7 +27,7 @@
       .dat <- .dat[...]
     }
   }
-  .phy <- drop.tip(x$phy, which(!1:nrow(x$dat) %in% .dat[, rowid]))
+  .phy <- ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in% .dat[, rowid]))
   x$phy <- .phy
   x$dat <- .dat[, !"rowid"]
   return(x)
@@ -39,7 +39,7 @@
 #' This function extracts a named vector for any  trait from an object of class \code{treedata.table}.
 #'
 #' @param .x An object of class \code{treedata.table}
-#' @param ... Column name in class \colde{character}
+#' @param ... Column name in class \code{character}
 #' @return A new object of class \code{vector} with names set to labels corresponding to tip labels in the provided \code{treedata.table} object.
 #' @seealso \code{\link{data.table}}
 #' @examples
@@ -57,5 +57,4 @@
   }
   return(setNames(res, x$phy$tip.label))
 }
-
 

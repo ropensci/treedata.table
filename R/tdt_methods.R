@@ -18,6 +18,7 @@ summary.treedata.table <- function(object, ...){
   print(object$phy)
   cat("\n$dat \n")
   print(object$dat)
+  if( is.null(attr(a, "modified"))==F ){ message("\n    This is NOT the original treedata.table object") } ##Include warning for treedata.objects that were modified
 }
 
 print.treedata.table <- function(x, ...){
