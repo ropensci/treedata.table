@@ -15,7 +15,7 @@ pull.treedata.table <- function(tdObject, type = "dat") {
     if (type == "dat") {
       cbind(tip.label = tdObject$phy$tip.label, tdObject$dat)
     } else{
-      tdObject[[1]]
+      tdObject$phy
     }
   return(full)
 }
