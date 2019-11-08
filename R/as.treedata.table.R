@@ -31,6 +31,7 @@ as.treedata.table<-function(tree, data){
   if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
     data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
     tree_not_data <- setdiff(tree$tip.label, data[,1])
+    message(paste0("\n", length(c(tree_not_data,tree_not_data)) ," tips were dropped from your tree and dataset\n"))
   }else{
     data_not_tree <- "OK"
     tree_not_data <- "OK"
@@ -50,3 +51,5 @@ as.treedata.table<-function(tree, data){
   class(comb)<-"treedata.table"
   return(comb)
 }
+
+td <- as.treedata.table(drop.tip(anolis$phy,1), anolis$dat[-c(1:5),])
