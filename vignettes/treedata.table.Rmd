@@ -1,8 +1,10 @@
 ---
-title: "treedata.table"
-author: "all of us"
-date: "11/8/2019"
-output: html_document
+title: "Getting Started With The treedata.table Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started With The treedata.table Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
 ---
 
 ```{r setup, include=FALSE}
