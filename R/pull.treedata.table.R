@@ -10,8 +10,14 @@
 #' pull.treedata.table(td, type = "dat")
 #' @export
 
-pull.treedata.table<-function(tdObject, type="dat"){
- full<-if(type=="dat"){cbind(tip.label=tdObject[[1]]$tip.label,tdObject$dat)}else{tdObject[[1]]}
+
+pull.treedata.table <- function(tdObject, type = "dat") {
+  full <-
+    if (type == "dat") {
+      cbind(tip.label = tdObject[[1]]$tip.label, tdObject$dat)
+    } else{
+      tdObject[[1]]
+    }
   return(full)
 }
 
