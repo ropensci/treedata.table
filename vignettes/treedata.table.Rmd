@@ -7,7 +7,6 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(treedata.table)
 ```
 
 ## Getting Started With The `treedata.table` Package
@@ -19,6 +18,9 @@ Using the `treedata.table` package begins with creating a `treedata.table` objec
 A `treedata.table` is created using the `as.treedata.table` function. 
 
 ```{r }
+library(ape)
+library(treedata.table)
+
 # Load example data
 data(anolis)
 #Create treedata.table object with as.treedata.table
@@ -49,6 +51,15 @@ You can also use double bracket syntax to directly return column data as a named
 export <- td[["SVL"]]
 ```
 
+The same functionality can also be accomplished through the `extractVector` function:
+
+```{r}
+
+extractVector(td, SVL)
+
+```
+
+
 The real power in treedata.table is in co-indexing the tree and table. For example, in the below command, we use `data.table` syntax to take the first representative from each ecomorph. We retain all data columns. If you examine the tree object, you will see that it has had all the tips not in the resultant `data.table` dropped.
 
 ```{r}
@@ -67,6 +78,45 @@ Columns in the `data.table` can also be operated on using `data.table` syntax. I
 
 ```{r}
 td[island == "Cuba",.(Index=SVL+hostility)]
+```
+
+We can extend this tidy approach to actually estimating values for our data using `tdt`. In the below command, we extract two vectors from our data.table and use `geiger`'s continuous model fitting to estimate a Brownian motion model for the data. 
+
+
+```{r}
+
+tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
+
+```
+
+
+We can also drop tips directly from the tree, and have those tips drop concurrently from the data.table. In the example below, we  remove two taxa by name.
+
+```{r, eval=FALSE}
+to_drop <- c("chamaeleonides" ,"eugenegrahami" )
+
+dt <- droptreedata.table(tdObject=td, taxa=to_drop)
+
+to_drop %in% dt$phy$tip.label
+
+[1] FALSE FALSE
+
+to_drop %in% dt$dat$X
+
+[1] FALSE FALSE
+
+
+```
+
+
+
+
+When you're done, the data.table and tree can both be extracted from the object:
+
+```{r}
+
+df <- pull.treedata.table(td, "dat")
+tree <- pull.treedata.table(td, "tree")
 ```
 
 

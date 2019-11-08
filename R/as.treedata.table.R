@@ -8,13 +8,12 @@
 #' treedata.table, which can be manipulated as a data.table.
 #'
 #' @importFrom data.table setDT as.data.table
-#' @importFrom geiger name.check
 #' @param tree A tree of class \code{phylo}
 #' @param data A dataset in format \code{data.frame}
 #' @return treedata.table An object of type \code{treedata.table} containing the tree and data.table
 #' @examples
 #' data(anolis)
-#' td <- as.treedata.table(anolis$phy, anolis$dat)
+#' td <- as.treedata.table(tree=drop.tip(anolis$phy,2:50), data=anolis$dat[-c(5:20),])
 #' @export
 
 as.treedata.table<-function(tree, data, name_column="detect"){
@@ -54,17 +53,20 @@ as.treedata.table<-function(tree, data, name_column="detect"){
   if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
     data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
     tree_not_data <- setdiff(tree$tip.label, data[,1])
-  }
-  else{
+    message(paste0("\n", length(c(tree_not_data,tree_not_data)) ," tips were dropped from your tree and dataset\n"))
+  }else{
     data_not_tree <- "OK"
     tree_not_data <- "OK"
   }
+  i <- sapply(data, is.factor);data[i] <- lapply(data[i], as.character) ##Tranform factors into character vectors
   data <- data[match(tree$tip.label, data[,name_column]),]
   colnames(data)[name_column] <- "tip.label"
-  comb<-list(phy=tree, dat=data.table::as.data.table(data))
+  dr<-which(tree$tip.label %in% c(tree_not_data,data_not_tree))
+  tree<-ape::drop.tip(tree, dr)
+  data<-data.table::as.data.table(data)[!dr]
+  comb<-list(phy=tree, dat=data)
   attr(comb,'data_not_tree') <- data_not_tree
   attr(comb,'tree_not_data') <- tree_not_data
-
   class(comb)<-"treedata.table"
   return(comb)
 }
