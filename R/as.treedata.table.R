@@ -14,7 +14,7 @@
 #' @return treedata.table An object of type \code{treedata.table} containing the tree and data.table
 #' @examples
 #' data(anolis)
-#' td <- as.treedata.table(anolis$phy, anolis$dat)
+#' td <- as.treedata.table(tree=drop.tip(anolis$phy,2:50), data=anolis$dat[-c(5:20),])
 #' @export
 
 as.treedata.table<-function(tree, data){
@@ -28,7 +28,7 @@ as.treedata.table<-function(tree, data){
     stop("Your data MUST have at least two columns (tip.names; nstates)")
   }
 
-  if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
+  if(length(setdiff(tree$tip.label,data[,1] )) != 0){
     data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
     tree_not_data <- setdiff(tree$tip.label, data[,1])
     message(paste0("\n", length(c(tree_not_data,tree_not_data)) ," tips were dropped from your tree and dataset\n"))
