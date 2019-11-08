@@ -24,5 +24,5 @@ treedata.table, which can be manipulated as a data.table.
 }
 \examples{
 data(anolis)
-td <- as.treedata.table(anolis$phy, anolis$dat)
+td <- as.treedata.table(tree=drop.tip(anolis$phy,2:50), data=anolis$dat[-c(5:20),])
 }
