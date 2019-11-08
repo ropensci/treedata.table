@@ -36,10 +36,8 @@ as.treedata.table<-function(tree, data){
     data_not_tree <- "OK"
     tree_not_data <- "OK"
   }
-
+  data <- data[match(tree$tip.label, data$X),]
   comb<-list(phy=tree, dat=data.table::as.data.table(data))
-  data.table::setDT(comb$dat)[ , name := factor(comb$phy$tip.label,
-                                    levels = comb$phy$tip.label)]
   attr(comb,'data_not_tree') <- data_not_tree
   attr(comb,'tree_not_data') <- tree_not_data
 
