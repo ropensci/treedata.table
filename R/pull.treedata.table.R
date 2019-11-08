@@ -10,7 +10,6 @@
 #' pull.treedata.table(td, type = "dat")
 #' @export
 
-
 pull.treedata.table <- function(tdObject, type = "dat") {
   full <-
     if (type == "dat") {
