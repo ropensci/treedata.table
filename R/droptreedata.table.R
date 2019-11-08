@@ -6,7 +6,6 @@
 #' @param .tdObject An object of class \code{treedata.table}
 #' @param taxa A vector class \code{character} containing all taxa that needs to be dropped from the original \code{treedata.table} object
 #' @return An object of class \code{treedata.table} with matching \code{$dat} and \code{$phy} elements based on whether \code{taxa} were dropped or not.
-#' @seealso \code{\link{data.table}}
 #' @examples
 #' data(anolis)
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
