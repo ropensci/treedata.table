@@ -17,6 +17,4 @@ class(td) <- c("treedata.table", "list")
   return(x)
 }
 
-td[10:20, ]
 
-td$dat[,SVL]
