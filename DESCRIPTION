@@ -14,3 +14,5 @@ Depends:
 Imports:
   lazyeval, ape, geiger
 RoxygenNote: 6.1.1
+VignetteBuilder: utils
+
