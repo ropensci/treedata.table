@@ -28,6 +28,7 @@
 }
 
 
+
 ##Examples
 library(data.table)
 library(treeplyr)
@@ -44,5 +45,4 @@ td[,SVL+hostility]
 td$dat[,"SVL"]+td$dat[,"hostility"]
 
 ex[["attitude"]]
-
 

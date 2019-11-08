@@ -34,13 +34,6 @@ extractVector <- function(td, ...){
 }
 
 
-treedata.table(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
-treedata.table(td, geiger::fitContinuous(phy, extractVector(td, awesomeness), model="BM", ncores=1))
-treedata.table(td, phytools::phenogram(phy, extractVector(td, SVL), quiet=TRUE, spread.labels=FALSE))
-treedata.table(td, list("K" = phytools::phylosig(phy, extractVector(td, SVL), "K"),
-                  "lambda" = phytools::phylosig(phy, extractVector(td, SVL), "lambda")))
-
-treedata.table(td, geiger::rescale, model="OU", 10) ##I'm still wotking on this one
 
 
 
