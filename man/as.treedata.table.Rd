@@ -10,6 +10,8 @@ as.treedata.table(tree, data, name_column = "detect")
 \item{tree}{A tree of class \code{phylo}}
 
 \item{data}{A dataset in format \code{data.frame}}
+
+\item{name_column}{A character indicating the name of taxa in \code{data.frame}}
 }
 \value{
 treedata.table An object of type \code{treedata.table} containing the tree and data.table

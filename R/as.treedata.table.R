@@ -10,6 +10,7 @@
 #' @importFrom data.table setDT as.data.table
 #' @param tree A tree of class \code{phylo}
 #' @param data A dataset in format \code{data.frame}
+#' @param name_column A character indicating the name of taxa in \code{data.frame}
 #' @return treedata.table An object of type \code{treedata.table} containing the tree and data.table
 #' @examples
 #' data(anolis)
