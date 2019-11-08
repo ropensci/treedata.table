@@ -58,14 +58,3 @@
   return(setNames(res, x$phy$tip.label))
 }
 
-
-
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 7bddf5fdc2db57682b6b348f29c71991a689836f
-
-
-
