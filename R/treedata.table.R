@@ -1,13 +1,19 @@
-`[.treedata.table` <- function(x, ...){
+`[.treedata.table` <- function(x, ...) {
   .dat <- x$dat
-  .dat[,rowid := seq_len(nrow(.dat))]
+  .dat[, rowid := seq_len(nrow(.dat))]
   dots <- lazyeval::lazy_dots(...)
-  if(nchar(dots[[2]]$expr)[1]!=0){
-      .dat <- .dat[..., by=rowid] #Column select so need to preserve rowid
-      } else{.dat <- .dat[...]}
-  .phy <- drop.tip(x$phy, which(!1:nrow(x$dat) %in% .dat[,rowid]))
+  if ("by" %in% names(dots)) {
+    .dat <- .dat[...]
+  } else{
+    if (nchar(dots[[2]]$expr)[1] != 0) {
+      .dat <- .dat[..., by = rowid]
+    } else{
+      .dat <- .dat[...]
+    }
+  }
+  .phy <- drop.tip(x$phy, which(!1:nrow(x$dat) %in% .dat[, rowid]))
   x$phy <- .phy
-  x$dat <- .dat[,!"rowid"]
+  x$dat <- .dat[, !"rowid"]
   return(x)
 }
 
