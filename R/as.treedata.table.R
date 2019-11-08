@@ -8,7 +8,6 @@
 #' treedata.table, which can be manipulated as a data.table.
 #'
 #' @importFrom data.table setDT as.data.table
-#' @importFrom geiger name.check
 #' @param tree A tree of class \code{phylo}
 #' @param data A dataset in format \code{data.frame}
 #' @return treedata.table An object of type \code{treedata.table} containing the tree and data.table
