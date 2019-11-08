@@ -11,7 +11,7 @@
 #' @examples
 #' data(anolis)
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
-#' t.dt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
+#' tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
 #' tdt(td, phytools::phenogram(phy, extractVector(td, SVL), quiet=TRUE, spread.labels=FALSE))
 #' @export
 
