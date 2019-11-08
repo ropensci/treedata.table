@@ -1,0 +1,73 @@
+---
+title: "treedata.table"
+author: "all of us"
+date: "11/8/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(treedata.table)
+```
+
+## Getting Started With The `treedata.table` Package
+
+The aim of the treedata.table R package is to allow researchers to access and manipulate phylogenetic data using tools from the `data.table` package. `data.table` has many functions for rapidly manipulating data in a memory efficient way. 
+
+Using the `treedata.table` package begins with creating a `treedata.table` object. The `treedata.table` matches the tip.labels of the phylogeny to a column of names in your `data.frame`. This allows you to manipulate the data, and the corresponding tree together.
+
+A `treedata.table` is created using the `as.treedata.table` function. 
+
+```{r }
+# Load example data
+data(anolis)
+#Create treedata.table object with as.treedata.table
+td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
+```
+
+We may inspect our object by calling it by name. You will notice that your `data.frame` is now a `data.table`, and has been reordered into the same order as the tip.labels of your tree.
+
+```{r}
+td
+
+td$phy$tip.label == td$dat$X
+
+```
+
+## Manipulating Data
+
+Your data table can be indexed in the same way any other `data.table` object would be. For example, if we wanted to look at our snout-vent length column, we can do that like so.
+
+```{r pressure, echo=FALSE}
+td$dat[,SVL]
+
+```
+
+You can also use double bracket syntax to directly return column data as a named list.
+
+```{r}
+export <- td[["SVL"]]
+```
+
+The real power in treedata.table is in co-indexing the tree and table. For example, in the below command, we use `data.table` syntax to take the first representative from each ecomorph. We retain all data columns. If you examine the tree object, you will see that it has had all the tips not in the resultant `data.table` dropped.
+
+```{r}
+ td[, head(.SD, 1), by = "ecomorph"]
+
+```
+
+We could also do the same operation with multiple columns:
+
+```{r}
+td[, head(.SD, 1), by = .(ecomorph, island)]
+
+```
+
+Columns in the `data.table` can also be operated on using `data.table` syntax. In the below example, the tree is pruned to those tips that occur in Cuba. This is the `data.table` equivalent of `dplyr`'s filter. Then, a new column is created in the `data.table`, assigned the name "Index", and assigned the value of the SVL + the hostility index. This enables concurrent manipulation of the phylogeny, and the calculation of a new index for only those tips we would actually like to use.
+
+```{r}
+td[island == "Cuba",.(Index=SVL+hostility)]
+```
+
+
+
