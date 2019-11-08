@@ -7,3 +7,4 @@
   x$dat <- .dat
   return(x)
 }
+
