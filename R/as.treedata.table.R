@@ -41,7 +41,7 @@ as.treedata.table<-function(tree, data){
 
   data <- data[match(tree$tip.label, data$X),]
   dr<-which(tree$tip.label %in% c(tree_not_data,data_not_tree))
-  tree<-drop.tip(tree, dr)
+  tree<-ape::drop.tip(tree, dr)
   data<-data.table::as.data.table(data)[!dr]
   comb<-list(phy=tree, dat=data)
 
