@@ -23,6 +23,7 @@ droptreedata.table <- function(tdObject, taxa) {
     .phy <- drop.tip(.phy, which(.phy$tip.label %in% taxa))
     tdObject$dat <- .dat
     tdObject$phy <- .phy
+    attr(tdObject,'modified') <- "droptreedata.table was run on this object"
     return(tdObject)
     message("Changes were included to the ORIGINAL data")
   } else{
