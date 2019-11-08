@@ -7,9 +7,9 @@
 \method{[}{treedata.table}(x, ...)
 }
 \arguments{
-\item{...}{Arguments in the structure of \code{data.table} used to perform changes on the \code{treedata.table} object}
+\item{x}{An object of class \code{treedata.table}}
 
-\item{.x}{An object of class \code{treedata.table}}
+\item{...}{Arguments in the structure of \code{data.table} used to perform changes on the \code{treedata.table} object}
 }
 \value{
 A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using (\code{\link{data.table}})'s structure.

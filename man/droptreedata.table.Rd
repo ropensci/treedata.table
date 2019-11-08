@@ -7,9 +7,9 @@
 droptreedata.table(tdObject, taxa)
 }
 \arguments{
-\item{taxa}{A vector class \code{character} containing all taxa that needs to be dropped from the original \code{treedata.table} object}
+\item{tdObject}{An object of class \code{treedata.table}}
 
-\item{.tdObject}{An object of class \code{treedata.table}}
+\item{taxa}{A vector class \code{character} containing all taxa that needs to be dropped from the original \code{treedata.table} object}
 }
 \value{
 An object of class \code{treedata.table} with matching \code{$dat} and \code{$phy} elements based on whether \code{taxa} were dropped or not.

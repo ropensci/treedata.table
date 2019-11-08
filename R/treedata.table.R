@@ -2,7 +2,7 @@
 #'
 #' This function can be used to subset rows, select and compute on columns (\code{\link{data.table}}.
 #'
-#' @param .x An object of class \code{treedata.table}
+#' @param x An object of class \code{treedata.table}
 #' @param ... Arguments in the structure of \code{data.table} used to perform changes on the \code{treedata.table} object
 #' @return A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using (\code{\link{data.table}})'s structure.
 #' @seealso \code{\link{data.table}}
@@ -38,8 +38,9 @@
 #'
 #' This function extracts a named vector for any  trait from an object of class \code{treedata.table}.
 #'
-#' @param .x An object of class \code{treedata.table}
+#' @param x An object of class \code{treedata.table}
 #' @param ... Column name in class \code{character}
+#' @param exact whether exact search should be conducted
 #' @return A new object of class \code{vector} with names set to labels corresponding to tip labels in the provided \code{treedata.table} object.
 #' @seealso \code{\link{data.table}}
 #' @examples
