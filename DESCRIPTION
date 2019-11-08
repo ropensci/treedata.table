@@ -1,6 +1,6 @@
 Package: treedata.table
 Type: Package
-Title: A wrapper for data.table for fast manipulation of phylogenetic trees matched to data.
+Title: A wrapper for data.table for fast manipulation of phylogenetic trees matched to data
 Version: 0.1.0
 Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
@@ -10,5 +10,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
-  data.table, lazyeval, ape, geiger
+  data.table
+Imports:
+  lazyeval, ape, geiger
 RoxygenNote: 6.1.1
