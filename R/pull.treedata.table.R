@@ -13,7 +13,7 @@
 pull.treedata.table <- function(tdObject, type = "dat") {
   full <-
     if (type == "dat") {
-      cbind(tip.label = tdObject[[1]]$tip.label, tdObject$dat)
+      cbind(tip.label = tdObject$phy$tip.label, tdObject$dat)
     } else{
       tdObject[[1]]
     }
