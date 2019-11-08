@@ -7,7 +7,6 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(treedata.table)
 ```
 
 ## Getting Started With The `treedata.table` Package
@@ -19,6 +18,8 @@ Using the `treedata.table` package begins with creating a `treedata.table` objec
 A `treedata.table` is created using the `as.treedata.table` function. 
 
 ```{r }
+library(treedata.table)
+
 # Load example data
 data(anolis)
 #Create treedata.table object with as.treedata.table
