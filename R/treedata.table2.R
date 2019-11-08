@@ -22,5 +22,5 @@ td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
 td[island == "Hispaniola",]
 td[order(island)]
 
-td[island == "Cuba" & ecomorph == "TG",]
+td[island == "Cuba" & ecomorph == "TG" ]
 
