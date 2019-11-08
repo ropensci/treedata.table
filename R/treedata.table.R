@@ -17,7 +17,6 @@
   return(x)
 }
 
-
 `[[.treedata.table` <- function (x, ..., exact = TRUE)
 {
   y <- x$dat
