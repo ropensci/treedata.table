@@ -10,5 +10,5 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Depends:
-  data.table, lazyeval, ape
+  data.table, lazyeval, ape, geiger
 RoxygenNote: 6.1.1
