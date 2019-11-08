@@ -33,16 +33,14 @@
 library(data.table)
 library(treeplyr)
 data(anolis)
-td <- make.treedata(anolis$phy, anolis$dat)
-td$dat <- data.table(td$dat)
-class(td) <- c("treedata.table", "list")
-
+td <- as.treedata.table(anolis$phy, anolis$dat)
 td[,SVL]
 td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
-td[island == "Hispaniola",]
-td[island == "Cuba" & ecomorph == "TG",]
-td[,SVL+hostility]
-td$dat[,"SVL"]+td$dat[,"hostility"]
+td[["SVL"]]
+td[island == "Cuba",.(Index=SVL+hostility)]
+td[, head(.SD, 1), by = "ecomorph"]
+td[, head(.SD, 1), by = "ecomorph"]
+td[, head(.SD, 1), by = .(ecomorph, island)]
 
-ex[["attitude"]]
+
 

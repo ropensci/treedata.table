@@ -26,3 +26,7 @@ print.treedata.table <- function(x, ...){
   cat("\n$dat \n")
   print(x$dat)
 }
+
+head.treedata.table <- function(x, ...){
+  data.table:::head.data.table(x$dat, ...)
+}
