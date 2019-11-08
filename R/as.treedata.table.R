@@ -1,4 +1,4 @@
-as.phydata.table<-function(tree, data){
+as.treedata.table<-function(tree, data){
   if(class(tree) != "phylo"){
     stop("Please use a class 'phylo' tree \n")
     }
@@ -24,6 +24,6 @@ as.phydata.table<-function(tree, data){
   attr(comb,'data_not_tree') <- data_not_tree
   attr(comb,'tree_not_data') <- tree_not_data
 
-  class(comb)<-"phydata.table"
+  class(comb)<-"treedata.table"
   return(comb)
 }
