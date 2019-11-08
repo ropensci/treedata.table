@@ -20,7 +20,7 @@ droptreedata.table <- function(tdObject, taxa) {
     .dat <- tdObject$dat
     .phy <- tdObject$phy
     .dat <- .dat[!.phy$tip.label %in% taxa]
-    .phy <- drop.tip(.phy, which(.phy$tip.label %in% taxa))
+    .phy <- ape::drop.tip(.phy, which(.phy$tip.label %in% taxa))
     tdObject$dat <- .dat
     tdObject$phy <- .phy
     attr(tdObject,'modified') <- 1
