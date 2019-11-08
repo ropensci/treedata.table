@@ -51,5 +51,3 @@ as.treedata.table<-function(tree, data){
   class(comb)<-"treedata.table"
   return(comb)
 }
-
-td <- as.treedata.table(drop.tip(anolis$phy,1), anolis$dat[-c(1:5),])
