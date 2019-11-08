@@ -11,6 +11,18 @@
   return(x)
 }
 
+
+`[[.treedata.table` <- function (x, ..., exact = TRUE)
+{
+  y <- x$dat
+  res <- `[[.data.frame`(y, ..., exact = exact)
+  if (length(res) != nrow(y)) {
+    stop("Use '[' for selecting multiple columns")
+  }
+  return(setNames(res, x$phy$tip.label))
+}
+
+
 ##Examples
 library(data.table)
 library(treeplyr)
@@ -22,12 +34,10 @@ class(td) <- c("treedata.table", "list")
 td[,SVL]
 td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
 td[island == "Hispaniola",]
-
-
 td[island == "Cuba" & ecomorph == "TG",]
-
 td[,SVL+hostility]
 td$dat[,"SVL"]+td$dat[,"hostility"]
 
+ex[["attitude"]]
 
 
