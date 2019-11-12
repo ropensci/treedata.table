@@ -2,7 +2,7 @@ summary.treedata.table <- function(object, ...){
   cat("A treedata.table object", "\n")
   cat(paste("The dataset contains ", ncol(object$dat), " traits"),
       "\n")
-  types <- setNames(suppressWarnings(detectAllCharacters(as.matrix(object$dat))),
+  types <- stats::setNames(suppressWarnings(detectAllCharacters(as.matrix(object$dat))),
                     colnames(object$dat))
   cat("Continuous traits: ", names(types)[which(types == "continuous")],
       "\n")

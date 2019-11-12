@@ -56,6 +56,6 @@
   if (length(res) != nrow(y)) {
     stop("Use '[' for selecting multiple columns")
   }
-  return(setNames(res, x$phy$tip.label))
+  return(stats::setNames(res, x$phy$tip.label))
 }
 
