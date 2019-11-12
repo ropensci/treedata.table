@@ -1,3 +1,5 @@
+##Need to check these two functions
+
 summary.treedata.table <- function(object, ...){
   cat("A treedata.table object", "\n")
   cat(paste("The dataset contains ", ncol(object$dat), " traits"),
@@ -28,8 +30,11 @@ print.treedata.table <- function(x, ...){
   print(x$dat)
 }
 
+
 head.treedata.table <- function(x, ...){
   fun = utils::getFromNamespace("head.data.table", "data.table")
   fun(x$dat)
   #data.table:::head.data.table(x$dat, ...)
 }
+
+
