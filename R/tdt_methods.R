@@ -18,7 +18,7 @@ summary.treedata.table <- function(object, ...){
   print(object$phy)
   cat("\n$dat \n")
   print(object$dat)
-  if( is.null(attr(a, "modified"))==F ){ message("\n    This is NOT the original treedata.table object") } ##Include warning for treedata.objects that were modified
+  if( is.null(attr(object, "modified"))==F ){ message("\n    This is NOT the original treedata.table object") } ##Include warning for treedata.objects that were modified
 }
 
 print.treedata.table <- function(x, ...){
@@ -29,5 +29,7 @@ print.treedata.table <- function(x, ...){
 }
 
 head.treedata.table <- function(x, ...){
-  data.table:::head.data.table(x$dat, ...)
+  fun = utils::getFromNamespace("head.data.table", "data.table")
+  fun(x$dat)
+  #data.table:::head.data.table(x$dat, ...)
 }
