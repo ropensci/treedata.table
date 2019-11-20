@@ -1,8 +1,12 @@
 ---
-title: "treedata.table"
+title: "Getting Started With The treedata.table Package"
 author: "the vignette on the orient express"
 date: "11/8/2019"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started With The treedata.table Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
 ---
 
 ```{r setup, include=FALSE}
@@ -90,7 +94,7 @@ tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1)
 ```
 
 
-We can also drop tips directly from the tree, and have those tips drop concurrently from the data.table. In the example below, we  remove two taxa by name.
+We can also drop tips directly from the tree, and have those tips drop concurrently from the data.table. In the example below, we  remove two taxa by name. Please note that the below is intended as an interactive function.
 
 ```{r, eval=FALSE}
 to_drop <- c("chamaeleonides" ,"eugenegrahami" )

@@ -7,9 +7,11 @@
 \method{[[}{treedata.table}(x, ..., exact = TRUE)
 }
 \arguments{
+\item{x}{An object of class \code{treedata.table}}
+
 \item{...}{Column name in class \code{character}}
 
-\item{.x}{An object of class \code{treedata.table}}
+\item{exact}{whether exact search should be conducted}
 }
 \value{
 A new object of class \code{vector} with names set to labels corresponding to tip labels in the provided \code{treedata.table} object.

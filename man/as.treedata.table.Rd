@@ -4,12 +4,14 @@
 \alias{as.treedata.table}
 \title{Combine tree and data.frame into a single treedata.table object}
 \usage{
-as.treedata.table(tree, data)
+as.treedata.table(tree, data, name_column = "detect")
 }
 \arguments{
 \item{tree}{A tree of class \code{phylo}}
 
 \item{data}{A dataset in format \code{data.frame}}
+
+\item{name_column}{A character indicating the name of taxa in \code{data.frame}}
 }
 \value{
 treedata.table An object of type \code{treedata.table} containing the tree and data.table
@@ -24,5 +26,5 @@ treedata.table, which can be manipulated as a data.table.
 }
 \examples{
 data(anolis)
-td <- as.treedata.table(tree=ape::drop.tip(anolis$phy,2:50), data=anolis$dat[-c(5:20),])
+td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
 }

@@ -1,9 +1,9 @@
 #' Function dropping taxa from an object of class \code{treedata.table}
 #'
-#' This function can be used to remove species from an object of class \code{\link{treedata.table}}. The resulting \code{treedata.table} will
+#' This function can be used to remove species from an object of class \code{treedata.table}. The resulting \code{treedata.table} will
 #' include fully matching \code{$dat} and \code{$phy} elements. The user should confirm the changes before they are processed.
 #'
-#' @param .tdObject An object of class \code{treedata.table}
+#' @param tdObject An object of class \code{treedata.table}
 #' @param taxa A vector class \code{character} containing all taxa that needs to be dropped from the original \code{treedata.table} object
 #' @return An object of class \code{treedata.table} with matching \code{$dat} and \code{$phy} elements based on whether \code{taxa} were dropped or not.
 #' @examples

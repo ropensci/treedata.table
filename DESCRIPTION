@@ -1,16 +1,28 @@
 Package: treedata.table
 Type: Package
-Title: A wrapper for data.table for fast manipulation of phylogenetic trees matched to data.
+Title: A wrapper for data.table for fast manipulation of phylogenetic trees matched to data
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: treedata.table combines a phylogenetic tree with a data.frame to generate a treedata.table object. This object can then be used to simultaneously manipulate the tree and the data.
-License: What license is it under?
-Encoding: UTF-8
-LazyData: true
-VignetteBuilder: knitr
+Authors@R: c(
+    person("Joseph Uyeda", email= "juyeda@vt.edu", role=c("aut", "cre")),
+    person("Cristian Román-Palacios", email= "cromanpa94@email.arizona.edu", role=c("aut")), 
+    person("April Wright", email= "april.wright@southeastern.edu", role=c("aut"))
+  )
+Maintainer: Cristian Román-Palacios <cromanpa94@email.arizona.edu>
+Description: This package combines trait data and a phylogenetic tree into a 
+    single object of class treedata.table. The resulting object can be easily 
+    manipulated to simultaneously change the trait- and tree-level sampling.
+    Currently implemented functions allow users to use a data.table syntax when
+    performing operations on the trait dataset within the treedata.table object.
+License: MIT + file LICENSE
 Depends:
-  data.table
+  data.table, R (>= 2.10)
 Suggests:
   knitr
+Imports:
+  lazyeval, ape, geiger
 RoxygenNote: 6.1.1
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+
+
+

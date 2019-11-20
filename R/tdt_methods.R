@@ -1,8 +1,10 @@
+##Need to check these two functions
+
 summary.treedata.table <- function(object, ...){
   cat("A treedata.table object", "\n")
   cat(paste("The dataset contains ", ncol(object$dat), " traits"),
       "\n")
-  types <- setNames(suppressWarnings(detectAllCharacters(as.matrix(object$dat))),
+  types <- stats::setNames(suppressWarnings(detectAllCharacters(as.matrix(object$dat))),
                     colnames(object$dat))
   cat("Continuous traits: ", names(types)[which(types == "continuous")],
       "\n")
@@ -18,7 +20,7 @@ summary.treedata.table <- function(object, ...){
   print(object$phy)
   cat("\n$dat \n")
   print(object$dat)
-  if( is.null(attr(a, "modified"))==F ){ message("\n    This is NOT the original treedata.table object") } ##Include warning for treedata.objects that were modified
+  if( is.null(attr(object, "modified"))==F ){ message("\n    This is NOT the original treedata.table object") } ##Include warning for treedata.objects that were modified
 }
 
 print.treedata.table <- function(x, ...){
@@ -28,6 +30,11 @@ print.treedata.table <- function(x, ...){
   print(x$dat)
 }
 
+
 head.treedata.table <- function(x, ...){
-  data.table:::head.data.table(x$dat, ...)
+  fun = utils::getFromNamespace("head.data.table", "data.table")
+  fun(x$dat)
+  #data.table:::head.data.table(x$dat, ...)
 }
+
+

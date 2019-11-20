@@ -1,6 +1,7 @@
 #' Returns the character matrix or phylogeny from a treedata.table object
 #'
 #' @param tdObject A treedata.table object
+#' @param type Whether the output of the function is a tree ('type="phylo"') or a data.table ('type="dat"')
 #'
 #' @return A \code{data.table} or \code{phylo} object from the original \code{treedata.table} object
 #' @examples
