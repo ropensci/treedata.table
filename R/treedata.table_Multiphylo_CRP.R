@@ -1,17 +1,6 @@
 library(geiger)
 library(data.table)
 
- data(anolis)
-
- anolis2<-anolis$phy
- anolis2$tip.label[1]<-'NAA'
- anolis1<-anolis$phy
- anolis1$tip.label[1]<-'NAA'
- trees<-list(anolis1,anolis2)
- class(trees) <- "multiPhylo"
-
-
-
  as.treedata.table<-function(tree, data, name_column="detect"){
    if(any(class(tree) ==  "phylo" | class(tree) == 'multiPhylo')==F ){
      stop("Please use a class 'phylo' tree \n")
@@ -80,7 +69,7 @@ library(data.table)
      tree<- lapply(tree,ape::drop.tip,tip=tree_not_data)
      class(tree)<-"multiPhylo"
      data<-data[! as.character(data[,1]) ==data_not_tree   ,]
-     message(paste0("\n", length(c(tree_not_data)) ," tip(s) dropped from your tree"))
+     message(paste0("\n", length(c(tree_not_data)) ," tip(s) dropped from ", length(tree) ," trees"))
      message(paste0("\n", length(c(data_not_tree)) ," tip(s)  dropped from your dataset"))
 
    }else{
@@ -113,14 +102,29 @@ library(data.table)
    return(comb)
  }
 
- td <- as.treedata.table(tree=trees, data=anolis$dat)
- td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
- td <- as.treedata.table(tree=anolis1, data=anolis$dat)
+
+
+ data(anolis)
+ anolis2<-anolis$phy
+ anolis2$tip.label[1]<-'NAA'
+ anolis1<-anolis$phy
+ anolis1$tip.label[1]<-'NAA'
+ trees<-list(anolis1,anolis2)
+ class(trees) <- "multiPhylo"
+ treesFM<-list(anolis$phy,anolis$phy)
+ class(treesFM) <- "multiPhylo"
+
+
+
+ td <- as.treedata.table(tree=anolis$phy, data=anolis$dat) #A phylo object that fully matches the data
+ td <- as.treedata.table(tree=treesFM, data=anolis$dat) #A multiphylo object that fully matches the data
+ td <- as.treedata.table(tree=anolis1, data=anolis$dat) #A phylo object that partially matches the data
+ td <- as.treedata.table(tree=trees, data=anolis$dat) #A multiphylo object that partially matches the data
 
 
 
 
-
+###
 
 
 
