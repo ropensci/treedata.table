@@ -1,0 +1,144 @@
+library(geiger)
+library(data.table)
+
+ data(anolis)
+
+ anolis2<-anolis$phy
+ anolis2$tip.label[1]<-'NAA'
+ anolis1<-anolis$phy
+ anolis1$tip.label[1]<-'NAA'
+ trees<-list(anolis1,anolis2)
+ class(trees) <- "multiPhylo"
+
+
+
+ as.treedata.table<-function(tree, data, name_column="detect"){
+   if(any(class(tree) ==  "phylo" | class(tree) == 'multiPhylo')==F ){
+     stop("Please use a class 'phylo' tree \n")
+   }
+   if( class(tree) == 'multiPhylo' ){
+     equal_T<-length(unique(lapply(seq_along(tree), function(x) tree[[x]]$tip.label))) == 1
+     if( equal_T == F ) {stop("Please make sure that tip labels are equivalent across trees \n")}
+   }
+
+
+   #if(class(data) != "data.frame"){
+   #  stop("Your data MUST be of class data.frame")
+   #  }
+   #if(dim(data)[2] < 2){
+   #  stop("Your data MUST have at least two columns (tip.names; nstates)")
+   #  }
+   if(is.vector(data)){
+     data <- data.frame(as.matrix(data))
+     colnames(data) <- "trait"
+   }
+   if(is.null(colnames(data))){
+     colnames(data) <- paste("trait", 1:ncol(data), sep="")
+   }
+   coln <- colnames(data)
+   if(name_column=="detect"){
+     if(is.null(rownames(data))){
+       tmp.df <- data.frame(data)
+       offset <- 0
+     } else {
+       tmp.df <- data.frame(rownames(data), data)
+       offset <- 1
+     }
+
+     matches <- sapply(tmp.df, function(x) sum(x %in% if( class(tree) == 'phylo'){tree$tip.label }else{ tree[[1]]$tip.label } ) )
+
+     if(all(matches==0)) stop("No matching names found between data and tree")
+     name_column <- which(matches==max(matches))-offset
+   } else{
+     if(is.character(name_column)){
+       name_column <- which(name_column==coln)[1]
+     }
+   }
+
+
+   if(class(tree)== 'phylo' ){
+
+     if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
+       data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
+       tree_not_data <- setdiff(tree$tip.label, data[,1])
+       message(paste0("\n", length(c(tree_not_data)) ," tip(s) dropped from your tree"))
+       message(paste0("\n", length(c(data_not_tree)) ," tip(s)  dropped from your dataset"))
+       tree<- ape::drop.tip(tree, tree_not_data)
+       data<-data[! as.character(data[,1]) ==data_not_tree   ,]
+     }else{
+       data_not_tree <- "OK"
+       tree_not_data <- "OK"
+     }
+
+   }else{
+
+
+   if( geiger::name.check(tree[[1]], data.names = data[,1] )[1]    != "OK"   ){
+     data_not_tree <- setdiff(as.character(data[,1]), tree[[1]]$tip.label)
+     tree_not_data <- setdiff(tree[[1]]$tip.label, data[,1])
+
+     tree<- lapply(tree,ape::drop.tip,tip=tree_not_data)
+     class(tree)<-"multiPhylo"
+     data<-data[! as.character(data[,1]) ==data_not_tree   ,]
+     message(paste0("\n", length(c(tree_not_data)) ," tip(s) dropped from your tree"))
+     message(paste0("\n", length(c(data_not_tree)) ," tip(s)  dropped from your dataset"))
+
+   }else{
+     data_not_tree <- "OK"
+     tree_not_data <- "OK"
+   }
+
+}
+
+   i <- sapply(data, is.factor);data[i] <- lapply(data[i], as.character) ##Tranform factors into character vectors
+
+   data<- if( class(tree) == 'phylo'){ data[match(tree$tip.label, data[,name_column]),] }else{
+     data[match(tree[[1]]$tip.label, data[,name_column]),]
+   }
+
+
+   colnames(data)[name_column] <- "tip.label"
+   dr<-which(tree$tip.label %in% c(tree_not_data,data_not_tree))
+
+   tree<- if( class(tree) == 'phylo'){ ape::drop.tip(tree, dr) }else{
+     nt<-lapply(tree,ape::drop.tip,tip=dr)
+     class(nt)<-"multiPhylo"
+     nt
+   }
+   data<-data.table::as.data.table(data)[!dr]
+   comb<-list(phy=tree, dat=data)
+   attr(comb,'data_not_tree') <- data_not_tree
+   attr(comb,'tree_not_data') <- tree_not_data
+   class(comb)<-"treedata.table"
+   return(comb)
+ }
+
+ td <- as.treedata.table(tree=trees, data=anolis$dat)
+ td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
+ td <- as.treedata.table(tree=anolis1, data=anolis$dat)
+
+
+
+
+
+
+
+
+`[.treedata.table` <- function(x, ...) {
+  .dat <- x$dat
+  .dat<-base::cbind(.dat, "rowid"=seq_len(nrow(.dat))) #CRP: using cbind instead of :=
+  dots <- lazyeval::lazy_dots(...)
+  if ("by" %in% names(dots)) {
+    .dat <- .dat[...]
+  } else{
+    if (nchar(dots[[2]]$expr)[1] != 0) {
+      .dat <- .dat[..., by = "rowid"] #CRP: using "rowid" instead of rowid
+    } else{
+      .dat <- .dat[...]
+    }
+  }
+  .phy <- ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"]))) #CRP: using "rowid" instead of rowid & unlist
+  x$phy <- .phy
+  x$dat <- .dat[, !"rowid"]
+  return(x)
+}

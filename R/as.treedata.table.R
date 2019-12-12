@@ -54,6 +54,8 @@ as.treedata.table<-function(tree, data, name_column="detect"){
   if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
     data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
     tree_not_data <- setdiff(tree$tip.label, data[,1])
+    tree<- ape::drop.tip(tree, tree_not_data)
+    data<-data[! as.character(data[,1]) ==data_not_tree   ,]
     message(paste0("\n", length(c(tree_not_data,tree_not_data)) ," tips were dropped from your tree and dataset\n"))
   }else{
     data_not_tree <- "OK"
