@@ -1,6 +1,10 @@
 library(geiger)
 library(data.table)
 
+
+
+
+####as.treedata.table---------------
  as.treedata.table<-function(tree, data, name_column="detect"){
    if(any(class(tree) ==  "phylo" | class(tree) == 'multiPhylo')==F ){
      stop("Please use a class 'phylo' tree \n")
@@ -123,8 +127,7 @@ library(data.table)
 
 
 
-
-###
+########[----------
 
 
 
@@ -181,5 +184,158 @@ library(data.table)
  td[,SVL]
  td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
  td[, head(.SD, 1), by = .(ecomorph, island)]
+
+
+
+
+ ############[[----------
+
+
+ `[[.treedata.table` <- function (x, ..., exact = TRUE){
+   y <- x$dat
+   res <- `[[.data.frame`(y, ..., exact = exact)
+   if (length(res) != nrow(y)) {
+     stop("Use '[' for selecting multiple columns")
+   }
+   return(stats::setNames(res, if(class(x$phy)=='phylo'){ x$phy$tip.label} else{x$phy[[1]]$tip.label}      ))
+ }
+
+
+ data(anolis)
+ td <- as.treedata.table(anolis$phy, anolis$dat)
+ td[["SVL"]] #With a phylo object
+ td <- as.treedata.table(treesFM, anolis$dat)
+ td[["SVL"]] #With a multiPhylo object
+
+
+
+ ##droptreedata.table---------
+
+ droptreedata.table <- function(tdObject, taxa) {
+   message("Make changes to the ORIGINAL data?")
+   n <- readline(prompt = "Type: (1) YES, (2) NO: ")
+   if (n == 1 | n == "yes" | n == "YES") {
+     .dat <- tdObject$dat
+     .phy <- tdObject$phy
+
+     if(class(.phy ) == 'phylo' ){
+
+       .dat <-.dat[!.phy$tip.label %in% taxa]
+       .phy <- ape::drop.tip(.phy, which(.phy$tip.label %in% taxa))
+
+     }else{
+
+       .dat <- .dat[!.phy[[1]]$tip.label %in% taxa]
+       .phy <- lapply(.phy,ape::drop.tip,tip=which(.phy[[1]]$tip.label %in% taxa))
+       class(.phy)<-'multiPhylo'
+       }
+
+
+     tdObject$dat <- .dat
+     tdObject$phy <- .phy
+     attr(tdObject,'modified') <- 1
+     return(tdObject)
+     message("Changes were included to the ORIGINAL data")
+   } else{
+     message("NO changes made to the ORIGINAL data")
+     return(tdObject)
+   }
+ }
+
+ data(anolis)
+ td <- as.treedata.table(anolis$phy, anolis$dat)
+ droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" ))
+
+ td <- as.treedata.table(treesFM, anolis$dat)
+ droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" ))
+
+
+
+
+
+### extractVector ---------
+
+ extractVector <- function(tdObject, ...){
+   dat <- tdObject$dat
+   args <- as.character(substitute(list(...)))[-1L]
+   arg_sub <- utils::type.convert(args)
+   if(is.numeric(arg_sub) | is.integer(arg_sub)) args <- arg_sub
+   vecs <- lapply(args,function(x) dat[[x]])
+   vecs <- if(class(tdObject$phy) =='phylo' ){
+     lapply(vecs, function(x) stats::setNames(x, tdObject$phy$tip.label)) }else{
+       lapply(vecs, function(x) stats::setNames(x, tdObject$phy[[1]]$tip.label))
+     }
+
+
+   if(length(vecs)==1){
+     vecs = vecs[[1]]
+   } else {names(vecs) <- args}
+   return(vecs)
+ }
+ td <- as.treedata.table(treesFM, anolis$dat)
+ extractVector(tdObject=td, "SVL")
+
+
+
+
+
+
+##tdt (not done yet)
+
+ td <- as.treedata.table(treesFM, anolis$dat)
+ tdObject<-td
+
+ tdt <- function(tdObject, ...){
+
+   if(class(tdObject$phy)=='phy'  ){
+
+
+   if(!is.call(substitute(...))){
+     call <- list(...)[[1]]
+   } else {
+     call <- substitute(...)
+   }
+   env <- new.env(parent = parent.frame(), size = 1L)
+   env$phy <- tdObject$phy
+   env$dat <- tdObject$dat
+   out <- eval(call, env)
+   if(is.null(out)){
+     invisible()
+   } else {
+     return(out)
+   }
+
+   }else{
+
+
+     lapply(seq_along(tdObject$phy), function(x){
+     if(!is.call(substitute(...))){
+       call <- list(...)[[1]]
+     } else {
+       call <- substitute(...)
+     }
+     env <- new.env(parent = parent.frame(), size = 1L)
+     env$phy <- tdObject$phy[[x]]
+     env$dat <- tdObject$dat
+     out <- eval(call, env)
+     if(is.null(out)){
+       invisible()
+     } else {
+       return(out)
+
+     }
+
+
+   })
+
+
+
+ }}
+
+
+ td <- as.treedata.table(anolis$phy, anolis$dat)
+ tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
+
+
 
 
