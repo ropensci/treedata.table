@@ -280,61 +280,48 @@ library(data.table)
 
 
 
-##tdt (not done yet)
-
- td <- as.treedata.table(treesFM, anolis$dat)
- tdObject<-td
-
- tdt <- function(tdObject, ...){
-
-   if(class(tdObject$phy)=='phy'  ){
-
-
-   if(!is.call(substitute(...))){
-     call <- list(...)[[1]]
-   } else {
-     call <- substitute(...)
-   }
-   env <- new.env(parent = parent.frame(), size = 1L)
-   env$phy <- tdObject$phy
-   env$dat <- tdObject$dat
-   out <- eval(call, env)
-   if(is.null(out)){
-     invisible()
-   } else {
-     return(out)
-   }
-
-   }else{
-
-
-     lapply(seq_along(tdObject$phy), function(x){
-     if(!is.call(substitute(...))){
-       call <- list(...)[[1]]
-     } else {
-       call <- substitute(...)
-     }
-     env <- new.env(parent = parent.frame(), size = 1L)
-     env$phy <- tdObject$phy[[x]]
-     env$dat <- tdObject$dat
-     out <- eval(call, env)
-     if(is.null(out)){
-       invisible()
-     } else {
-       return(out)
-
-     }
-
-
-   })
-
-
-
- }}
-
+##tdt (fully functional)-----
 
  td <- as.treedata.table(anolis$phy, anolis$dat)
+
+ tdt <- function(tdObject, ...){
+    if(!is.call(substitute(...))){
+       call <- list(...)[[1]]
+    } else {
+       call <- substitute(...)
+    }
+    env <- new.env(parent = parent.frame(), size = 1L)
+    env$dat <- tdObject$dat
+
+    if(class(tdObject$phy) == "phylo"){
+    env$phy <- tdObject$phy
+    out <- eval(call, env)
+    if(is.null(out)){
+       invisible()
+    } else {
+       return(out)
+    }
+    }else{
+
+       lapply(seq_along(tdObject$phy), function(x){
+       env$phy <- tdObject$phy[[x]]
+       out <- eval(call, env)
+       if(is.null(out)){
+          invisible()
+       } else {
+          return(out)
+       }
+       })
+    }
+ }
+
+ #Using a single tree (phylo object)
+ td <- as.treedata.table(anolis$phy, anolis$dat)
  tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
+ #This will run the same function across all trees in the multiPhylo object
+ td <- as.treedata.table(treesFM, anolis$dat)
+ tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
+
 
 
 
