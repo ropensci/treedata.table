@@ -7,11 +7,45 @@
 #' @return A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using (\code{\link{data.table}})'s structure.
 #' @seealso \code{\link{data.table}}
 #' @examples
+#'
 #' data(anolis)
+#' anolis2<-anolis$phy
+#' anolis2$tip.label[1]<-'NAA'
+#' anolis1<-anolis$phy
+#' anolis1$tip.label[1]<-'NAA'
+#' trees<-list(anolis1,anolis2)
+#' class(trees) <- "multiPhylo"
+#' treesFM<-list(anolis$phy,anolis$phy)
+#' class(treesFM) <- "multiPhylo"
+#'
+#' #A phylo object that fully matches the data
+#' td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
 #' td[,SVL]
 #' td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
 #' td[, head(.SD, 1), by = .(ecomorph, island)]
+#'
+#' #A multiphylo object that fully matches the data
+#' td <- as.treedata.table(tree=treesFM, data=anolis$dat)
+#' td <- as.treedata.table(treesFM, anolis$dat)
+#' td[,SVL]
+#' td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
+#' td[, head(.SD, 1), by = .(ecomorph, island)]
+
+#' #A phylo object that partially matches the data
+#' td <- as.treedata.table(tree=anolis1, data=anolis$dat)
+#' td <- as.treedata.table(anolis1, anolis$dat)
+#' td[,SVL]
+#' td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
+#' td[, head(.SD, 1), by = .(ecomorph, island)]
+#'
+#' #A multiphylo object that partially matches the data
+#' td <- as.treedata.table(tree=trees, data=anolis$dat)
+#' td <- as.treedata.table(trees, anolis$dat)
+#' td[,SVL]
+#' td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
+#' td[, head(.SD, 1), by = .(ecomorph, island)]
+#'
 #' @export
 
 `[.treedata.table` <- function(x, ...) {
@@ -55,7 +89,14 @@
 #' @seealso \code{\link{data.table}}
 #' @examples
 #' data(anolis)
+#' #With a phylo object
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
+#' td[["SVL"]]
+#'
+#' #With a multiPhylo object
+#' treesFM<-list(anolis$phy,anolis$phy)
+#' class(treesFM) <- "multiPhylo"
+#' td <- as.treedata.table(treesFM, anolis$dat)
 #' td[["SVL"]]
 #' @export
 
