@@ -8,7 +8,7 @@ Authors@R: c(
     person("April Wright", email= "april.wright@southeastern.edu", role=c("aut"))
   )
 Maintainer: Cristian Roman-Palacios <cromanpa94@email.arizona.edu>
-Description: This package combines trait data and a phylogenetic tree into a 
+Description: This package combines trait data and a phylogenetic tree (or trees) into a 
     single object of class treedata.table. The resulting object can be easily 
     manipulated to simultaneously change the trait- and tree-level sampling.
     Currently implemented functions allow users to use a data.table syntax when
