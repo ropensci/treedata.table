@@ -8,8 +8,16 @@
 #' @return An object of class \code{treedata.table} with matching \code{$dat} and \code{$phy} elements based on whether \code{taxa} were dropped or not.
 #' @examples
 #' data(anolis)
+#' With a multiphylo object in the treedata.table object
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
 #' droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" ))
+#'
+#' With a multiphylo object in the treedata.table object
+#' treesFM<-list(anolis$phy,anolis$phy)
+#' class(treesFM) <- "multiPhylo"
+#' td <- as.treedata.table(treesFM, anolis$dat)
+#' droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" ))
+#'
 #' @export
 
 
@@ -19,8 +27,20 @@ droptreedata.table <- function(tdObject, taxa) {
   if (n == 1 | n == "yes" | n == "YES") {
     .dat <- tdObject$dat
     .phy <- tdObject$phy
-    .dat <- .dat[!.phy$tip.label %in% taxa]
-    .phy <- ape::drop.tip(.phy, which(.phy$tip.label %in% taxa))
+
+    if(class(.phy ) == 'phylo' ){
+
+      .dat <-.dat[!.phy$tip.label %in% taxa]
+      .phy <- ape::drop.tip(.phy, which(.phy$tip.label %in% taxa))
+
+    }else{
+
+      .dat <- .dat[!.phy[[1]]$tip.label %in% taxa]
+      .phy <- lapply(.phy,ape::drop.tip,tip=which(.phy[[1]]$tip.label %in% taxa))
+      class(.phy)<-'multiPhylo'
+    }
+
+
     tdObject$dat <- .dat
     tdObject$phy <- .phy
     attr(tdObject,'modified') <- 1

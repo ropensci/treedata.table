@@ -12,7 +12,10 @@ extractVector <- function(tdObject, ...){
   arg_sub <- utils::type.convert(args)
   if(is.numeric(arg_sub) | is.integer(arg_sub)) args <- arg_sub
   vecs <- lapply(args,function(x) dat[[x]])
-  vecs <- lapply(vecs, function(x) stats::setNames(x, tdObject$phy$tip.label))
+  vecs <- if(class(tdObject$phy) =='phylo' ){
+    lapply(vecs, function(x) stats::setNames(x, tdObject$phy$tip.label)) }else{
+      lapply(vecs, function(x) stats::setNames(x, tdObject$phy[[1]]$tip.label))
+    }
   if(length(vecs)==1){
     vecs = vecs[[1]]
   } else {names(vecs) <- args}
