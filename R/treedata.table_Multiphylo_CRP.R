@@ -6,12 +6,12 @@ library(data.table)
 
 ####as.treedata.table---------------
  as.treedata.table<-function(tree, data, name_column="detect"){
-   if(any(class(tree) ==  "phylo" | class(tree) == 'multiPhylo')==F ){
-     stop("Please use a class 'phylo' tree \n")
+   if(class(tree) %in%  c("phylo", 'multiPhylo')==F ){
+     stop("Please use a class 'phylo' or 'multiPhylo' tree \n")
    }
    if( class(tree) == 'multiPhylo' ){
      equal_T<-length(unique(lapply(seq_along(tree), function(x) tree[[x]]$tip.label))) == 1
-     if( equal_T == F ) {stop("Please make sure that tip labels are equivalent across trees \n")}
+     if( equal_T == F ) {stop("Please make sure that tip labels are equivalent across trees in the multiPhylo object \n")}
    }
 
 
@@ -54,8 +54,8 @@ library(data.table)
      if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
        data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
        tree_not_data <- setdiff(tree$tip.label, data[,1])
-       message(paste0("\n", length(c(tree_not_data)) ," tip(s) dropped from your tree"))
-       message(paste0("\n", length(c(data_not_tree)) ," tip(s)  dropped from your dataset"))
+       message(paste0("\n", length(c(tree_not_data)) ," tip(s) dropped from your tree",
+                      "\n", length(c(data_not_tree)) ," tip(s)  dropped from your dataset"))
        tree<- ape::drop.tip(tree, tree_not_data)
        data<-data[! as.character(data[,1]) ==data_not_tree   ,]
      }else{
@@ -73,8 +73,8 @@ library(data.table)
      tree<- lapply(tree,ape::drop.tip,tip=tree_not_data)
      class(tree)<-"multiPhylo"
      data<-data[! as.character(data[,1]) ==data_not_tree   ,]
-     message(paste0("\n", length(c(tree_not_data)) ," tip(s) dropped from ", length(tree) ," trees"))
-     message(paste0("\n", length(c(data_not_tree)) ," tip(s)  dropped from your dataset"))
+     message(paste0("\n", length(c(tree_not_data)) ," tip(s) dropped from ", length(tree) ," trees",
+                    "\n", length(c(data_not_tree)) ," tip(s)  dropped from your dataset"))
 
    }else{
      data_not_tree <- "OK"
@@ -107,7 +107,6 @@ library(data.table)
  }
 
 
-
  data(anolis)
  anolis2<-anolis$phy
  anolis2$tip.label[1]<-'NAA'
@@ -117,7 +116,6 @@ library(data.table)
  class(trees) <- "multiPhylo"
  treesFM<-list(anolis$phy,anolis$phy)
  class(treesFM) <- "multiPhylo"
-
 
 
  td <- as.treedata.table(tree=anolis$phy, data=anolis$dat) #A phylo object that fully matches the data
