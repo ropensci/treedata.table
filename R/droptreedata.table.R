@@ -8,11 +8,11 @@
 #' @return An object of class \code{treedata.table} with matching \code{$dat} and \code{$phy} elements based on whether \code{taxa} were dropped or not.
 #' @examples
 #' data(anolis)
-#' With a multiphylo object in the treedata.table object
+#' #With a multiphylo object in the treedata.table object
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
 #' droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" ))
 #'
-#' With a multiphylo object in the treedata.table object
+#' #With a multiphylo object in the treedata.table object
 #' treesFM<-list(anolis$phy,anolis$phy)
 #' class(treesFM) <- "multiPhylo"
 #' td <- as.treedata.table(treesFM, anolis$dat)

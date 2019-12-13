@@ -16,8 +16,6 @@ Description: This package combines trait data and a phylogenetic tree into a
 License: MIT + file LICENSE
 Depends:
   data.table, R (>= 2.10)
-Suggests:
-  knitr
 Imports:
   lazyeval, ape, geiger
 RoxygenNote: 6.1.1

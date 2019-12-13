@@ -24,10 +24,14 @@
 #' treesFM<-list(anolis$phy,anolis$phy)
 #' class(treesFM) <- "multiPhylo"
 #'
-#' td <- as.treedata.table(tree=anolis$phy, data=anolis$dat) #A phylo object that fully matches the data
-#' td <- as.treedata.table(tree=treesFM, data=anolis$dat) #A multiphylo object that fully matches the data
-#' td <- as.treedata.table(tree=anolis1, data=anolis$dat) #A phylo object that partially matches the data
-#' td <- as.treedata.table(tree=trees, data=anolis$dat) #A multiphylo object that partially matches the data
+#' #A phylo object that fully matches the data
+#' td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
+#' #A multiphylo object that fully matches the data
+#' td <- as.treedata.table(tree=treesFM, data=anolis$dat)
+#' #A phylo object that partially matches the data
+#' td <- as.treedata.table(tree=anolis1, data=anolis$dat)
+#' #A multiphylo object that partially matches the data
+#' td <- as.treedata.table(tree=trees, data=anolis$dat)
 #'
 #' @export
 

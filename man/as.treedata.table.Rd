@@ -7,7 +7,7 @@
 as.treedata.table(tree, data, name_column = "detect")
 }
 \arguments{
-\item{tree}{A tree of class \code{phylo}}
+\item{tree}{A tree of class \code{phylo} or multiple trees of class \code{multiPhylo}}
 
 \item{data}{A dataset in format \code{data.frame}}
 
@@ -17,14 +17,32 @@ as.treedata.table(tree, data, name_column = "detect")
 treedata.table An object of type \code{treedata.table} containing the tree and data.table
 }
 \description{
-This function takes as input a tree of class \code{phylo} and a \code{data.frame}
-and combines them into a treedata.table. A \code{treedata.table} object is
-sorted such that the rows in the data.table are matched to the tip.labels
+This function takes as input a tree of class \code{phylo} or \code{multiPhylo} and a \code{data.frame}
+and combines them into a treedata.table. If a \code{multiPhylo} is provided, all trees must have the same tip.labels.
+\code{treedata.table} object is sorted such that the rows in the data.table are matched to the tip.labels
 of the phylogeny. Tip.labels on the tree must match a column of tip
 names in the input data.frame. The output of this function will be a
 treedata.table, which can be manipulated as a data.table.
 }
 \examples{
+
 data(anolis)
+anolis2<-anolis$phy
+anolis2$tip.label[1]<-'NAA'
+anolis1<-anolis$phy
+anolis1$tip.label[1]<-'NAA'
+trees<-list(anolis1,anolis2)
+class(trees) <- "multiPhylo"
+treesFM<-list(anolis$phy,anolis$phy)
+class(treesFM) <- "multiPhylo"
+
+#A phylo object that fully matches the data
 td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
+#A multiphylo object that fully matches the data
+td <- as.treedata.table(tree=treesFM, data=anolis$dat)
+#A phylo object that partially matches the data
+td <- as.treedata.table(tree=anolis1, data=anolis$dat)
+#A multiphylo object that partially matches the data
+td <- as.treedata.table(tree=trees, data=anolis$dat)
+
 }

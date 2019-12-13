@@ -20,6 +20,14 @@ include fully matching \code{$dat} and \code{$phy} elements. The user should con
 }
 \examples{
 data(anolis)
+#With a multiphylo object in the treedata.table object
 td <- as.treedata.table(anolis$phy, anolis$dat)
 droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" ))
+
+#With a multiphylo object in the treedata.table object
+treesFM<-list(anolis$phy,anolis$phy)
+class(treesFM) <- "multiPhylo"
+td <- as.treedata.table(treesFM, anolis$dat)
+droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" ))
+
 }

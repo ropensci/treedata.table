@@ -21,7 +21,14 @@ This function extracts a named vector for any  trait from an object of class \co
 }
 \examples{
 data(anolis)
+#With a phylo object
 td <- as.treedata.table(anolis$phy, anolis$dat)
+td[["SVL"]]
+
+#With a multiPhylo object
+treesFM<-list(anolis$phy,anolis$phy)
+class(treesFM) <- "multiPhylo"
+td <- as.treedata.table(treesFM, anolis$dat)
 td[["SVL"]]
 }
 \seealso{
