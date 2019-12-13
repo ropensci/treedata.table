@@ -27,11 +27,21 @@
       .dat <- .dat[...]
     }
   }
-  .phy <- ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"]))) #CRP: using "rowid" instead of rowid & unlist
+  #.phy <- ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"]))) #CRP: using "rowid" instead of rowid & unlist
+
+  .phy<- if(class(x$phy)=='phylo'){
+    ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"])))
+  }else{
+    tr<-lapply(x$phy,ape::drop.tip,tip=which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"])))
+    class(tr)<-'multiPhylo'
+    tr
+  }
+
   x$phy <- .phy
   x$dat <- .dat[, !"rowid"]
   return(x)
 }
+
 
 
 #' Function for extract a named vector from an object of class \code{treedata.table}
@@ -55,6 +65,7 @@
   if (length(res) != nrow(y)) {
     stop("Use '[' for selecting multiple columns")
   }
-  return(stats::setNames(res, x$phy$tip.label))
+  return(stats::setNames(res, if(class(x$phy)=='phylo'){ x$phy$tip.label} else{x$phy[[1]]$tip.label}))
 }
+
 
