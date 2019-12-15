@@ -40,7 +40,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
     stop("Please use a class 'phylo' or 'multiPhylo' tree \n")
   }
   if( class(tree) == 'multiPhylo' ){
-    equal_T<-length(unique(lapply(seq_along(tree), function(x) tree[[x]]$tip.label))) == 1
+    equal_T<-length(unique(lapply(seq_along(tree), function(x) sort(tree[[x]]$tip.label) ))) == 1
     if( equal_T == F ) {stop("Please make sure that tip labels are equivalent across trees in the multiPhylo object \n")}
   }
 
