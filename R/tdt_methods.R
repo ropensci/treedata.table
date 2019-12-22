@@ -1,6 +1,10 @@
 ##Need to check these two functions
 
 summary.treedata.table <- function(object, ...){
+  if(class(object) != "treedata.table" ){
+    stop("Please use a class 'treedata.table' object \n")
+  }
+
   cat("A treedata.table object", "\n")
   cat(paste("The dataset contains ", ncol(object$dat), " traits"),
       "\n")

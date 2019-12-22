@@ -12,6 +12,9 @@
 #' @export
 
 pull.treedata.table <- function(tdObject, type = "dat") {
+  if(class(tdObject) != "treedata.table" ){
+    stop("Please use a class 'treedata.table' object \n")
+  }
   full <-
     if (type == "dat") {
       cbind(tip.label = tdObject$phy$tip.label, tdObject$dat)

@@ -1,4 +1,4 @@
-#' Combine tree and data.frame into a single treedata.table object
+#' Combine tree (or set of trees) and data.frame into a single treedata.table object
 #'
 #' This function takes as input a tree of class \code{phylo} or \code{multiPhylo} and a \code{data.frame}
 #' and combines them into a treedata.table. If a \code{multiPhylo} is provided, all trees must have the same tip.labels.
@@ -45,9 +45,9 @@ as.treedata.table<-function(tree, data, name_column="detect"){
   }
 
 
-  #if(class(data) != "data.frame"){
-  #  stop("Your data MUST be of class data.frame")
-  #  }
+  if(class(data) != "data.frame" ){
+    stop("Your data MUST be of class data.frame")
+    }
   #if(dim(data)[2] < 2){
   #  stop("Your data MUST have at least two columns (tip.names; nstates)")
   #  }
@@ -80,21 +80,22 @@ as.treedata.table<-function(tree, data, name_column="detect"){
 
 
   if(class(tree)== 'phylo' ){
-
+    cat("Phylo object detected \n")
     if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
       data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
       tree_not_data <- setdiff(tree$tip.label, data[,1])
-      message(paste0("\n", length(c(tree_not_data)) ," tip(s) dropped from your tree",
-                     "\n", length(c(data_not_tree)) ," tip(s)  dropped from your dataset"))
+      message(paste0(length(c(tree_not_data)) ," tip(s) dropped from the original tree",
+                     "\n", length(c(data_not_tree)) ," tip(s)  dropped from the original dataset"))
       tree<- ape::drop.tip(tree, tree_not_data)
       data<-data[! as.character(data[,1]) ==data_not_tree   ,]
     }else{
+      message(paste0("No tips were dropped from the original tree/dataset"))
       data_not_tree <- "OK"
       tree_not_data <- "OK"
     }
 
   }else{
-
+    cat("Multiphylo object detected \n")
 
     if( geiger::name.check(tree[[1]], data.names = data[,1] )[1]    != "OK"   ){
       data_not_tree <- setdiff(as.character(data[,1]), tree[[1]]$tip.label)
@@ -103,10 +104,11 @@ as.treedata.table<-function(tree, data, name_column="detect"){
       tree<- lapply(tree,ape::drop.tip,tip=tree_not_data)
       class(tree)<-"multiPhylo"
       data<-data[! as.character(data[,1]) ==data_not_tree   ,]
-      message(paste0("\n", length(c(tree_not_data)) ," tip(s) dropped from ", length(tree) ," trees",
-                     "\n", length(c(data_not_tree)) ," tip(s)  dropped from your dataset"))
+      message(paste0(length(c(tree_not_data)) ," tip(s) dropped from ", length(tree) ," trees",
+                     "\n", length(c(data_not_tree)) ," tip(s)  dropped from the original dataset"))
 
     }else{
+      message(paste0("No tips were dropped from the original trees/dataset"))
       data_not_tree <- "OK"
       tree_not_data <- "OK"
     }

@@ -6,7 +6,8 @@
 #' @details This function allows R functions that use trees and data to be run on
 #' \code{treedata.table} objects.
 #'
-#' @return Function output for a single tree (phylo) or a list of function outputs (multiPhylo)
+#' @return Function output for a single tree (phylo) or a list of function outputs
+#' (one per each tree in the MultiPhylo object)
 #'
 #' @examples
 #' data(anolis)
@@ -29,6 +30,11 @@
 #' @export
 
 tdt <- function(tdObject, ...){
+
+  if(class(tdObject) != "treedata.table" ){
+    stop("Please use a class 'treedata.table' object \n")
+  }
+
   if(!is.call(substitute(...))){
     call <- list(...)[[1]]
   } else {
@@ -38,6 +44,7 @@ tdt <- function(tdObject, ...){
   env$dat <- tdObject$dat
 
   if(class(tdObject$phy) == "phylo"){
+    cat("Phylo object detected. Expect a single function output")
     env$phy <- tdObject$phy
     out <- eval(call, env)
     if(is.null(out)){
@@ -46,7 +53,7 @@ tdt <- function(tdObject, ...){
       return(out)
     }
   }else{
-
+    cat("Multiphylo object detected. Expect a list of function outputs")
     lapply(seq_along(tdObject$phy), function(x){
       env$phy <- tdObject$phy[[x]]
       out <- eval(call, env)

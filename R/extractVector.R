@@ -4,9 +4,20 @@
 #' @param ... The name of the column to select
 #'
 #' @return A named vector
+#'
+#' @example
+#'
+#' data(anolis)
+#' td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
+#' extractVector(td, "SVL") #extracts the named vector for SVL from the td object
+#'
 #' @export
 
 extractVector <- function(tdObject, ...){
+  if(class(tdObject) != "treedata.table" ){
+    stop("Please use a class 'treedata.table' object \n")
+  }
+
   dat <- tdObject$dat
   args <- as.character(substitute(list(...)))[-1L]
   arg_sub <- utils::type.convert(args)
