@@ -31,13 +31,17 @@ data(anolis)
 td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
 ```
 
-We may inspect our object by calling it by name. You will notice that your `data.frame` is now a `data.table`, and has been reordered into the same order as the tip.labels of your tree.
+We may inspect our object by calling it by name. You will notice that your `data.frame` is now a `data.table`.
 
 ```{r}
 td
+```
 
+
+Furthermore, the new `data.table` has been reordered into the same order as the tip.labels of your tree.
+
+```{r}
 td$phy$tip.label == td$dat$tip.label
-
 ```
 
 
@@ -45,7 +49,7 @@ td$phy$tip.label == td$dat$tip.label
 
 Your data table can be indexed in the same way any other `data.table` object would be. For example, if we wanted to look at our snout-vent length column, we can do that like so.
 
-```{r pressure, echo=FALSE}
+```{r pressure, echo=TRUE}
 td$dat[,SVL]
 
 ```
@@ -53,15 +57,13 @@ td$dat[,SVL]
 You can also use double bracket syntax to directly return column data as a named list.
 
 ```{r}
-export <- td[["SVL"]]
+td[["SVL"]]
 ```
 
-The same functionality can also be accomplished through the `extractVector` function:
+The same functionality can also be accomplished through the `extractVector` function. Both the double bracked syntax and the `extractVector` function will return a named vector.
 
 ```{r}
-
 extractVector(td, SVL)
-
 ```
 
 
@@ -140,29 +142,6 @@ tree
 
 # Advanced methods
 
-
-## Running functions on `treedata.table` objects
-
-
-Different functions based on trees (`phylo` or `multiPhylo`; see below) and trait data (e.g. a named vector) can be easily be run using the `tdt` function implemented in our `treedata.table` package. 
-
-
-The following line can be used to fit a `BM` model on the `SVL` vector for the anole dataset that we previously combined in a `treedata.table` object. Users only need to provide a `treedata.table` object, and specify the parameters to be used within the relevant function.
-
-```{r}
-tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
-```
-
-The following line can be used to run phylograms on the same trait.
-
-```{r}
-tdt(td, phytools::phenogram(phy, extractVector(td, SVL), quiet=TRUE, spread.labels=FALSE))
-```
-
-
-
-
-
 ## Working with multiphylo objects
 
 `treedata.table` further allows the matching of multiple phylogenies (`multiPhylo`) against a single dataset (`data.frame`). Below, we modified the anole dataset to explain the extended functionality of `treedata.table` with `multiPhylo` objects.
@@ -201,6 +180,61 @@ tdt(td, phytools::phenogram(phy, extractVector(td, SVL), quiet=TRUE, spread.labe
 ```
 
 The output is an object of class `list` with each element corresponding to the output function of each tree in the provided `multiPhylo` object. 
+
+
+## Partially matching trait data and tree(s)
+
+The `as.treedata.table` function enables users to match a tree (or multiple trees) against a single trait database.
+
+Tips that are not common between the tree (or trees) and dataset are dropped from the resulting `treedata.table` object. For instance, below I have modified the original anole phylogeny such that *A. ahli* (**ahi**) is replaced for a label that is not present in the dataset (**NAA**).
+
+```{r}
+anolis_newtip<-anolis$phy
+anolis_newtip$tip.label[1]<-'NAA'
+anolis_newtip
+```
+
+
+We then use this modified tree to fit a `treedata.table` object using the `as.treedata.table` function:
+
+
+```{r}
+td <- as.treedata.table(tree=anolis_newtip, data=anolis$dat)
+```
+
+Note that `as.treedata.table` drops all non-overlaping tips (**NAA** [present in the tree but not in the trait data] and **ahi** [present in the database but not in tree] in this case) and returns a `treedata.table` object with fully matching `phy` and `data` objects. 
+
+```{r}
+td
+```
+
+
+Fully-matching matrix and trees are also returned in `treedata.table` objects with `multiPhylo` objects in their `phy` component. See the example below.
+
+We first construct a `multiPhylo` object that partially overlaps the original trait database by using **NAA** instead of **ahi**.
+
+```{r}
+anolis2<-anolis$phy
+anolis2$tip.label[1]<-'NAA'
+anolis1<-anolis$phy
+anolis1$tip.label[1]<-'NAA'
+trees<-list(anolis1,anolis2)
+class(trees) <- "multiPhylo"
+trees
+```
+
+Next, we fit the `treedata.table` object using the relevant `multiPhylo` object and the original trait database.
+
+```{r}
+td <- as.treedata.table(tree=trees, data=anolis$dat)
+```
+
+Note that 1 tip was dropped for all trees in the `multiPhylo` object and a single row was deleted from the `data.table` object in the `treedata.table` object.
+
+```{r}
+td
+```
+
 
 
 
