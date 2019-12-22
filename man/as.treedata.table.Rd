@@ -2,7 +2,7 @@
 % Please edit documentation in R/as.treedata.table.R
 \name{as.treedata.table}
 \alias{as.treedata.table}
-\title{Combine tree and data.frame into a single treedata.table object}
+\title{Combine tree (or set of trees) and data.frame into a single treedata.table object}
 \usage{
 as.treedata.table(tree, data, name_column = "detect")
 }
