@@ -36,7 +36,7 @@ We may inspect our object by calling it by name. You will notice that your `data
 ```{r}
 td
 
-td$phy$tip.label == td$dat$X
+td$phy$tip.label == td$dat$tip.label
 
 ```
 
