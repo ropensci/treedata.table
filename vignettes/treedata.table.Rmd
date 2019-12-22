@@ -129,7 +129,7 @@ tree <- pull.treedata.table(td, "tree")
 The table
 
 ```{r}
-head(df)
+df
 ```
 
 and the respective tree
