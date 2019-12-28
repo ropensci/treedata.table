@@ -19,8 +19,8 @@ Depends:
 Imports:
   lazyeval, ape, geiger
 RoxygenNote: 6.1.1
-Suggests: knitr, rmarkdown
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
-
-
-
