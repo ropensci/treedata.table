@@ -69,15 +69,3 @@ test_that("phy and dat objects can be extracted correctly using pull.treedata.ta
   expect_is(pull.treedata.table(td, type = "phy"), "phylo")
   expect_is(pull.treedata.table(td, type = "dat"), "data.table")
 })
-
-
-
-
-
-
-
-
-
-
-
-
