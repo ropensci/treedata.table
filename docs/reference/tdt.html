@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -45,6 +47,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -71,7 +74,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -92,6 +95,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -125,7 +129,8 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Function output</p>
+    <p>Function output for a single tree (phylo) or a list of function outputs
+(one per each tree in the MultiPhylo object)</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -134,129 +139,23 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>anolis</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+
+<span class='co'>#A treedata.table object with a phylo $phy</span>
 <span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)
-<span class='fu'>tdt</span>(<span class='no'>td</span>, <span class='kw pkg'>geiger</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/geiger/topics/fitContinuous'>fitContinuous</a></span>(<span class='no'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span>(<span class='no'>td</span>, <span class='no'>SVL</span>), <span class='kw'>model</span><span class='kw'>=</span><span class='st'>"BM"</span>, <span class='kw'>ncores</span><span class='kw'>=</span><span class='fl'>1</span>))</div><div class='output co'>#&gt; GEIGER-fitted comparative model of continuous data
-#&gt;  fitted ‘BM’ model parameters:
-#&gt; 	sigsq = 0.136160
-#&gt; 	z0 = 4.065918
-#&gt; 
-#&gt;  model summary:
-#&gt; 	log-likelihood = -4.700404
-#&gt; 	AIC = 13.400807
-#&gt; 	AICc = 13.524519
-#&gt; 	free parameters = 2
-#&gt; 
-#&gt; Convergence diagnostics:
-#&gt; 	optimization iterations = 100
-#&gt; 	failed iterations = 0
-#&gt; 	frequency of best fit = 1.00
-#&gt; 
-#&gt;  object summary:
-#&gt; 	'lik' -- likelihood function
-#&gt; 	'bnd' -- bounds for likelihood search
-#&gt; 	'res' -- optimization iteration summary
-#&gt; 	'opt' -- maximum likelihood parameter estimates</div><div class='input'><span class='fu'>tdt</span>(<span class='no'>td</span>, <span class='kw pkg'>phytools</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/phytools/topics/phenogram'>phenogram</a></span>(<span class='no'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span>(<span class='no'>td</span>, <span class='no'>SVL</span>), <span class='kw'>quiet</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>spread.labels</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='img'><img src='tdt-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;                 x        y
-#&gt; ahli            1 4.039125
-#&gt; allogus         1 4.040138
-#&gt; rubribarbus     1 4.078469
-#&gt; imias           1 4.099687
-#&gt; sagrei          1 4.067162
-#&gt; bremeri         1 4.113371
-#&gt; quadriocellifer 1 3.901619
-#&gt; ophiolepis      1 3.637962
-#&gt; mestrei         1 3.987147
-#&gt; jubar           1 3.952605
-#&gt; homolechis      1 4.032806
-#&gt; confusus        1 3.938442
-#&gt; guafe           1 3.877457
-#&gt; garmani         1 4.769473
-#&gt; opalinus        1 3.838376
-#&gt; grahami         1 4.154274
-#&gt; valencienni     1 4.321524
-#&gt; lineatopus      1 4.128612
-#&gt; reconditus      1 4.482607
-#&gt; evermanni       1 4.165605
-#&gt; stratulus       1 3.869881
-#&gt; krugi           1 3.886500
-#&gt; pulchellus      1 3.799022
-#&gt; gundlachi       1 4.188105
-#&gt; poncensis       1 3.820378
-#&gt; cooki           1 4.091535
-#&gt; cristatellus    1 4.189820
-#&gt; brevirostris    1 3.874155
-#&gt; caudalis        1 3.911743
-#&gt; marron          1 3.831810
-#&gt; websteri        1 3.916546
-#&gt; distichus       1 3.928796
-#&gt; barbouri        1 3.663932
-#&gt; alumina         1 3.588941
-#&gt; semilineatus    1 3.696631
-#&gt; olssoni         1 3.793899
-#&gt; etheridgei      1 3.657991
-#&gt; fowleri         1 4.288780
-#&gt; insolitus       1 3.800471
-#&gt; whitemani       1 4.097479
-#&gt; haetianus       1 4.316542
-#&gt; breslini        1 4.051111
-#&gt; armouri         1 4.121684
-#&gt; cybotes         1 4.210982
-#&gt; shrevei         1 3.983003
-#&gt; longitibialis   1 4.242103
-#&gt; strahmi         1 4.274271
-#&gt; marcanoi        1 4.079485
-#&gt; baleatus        1 5.053056
-#&gt; barahonae       1 5.076958
-#&gt; ricordii        1 5.013963
-#&gt; eugenegrahami   1 4.128504
-#&gt; christophei     1 3.884652
-#&gt; cuvieri         1 4.875012
-#&gt; barbatus        1 5.003946
-#&gt; porcus          1 5.038034
-#&gt; chamaeleonides  1 5.042349
-#&gt; guamuhaya       1 5.036953
-#&gt; altitudinalis   1 3.842994
-#&gt; oporinus        1 3.845670
-#&gt; isolepis        1 3.657088
-#&gt; allisoni        1 4.375390
-#&gt; porcatus        1 4.258991
-#&gt; argillaceus     1 3.757869
-#&gt; centralis       1 3.697941
-#&gt; pumilis         1 3.466860
-#&gt; loysiana        1 3.701240
-#&gt; guazuma         1 3.763884
-#&gt; placidus        1 3.773967
-#&gt; sheplani        1 3.682924
-#&gt; alayoni         1 3.815705
-#&gt; angusticeps     1 3.788595
-#&gt; paternus        1 3.802961
-#&gt; alutaceus       1 3.554891
-#&gt; inexpectatus    1 3.537439
-#&gt; clivicola       1 3.758726
-#&gt; cupeyalensis    1 3.462014
-#&gt; cyanopleurus    1 3.630161
-#&gt; alfaroi         1 3.526655
-#&gt; macilentus      1 3.715765
-#&gt; vanidicus       1 3.626206
-#&gt; argenteolus     1 3.971307
-#&gt; lucius          1 4.198915
-#&gt; bartschi        1 4.280547
-#&gt; vermiculatus    1 4.802849
-#&gt; baracoae        1 5.042780
-#&gt; noblei          1 5.083473
-#&gt; smallwoodi      1 5.035096
-#&gt; luteogularis    1 5.101085
-#&gt; equestris       1 5.113994
-#&gt; monticola       1 3.770613
-#&gt; bahorucoensis   1 3.827445
-#&gt; dolichocephalus 1 3.908550
-#&gt; hendersoni      1 3.859835
-#&gt; darlingtoni     1 4.302036
-#&gt; aliniger        1 4.036557
-#&gt; singularis      1 4.057997
-#&gt; chlorocyanus    1 4.275448
-#&gt; coelestinus     1 4.297965
-#&gt; occultus        1 3.663049</div></pre>
+<span class='fu'>tdt</span>(<span class='no'>td</span>, <span class='kw pkg'>geiger</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/geiger/man/fitContinuous.html'>fitContinuous</a></span>(<span class='no'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span>(<span class='no'>td</span>, <span class='no'>SVL</span>), <span class='kw'>model</span><span class='kw'>=</span><span class='st'>"BM"</span>, <span class='kw'>ncores</span><span class='kw'>=</span><span class='fl'>1</span>))
+<span class='fu'>tdt</span>(<span class='no'>td</span>, <span class='kw pkg'>phytools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/phytools/man/phenogram.html'>phenogram</a></span>(<span class='no'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span>(<span class='no'>td</span>, <span class='no'>SVL</span>), <span class='kw'>quiet</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>spread.labels</span><span class='kw'>=</span><span class='fl'>FALSE</span>))
+
+
+<span class='co'>#A treedata.table object with a multiPhylo $phy</span>
+<span class='no'>treesFM</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>,<span class='no'>anolis</span>$<span class='no'>phy</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>treesFM</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>treesFM</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)
+<span class='fu'>tdt</span>(<span class='no'>td</span>, <span class='kw pkg'>geiger</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/geiger/man/fitContinuous.html'>fitContinuous</a></span>(<span class='no'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span>(<span class='no'>td</span>, <span class='no'>SVL</span>), <span class='kw'>model</span><span class='kw'>=</span><span class='st'>"BM"</span>, <span class='kw'>ncores</span><span class='kw'>=</span><span class='fl'>1</span>))
+<span class='fu'>tdt</span>(<span class='no'>td</span>, <span class='kw pkg'>phytools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/phytools/man/phenogram.html'>phenogram</a></span>(<span class='no'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span>(<span class='no'>td</span>, <span class='no'>SVL</span>), <span class='kw'>quiet</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>spread.labels</span><span class='kw'>=</span><span class='fl'>FALSE</span>))
+
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -273,19 +172,23 @@
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Joseph Uyeda, Cristian Roman-Palacios, April Wright.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

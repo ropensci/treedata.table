@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -45,6 +47,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -71,7 +74,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -92,6 +95,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -115,12 +119,12 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Arguments in the structure of <code>data.table</code> used to perform changes on the <code>treedata.table</code> object</p></td>
+      <th>x</th>
+      <td><p>An object of class <code>treedata.table</code></p></td>
     </tr>
     <tr>
-      <th>.x</th>
-      <td><p>An object of class <code>treedata.table</code></p></td>
+      <th>...</th>
+      <td><p>Arguments in the structure of <code>data.table</code> used to perform changes on the <code>treedata.table</code> object</p></td>
     </tr>
     </table>
     
@@ -134,9 +138,19 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>anolis</span>)
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)
-<span class='no'>td</span>[,<span class='no'>SVL</span>]</div><div class='output co'>#&gt; $phy
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
+<span class='no'>anolis2</span><span class='kw'>&lt;-</span><span class='no'>anolis</span>$<span class='no'>phy</span>
+<span class='no'>anolis2</span>$<span class='no'>tip.label</span>[<span class='fl'>1</span>]<span class='kw'>&lt;-</span><span class='st'>'NAA'</span>
+<span class='no'>anolis1</span><span class='kw'>&lt;-</span><span class='no'>anolis</span>$<span class='no'>phy</span>
+<span class='no'>anolis1</span>$<span class='no'>tip.label</span>[<span class='fl'>1</span>]<span class='kw'>&lt;-</span><span class='st'>'NAA'</span>
+<span class='no'>trees</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis1</span>,<span class='no'>anolis2</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>trees</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
+<span class='no'>treesFM</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>,<span class='no'>anolis</span>$<span class='no'>phy</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>treesFM</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
+
+<span class='co'>#A phylo object that fully matches the data</span>
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>tree</span><span class='kw'>=</span><span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Phylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Phylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='no'>td</span>[,<span class='no'>SVL</span>]</div><div class='output co'>#&gt; $phy
 #&gt; 
 #&gt; Phylogenetic tree with 100 tips and 99 internal nodes.
 #&gt; 
@@ -283,7 +297,7 @@
 #&gt; attr(,"tree_not_data")
 #&gt; [1] "OK"
 #&gt; attr(,"class")
-#&gt; [1] "treedata.table"</div><div class='input'><span class='no'>td</span>[, <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>.SD</span>, <span class='fl'>1</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>)]</div><div class='output co'>#&gt; $phy
+#&gt; [1] "treedata.table"</div><div class='input'><span class='no'>td</span>[, <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>.SD</span>, <span class='fl'>1</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>)]</div><div class='output co'>#&gt; $phy
 #&gt; 
 #&gt; Phylogenetic tree with 23 tips and 22 internal nodes.
 #&gt; 
@@ -293,7 +307,7 @@
 #&gt; Rooted; includes branch lengths.
 #&gt; 
 #&gt; $dat
-#&gt;     ecomorph      island             X      SVL  PCI_limbs   PCII_head
+#&gt;     ecomorph      island     tip.label      SVL  PCI_limbs   PCII_head
 #&gt;  1:       TG        Cuba          ahli 4.039125 -3.2482860  0.37225191
 #&gt;  2:       GB        Cuba    ophiolepis 3.637962  0.7915117  1.45857603
 #&gt;  3:       CG Puerto Rico       garmani 4.769473 -0.7735264  0.93712494
@@ -317,7 +331,7 @@
 #&gt; 21:       CG        Cuba      baracoae 5.042780  0.7681739  0.06987127
 #&gt; 22:       TC  Hispaniola      aliniger 4.036557  0.1232390 -1.67467041
 #&gt; 23:       TW Puerto Rico      occultus 3.663049  7.9207844 -0.19013968
-#&gt;     ecomorph      island             X      SVL  PCI_limbs   PCII_head
+#&gt;     ecomorph      island     tip.label      SVL  PCI_limbs   PCII_head
 #&gt;     PCIII_padwidth_vs_tail PCIV_lamella_num  awesomeness   hostility
 #&gt;  1:             -1.0422187      -2.41474228 -0.241651698 -0.17347691
 #&gt;  2:             -1.3152005      -2.23775137  0.354418772  0.05366142
@@ -374,7 +388,691 @@
 #&gt; attr(,"tree_not_data")
 #&gt; [1] "OK"
 #&gt; attr(,"class")
-#&gt; [1] "treedata.table"</div></pre>
+#&gt; [1] "treedata.table"</div><div class='input'>
+<span class='co'>#A multiphylo object that fully matches the data</span>
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>tree</span><span class='kw'>=</span><span class='no'>treesFM</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Multiphylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>treesFM</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Multiphylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='no'>td</span>[,<span class='no'>SVL</span>]</div><div class='output co'>#&gt; $phy
+#&gt; 2 phylogenetic trees
+#&gt; 
+#&gt; $dat
+#&gt;           SVL
+#&gt;   1: 4.039125
+#&gt;   2: 4.040138
+#&gt;   3: 4.078469
+#&gt;   4: 4.099687
+#&gt;   5: 4.067162
+#&gt;   6: 4.113371
+#&gt;   7: 3.901619
+#&gt;   8: 3.637962
+#&gt;   9: 3.987147
+#&gt;  10: 3.952605
+#&gt;  11: 4.032806
+#&gt;  12: 3.938442
+#&gt;  13: 3.877457
+#&gt;  14: 4.769473
+#&gt;  15: 3.838376
+#&gt;  16: 4.154274
+#&gt;  17: 4.321524
+#&gt;  18: 4.128612
+#&gt;  19: 4.482607
+#&gt;  20: 4.165605
+#&gt;  21: 3.869881
+#&gt;  22: 3.886500
+#&gt;  23: 3.799022
+#&gt;  24: 4.188105
+#&gt;  25: 3.820378
+#&gt;  26: 4.091535
+#&gt;  27: 4.189820
+#&gt;  28: 3.874155
+#&gt;  29: 3.911743
+#&gt;  30: 3.831810
+#&gt;  31: 3.916546
+#&gt;  32: 3.928796
+#&gt;  33: 3.663932
+#&gt;  34: 3.588941
+#&gt;  35: 3.696631
+#&gt;  36: 3.793899
+#&gt;  37: 3.657991
+#&gt;  38: 4.288780
+#&gt;  39: 3.800471
+#&gt;  40: 4.097479
+#&gt;  41: 4.316542
+#&gt;  42: 4.051111
+#&gt;  43: 4.121684
+#&gt;  44: 4.210982
+#&gt;  45: 3.983003
+#&gt;  46: 4.242103
+#&gt;  47: 4.274271
+#&gt;  48: 4.079485
+#&gt;  49: 5.053056
+#&gt;  50: 5.076958
+#&gt;  51: 5.013963
+#&gt;  52: 4.128504
+#&gt;  53: 3.884652
+#&gt;  54: 4.875012
+#&gt;  55: 5.003946
+#&gt;  56: 5.038034
+#&gt;  57: 5.042349
+#&gt;  58: 5.036953
+#&gt;  59: 3.842994
+#&gt;  60: 3.845670
+#&gt;  61: 3.657088
+#&gt;  62: 4.375390
+#&gt;  63: 4.258991
+#&gt;  64: 3.757869
+#&gt;  65: 3.697941
+#&gt;  66: 3.466860
+#&gt;  67: 3.701240
+#&gt;  68: 3.763884
+#&gt;  69: 3.773967
+#&gt;  70: 3.682924
+#&gt;  71: 3.815705
+#&gt;  72: 3.788595
+#&gt;  73: 3.802961
+#&gt;  74: 3.554891
+#&gt;  75: 3.537439
+#&gt;  76: 3.758726
+#&gt;  77: 3.462014
+#&gt;  78: 3.630161
+#&gt;  79: 3.526655
+#&gt;  80: 3.715765
+#&gt;  81: 3.626206
+#&gt;  82: 3.971307
+#&gt;  83: 4.198915
+#&gt;  84: 4.280547
+#&gt;  85: 4.802849
+#&gt;  86: 5.042780
+#&gt;  87: 5.083473
+#&gt;  88: 5.035096
+#&gt;  89: 5.101085
+#&gt;  90: 5.113994
+#&gt;  91: 3.770613
+#&gt;  92: 3.827445
+#&gt;  93: 3.908550
+#&gt;  94: 3.859835
+#&gt;  95: 4.302036
+#&gt;  96: 4.036557
+#&gt;  97: 4.057997
+#&gt;  98: 4.275448
+#&gt;  99: 4.297965
+#&gt; 100: 3.663049
+#&gt;           SVL
+#&gt; 
+#&gt; attr(,"data_not_tree")
+#&gt; [1] "OK"
+#&gt; attr(,"tree_not_data")
+#&gt; [1] "OK"
+#&gt; attr(,"class")
+#&gt; [1] "treedata.table"</div><div class='input'><span class='no'>td</span>[<span class='no'>island</span> <span class='kw'>==</span> <span class='st'>"Cuba"</span> <span class='kw'>&amp;</span> <span class='no'>ecomorph</span> <span class='kw'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>, <span class='no'>SVL</span>)]</div><div class='output co'>#&gt; $phy
+#&gt; 2 phylogenetic trees
+#&gt; 
+#&gt; $dat
+#&gt;     ecomorph island      SVL
+#&gt;  1:       TG   Cuba 4.039125
+#&gt;  2:       TG   Cuba 4.040138
+#&gt;  3:       TG   Cuba 4.078469
+#&gt;  4:       TG   Cuba 4.099687
+#&gt;  5:       TG   Cuba 4.067162
+#&gt;  6:       TG   Cuba 4.113371
+#&gt;  7:       TG   Cuba 3.901619
+#&gt;  8:       TG   Cuba 3.987147
+#&gt;  9:       TG   Cuba 3.952605
+#&gt; 10:       TG   Cuba 4.032806
+#&gt; 11:       TG   Cuba 3.938442
+#&gt; 12:       TG   Cuba 3.877457
+#&gt; 
+#&gt; attr(,"data_not_tree")
+#&gt; [1] "OK"
+#&gt; attr(,"tree_not_data")
+#&gt; [1] "OK"
+#&gt; attr(,"class")
+#&gt; [1] "treedata.table"</div><div class='input'><span class='no'>td</span>[, <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>.SD</span>, <span class='fl'>1</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>)]</div><div class='output co'>#&gt; $phy
+#&gt; 2 phylogenetic trees
+#&gt; 
+#&gt; $dat
+#&gt;     ecomorph      island     tip.label      SVL  PCI_limbs   PCII_head
+#&gt;  1:       TG        Cuba          ahli 4.039125 -3.2482860  0.37225191
+#&gt;  2:       GB        Cuba    ophiolepis 3.637962  0.7915117  1.45857603
+#&gt;  3:       CG Puerto Rico       garmani 4.769473 -0.7735264  0.93712494
+#&gt;  4:       TC     Jamaica      opalinus 3.838376 -1.7794371 -0.32453812
+#&gt;  5:       TC Puerto Rico       grahami 4.154274 -2.3056535 -1.91393689
+#&gt;  6:       TW     Jamaica   valencienni 4.321524  2.9424139 -0.88460072
+#&gt;  7:       TG     Jamaica    lineatopus 4.128612 -2.4308129 -3.12552390
+#&gt;  8:        U     Jamaica    reconditus 4.482607 -2.7270416 -0.21040657
+#&gt;  9:       GB Puerto Rico         krugi 3.886500 -1.6887953 -0.83128181
+#&gt; 10:       TG Puerto Rico     gundlachi 4.188105 -2.6493627 -0.56251604
+#&gt; 11:        T  Hispaniola  brevirostris 3.874155 -3.2890008  1.38425488
+#&gt; 12:        U  Hispaniola      barbouri 3.663932 -0.8753624  1.34009434
+#&gt; 13:       GB  Hispaniola       alumina 3.588941  0.7216699  1.52514444
+#&gt; 14:       TW  Hispaniola     insolitus 3.800471  5.0306267  0.24137669
+#&gt; 15:       TG  Hispaniola     whitemani 4.097479 -2.5458490 -3.25974024
+#&gt; 16:       CG  Hispaniola      baleatus 5.053056  0.7376649  1.79646028
+#&gt; 17:        U        Cuba      barbatus 5.003946  2.2502023 -3.30818172
+#&gt; 18:       TC        Cuba altitudinalis 3.842994  2.8675147 -6.12805047
+#&gt; 19:        T        Cuba      loysiana 3.701240  0.3153695 -1.08038145
+#&gt; 20:       TW        Cuba       guazuma 3.763884  8.1656651 -0.60605865
+#&gt; 21:       CG        Cuba      baracoae 5.042780  0.7681739  0.06987127
+#&gt; 22:       TC  Hispaniola      aliniger 4.036557  0.1232390 -1.67467041
+#&gt; 23:       TW Puerto Rico      occultus 3.663049  7.9207844 -0.19013968
+#&gt;     ecomorph      island     tip.label      SVL  PCI_limbs   PCII_head
+#&gt;     PCIII_padwidth_vs_tail PCIV_lamella_num  awesomeness   hostility
+#&gt;  1:             -1.0422187      -2.41474228 -0.241651698 -0.17347691
+#&gt;  2:             -1.3152005      -2.23775137  0.354418772  0.05366142
+#&gt;  3:              0.2594994       0.10511495  0.167791307  0.67675600
+#&gt;  4:              1.5569939       0.93665013  1.483021624 -0.90826653
+#&gt;  5:              1.6852579       1.01441926  0.410642801 -0.11746257
+#&gt;  6:              1.8543308       0.12882327 -0.088370075  0.46528679
+#&gt;  7:             -1.7564495      -1.43952303  0.800931449  0.17029017
+#&gt;  8:             -2.3534242      -0.79929053  0.260965443 -0.27169792
+#&gt;  9:             -1.2588892       0.24029913  0.972494741 -0.37186659
+#&gt; 10:             -2.2852265      -2.48420519 -0.426336538  0.61301445
+#&gt; 11:              2.4070756      -0.82666991 -1.538338585  1.63353366
+#&gt; 12:             -2.6138245      -4.30147185  1.788945648 -0.91372518
+#&gt; 13:             -2.6721669       1.23487950 -1.253724344  1.30841944
+#&gt; 14:              0.9139707      -0.42075245  0.066715596 -0.29065129
+#&gt; 15:             -1.9200701      -2.41993928 -1.457775289  1.09607156
+#&gt; 16:             -0.5409516      -0.16220546  2.727286255 -2.48766173
+#&gt; 17:              1.3476390      -1.64780456  2.156287540 -2.09414711
+#&gt; 18:              2.3331196       0.68195498  1.164592168 -0.86546226
+#&gt; 19:              2.7442074      -0.52657687  2.153959487 -1.19896728
+#&gt; 20:              1.7597408       1.55102509 -0.015197500 -0.02051652
+#&gt; 21:              0.1805891       2.66309134  1.821981086 -1.52224465
+#&gt; 22:              2.3871336       0.58486431  0.006869282  0.14481537
+#&gt; 23:              2.4922819      -0.09577977 -1.191686980  1.21530140
+#&gt;     PCIII_padwidth_vs_tail PCIV_lamella_num  awesomeness   hostility
+#&gt;        attitude
+#&gt;  1:  0.64437708
+#&gt;  2: -0.09389530
+#&gt;  3: -0.69460080
+#&gt;  4:  0.72613483
+#&gt;  5:  0.70229589
+#&gt;  6: -0.56754896
+#&gt;  7:  0.33555714
+#&gt;  8:  0.01367143
+#&gt;  9:  1.46109470
+#&gt; 10: -0.69318262
+#&gt; 11: -1.24247895
+#&gt; 12:  0.64025272
+#&gt; 13: -0.96110895
+#&gt; 14:  0.07286240
+#&gt; 15: -0.87393333
+#&gt; 16:  2.78477616
+#&gt; 17:  1.97196598
+#&gt; 18:  0.63326685
+#&gt; 19:  1.51422456
+#&gt; 20:  0.08678021
+#&gt; 21:  2.17591511
+#&gt; 22:  0.29376432
+#&gt; 23:  0.03244860
+#&gt;        attitude
+#&gt; 
+#&gt; attr(,"data_not_tree")
+#&gt; [1] "OK"
+#&gt; attr(,"tree_not_data")
+#&gt; [1] "OK"
+#&gt; attr(,"class")
+#&gt; [1] "treedata.table"</div><div class='input'><span class='co'>#A phylo object that partially matches the data</span>
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>tree</span><span class='kw'>=</span><span class='no'>anolis1</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Phylo object detected </div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
+#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div><div class='input'><span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis1</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Phylo object detected </div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
+#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div><div class='input'><span class='no'>td</span>[,<span class='no'>SVL</span>]</div><div class='output co'>#&gt; $phy
+#&gt; 
+#&gt; Phylogenetic tree with 99 tips and 98 internal nodes.
+#&gt; 
+#&gt; Tip labels:
+#&gt; 	allogus, rubribarbus, imias, sagrei, bremeri, quadriocellifer, ...
+#&gt; 
+#&gt; Rooted; includes branch lengths.
+#&gt; 
+#&gt; $dat
+#&gt;          SVL
+#&gt;  1: 4.040138
+#&gt;  2: 4.078469
+#&gt;  3: 4.099687
+#&gt;  4: 4.067162
+#&gt;  5: 4.113371
+#&gt;  6: 3.901619
+#&gt;  7: 3.637962
+#&gt;  8: 3.987147
+#&gt;  9: 3.952605
+#&gt; 10: 4.032806
+#&gt; 11: 3.938442
+#&gt; 12: 3.877457
+#&gt; 13: 4.769473
+#&gt; 14: 3.838376
+#&gt; 15: 4.154274
+#&gt; 16: 4.321524
+#&gt; 17: 4.128612
+#&gt; 18: 4.482607
+#&gt; 19: 4.165605
+#&gt; 20: 3.869881
+#&gt; 21: 3.886500
+#&gt; 22: 3.799022
+#&gt; 23: 4.188105
+#&gt; 24: 3.820378
+#&gt; 25: 4.091535
+#&gt; 26: 4.189820
+#&gt; 27: 3.874155
+#&gt; 28: 3.911743
+#&gt; 29: 3.831810
+#&gt; 30: 3.916546
+#&gt; 31: 3.928796
+#&gt; 32: 3.663932
+#&gt; 33: 3.588941
+#&gt; 34: 3.696631
+#&gt; 35: 3.793899
+#&gt; 36: 3.657991
+#&gt; 37: 4.288780
+#&gt; 38: 3.800471
+#&gt; 39: 4.097479
+#&gt; 40: 4.316542
+#&gt; 41: 4.051111
+#&gt; 42: 4.121684
+#&gt; 43: 4.210982
+#&gt; 44: 3.983003
+#&gt; 45: 4.242103
+#&gt; 46: 4.274271
+#&gt; 47: 4.079485
+#&gt; 48: 5.053056
+#&gt; 49: 5.076958
+#&gt; 50: 5.013963
+#&gt; 51: 4.128504
+#&gt; 52: 3.884652
+#&gt; 53: 4.875012
+#&gt; 54: 5.003946
+#&gt; 55: 5.038034
+#&gt; 56: 5.042349
+#&gt; 57: 5.036953
+#&gt; 58: 3.842994
+#&gt; 59: 3.845670
+#&gt; 60: 3.657088
+#&gt; 61: 4.375390
+#&gt; 62: 4.258991
+#&gt; 63: 3.757869
+#&gt; 64: 3.697941
+#&gt; 65: 3.466860
+#&gt; 66: 3.701240
+#&gt; 67: 3.763884
+#&gt; 68: 3.773967
+#&gt; 69: 3.682924
+#&gt; 70: 3.815705
+#&gt; 71: 3.788595
+#&gt; 72: 3.802961
+#&gt; 73: 3.554891
+#&gt; 74: 3.537439
+#&gt; 75: 3.758726
+#&gt; 76: 3.462014
+#&gt; 77: 3.630161
+#&gt; 78: 3.526655
+#&gt; 79: 3.715765
+#&gt; 80: 3.626206
+#&gt; 81: 3.971307
+#&gt; 82: 4.198915
+#&gt; 83: 4.280547
+#&gt; 84: 4.802849
+#&gt; 85: 5.042780
+#&gt; 86: 5.083473
+#&gt; 87: 5.035096
+#&gt; 88: 5.101085
+#&gt; 89: 5.113994
+#&gt; 90: 3.770613
+#&gt; 91: 3.827445
+#&gt; 92: 3.908550
+#&gt; 93: 3.859835
+#&gt; 94: 4.302036
+#&gt; 95: 4.036557
+#&gt; 96: 4.057997
+#&gt; 97: 4.275448
+#&gt; 98: 4.297965
+#&gt; 99: 3.663049
+#&gt;          SVL
+#&gt; 
+#&gt; attr(,"data_not_tree")
+#&gt; [1] "ahli"
+#&gt; attr(,"tree_not_data")
+#&gt; [1] "NAA"
+#&gt; attr(,"class")
+#&gt; [1] "treedata.table"</div><div class='input'><span class='no'>td</span>[<span class='no'>island</span> <span class='kw'>==</span> <span class='st'>"Cuba"</span> <span class='kw'>&amp;</span> <span class='no'>ecomorph</span> <span class='kw'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>, <span class='no'>SVL</span>)]</div><div class='output co'>#&gt; $phy
+#&gt; 
+#&gt; Phylogenetic tree with 11 tips and 10 internal nodes.
+#&gt; 
+#&gt; Tip labels:
+#&gt; 	allogus, rubribarbus, imias, sagrei, bremeri, quadriocellifer, ...
+#&gt; 
+#&gt; Rooted; includes branch lengths.
+#&gt; 
+#&gt; $dat
+#&gt;     ecomorph island      SVL
+#&gt;  1:       TG   Cuba 4.040138
+#&gt;  2:       TG   Cuba 4.078469
+#&gt;  3:       TG   Cuba 4.099687
+#&gt;  4:       TG   Cuba 4.067162
+#&gt;  5:       TG   Cuba 4.113371
+#&gt;  6:       TG   Cuba 3.901619
+#&gt;  7:       TG   Cuba 3.987147
+#&gt;  8:       TG   Cuba 3.952605
+#&gt;  9:       TG   Cuba 4.032806
+#&gt; 10:       TG   Cuba 3.938442
+#&gt; 11:       TG   Cuba 3.877457
+#&gt; 
+#&gt; attr(,"data_not_tree")
+#&gt; [1] "ahli"
+#&gt; attr(,"tree_not_data")
+#&gt; [1] "NAA"
+#&gt; attr(,"class")
+#&gt; [1] "treedata.table"</div><div class='input'><span class='no'>td</span>[, <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>.SD</span>, <span class='fl'>1</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>)]</div><div class='output co'>#&gt; $phy
+#&gt; 
+#&gt; Phylogenetic tree with 23 tips and 22 internal nodes.
+#&gt; 
+#&gt; Tip labels:
+#&gt; 	allogus, ophiolepis, garmani, opalinus, grahami, valencienni, ...
+#&gt; 
+#&gt; Rooted; includes branch lengths.
+#&gt; 
+#&gt; $dat
+#&gt;     ecomorph      island     tip.label      SVL  PCI_limbs   PCII_head
+#&gt;  1:       TG        Cuba       allogus 4.040138 -2.8455702  0.60011341
+#&gt;  2:       GB        Cuba    ophiolepis 3.637962  0.7915117  1.45857603
+#&gt;  3:       CG Puerto Rico       garmani 4.769473 -0.7735264  0.93712494
+#&gt;  4:       TC     Jamaica      opalinus 3.838376 -1.7794371 -0.32453812
+#&gt;  5:       TC Puerto Rico       grahami 4.154274 -2.3056535 -1.91393689
+#&gt;  6:       TW     Jamaica   valencienni 4.321524  2.9424139 -0.88460072
+#&gt;  7:       TG     Jamaica    lineatopus 4.128612 -2.4308129 -3.12552390
+#&gt;  8:        U     Jamaica    reconditus 4.482607 -2.7270416 -0.21040657
+#&gt;  9:       GB Puerto Rico         krugi 3.886500 -1.6887953 -0.83128181
+#&gt; 10:       TG Puerto Rico     gundlachi 4.188105 -2.6493627 -0.56251604
+#&gt; 11:        T  Hispaniola  brevirostris 3.874155 -3.2890008  1.38425488
+#&gt; 12:        U  Hispaniola      barbouri 3.663932 -0.8753624  1.34009434
+#&gt; 13:       GB  Hispaniola       alumina 3.588941  0.7216699  1.52514444
+#&gt; 14:       TW  Hispaniola     insolitus 3.800471  5.0306267  0.24137669
+#&gt; 15:       TG  Hispaniola     whitemani 4.097479 -2.5458490 -3.25974024
+#&gt; 16:       CG  Hispaniola      baleatus 5.053056  0.7376649  1.79646028
+#&gt; 17:        U        Cuba      barbatus 5.003946  2.2502023 -3.30818172
+#&gt; 18:       TC        Cuba altitudinalis 3.842994  2.8675147 -6.12805047
+#&gt; 19:        T        Cuba      loysiana 3.701240  0.3153695 -1.08038145
+#&gt; 20:       TW        Cuba       guazuma 3.763884  8.1656651 -0.60605865
+#&gt; 21:       CG        Cuba      baracoae 5.042780  0.7681739  0.06987127
+#&gt; 22:       TC  Hispaniola      aliniger 4.036557  0.1232390 -1.67467041
+#&gt; 23:       TW Puerto Rico      occultus 3.663049  7.9207844 -0.19013968
+#&gt;     ecomorph      island     tip.label      SVL  PCI_limbs   PCII_head
+#&gt;     PCIII_padwidth_vs_tail PCIV_lamella_num  awesomeness   hostility
+#&gt;  1:             -1.0253056      -2.46331106  0.624468879 -0.50009622
+#&gt;  2:             -1.3152005      -2.23775137  0.354418772  0.05366142
+#&gt;  3:              0.2594994       0.10511495  0.167791307  0.67675600
+#&gt;  4:              1.5569939       0.93665013  1.483021624 -0.90826653
+#&gt;  5:              1.6852579       1.01441926  0.410642801 -0.11746257
+#&gt;  6:              1.8543308       0.12882327 -0.088370075  0.46528679
+#&gt;  7:             -1.7564495      -1.43952303  0.800931449  0.17029017
+#&gt;  8:             -2.3534242      -0.79929053  0.260965443 -0.27169792
+#&gt;  9:             -1.2588892       0.24029913  0.972494741 -0.37186659
+#&gt; 10:             -2.2852265      -2.48420519 -0.426336538  0.61301445
+#&gt; 11:              2.4070756      -0.82666991 -1.538338585  1.63353366
+#&gt; 12:             -2.6138245      -4.30147185  1.788945648 -0.91372518
+#&gt; 13:             -2.6721669       1.23487950 -1.253724344  1.30841944
+#&gt; 14:              0.9139707      -0.42075245  0.066715596 -0.29065129
+#&gt; 15:             -1.9200701      -2.41993928 -1.457775289  1.09607156
+#&gt; 16:             -0.5409516      -0.16220546  2.727286255 -2.48766173
+#&gt; 17:              1.3476390      -1.64780456  2.156287540 -2.09414711
+#&gt; 18:              2.3331196       0.68195498  1.164592168 -0.86546226
+#&gt; 19:              2.7442074      -0.52657687  2.153959487 -1.19896728
+#&gt; 20:              1.7597408       1.55102509 -0.015197500 -0.02051652
+#&gt; 21:              0.1805891       2.66309134  1.821981086 -1.52224465
+#&gt; 22:              2.3871336       0.58486431  0.006869282  0.14481537
+#&gt; 23:              2.4922819      -0.09577977 -1.191686980  1.21530140
+#&gt;     PCIII_padwidth_vs_tail PCIV_lamella_num  awesomeness   hostility
+#&gt;        attitude
+#&gt;  1:  0.71289104
+#&gt;  2: -0.09389530
+#&gt;  3: -0.69460080
+#&gt;  4:  0.72613483
+#&gt;  5:  0.70229589
+#&gt;  6: -0.56754896
+#&gt;  7:  0.33555714
+#&gt;  8:  0.01367143
+#&gt;  9:  1.46109470
+#&gt; 10: -0.69318262
+#&gt; 11: -1.24247895
+#&gt; 12:  0.64025272
+#&gt; 13: -0.96110895
+#&gt; 14:  0.07286240
+#&gt; 15: -0.87393333
+#&gt; 16:  2.78477616
+#&gt; 17:  1.97196598
+#&gt; 18:  0.63326685
+#&gt; 19:  1.51422456
+#&gt; 20:  0.08678021
+#&gt; 21:  2.17591511
+#&gt; 22:  0.29376432
+#&gt; 23:  0.03244860
+#&gt;        attitude
+#&gt; 
+#&gt; attr(,"data_not_tree")
+#&gt; [1] "ahli"
+#&gt; attr(,"tree_not_data")
+#&gt; [1] "NAA"
+#&gt; attr(,"class")
+#&gt; [1] "treedata.table"</div><div class='input'>
+<span class='co'>#A multiphylo object that partially matches the data</span>
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>tree</span><span class='kw'>=</span><span class='no'>trees</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Multiphylo object detected </div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
+#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div><div class='input'><span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>trees</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Multiphylo object detected </div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
+#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div><div class='input'><span class='no'>td</span>[,<span class='no'>SVL</span>]</div><div class='output co'>#&gt; $phy
+#&gt; 2 phylogenetic trees
+#&gt; 
+#&gt; $dat
+#&gt;          SVL
+#&gt;  1: 4.040138
+#&gt;  2: 4.078469
+#&gt;  3: 4.099687
+#&gt;  4: 4.067162
+#&gt;  5: 4.113371
+#&gt;  6: 3.901619
+#&gt;  7: 3.637962
+#&gt;  8: 3.987147
+#&gt;  9: 3.952605
+#&gt; 10: 4.032806
+#&gt; 11: 3.938442
+#&gt; 12: 3.877457
+#&gt; 13: 4.769473
+#&gt; 14: 3.838376
+#&gt; 15: 4.154274
+#&gt; 16: 4.321524
+#&gt; 17: 4.128612
+#&gt; 18: 4.482607
+#&gt; 19: 4.165605
+#&gt; 20: 3.869881
+#&gt; 21: 3.886500
+#&gt; 22: 3.799022
+#&gt; 23: 4.188105
+#&gt; 24: 3.820378
+#&gt; 25: 4.091535
+#&gt; 26: 4.189820
+#&gt; 27: 3.874155
+#&gt; 28: 3.911743
+#&gt; 29: 3.831810
+#&gt; 30: 3.916546
+#&gt; 31: 3.928796
+#&gt; 32: 3.663932
+#&gt; 33: 3.588941
+#&gt; 34: 3.696631
+#&gt; 35: 3.793899
+#&gt; 36: 3.657991
+#&gt; 37: 4.288780
+#&gt; 38: 3.800471
+#&gt; 39: 4.097479
+#&gt; 40: 4.316542
+#&gt; 41: 4.051111
+#&gt; 42: 4.121684
+#&gt; 43: 4.210982
+#&gt; 44: 3.983003
+#&gt; 45: 4.242103
+#&gt; 46: 4.274271
+#&gt; 47: 4.079485
+#&gt; 48: 5.053056
+#&gt; 49: 5.076958
+#&gt; 50: 5.013963
+#&gt; 51: 4.128504
+#&gt; 52: 3.884652
+#&gt; 53: 4.875012
+#&gt; 54: 5.003946
+#&gt; 55: 5.038034
+#&gt; 56: 5.042349
+#&gt; 57: 5.036953
+#&gt; 58: 3.842994
+#&gt; 59: 3.845670
+#&gt; 60: 3.657088
+#&gt; 61: 4.375390
+#&gt; 62: 4.258991
+#&gt; 63: 3.757869
+#&gt; 64: 3.697941
+#&gt; 65: 3.466860
+#&gt; 66: 3.701240
+#&gt; 67: 3.763884
+#&gt; 68: 3.773967
+#&gt; 69: 3.682924
+#&gt; 70: 3.815705
+#&gt; 71: 3.788595
+#&gt; 72: 3.802961
+#&gt; 73: 3.554891
+#&gt; 74: 3.537439
+#&gt; 75: 3.758726
+#&gt; 76: 3.462014
+#&gt; 77: 3.630161
+#&gt; 78: 3.526655
+#&gt; 79: 3.715765
+#&gt; 80: 3.626206
+#&gt; 81: 3.971307
+#&gt; 82: 4.198915
+#&gt; 83: 4.280547
+#&gt; 84: 4.802849
+#&gt; 85: 5.042780
+#&gt; 86: 5.083473
+#&gt; 87: 5.035096
+#&gt; 88: 5.101085
+#&gt; 89: 5.113994
+#&gt; 90: 3.770613
+#&gt; 91: 3.827445
+#&gt; 92: 3.908550
+#&gt; 93: 3.859835
+#&gt; 94: 4.302036
+#&gt; 95: 4.036557
+#&gt; 96: 4.057997
+#&gt; 97: 4.275448
+#&gt; 98: 4.297965
+#&gt; 99: 3.663049
+#&gt;          SVL
+#&gt; 
+#&gt; attr(,"data_not_tree")
+#&gt; [1] "ahli"
+#&gt; attr(,"tree_not_data")
+#&gt; [1] "NAA"
+#&gt; attr(,"class")
+#&gt; [1] "treedata.table"</div><div class='input'><span class='no'>td</span>[<span class='no'>island</span> <span class='kw'>==</span> <span class='st'>"Cuba"</span> <span class='kw'>&amp;</span> <span class='no'>ecomorph</span> <span class='kw'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>, <span class='no'>SVL</span>)]</div><div class='output co'>#&gt; $phy
+#&gt; 2 phylogenetic trees
+#&gt; 
+#&gt; $dat
+#&gt;     ecomorph island      SVL
+#&gt;  1:       TG   Cuba 4.040138
+#&gt;  2:       TG   Cuba 4.078469
+#&gt;  3:       TG   Cuba 4.099687
+#&gt;  4:       TG   Cuba 4.067162
+#&gt;  5:       TG   Cuba 4.113371
+#&gt;  6:       TG   Cuba 3.901619
+#&gt;  7:       TG   Cuba 3.987147
+#&gt;  8:       TG   Cuba 3.952605
+#&gt;  9:       TG   Cuba 4.032806
+#&gt; 10:       TG   Cuba 3.938442
+#&gt; 11:       TG   Cuba 3.877457
+#&gt; 
+#&gt; attr(,"data_not_tree")
+#&gt; [1] "ahli"
+#&gt; attr(,"tree_not_data")
+#&gt; [1] "NAA"
+#&gt; attr(,"class")
+#&gt; [1] "treedata.table"</div><div class='input'><span class='no'>td</span>[, <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>.SD</span>, <span class='fl'>1</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>)]</div><div class='output co'>#&gt; $phy
+#&gt; 2 phylogenetic trees
+#&gt; 
+#&gt; $dat
+#&gt;     ecomorph      island     tip.label      SVL  PCI_limbs   PCII_head
+#&gt;  1:       TG        Cuba       allogus 4.040138 -2.8455702  0.60011341
+#&gt;  2:       GB        Cuba    ophiolepis 3.637962  0.7915117  1.45857603
+#&gt;  3:       CG Puerto Rico       garmani 4.769473 -0.7735264  0.93712494
+#&gt;  4:       TC     Jamaica      opalinus 3.838376 -1.7794371 -0.32453812
+#&gt;  5:       TC Puerto Rico       grahami 4.154274 -2.3056535 -1.91393689
+#&gt;  6:       TW     Jamaica   valencienni 4.321524  2.9424139 -0.88460072
+#&gt;  7:       TG     Jamaica    lineatopus 4.128612 -2.4308129 -3.12552390
+#&gt;  8:        U     Jamaica    reconditus 4.482607 -2.7270416 -0.21040657
+#&gt;  9:       GB Puerto Rico         krugi 3.886500 -1.6887953 -0.83128181
+#&gt; 10:       TG Puerto Rico     gundlachi 4.188105 -2.6493627 -0.56251604
+#&gt; 11:        T  Hispaniola  brevirostris 3.874155 -3.2890008  1.38425488
+#&gt; 12:        U  Hispaniola      barbouri 3.663932 -0.8753624  1.34009434
+#&gt; 13:       GB  Hispaniola       alumina 3.588941  0.7216699  1.52514444
+#&gt; 14:       TW  Hispaniola     insolitus 3.800471  5.0306267  0.24137669
+#&gt; 15:       TG  Hispaniola     whitemani 4.097479 -2.5458490 -3.25974024
+#&gt; 16:       CG  Hispaniola      baleatus 5.053056  0.7376649  1.79646028
+#&gt; 17:        U        Cuba      barbatus 5.003946  2.2502023 -3.30818172
+#&gt; 18:       TC        Cuba altitudinalis 3.842994  2.8675147 -6.12805047
+#&gt; 19:        T        Cuba      loysiana 3.701240  0.3153695 -1.08038145
+#&gt; 20:       TW        Cuba       guazuma 3.763884  8.1656651 -0.60605865
+#&gt; 21:       CG        Cuba      baracoae 5.042780  0.7681739  0.06987127
+#&gt; 22:       TC  Hispaniola      aliniger 4.036557  0.1232390 -1.67467041
+#&gt; 23:       TW Puerto Rico      occultus 3.663049  7.9207844 -0.19013968
+#&gt;     ecomorph      island     tip.label      SVL  PCI_limbs   PCII_head
+#&gt;     PCIII_padwidth_vs_tail PCIV_lamella_num  awesomeness   hostility
+#&gt;  1:             -1.0253056      -2.46331106  0.624468879 -0.50009622
+#&gt;  2:             -1.3152005      -2.23775137  0.354418772  0.05366142
+#&gt;  3:              0.2594994       0.10511495  0.167791307  0.67675600
+#&gt;  4:              1.5569939       0.93665013  1.483021624 -0.90826653
+#&gt;  5:              1.6852579       1.01441926  0.410642801 -0.11746257
+#&gt;  6:              1.8543308       0.12882327 -0.088370075  0.46528679
+#&gt;  7:             -1.7564495      -1.43952303  0.800931449  0.17029017
+#&gt;  8:             -2.3534242      -0.79929053  0.260965443 -0.27169792
+#&gt;  9:             -1.2588892       0.24029913  0.972494741 -0.37186659
+#&gt; 10:             -2.2852265      -2.48420519 -0.426336538  0.61301445
+#&gt; 11:              2.4070756      -0.82666991 -1.538338585  1.63353366
+#&gt; 12:             -2.6138245      -4.30147185  1.788945648 -0.91372518
+#&gt; 13:             -2.6721669       1.23487950 -1.253724344  1.30841944
+#&gt; 14:              0.9139707      -0.42075245  0.066715596 -0.29065129
+#&gt; 15:             -1.9200701      -2.41993928 -1.457775289  1.09607156
+#&gt; 16:             -0.5409516      -0.16220546  2.727286255 -2.48766173
+#&gt; 17:              1.3476390      -1.64780456  2.156287540 -2.09414711
+#&gt; 18:              2.3331196       0.68195498  1.164592168 -0.86546226
+#&gt; 19:              2.7442074      -0.52657687  2.153959487 -1.19896728
+#&gt; 20:              1.7597408       1.55102509 -0.015197500 -0.02051652
+#&gt; 21:              0.1805891       2.66309134  1.821981086 -1.52224465
+#&gt; 22:              2.3871336       0.58486431  0.006869282  0.14481537
+#&gt; 23:              2.4922819      -0.09577977 -1.191686980  1.21530140
+#&gt;     PCIII_padwidth_vs_tail PCIV_lamella_num  awesomeness   hostility
+#&gt;        attitude
+#&gt;  1:  0.71289104
+#&gt;  2: -0.09389530
+#&gt;  3: -0.69460080
+#&gt;  4:  0.72613483
+#&gt;  5:  0.70229589
+#&gt;  6: -0.56754896
+#&gt;  7:  0.33555714
+#&gt;  8:  0.01367143
+#&gt;  9:  1.46109470
+#&gt; 10: -0.69318262
+#&gt; 11: -1.24247895
+#&gt; 12:  0.64025272
+#&gt; 13: -0.96110895
+#&gt; 14:  0.07286240
+#&gt; 15: -0.87393333
+#&gt; 16:  2.78477616
+#&gt; 17:  1.97196598
+#&gt; 18:  0.63326685
+#&gt; 19:  1.51422456
+#&gt; 20:  0.08678021
+#&gt; 21:  2.17591511
+#&gt; 22:  0.29376432
+#&gt; 23:  0.03244860
+#&gt;        attitude
+#&gt; 
+#&gt; attr(,"data_not_tree")
+#&gt; [1] "ahli"
+#&gt; attr(,"tree_not_data")
+#&gt; [1] "NAA"
+#&gt; attr(,"class")
+#&gt; [1] "treedata.table"</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -391,19 +1089,23 @@
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Joseph Uyeda, Cristian Roman-Palacios, April Wright.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
