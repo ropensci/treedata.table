@@ -2,5 +2,12 @@
 
 language: R
 cache: packages
+r_packages:
+  - covr
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - test $TRAVIS_R_VERSION_STRING = 'release' && Rscript -e 'covr::codecov()'
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
