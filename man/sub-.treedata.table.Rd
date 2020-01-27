@@ -2,7 +2,7 @@
 % Please edit documentation in R/treedata.table.R
 \name{[.treedata.table}
 \alias{[.treedata.table}
-\title{Function for perfoming data.table operations on an object of class \code{treedata.table}}
+\title{Function for performing data.table operations on an object of class \code{treedata.table}}
 \usage{
 \method{[}{treedata.table}(x, ...)
 }
@@ -15,7 +15,7 @@
 A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using (\code{\link{data.table}})'s structure.
 }
 \description{
-This function can be used to subset rows, select and compute on columns (\code{\link{data.table}}.
+This function can be used to subset rows, select and compute on columns (\code{\link{data.tabe}}.
 }
 \examples{
 
