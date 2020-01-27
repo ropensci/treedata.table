@@ -4,6 +4,10 @@ language: R
 cache: packages
 r_packages:
   - covr
+os: 
+  - windows
+  - linux
+  - osx
 after_success:
   - test $TRAVIS_R_VERSION_STRING = 'release' && Rscript -e 'covr::codecov()'
 notifications:
