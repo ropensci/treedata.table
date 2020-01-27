@@ -23,7 +23,7 @@ summary.treedata.table <- function(object, ...){
   cat("$phy \n")
   print(object$phy)
   cat("\n$dat \n")
-  print(object$dat)
+  head(object$dat)
   if( is.null(attr(object, "modified"))==F ){ message("\n    This is NOT the original treedata.table object") } ##Include warning for treedata.objects that were modified
 }
 
