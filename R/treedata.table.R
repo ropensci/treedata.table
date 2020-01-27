@@ -1,6 +1,6 @@
-#' Function for perfoming data.table operations on an object of class \code{treedata.table}
+#' Function for performing data.table operations on an object of class \code{treedata.table}
 #'
-#' This function can be used to subset rows, select and compute on columns (\code{\link{data.table}}.
+#' This function can be used to subset rows, select and compute on columns (\code{\link{data.tabe}}.
 #'
 #' @param x An object of class \code{treedata.table}
 #' @param ... Arguments in the structure of \code{data.table} used to perform changes on the \code{treedata.table} object

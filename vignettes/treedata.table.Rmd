@@ -60,7 +60,7 @@ You can also use double bracket syntax to directly return column data as a named
 td[["SVL"]]
 ```
 
-The same functionality can also be accomplished through the `extractVector` function. Both the double bracked syntax and the `extractVector` function will return a named vector.
+The same functionality can also be accomplished through the `extractVector` function. Both the double bracket syntax and the `extractVector` function will return a named vector.
 
 ```{r}
 extractVector(td, SVL)
@@ -167,7 +167,7 @@ The resulting `td` object now returns a `multiPhylo` object under `phy`
 class(td$phy);td$phy
 ```
 
-Please note that all the basic `treedata.table` fucntions highlighted above for `phylo` objects are still functional when `treedata.table` objects include `multiPhylo` objects.
+Please note that all the basic `treedata.table` functions highlighted above for `phylo` objects are still functional when `treedata.table` objects include `multiPhylo` objects.
 
 ```{r}
 td[, head(.SD, 1), by = "ecomorph"]
@@ -202,7 +202,7 @@ We then use this modified tree to fit a `treedata.table` object using the `as.tr
 td <- as.treedata.table(tree=anolis_newtip, data=anolis$dat)
 ```
 
-Note that `as.treedata.table` drops all non-overlaping tips (**NAA** [present in the tree but not in the trait data] and **ahi** [present in the database but not in tree] in this case) and returns a `treedata.table` object with fully matching `phy` and `data` objects. 
+Note that `as.treedata.table` drops all non-overlapping tips (**NAA** [present in the tree but not in the trait data] and **ahi** [present in the database but not in tree] in this case) and returns a `treedata.table` object with fully matching `phy` and `data` objects. 
 
 ```{r}
 td
