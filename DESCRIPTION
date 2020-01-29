@@ -17,7 +17,7 @@ License: MIT + file LICENSE
 Depends:
   data.table, R (>= 2.10)
 Imports:
-  lazyeval, ape, geiger
+  lazyeval, ape, geiger, utils
 RoxygenNote: 6.1.1
 Suggests: 
     knitr,

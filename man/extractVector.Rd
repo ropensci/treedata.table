@@ -17,3 +17,10 @@ A named vector
 \description{
 Returning a named vector from a treedata.table object
 }
+\examples{
+
+data(anolis)
+td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
+extractVector(td, "SVL") #extracts the named vector for SVL from the td object
+
+}
