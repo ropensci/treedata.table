@@ -8,11 +8,13 @@
 
 <title>Function dropping taxa from an object of class <code>treedata.table</code> — droptreedata.table • treedata.table</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,11 +34,12 @@
 
 
 
-<meta property="og:title" content="Function dropping taxa from an object of class <code>treedata.table</code> — droptreedata.table" />
 
+<meta property="og:title" content="Function dropping taxa from an object of class <code>treedata.table</code> — droptreedata.table" />
 <meta property="og:description" content="This function can be used to remove species from an object of class treedata.table. The resulting treedata.table will
 include fully matching $dat and $phy elements. The user should confirm the changes before they are processed." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -86,7 +89,6 @@ include fully matching $dat and $phy elements. The user should confirm the chang
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -108,14 +110,12 @@ include fully matching $dat and $phy elements. The user should confirm the chang
     </div>
 
     <div class="ref-description">
-    
     <p>This function can be used to remove species from an object of class <code>treedata.table</code>. The resulting <code>treedata.table</code> will
 include fully matching <code>$dat</code> and <code>$phy</code> elements. The user should confirm the changes before they are processed.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>droptreedata.table</span>(<span class='no'>tdObject</span>, <span class='no'>taxa</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -128,16 +128,15 @@ include fully matching <code>$dat</code> and <code>$phy</code> elements. The use
       <td><p>A vector class <code>character</code> containing all taxa that needs to be dropped from the original <code>treedata.table</code> object</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of class <code>treedata.table</code> with matching <code>$dat</code> and <code>$phy</code> elements based on whether <code>taxa</code> were dropped or not.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
 <span class='co'>#With a multiphylo object in the treedata.table object</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Phylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(<span class='kw'>tdObject</span><span class='kw'>=</span><span class='no'>td</span>, <span class='kw'>taxa</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chamaeleonides"</span> ,<span class='st'>"eugenegrahami"</span> ))</div><div class='output co'>#&gt; <span class='message'>Please confirm that you would like to make changes to the ORIGINAL data?</span></div><div class='output co'>#&gt; Type: (1) YES, (2) NO: </div><div class='output co'>#&gt; <span class='message'>NO changes made to the ORIGINAL data</span></div><div class='output co'>#&gt; $phy
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Phylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(<span class='kw'>tdObject</span><span class='kw'>=</span><span class='no'>td</span>, <span class='kw'>taxa</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chamaeleonides"</span> ,<span class='st'>"eugenegrahami"</span> ))</div><div class='output co'>#&gt; <span class='message'>Please confirm that you would like to make changes to the ORIGINAL data?</span></div><div class='output co'>#&gt; Type: (1) YES, (2) NO: </div><div class='output co'>#&gt; <span class='message'>NO changes made to the ORIGINAL data</span></div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 100 tips and 99 internal nodes.
 #&gt; 
@@ -146,649 +145,49 @@ include fully matching <code>$dat</code> and <code>$phy</code> elements. The use
 #&gt; 
 #&gt; Rooted; includes branch lengths.
 #&gt; 
-#&gt; $dat
-#&gt;            tip.label      SVL   PCI_limbs   PCII_head PCIII_padwidth_vs_tail
-#&gt;   1:            ahli 4.039125 -3.24828599  0.37225191             -1.0422187
-#&gt;   2:         allogus 4.040138 -2.84557021  0.60011341             -1.0253056
-#&gt;   3:     rubribarbus 4.078469 -2.23834859  1.11997785             -1.1929572
-#&gt;   4:           imias 4.099687 -3.04891725  2.33203488              0.1616442
-#&gt;   5:          sagrei 4.067162 -1.74105547  2.02282431              0.1693635
-#&gt;   6:         bremeri 4.113371 -1.81361138  2.60675012              0.6399320
-#&gt;   7: quadriocellifer 3.901619 -2.26789400  0.99092075              0.3553405
-#&gt;   8:      ophiolepis 3.637962  0.79151174  1.45857603             -1.3152005
-#&gt;   9:         mestrei 3.987147 -2.60261906  1.27568612              0.4640379
-#&gt;  10:           jubar 3.952605 -2.22414593  0.94489985              0.6600716
-#&gt;  11:      homolechis 4.032806 -2.74499346  0.87926009              0.8679694
-#&gt;  12:        confusus 3.938442 -2.49591732  0.16823269              0.1551290
-#&gt;  13:           guafe 3.877457 -2.61408710  0.65608676              0.6071245
-#&gt;  14:         garmani 4.769473 -0.77352640  0.93712494              0.2594994
-#&gt;  15:        opalinus 3.838376 -1.77943710 -0.32453812              1.5569939
-#&gt;  16:         grahami 4.154274 -2.30565354 -1.91393689              1.6852579
-#&gt;  17:     valencienni 4.321524  2.94241389 -0.88460072              1.8543308
-#&gt;  18:      lineatopus 4.128612 -2.43081291 -3.12552390             -1.7564495
-#&gt;  19:      reconditus 4.482607 -2.72704156 -0.21040657             -2.3534242
-#&gt;  20:       evermanni 4.165605 -2.52899245  0.12548098              1.8824633
-#&gt;  21:       stratulus 3.869881 -1.62264165 -0.52957490              2.2166952
-#&gt;  22:           krugi 3.886500 -1.68879533 -0.83128181             -1.2588892
-#&gt;  23:      pulchellus 3.799022  0.16238151 -2.33846103             -1.5906715
-#&gt;  24:       gundlachi 4.188105 -2.64936274 -0.56251604             -2.2852265
-#&gt;  25:       poncensis 3.820378  0.52782664  1.24062035             -1.6249761
-#&gt;  26:           cooki 4.091535 -2.22079009  0.05979850             -0.1092647
-#&gt;  27:    cristatellus 4.189820 -3.33026331 -0.62225189              1.2175309
-#&gt;  28:    brevirostris 3.874155 -3.28900081  1.38425488              2.4070756
-#&gt;  29:        caudalis 3.911743 -1.78270839  1.90870776              1.7530966
-#&gt;  30:          marron 3.831810 -2.84709341 -0.12032028              1.6898101
-#&gt;  31:        websteri 3.916546 -2.50870054  0.97482786              2.9024438
-#&gt;  32:       distichus 3.928796 -3.84343343  0.83890749              2.4922170
-#&gt;  33:        barbouri 3.663932 -0.87536237  1.34009434             -2.6138245
-#&gt;  34:         alumina 3.588941  0.72166993  1.52514444             -2.6721669
-#&gt;  35:    semilineatus 3.696631  0.18403236 -0.13872022             -2.8957227
-#&gt;  36:         olssoni 3.793899  0.81682668  3.87442813             -2.4337310
-#&gt;  37:      etheridgei 3.657991 -3.81065955 -0.75340900             -2.0659201
-#&gt;  38:         fowleri 4.288780 -1.03667003  1.50383762             -1.7589251
-#&gt;  39:       insolitus 3.800471  5.03062671  0.24137669              0.9139707
-#&gt;  40:       whitemani 4.097479 -2.54584901 -3.25974024             -1.9200701
-#&gt;  41:       haetianus 4.316542 -3.40402925 -3.78444664             -1.7798344
-#&gt;  42:        breslini 4.051111 -2.97497529 -3.34153375             -1.8978249
-#&gt;  43:         armouri 4.121684 -3.16993598 -4.08620441             -0.8883209
-#&gt;  44:         cybotes 4.210982 -3.11637922 -2.99620854             -0.8299057
-#&gt;  45:         shrevei 3.983003 -2.25952607 -3.55788235             -1.3884348
-#&gt;  46:   longitibialis 4.242103 -3.52243048 -1.61670439             -1.6182845
-#&gt;  47:         strahmi 4.274271 -3.87340303 -1.01635836             -0.9366696
-#&gt;  48:        marcanoi 4.079485 -2.84448243 -2.78644148             -0.8020303
-#&gt;  49:        baleatus 5.053056  0.73766495  1.79646028             -0.5409516
-#&gt;  50:       barahonae 5.076958  0.90731040  2.33222342             -0.6158464
-#&gt;  51:        ricordii 5.013963  0.58940470  1.34670464             -0.8626956
-#&gt;  52:   eugenegrahami 4.128504 -4.21209140  4.83351955              1.0228151
-#&gt;  53:     christophei 3.884652 -2.70596332  1.70527559             -0.1725921
-#&gt;  54:         cuvieri 4.875012 -1.18955124 -0.71983364             -1.0167340
-#&gt;  55:        barbatus 5.003946  2.25020229 -3.30818172              1.3476390
-#&gt;  56:          porcus 5.038034  3.50614537 -2.98667964              0.7500647
-#&gt;  57:  chamaeleonides 5.042349  2.95597428 -3.69231889              1.3297304
-#&gt;  58:       guamuhaya 5.036953  3.10947396 -4.07973423             -0.1820287
-#&gt;  59:   altitudinalis 3.842994  2.86751469 -6.12805047              2.3331196
-#&gt;  60:        oporinus 3.845670  3.05888289 -2.91565342              2.2875989
-#&gt;  61:        isolepis 3.657088  3.05697642 -4.34018373              2.4409248
-#&gt;  62:        allisoni 4.375390  2.03597967 -3.74252815              0.5203703
-#&gt;  63:        porcatus 4.258991  1.93193251 -3.82953305              0.9781194
-#&gt;  64:     argillaceus 3.757869 -0.11307851 -1.48944374              2.3710815
-#&gt;  65:       centralis 3.697941  0.73073876 -0.41683597              1.7586477
-#&gt;  66:         pumilis 3.466860  0.55404946 -0.42584152              2.1572563
-#&gt;  67:        loysiana 3.701240  0.31536951 -1.08038145              2.7442074
-#&gt;  68:         guazuma 3.763884  8.16566506 -0.60605865              1.7597408
-#&gt;  69:        placidus 3.773967  7.38332866  0.53958973              2.7042981
-#&gt;  70:        sheplani 3.682924 10.27389091  2.27784409              1.6981742
-#&gt;  71:         alayoni 3.815705  3.40888624 -1.78335850              2.2084510
-#&gt;  72:     angusticeps 3.788595  4.58711071 -1.97673831              1.1594671
-#&gt;  73:        paternus 3.802961  2.90637723 -0.95846093              0.9491115
-#&gt;  74:       alutaceus 3.554891  1.17338999 -0.61493813             -1.6539883
-#&gt;  75:    inexpectatus 3.537439  2.50607244 -0.52340367             -2.8057449
-#&gt;  76:       clivicola 3.758726 -1.05114421 -0.58903393             -1.2178042
-#&gt;  77:    cupeyalensis 3.462014  2.72419698  0.48960424             -2.4795271
-#&gt;  78:    cyanopleurus 3.630161  0.43328510  0.98930100             -2.8189997
-#&gt;  79:         alfaroi 3.526655  2.58175921  0.77876335             -2.4463337
-#&gt;  80:      macilentus 3.715765  3.15177391  3.26626613             -3.7238293
-#&gt;  81:       vanidicus 3.626206  4.04436760  1.08716320             -2.4921192
-#&gt;  82:     argenteolus 3.971307 -2.92797328  2.61964493              0.9791727
-#&gt;  83:          lucius 4.198915 -4.38139803  1.25981123              2.1899604
-#&gt;  84:        bartschi 4.280547 -3.25502168  0.80565652              1.1234288
-#&gt;  85:    vermiculatus 4.802849  0.22783467  1.41411087             -1.8467441
-#&gt;  86:        baracoae 5.042780  0.76817392  0.06987127              0.1805891
-#&gt;  87:          noblei 5.083473 -0.09337994 -0.96088851              0.8905492
-#&gt;  88:      smallwoodi 5.035096 -0.13770527 -1.15140405              0.4296432
-#&gt;  89:    luteogularis 5.101085  0.39614254  0.73584435              1.0058546
-#&gt;  90:       equestris 5.113994  1.05461517  0.70720387              0.7108046
-#&gt;  91:       monticola 3.770613 -3.25118016  0.15599344             -2.2390082
-#&gt;  92:   bahorucoensis 3.827445 -0.04747332 -2.55694724             -3.0896949
-#&gt;  93: dolichocephalus 3.908550  2.60131528 -2.59530770             -4.1439327
-#&gt;  94:      hendersoni 3.859835  1.28963045 -2.06309845             -3.4656535
-#&gt;  95:     darlingtoni 4.302036  4.06703170 -1.49378979             -0.2002259
-#&gt;  96:        aliniger 4.036557  0.12323898 -1.67467041              2.3871336
-#&gt;  97:      singularis 4.057997  0.36326789 -0.95422871              1.6562154
-#&gt;  98:    chlorocyanus 4.275448  0.43906343  1.35403450              1.9531470
-#&gt;  99:     coelestinus 4.297965 -0.02721683  0.36875369              1.6364316
-#&gt; 100:        occultus 3.663049  7.92078444 -0.19013968              2.4922819
-#&gt;            tip.label      SVL   PCI_limbs   PCII_head PCIII_padwidth_vs_tail
-#&gt;      PCIV_lamella_num  awesomeness    hostility    attitude ecomorph
-#&gt;   1:      -2.41474228 -0.241651698 -0.173476906  0.64437708       TG
-#&gt;   2:      -2.46331106  0.624468879 -0.500096224  0.71289104       TG
-#&gt;   3:      -2.08743282 -0.427757376  0.480044450 -0.96742634       TG
-#&gt;   4:      -2.11260585  0.169425977 -0.410812337  0.19635800       TG
-#&gt;   5:      -1.37576941 -0.630433775  0.719312962 -1.22282764       TG
-#&gt;   6:      -1.62629939 -1.754300558  1.412718374  0.18323450       TG
-#&gt;   7:      -2.10505922 -0.257638879  0.462708058 -0.27127944       TG
-#&gt;   8:      -2.23775137  0.354418772  0.053661422 -0.09389530       GB
-#&gt;   9:      -1.19666399 -0.228920131  0.820920959 -0.73929564       TG
-#&gt;  10:      -1.65749549  2.145582200 -0.993730897  1.05775273       TG
-#&gt;  11:      -1.56665822 -0.085375433  0.092602997 -0.08130904       TG
-#&gt;  12:      -1.39796407  0.496114209 -0.544543392  1.36010631       TG
-#&gt;  13:      -1.48220834 -0.139145550 -0.310434629 -0.50480610       TG
-#&gt;  14:       0.10511495  0.167791307  0.676756002 -0.69460080       CG
-#&gt;  15:       0.93665013  1.483021624 -0.908266532  0.72613483       TC
-#&gt;  16:       1.01441926  0.410642801 -0.117462571  0.70229589       TC
-#&gt;  17:       0.12882327 -0.088370075  0.465286788 -0.56754896       TW
-#&gt;  18:      -1.43952303  0.800931449  0.170290172  0.33555714       TG
-#&gt;  19:      -0.79929053  0.260965443 -0.271697917  0.01367143        U
-#&gt;  20:       1.92392086  1.871367582 -2.029729624  1.02877511       TC
-#&gt;  21:       0.94622231 -0.314853533  0.515229477 -0.40828716       TC
-#&gt;  22:       0.24029913  0.972494741 -0.371866585  1.46109470       GB
-#&gt;  23:       0.68180888  0.978157532 -0.810754596  1.39277529       GB
-#&gt;  24:      -2.48420519 -0.426336538  0.613014449 -0.69318262       TG
-#&gt;  25:      -0.94924727 -0.289982852  0.510241609 -0.18543914       GB
-#&gt;  26:      -0.50826932  1.277956446 -1.082760383  1.37721870       TG
-#&gt;  27:      -1.21819703  0.830658098 -0.007447027  0.39061232       TG
-#&gt;  28:      -0.82666991 -1.538338585  1.633533660 -1.24247895        T
-#&gt;  29:      -1.44378878 -0.601304152  0.216500950  0.85182003        T
-#&gt;  30:      -1.57063776 -2.149486418  2.413050748 -2.14378229        T
-#&gt;  31:      -1.53259879  0.025584758  0.124044450  0.11758642        T
-#&gt;  32:      -1.03972507  1.973200862 -1.608003643  0.91461500        T
-#&gt;  33:      -4.30147185  1.788945648 -0.913725183  0.64025272        U
-#&gt;  34:       1.23487950 -1.253724344  1.308419442 -0.96110895       GB
-#&gt;  35:       0.92280509 -0.612226281  0.807322377 -0.82943161       GB
-#&gt;  36:       0.62906887 -1.391771586  1.210221860 -0.29186894       GB
-#&gt;  37:      -0.74890866  0.848149691 -0.960258609  0.18291181        U
-#&gt;  38:      -1.71914111  1.456935239 -1.448418148  0.07531334        U
-#&gt;  39:      -0.42075245  0.066715596 -0.290651288  0.07286240       TW
-#&gt;  40:      -2.41993928 -1.457775289  1.096071557 -0.87393333       TG
-#&gt;  41:      -2.20379012  0.721747833 -0.969190196  0.74101761       TG
-#&gt;  42:      -2.16718706 -1.944082859  2.147925602 -2.07465046       TG
-#&gt;  43:      -2.02129909 -0.158605136 -0.369246555 -0.26866597       TG
-#&gt;  44:      -2.09049464  0.905454434 -0.262630999  0.68467864       TG
-#&gt;  45:      -2.19082487  0.257277082  0.029600473  0.39422885       TG
-#&gt;  46:      -2.67106616  2.537213358 -1.420542767  1.71562944       TG
-#&gt;  47:      -1.57843390  0.340077411 -0.690011247  2.11135720       TG
-#&gt;  48:      -1.04842823  1.182343323 -0.167193617  0.58279004       TG
-#&gt;  49:      -0.16220546  2.727286255 -2.487661729  2.78477616       CG
-#&gt;  50:      -0.19473780  1.831370900 -1.331616706  1.70626854       CG
-#&gt;  51:       0.03516802 -0.456651495  0.663302028 -0.64625837       CG
-#&gt;  52:       1.66539278  2.155800992 -2.494661307  1.11438687        U
-#&gt;  53:       0.64693336 -0.266699615  0.220410336  1.46547483        U
-#&gt;  54:      -0.02153073 -0.115917120  0.281153377 -0.97876663       CG
-#&gt;  55:      -1.64780456  2.156287540 -2.094147109  1.97196598        U
-#&gt;  56:      -1.19909229  0.158971414 -0.350187677  0.45987065        U
-#&gt;  57:      -1.51973745 -1.193993760  1.858148718 -1.43308743        U
-#&gt;  58:      -0.10748930 -0.137962568  0.119982369  0.04203987        U
-#&gt;  59:       0.68195498  1.164592168 -0.865462260  0.63326685       TC
-#&gt;  60:      -0.08659903  0.573048475 -0.985921965  0.88025286       TC
-#&gt;  61:      -0.07418779 -0.194644197  0.001671326  0.16264659       TC
-#&gt;  62:       2.05565172 -0.132309870  0.464556617 -0.54956842       TC
-#&gt;  63:       2.88538479 -0.074646660  0.148259194 -0.57178426       TC
-#&gt;  64:       0.33264142  0.007554828 -0.259421287 -0.62559912        U
-#&gt;  65:      -1.13869021 -0.620236225  0.330225203 -0.71777358        U
-#&gt;  66:      -1.12208954  0.459254083 -0.162682657 -0.47694819        U
-#&gt;  67:      -0.52657687  2.153959487 -1.198967281  1.51422456        T
-#&gt;  68:       1.55102509 -0.015197500 -0.020516523  0.08678021       TW
-#&gt;  69:      -0.31778878  0.078986096  0.504242392 -0.40436325       TW
-#&gt;  70:      -0.25962432 -0.431283305  0.321955192 -0.80553288       TW
-#&gt;  71:       0.94969689 -0.259032167  0.127344278  0.29597325       TW
-#&gt;  72:       0.38835687  1.713217290 -1.884387903  0.92471752       TW
-#&gt;  73:       1.80146660 -0.299550789  0.846263466 -0.96311064       TW
-#&gt;  74:       1.41160228  0.325807029 -0.523648505  0.50405157       GB
-#&gt;  75:       1.68036114  0.244666550 -0.307162858  0.06937286       GB
-#&gt;  76:      -0.55865998  0.340444764 -0.599034616  1.78969146       GB
-#&gt;  77:      -0.03297035  1.327984163 -0.994951781  0.04668455       GB
-#&gt;  78:       0.87176931  0.413447859  0.073949884 -0.50654925       GB
-#&gt;  79:       0.70036608 -0.462062012  0.178370302 -0.01958915       GB
-#&gt;  80:       1.21810218  0.868463721 -0.287882420  0.69946303       GB
-#&gt;  81:       0.18942396 -1.287008036  1.023037680 -0.67591746       GB
-#&gt;  82:       2.94194227  0.490363636 -0.505416684 -0.20254651        U
-#&gt;  83:       1.75435972  0.126135253  0.545903248 -0.58505782        U
-#&gt;  84:       1.74943703 -1.189744988  1.025075387  0.25994625        U
-#&gt;  85:       0.71173422  0.159291276 -0.024230945 -0.31575501        U
-#&gt;  86:       2.66309134  1.821981086 -1.522244645  2.17591511       CG
-#&gt;  87:       2.09456880 -0.974406590  1.602507741 -0.42228829       CG
-#&gt;  88:       2.44067497 -0.018317012 -0.366531140  1.59163441       CG
-#&gt;  89:       1.98043577  0.194610912  0.713343825 -0.56222110       CG
-#&gt;  90:       1.66043194  1.080566180 -1.266611407  0.66730260       CG
-#&gt;  91:       0.13156827  0.628989307  0.146877669 -0.44097752        U
-#&gt;  92:       1.56271877  2.553879072 -2.337986521  2.47075117       GB
-#&gt;  93:       3.67023402  0.739483022 -0.989799476  1.09191365       GB
-#&gt;  94:       2.58336718  0.385454354 -0.713316425 -0.39597920       GB
-#&gt;  95:       0.31138087  1.718720076 -1.690079016  1.02145675       TW
-#&gt;  96:       0.58486431  0.006869282  0.144815367  0.29376432       TC
-#&gt;  97:       1.00756926  1.592083294 -1.701052660  1.45313446       TC
-#&gt;  98:       1.80512493 -1.065610146  0.920097708 -0.93721735       TC
-#&gt;  99:       1.02571762  0.290926638 -0.620965953  1.28033350       TC
-#&gt; 100:      -0.09577977 -1.191686980  1.215301402  0.03244860       TW
-#&gt;      PCIV_lamella_num  awesomeness    hostility    attitude ecomorph
-#&gt;           island
-#&gt;   1:        Cuba
-#&gt;   2:        Cuba
-#&gt;   3:        Cuba
-#&gt;   4:        Cuba
-#&gt;   5:        Cuba
-#&gt;   6:        Cuba
-#&gt;   7:        Cuba
-#&gt;   8:        Cuba
-#&gt;   9:        Cuba
-#&gt;  10:        Cuba
-#&gt;  11:        Cuba
-#&gt;  12:        Cuba
-#&gt;  13:        Cuba
-#&gt;  14: Puerto Rico
-#&gt;  15:     Jamaica
-#&gt;  16: Puerto Rico
-#&gt;  17:     Jamaica
-#&gt;  18:     Jamaica
-#&gt;  19:     Jamaica
-#&gt;  20: Puerto Rico
-#&gt;  21: Puerto Rico
-#&gt;  22: Puerto Rico
-#&gt;  23: Puerto Rico
-#&gt;  24: Puerto Rico
-#&gt;  25: Puerto Rico
-#&gt;  26: Puerto Rico
-#&gt;  27: Puerto Rico
-#&gt;  28:  Hispaniola
-#&gt;  29:  Hispaniola
-#&gt;  30:  Hispaniola
-#&gt;  31:  Hispaniola
-#&gt;  32:  Hispaniola
-#&gt;  33:  Hispaniola
-#&gt;  34:  Hispaniola
-#&gt;  35:  Hispaniola
-#&gt;  36:  Hispaniola
-#&gt;  37:  Hispaniola
-#&gt;  38:  Hispaniola
-#&gt;  39:  Hispaniola
-#&gt;  40:  Hispaniola
-#&gt;  41:  Hispaniola
-#&gt;  42:  Hispaniola
-#&gt;  43:  Hispaniola
-#&gt;  44:  Hispaniola
-#&gt;  45:  Hispaniola
-#&gt;  46:  Hispaniola
-#&gt;  47:  Hispaniola
-#&gt;  48:  Hispaniola
-#&gt;  49:  Hispaniola
-#&gt;  50:  Hispaniola
-#&gt;  51:  Hispaniola
-#&gt;  52:  Hispaniola
-#&gt;  53:  Hispaniola
-#&gt;  54: Puerto Rico
-#&gt;  55:        Cuba
-#&gt;  56:        Cuba
-#&gt;  57:        Cuba
-#&gt;  58:        Cuba
-#&gt;  59:        Cuba
-#&gt;  60:        Cuba
-#&gt;  61:        Cuba
-#&gt;  62:        Cuba
-#&gt;  63:        Cuba
-#&gt;  64:        Cuba
-#&gt;  65:        Cuba
-#&gt;  66:        Cuba
-#&gt;  67:        Cuba
-#&gt;  68:        Cuba
-#&gt;  69:  Hispaniola
-#&gt;  70:  Hispaniola
-#&gt;  71:        Cuba
-#&gt;  72:        Cuba
-#&gt;  73:        Cuba
-#&gt;  74:        Cuba
-#&gt;  75:        Cuba
-#&gt;  76:        Cuba
-#&gt;  77:        Cuba
-#&gt;  78:        Cuba
-#&gt;  79:        Cuba
-#&gt;  80:        Cuba
-#&gt;  81:        Cuba
-#&gt;  82:        Cuba
-#&gt;  83:        Cuba
-#&gt;  84:        Cuba
-#&gt;  85:        Cuba
-#&gt;  86:        Cuba
-#&gt;  87:        Cuba
-#&gt;  88:        Cuba
-#&gt;  89:        Cuba
-#&gt;  90:        Cuba
-#&gt;  91:  Hispaniola
-#&gt;  92:  Hispaniola
-#&gt;  93:  Hispaniola
-#&gt;  94:  Hispaniola
-#&gt;  95:  Hispaniola
-#&gt;  96:  Hispaniola
-#&gt;  97:  Hispaniola
-#&gt;  98:  Hispaniola
-#&gt;  99:  Hispaniola
-#&gt; 100: Puerto Rico
-#&gt;           island
-#&gt; 
-#&gt; attr(,"data_not_tree")
-#&gt; [1] "OK"
-#&gt; attr(,"tree_not_data")
-#&gt; [1] "OK"
-#&gt; attr(,"class")
-#&gt; [1] "treedata.table"</div><div class='input'>
+#&gt; $dat 
+#&gt;      tip.label      SVL PCI_limbs PCII_head PCIII_padwidth_vs_tail
+#&gt; 1:        ahli 4.039125 -3.248286 0.3722519             -1.0422187
+#&gt; 2:     allogus 4.040138 -2.845570 0.6001134             -1.0253056
+#&gt; 3: rubribarbus 4.078469 -2.238349 1.1199779             -1.1929572
+#&gt; 4:       imias 4.099687 -3.048917 2.3320349              0.1616442
+#&gt; 5:      sagrei 4.067162 -1.741055 2.0228243              0.1693635
+#&gt; 6:     bremeri 4.113371 -1.813611 2.6067501              0.6399320
+#&gt;    PCIV_lamella_num awesomeness  hostility   attitude ecomorph island
+#&gt; 1:        -2.414742  -0.2416517 -0.1734769  0.6443771       TG   Cuba
+#&gt; 2:        -2.463311   0.6244689 -0.5000962  0.7128910       TG   Cuba
+#&gt; 3:        -2.087433  -0.4277574  0.4800445 -0.9674263       TG   Cuba
+#&gt; 4:        -2.112606   0.1694260 -0.4108123  0.1963580       TG   Cuba
+#&gt; 5:        -1.375769  -0.6304338  0.7193130 -1.2228276       TG   Cuba
+#&gt; 6:        -1.626299  -1.7543006  1.4127184  0.1832345       TG   Cuba</div><div class='input'>
 <span class='co'>#With a multiphylo object in the treedata.table object</span>
 <span class='no'>treesFM</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>,<span class='no'>anolis</span>$<span class='no'>phy</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>treesFM</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>treesFM</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Multiphylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(<span class='kw'>tdObject</span><span class='kw'>=</span><span class='no'>td</span>, <span class='kw'>taxa</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chamaeleonides"</span> ,<span class='st'>"eugenegrahami"</span> ))</div><div class='output co'>#&gt; <span class='message'>Please confirm that you would like to make changes to the ORIGINAL data?</span></div><div class='output co'>#&gt; Type: (1) YES, (2) NO: </div><div class='output co'>#&gt; <span class='message'>NO changes made to the ORIGINAL data</span></div><div class='output co'>#&gt; $phy
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>treesFM</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Multiphylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(<span class='kw'>tdObject</span><span class='kw'>=</span><span class='no'>td</span>, <span class='kw'>taxa</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chamaeleonides"</span> ,<span class='st'>"eugenegrahami"</span> ))</div><div class='output co'>#&gt; <span class='message'>Please confirm that you would like to make changes to the ORIGINAL data?</span></div><div class='output co'>#&gt; Type: (1) YES, (2) NO: </div><div class='output co'>#&gt; <span class='message'>NO changes made to the ORIGINAL data</span></div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
-#&gt; $dat
-#&gt;            tip.label      SVL   PCI_limbs   PCII_head PCIII_padwidth_vs_tail
-#&gt;   1:            ahli 4.039125 -3.24828599  0.37225191             -1.0422187
-#&gt;   2:         allogus 4.040138 -2.84557021  0.60011341             -1.0253056
-#&gt;   3:     rubribarbus 4.078469 -2.23834859  1.11997785             -1.1929572
-#&gt;   4:           imias 4.099687 -3.04891725  2.33203488              0.1616442
-#&gt;   5:          sagrei 4.067162 -1.74105547  2.02282431              0.1693635
-#&gt;   6:         bremeri 4.113371 -1.81361138  2.60675012              0.6399320
-#&gt;   7: quadriocellifer 3.901619 -2.26789400  0.99092075              0.3553405
-#&gt;   8:      ophiolepis 3.637962  0.79151174  1.45857603             -1.3152005
-#&gt;   9:         mestrei 3.987147 -2.60261906  1.27568612              0.4640379
-#&gt;  10:           jubar 3.952605 -2.22414593  0.94489985              0.6600716
-#&gt;  11:      homolechis 4.032806 -2.74499346  0.87926009              0.8679694
-#&gt;  12:        confusus 3.938442 -2.49591732  0.16823269              0.1551290
-#&gt;  13:           guafe 3.877457 -2.61408710  0.65608676              0.6071245
-#&gt;  14:         garmani 4.769473 -0.77352640  0.93712494              0.2594994
-#&gt;  15:        opalinus 3.838376 -1.77943710 -0.32453812              1.5569939
-#&gt;  16:         grahami 4.154274 -2.30565354 -1.91393689              1.6852579
-#&gt;  17:     valencienni 4.321524  2.94241389 -0.88460072              1.8543308
-#&gt;  18:      lineatopus 4.128612 -2.43081291 -3.12552390             -1.7564495
-#&gt;  19:      reconditus 4.482607 -2.72704156 -0.21040657             -2.3534242
-#&gt;  20:       evermanni 4.165605 -2.52899245  0.12548098              1.8824633
-#&gt;  21:       stratulus 3.869881 -1.62264165 -0.52957490              2.2166952
-#&gt;  22:           krugi 3.886500 -1.68879533 -0.83128181             -1.2588892
-#&gt;  23:      pulchellus 3.799022  0.16238151 -2.33846103             -1.5906715
-#&gt;  24:       gundlachi 4.188105 -2.64936274 -0.56251604             -2.2852265
-#&gt;  25:       poncensis 3.820378  0.52782664  1.24062035             -1.6249761
-#&gt;  26:           cooki 4.091535 -2.22079009  0.05979850             -0.1092647
-#&gt;  27:    cristatellus 4.189820 -3.33026331 -0.62225189              1.2175309
-#&gt;  28:    brevirostris 3.874155 -3.28900081  1.38425488              2.4070756
-#&gt;  29:        caudalis 3.911743 -1.78270839  1.90870776              1.7530966
-#&gt;  30:          marron 3.831810 -2.84709341 -0.12032028              1.6898101
-#&gt;  31:        websteri 3.916546 -2.50870054  0.97482786              2.9024438
-#&gt;  32:       distichus 3.928796 -3.84343343  0.83890749              2.4922170
-#&gt;  33:        barbouri 3.663932 -0.87536237  1.34009434             -2.6138245
-#&gt;  34:         alumina 3.588941  0.72166993  1.52514444             -2.6721669
-#&gt;  35:    semilineatus 3.696631  0.18403236 -0.13872022             -2.8957227
-#&gt;  36:         olssoni 3.793899  0.81682668  3.87442813             -2.4337310
-#&gt;  37:      etheridgei 3.657991 -3.81065955 -0.75340900             -2.0659201
-#&gt;  38:         fowleri 4.288780 -1.03667003  1.50383762             -1.7589251
-#&gt;  39:       insolitus 3.800471  5.03062671  0.24137669              0.9139707
-#&gt;  40:       whitemani 4.097479 -2.54584901 -3.25974024             -1.9200701
-#&gt;  41:       haetianus 4.316542 -3.40402925 -3.78444664             -1.7798344
-#&gt;  42:        breslini 4.051111 -2.97497529 -3.34153375             -1.8978249
-#&gt;  43:         armouri 4.121684 -3.16993598 -4.08620441             -0.8883209
-#&gt;  44:         cybotes 4.210982 -3.11637922 -2.99620854             -0.8299057
-#&gt;  45:         shrevei 3.983003 -2.25952607 -3.55788235             -1.3884348
-#&gt;  46:   longitibialis 4.242103 -3.52243048 -1.61670439             -1.6182845
-#&gt;  47:         strahmi 4.274271 -3.87340303 -1.01635836             -0.9366696
-#&gt;  48:        marcanoi 4.079485 -2.84448243 -2.78644148             -0.8020303
-#&gt;  49:        baleatus 5.053056  0.73766495  1.79646028             -0.5409516
-#&gt;  50:       barahonae 5.076958  0.90731040  2.33222342             -0.6158464
-#&gt;  51:        ricordii 5.013963  0.58940470  1.34670464             -0.8626956
-#&gt;  52:   eugenegrahami 4.128504 -4.21209140  4.83351955              1.0228151
-#&gt;  53:     christophei 3.884652 -2.70596332  1.70527559             -0.1725921
-#&gt;  54:         cuvieri 4.875012 -1.18955124 -0.71983364             -1.0167340
-#&gt;  55:        barbatus 5.003946  2.25020229 -3.30818172              1.3476390
-#&gt;  56:          porcus 5.038034  3.50614537 -2.98667964              0.7500647
-#&gt;  57:  chamaeleonides 5.042349  2.95597428 -3.69231889              1.3297304
-#&gt;  58:       guamuhaya 5.036953  3.10947396 -4.07973423             -0.1820287
-#&gt;  59:   altitudinalis 3.842994  2.86751469 -6.12805047              2.3331196
-#&gt;  60:        oporinus 3.845670  3.05888289 -2.91565342              2.2875989
-#&gt;  61:        isolepis 3.657088  3.05697642 -4.34018373              2.4409248
-#&gt;  62:        allisoni 4.375390  2.03597967 -3.74252815              0.5203703
-#&gt;  63:        porcatus 4.258991  1.93193251 -3.82953305              0.9781194
-#&gt;  64:     argillaceus 3.757869 -0.11307851 -1.48944374              2.3710815
-#&gt;  65:       centralis 3.697941  0.73073876 -0.41683597              1.7586477
-#&gt;  66:         pumilis 3.466860  0.55404946 -0.42584152              2.1572563
-#&gt;  67:        loysiana 3.701240  0.31536951 -1.08038145              2.7442074
-#&gt;  68:         guazuma 3.763884  8.16566506 -0.60605865              1.7597408
-#&gt;  69:        placidus 3.773967  7.38332866  0.53958973              2.7042981
-#&gt;  70:        sheplani 3.682924 10.27389091  2.27784409              1.6981742
-#&gt;  71:         alayoni 3.815705  3.40888624 -1.78335850              2.2084510
-#&gt;  72:     angusticeps 3.788595  4.58711071 -1.97673831              1.1594671
-#&gt;  73:        paternus 3.802961  2.90637723 -0.95846093              0.9491115
-#&gt;  74:       alutaceus 3.554891  1.17338999 -0.61493813             -1.6539883
-#&gt;  75:    inexpectatus 3.537439  2.50607244 -0.52340367             -2.8057449
-#&gt;  76:       clivicola 3.758726 -1.05114421 -0.58903393             -1.2178042
-#&gt;  77:    cupeyalensis 3.462014  2.72419698  0.48960424             -2.4795271
-#&gt;  78:    cyanopleurus 3.630161  0.43328510  0.98930100             -2.8189997
-#&gt;  79:         alfaroi 3.526655  2.58175921  0.77876335             -2.4463337
-#&gt;  80:      macilentus 3.715765  3.15177391  3.26626613             -3.7238293
-#&gt;  81:       vanidicus 3.626206  4.04436760  1.08716320             -2.4921192
-#&gt;  82:     argenteolus 3.971307 -2.92797328  2.61964493              0.9791727
-#&gt;  83:          lucius 4.198915 -4.38139803  1.25981123              2.1899604
-#&gt;  84:        bartschi 4.280547 -3.25502168  0.80565652              1.1234288
-#&gt;  85:    vermiculatus 4.802849  0.22783467  1.41411087             -1.8467441
-#&gt;  86:        baracoae 5.042780  0.76817392  0.06987127              0.1805891
-#&gt;  87:          noblei 5.083473 -0.09337994 -0.96088851              0.8905492
-#&gt;  88:      smallwoodi 5.035096 -0.13770527 -1.15140405              0.4296432
-#&gt;  89:    luteogularis 5.101085  0.39614254  0.73584435              1.0058546
-#&gt;  90:       equestris 5.113994  1.05461517  0.70720387              0.7108046
-#&gt;  91:       monticola 3.770613 -3.25118016  0.15599344             -2.2390082
-#&gt;  92:   bahorucoensis 3.827445 -0.04747332 -2.55694724             -3.0896949
-#&gt;  93: dolichocephalus 3.908550  2.60131528 -2.59530770             -4.1439327
-#&gt;  94:      hendersoni 3.859835  1.28963045 -2.06309845             -3.4656535
-#&gt;  95:     darlingtoni 4.302036  4.06703170 -1.49378979             -0.2002259
-#&gt;  96:        aliniger 4.036557  0.12323898 -1.67467041              2.3871336
-#&gt;  97:      singularis 4.057997  0.36326789 -0.95422871              1.6562154
-#&gt;  98:    chlorocyanus 4.275448  0.43906343  1.35403450              1.9531470
-#&gt;  99:     coelestinus 4.297965 -0.02721683  0.36875369              1.6364316
-#&gt; 100:        occultus 3.663049  7.92078444 -0.19013968              2.4922819
-#&gt;            tip.label      SVL   PCI_limbs   PCII_head PCIII_padwidth_vs_tail
-#&gt;      PCIV_lamella_num  awesomeness    hostility    attitude ecomorph
-#&gt;   1:      -2.41474228 -0.241651698 -0.173476906  0.64437708       TG
-#&gt;   2:      -2.46331106  0.624468879 -0.500096224  0.71289104       TG
-#&gt;   3:      -2.08743282 -0.427757376  0.480044450 -0.96742634       TG
-#&gt;   4:      -2.11260585  0.169425977 -0.410812337  0.19635800       TG
-#&gt;   5:      -1.37576941 -0.630433775  0.719312962 -1.22282764       TG
-#&gt;   6:      -1.62629939 -1.754300558  1.412718374  0.18323450       TG
-#&gt;   7:      -2.10505922 -0.257638879  0.462708058 -0.27127944       TG
-#&gt;   8:      -2.23775137  0.354418772  0.053661422 -0.09389530       GB
-#&gt;   9:      -1.19666399 -0.228920131  0.820920959 -0.73929564       TG
-#&gt;  10:      -1.65749549  2.145582200 -0.993730897  1.05775273       TG
-#&gt;  11:      -1.56665822 -0.085375433  0.092602997 -0.08130904       TG
-#&gt;  12:      -1.39796407  0.496114209 -0.544543392  1.36010631       TG
-#&gt;  13:      -1.48220834 -0.139145550 -0.310434629 -0.50480610       TG
-#&gt;  14:       0.10511495  0.167791307  0.676756002 -0.69460080       CG
-#&gt;  15:       0.93665013  1.483021624 -0.908266532  0.72613483       TC
-#&gt;  16:       1.01441926  0.410642801 -0.117462571  0.70229589       TC
-#&gt;  17:       0.12882327 -0.088370075  0.465286788 -0.56754896       TW
-#&gt;  18:      -1.43952303  0.800931449  0.170290172  0.33555714       TG
-#&gt;  19:      -0.79929053  0.260965443 -0.271697917  0.01367143        U
-#&gt;  20:       1.92392086  1.871367582 -2.029729624  1.02877511       TC
-#&gt;  21:       0.94622231 -0.314853533  0.515229477 -0.40828716       TC
-#&gt;  22:       0.24029913  0.972494741 -0.371866585  1.46109470       GB
-#&gt;  23:       0.68180888  0.978157532 -0.810754596  1.39277529       GB
-#&gt;  24:      -2.48420519 -0.426336538  0.613014449 -0.69318262       TG
-#&gt;  25:      -0.94924727 -0.289982852  0.510241609 -0.18543914       GB
-#&gt;  26:      -0.50826932  1.277956446 -1.082760383  1.37721870       TG
-#&gt;  27:      -1.21819703  0.830658098 -0.007447027  0.39061232       TG
-#&gt;  28:      -0.82666991 -1.538338585  1.633533660 -1.24247895        T
-#&gt;  29:      -1.44378878 -0.601304152  0.216500950  0.85182003        T
-#&gt;  30:      -1.57063776 -2.149486418  2.413050748 -2.14378229        T
-#&gt;  31:      -1.53259879  0.025584758  0.124044450  0.11758642        T
-#&gt;  32:      -1.03972507  1.973200862 -1.608003643  0.91461500        T
-#&gt;  33:      -4.30147185  1.788945648 -0.913725183  0.64025272        U
-#&gt;  34:       1.23487950 -1.253724344  1.308419442 -0.96110895       GB
-#&gt;  35:       0.92280509 -0.612226281  0.807322377 -0.82943161       GB
-#&gt;  36:       0.62906887 -1.391771586  1.210221860 -0.29186894       GB
-#&gt;  37:      -0.74890866  0.848149691 -0.960258609  0.18291181        U
-#&gt;  38:      -1.71914111  1.456935239 -1.448418148  0.07531334        U
-#&gt;  39:      -0.42075245  0.066715596 -0.290651288  0.07286240       TW
-#&gt;  40:      -2.41993928 -1.457775289  1.096071557 -0.87393333       TG
-#&gt;  41:      -2.20379012  0.721747833 -0.969190196  0.74101761       TG
-#&gt;  42:      -2.16718706 -1.944082859  2.147925602 -2.07465046       TG
-#&gt;  43:      -2.02129909 -0.158605136 -0.369246555 -0.26866597       TG
-#&gt;  44:      -2.09049464  0.905454434 -0.262630999  0.68467864       TG
-#&gt;  45:      -2.19082487  0.257277082  0.029600473  0.39422885       TG
-#&gt;  46:      -2.67106616  2.537213358 -1.420542767  1.71562944       TG
-#&gt;  47:      -1.57843390  0.340077411 -0.690011247  2.11135720       TG
-#&gt;  48:      -1.04842823  1.182343323 -0.167193617  0.58279004       TG
-#&gt;  49:      -0.16220546  2.727286255 -2.487661729  2.78477616       CG
-#&gt;  50:      -0.19473780  1.831370900 -1.331616706  1.70626854       CG
-#&gt;  51:       0.03516802 -0.456651495  0.663302028 -0.64625837       CG
-#&gt;  52:       1.66539278  2.155800992 -2.494661307  1.11438687        U
-#&gt;  53:       0.64693336 -0.266699615  0.220410336  1.46547483        U
-#&gt;  54:      -0.02153073 -0.115917120  0.281153377 -0.97876663       CG
-#&gt;  55:      -1.64780456  2.156287540 -2.094147109  1.97196598        U
-#&gt;  56:      -1.19909229  0.158971414 -0.350187677  0.45987065        U
-#&gt;  57:      -1.51973745 -1.193993760  1.858148718 -1.43308743        U
-#&gt;  58:      -0.10748930 -0.137962568  0.119982369  0.04203987        U
-#&gt;  59:       0.68195498  1.164592168 -0.865462260  0.63326685       TC
-#&gt;  60:      -0.08659903  0.573048475 -0.985921965  0.88025286       TC
-#&gt;  61:      -0.07418779 -0.194644197  0.001671326  0.16264659       TC
-#&gt;  62:       2.05565172 -0.132309870  0.464556617 -0.54956842       TC
-#&gt;  63:       2.88538479 -0.074646660  0.148259194 -0.57178426       TC
-#&gt;  64:       0.33264142  0.007554828 -0.259421287 -0.62559912        U
-#&gt;  65:      -1.13869021 -0.620236225  0.330225203 -0.71777358        U
-#&gt;  66:      -1.12208954  0.459254083 -0.162682657 -0.47694819        U
-#&gt;  67:      -0.52657687  2.153959487 -1.198967281  1.51422456        T
-#&gt;  68:       1.55102509 -0.015197500 -0.020516523  0.08678021       TW
-#&gt;  69:      -0.31778878  0.078986096  0.504242392 -0.40436325       TW
-#&gt;  70:      -0.25962432 -0.431283305  0.321955192 -0.80553288       TW
-#&gt;  71:       0.94969689 -0.259032167  0.127344278  0.29597325       TW
-#&gt;  72:       0.38835687  1.713217290 -1.884387903  0.92471752       TW
-#&gt;  73:       1.80146660 -0.299550789  0.846263466 -0.96311064       TW
-#&gt;  74:       1.41160228  0.325807029 -0.523648505  0.50405157       GB
-#&gt;  75:       1.68036114  0.244666550 -0.307162858  0.06937286       GB
-#&gt;  76:      -0.55865998  0.340444764 -0.599034616  1.78969146       GB
-#&gt;  77:      -0.03297035  1.327984163 -0.994951781  0.04668455       GB
-#&gt;  78:       0.87176931  0.413447859  0.073949884 -0.50654925       GB
-#&gt;  79:       0.70036608 -0.462062012  0.178370302 -0.01958915       GB
-#&gt;  80:       1.21810218  0.868463721 -0.287882420  0.69946303       GB
-#&gt;  81:       0.18942396 -1.287008036  1.023037680 -0.67591746       GB
-#&gt;  82:       2.94194227  0.490363636 -0.505416684 -0.20254651        U
-#&gt;  83:       1.75435972  0.126135253  0.545903248 -0.58505782        U
-#&gt;  84:       1.74943703 -1.189744988  1.025075387  0.25994625        U
-#&gt;  85:       0.71173422  0.159291276 -0.024230945 -0.31575501        U
-#&gt;  86:       2.66309134  1.821981086 -1.522244645  2.17591511       CG
-#&gt;  87:       2.09456880 -0.974406590  1.602507741 -0.42228829       CG
-#&gt;  88:       2.44067497 -0.018317012 -0.366531140  1.59163441       CG
-#&gt;  89:       1.98043577  0.194610912  0.713343825 -0.56222110       CG
-#&gt;  90:       1.66043194  1.080566180 -1.266611407  0.66730260       CG
-#&gt;  91:       0.13156827  0.628989307  0.146877669 -0.44097752        U
-#&gt;  92:       1.56271877  2.553879072 -2.337986521  2.47075117       GB
-#&gt;  93:       3.67023402  0.739483022 -0.989799476  1.09191365       GB
-#&gt;  94:       2.58336718  0.385454354 -0.713316425 -0.39597920       GB
-#&gt;  95:       0.31138087  1.718720076 -1.690079016  1.02145675       TW
-#&gt;  96:       0.58486431  0.006869282  0.144815367  0.29376432       TC
-#&gt;  97:       1.00756926  1.592083294 -1.701052660  1.45313446       TC
-#&gt;  98:       1.80512493 -1.065610146  0.920097708 -0.93721735       TC
-#&gt;  99:       1.02571762  0.290926638 -0.620965953  1.28033350       TC
-#&gt; 100:      -0.09577977 -1.191686980  1.215301402  0.03244860       TW
-#&gt;      PCIV_lamella_num  awesomeness    hostility    attitude ecomorph
-#&gt;           island
-#&gt;   1:        Cuba
-#&gt;   2:        Cuba
-#&gt;   3:        Cuba
-#&gt;   4:        Cuba
-#&gt;   5:        Cuba
-#&gt;   6:        Cuba
-#&gt;   7:        Cuba
-#&gt;   8:        Cuba
-#&gt;   9:        Cuba
-#&gt;  10:        Cuba
-#&gt;  11:        Cuba
-#&gt;  12:        Cuba
-#&gt;  13:        Cuba
-#&gt;  14: Puerto Rico
-#&gt;  15:     Jamaica
-#&gt;  16: Puerto Rico
-#&gt;  17:     Jamaica
-#&gt;  18:     Jamaica
-#&gt;  19:     Jamaica
-#&gt;  20: Puerto Rico
-#&gt;  21: Puerto Rico
-#&gt;  22: Puerto Rico
-#&gt;  23: Puerto Rico
-#&gt;  24: Puerto Rico
-#&gt;  25: Puerto Rico
-#&gt;  26: Puerto Rico
-#&gt;  27: Puerto Rico
-#&gt;  28:  Hispaniola
-#&gt;  29:  Hispaniola
-#&gt;  30:  Hispaniola
-#&gt;  31:  Hispaniola
-#&gt;  32:  Hispaniola
-#&gt;  33:  Hispaniola
-#&gt;  34:  Hispaniola
-#&gt;  35:  Hispaniola
-#&gt;  36:  Hispaniola
-#&gt;  37:  Hispaniola
-#&gt;  38:  Hispaniola
-#&gt;  39:  Hispaniola
-#&gt;  40:  Hispaniola
-#&gt;  41:  Hispaniola
-#&gt;  42:  Hispaniola
-#&gt;  43:  Hispaniola
-#&gt;  44:  Hispaniola
-#&gt;  45:  Hispaniola
-#&gt;  46:  Hispaniola
-#&gt;  47:  Hispaniola
-#&gt;  48:  Hispaniola
-#&gt;  49:  Hispaniola
-#&gt;  50:  Hispaniola
-#&gt;  51:  Hispaniola
-#&gt;  52:  Hispaniola
-#&gt;  53:  Hispaniola
-#&gt;  54: Puerto Rico
-#&gt;  55:        Cuba
-#&gt;  56:        Cuba
-#&gt;  57:        Cuba
-#&gt;  58:        Cuba
-#&gt;  59:        Cuba
-#&gt;  60:        Cuba
-#&gt;  61:        Cuba
-#&gt;  62:        Cuba
-#&gt;  63:        Cuba
-#&gt;  64:        Cuba
-#&gt;  65:        Cuba
-#&gt;  66:        Cuba
-#&gt;  67:        Cuba
-#&gt;  68:        Cuba
-#&gt;  69:  Hispaniola
-#&gt;  70:  Hispaniola
-#&gt;  71:        Cuba
-#&gt;  72:        Cuba
-#&gt;  73:        Cuba
-#&gt;  74:        Cuba
-#&gt;  75:        Cuba
-#&gt;  76:        Cuba
-#&gt;  77:        Cuba
-#&gt;  78:        Cuba
-#&gt;  79:        Cuba
-#&gt;  80:        Cuba
-#&gt;  81:        Cuba
-#&gt;  82:        Cuba
-#&gt;  83:        Cuba
-#&gt;  84:        Cuba
-#&gt;  85:        Cuba
-#&gt;  86:        Cuba
-#&gt;  87:        Cuba
-#&gt;  88:        Cuba
-#&gt;  89:        Cuba
-#&gt;  90:        Cuba
-#&gt;  91:  Hispaniola
-#&gt;  92:  Hispaniola
-#&gt;  93:  Hispaniola
-#&gt;  94:  Hispaniola
-#&gt;  95:  Hispaniola
-#&gt;  96:  Hispaniola
-#&gt;  97:  Hispaniola
-#&gt;  98:  Hispaniola
-#&gt;  99:  Hispaniola
-#&gt; 100: Puerto Rico
-#&gt;           island
-#&gt; 
-#&gt; attr(,"data_not_tree")
-#&gt; [1] "OK"
-#&gt; attr(,"tree_not_data")
-#&gt; [1] "OK"
-#&gt; attr(,"class")
-#&gt; [1] "treedata.table"</div><div class='input'>
+#&gt; $dat 
+#&gt;      tip.label      SVL PCI_limbs PCII_head PCIII_padwidth_vs_tail
+#&gt; 1:        ahli 4.039125 -3.248286 0.3722519             -1.0422187
+#&gt; 2:     allogus 4.040138 -2.845570 0.6001134             -1.0253056
+#&gt; 3: rubribarbus 4.078469 -2.238349 1.1199779             -1.1929572
+#&gt; 4:       imias 4.099687 -3.048917 2.3320349              0.1616442
+#&gt; 5:      sagrei 4.067162 -1.741055 2.0228243              0.1693635
+#&gt; 6:     bremeri 4.113371 -1.813611 2.6067501              0.6399320
+#&gt;    PCIV_lamella_num awesomeness  hostility   attitude ecomorph island
+#&gt; 1:        -2.414742  -0.2416517 -0.1734769  0.6443771       TG   Cuba
+#&gt; 2:        -2.463311   0.6244689 -0.5000962  0.7128910       TG   Cuba
+#&gt; 3:        -2.087433  -0.4277574  0.4800445 -0.9674263       TG   Cuba
+#&gt; 4:        -2.112606   0.1694260 -0.4108123  0.1963580       TG   Cuba
+#&gt; 5:        -1.375769  -0.6304338  0.7193130 -1.2228276       TG   Cuba
+#&gt; 6:        -1.626299  -1.7543006  1.4127184  0.1832345       TG   Cuba</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -798,7 +197,7 @@ include fully matching <code>$dat</code> and <code>$phy</code> elements. The use
 
       <footer>
       <div class="copyright">
-  <p>Developed by Joseph Uyeda, Cristian Roman-Palacios, April Wright.</p>
+  <p>Developed by Josef Uyeda, Cristian Roman-Palacios, April Wright.</p>
 </div>
 
 <div class="pkgdown">

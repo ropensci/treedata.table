@@ -8,11 +8,13 @@
 
 <title>Returning a named vector from a treedata.table object — extractVector • treedata.table</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -32,10 +34,11 @@
 
 
 
-<meta property="og:title" content="Returning a named vector from a treedata.table object — extractVector" />
 
+<meta property="og:title" content="Returning a named vector from a treedata.table object — extractVector" />
 <meta property="og:description" content="Returning a named vector from a treedata.table object" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -85,7 +88,6 @@
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -107,13 +109,11 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Returning a named vector from a treedata.table object</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>extractVector</span>(<span class='no'>tdObject</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -126,20 +126,63 @@
       <td><p>The name of the column to select</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A named vector</p>
-    
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>tree</span><span class='kw'>=</span><span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Phylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'>extractVector</span>(<span class='no'>td</span>, <span class='st'>"SVL"</span>) <span class='co'>#extracts the named vector for SVL from the td object</span></div><div class='output co'>#&gt;            ahli         allogus     rubribarbus           imias          sagrei 
+#&gt;        4.039125        4.040138        4.078469        4.099687        4.067162 
+#&gt;         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
+#&gt;        4.113371        3.901619        3.637962        3.987147        3.952605 
+#&gt;      homolechis        confusus           guafe         garmani        opalinus 
+#&gt;        4.032806        3.938442        3.877457        4.769473        3.838376 
+#&gt;         grahami     valencienni      lineatopus      reconditus       evermanni 
+#&gt;        4.154274        4.321524        4.128612        4.482607        4.165605 
+#&gt;       stratulus           krugi      pulchellus       gundlachi       poncensis 
+#&gt;        3.869881        3.886500        3.799022        4.188105        3.820378 
+#&gt;           cooki    cristatellus    brevirostris        caudalis          marron 
+#&gt;        4.091535        4.189820        3.874155        3.911743        3.831810 
+#&gt;        websteri       distichus        barbouri         alumina    semilineatus 
+#&gt;        3.916546        3.928796        3.663932        3.588941        3.696631 
+#&gt;         olssoni      etheridgei         fowleri       insolitus       whitemani 
+#&gt;        3.793899        3.657991        4.288780        3.800471        4.097479 
+#&gt;       haetianus        breslini         armouri         cybotes         shrevei 
+#&gt;        4.316542        4.051111        4.121684        4.210982        3.983003 
+#&gt;   longitibialis         strahmi        marcanoi        baleatus       barahonae 
+#&gt;        4.242103        4.274271        4.079485        5.053056        5.076958 
+#&gt;        ricordii   eugenegrahami     christophei         cuvieri        barbatus 
+#&gt;        5.013963        4.128504        3.884652        4.875012        5.003946 
+#&gt;          porcus  chamaeleonides       guamuhaya   altitudinalis        oporinus 
+#&gt;        5.038034        5.042349        5.036953        3.842994        3.845670 
+#&gt;        isolepis        allisoni        porcatus     argillaceus       centralis 
+#&gt;        3.657088        4.375390        4.258991        3.757869        3.697941 
+#&gt;         pumilis        loysiana         guazuma        placidus        sheplani 
+#&gt;        3.466860        3.701240        3.763884        3.773967        3.682924 
+#&gt;         alayoni     angusticeps        paternus       alutaceus    inexpectatus 
+#&gt;        3.815705        3.788595        3.802961        3.554891        3.537439 
+#&gt;       clivicola    cupeyalensis    cyanopleurus         alfaroi      macilentus 
+#&gt;        3.758726        3.462014        3.630161        3.526655        3.715765 
+#&gt;       vanidicus     argenteolus          lucius        bartschi    vermiculatus 
+#&gt;        3.626206        3.971307        4.198915        4.280547        4.802849 
+#&gt;        baracoae          noblei      smallwoodi    luteogularis       equestris 
+#&gt;        5.042780        5.083473        5.035096        5.101085        5.113994 
+#&gt;       monticola   bahorucoensis dolichocephalus      hendersoni     darlingtoni 
+#&gt;        3.770613        3.827445        3.908550        3.859835        4.302036 
+#&gt;        aliniger      singularis    chlorocyanus     coelestinus        occultus 
+#&gt;        4.036557        4.057997        4.275448        4.297965        3.663049 </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-          </ul>
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
@@ -147,7 +190,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Joseph Uyeda, Cristian Roman-Palacios, April Wright.</p>
+  <p>Developed by Josef Uyeda, Cristian Roman-Palacios, April Wright.</p>
 </div>
 
 <div class="pkgdown">
