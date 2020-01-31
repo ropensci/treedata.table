@@ -20,3 +20,8 @@ dropped from either the original tree or the original data.
 \description{
 Summarizing treedata.table objects
 }
+\examples{
+data(anolis)
+td <- as.treedata.table(anolis$phy, anolis$dat)
+summary(td)
+}

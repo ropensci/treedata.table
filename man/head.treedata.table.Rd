@@ -18,3 +18,8 @@ rows of x.}
 \description{
 Return the first or last part of an treedata.table object
 }
+\examples{
+data(anolis)
+td <- as.treedata.table(anolis$phy, anolis$dat)
+head(td)
+}

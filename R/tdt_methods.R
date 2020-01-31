@@ -5,7 +5,10 @@
 #' for the resulting object. If negative, all but the n last/first
 #' rows of x.
 #' @param ... Additional arguments passed to head.data.table
-#'
+#' @examples
+#' data(anolis)
+#' td <- as.treedata.table(anolis$phy, anolis$dat)
+#' head(td)
 #' @export
 head.treedata.table <- function(x, n=6L, ...){
   uhead <- utils::head
@@ -45,6 +48,10 @@ print.treedata.table <- function(x, ...){
 #' any data have missing data. Also returns the taxa that are
 #' dropped from either the original tree or the original data.
 #'
+#' @examples
+#' data(anolis)
+#' td <- as.treedata.table(anolis$phy, anolis$dat)
+#' summary(td)
 #' @export
 summary.treedata.table <- function(object, ...){
   if(class(object) != "treedata.table" ){
