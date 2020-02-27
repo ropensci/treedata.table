@@ -1,4 +1,4 @@
-Package: treedata.table
+package: treedata.table
 Type: Package
 Title: A wrapper for data.table for fast manipulation of phylogenetic trees matched to data
 Version: 0.1.0
