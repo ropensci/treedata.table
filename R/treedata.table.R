@@ -1,11 +1,11 @@
-#' Function for perfoming data.table operations on an object of class \code{treedata.table}
+#' Function for performing data.table operations on an object of class \code{treedata.table}
 #'
-#' This function can be used to subset rows, select and compute on columns (\code{\link{data.table}}.
+#' This function can be used to subset rows, select and compute on columns \link[data.table]{data.table}.
 #'
 #' @param x An object of class \code{treedata.table}
 #' @param ... Arguments in the structure of \code{data.table} used to perform changes on the \code{treedata.table} object
-#' @return A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using (\code{\link{data.table}})'s structure.
-#' @seealso \code{\link{data.table}}
+#' @return A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using \link[data.table]{data.table}'s structure.
+#' @seealso \link[data.table]{data.table}
 #' @examples
 #'
 #' data(anolis)

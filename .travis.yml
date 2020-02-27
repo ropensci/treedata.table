@@ -4,8 +4,7 @@ language: R
 cache: packages
 r_packages:
   - covr
-os: 
-  - windows
+os:
   - linux
   - osx
 after_success:
@@ -14,4 +13,6 @@ notifications:
   email:
     on_success: change
     on_failure: change
+osx_image: xcode9.2
+
 

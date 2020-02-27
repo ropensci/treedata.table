@@ -1,9 +1,9 @@
 package: treedata.table
 Type: Package
-Title: A wrapper for data.table for fast manipulation of phylogenetic trees matched to data
+Title: A Wrapper For data.table For Fast Manipulation Of Phylogenetic Trees Matched To Data
 Version: 0.1.0
 Authors@R: c(
-    person("Joseph Uyeda", email= "juyeda@vt.edu", role=c("aut", "cre")),
+    person("Josef Uyeda", email= "juyeda@vt.edu", role=c("aut", "cre")),
     person("Cristian Roman-Palacios", email= "cromanpa94@email.arizona.edu", role=c("aut")), 
     person("April Wright", email= "april.wright@southeastern.edu", role=c("aut"))
   )
@@ -17,7 +17,7 @@ License: MIT + file LICENSE
 Depends:
   data.table, R (>= 2.10)
 Imports:
-  lazyeval, ape, geiger
+  lazyeval, ape, geiger, utils
 RoxygenNote: 6.1.1
 Suggests: 
     knitr,

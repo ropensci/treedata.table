@@ -17,7 +17,12 @@ pull.treedata.table <- function(tdObject, type = "dat") {
   }
   full <-
     if (type == "dat") {
-      cbind(tip.label = tdObject$phy$tip.label, tdObject$dat)
+      matches <- sapply(tdObject$dat, function(x) sum(x %in% tdObject$phy$tip.label))
+      if(any(matches==nrow(tdObject$dat))){
+        tdObject$dat
+      } else{
+        cbind(tip.label = tdObject$phy$tip.label, tdObject$dat)
+      }
     } else{
       tdObject$phy
     }

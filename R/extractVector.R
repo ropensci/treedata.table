@@ -5,7 +5,7 @@
 #'
 #' @return A named vector
 #'
-#' @example
+#' @examples
 #'
 #' data(anolis)
 #' td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)

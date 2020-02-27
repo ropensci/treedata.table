@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to detect whether a character is continuous or discrete — detectCharacterType • treedata.table</title>
+<title>Print method treedata.table objects — print.treedata.table • treedata.table</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Function to detect whether a character is continuous or discrete — detectCharacterType" />
-<meta property="og:description" content="Function to detect whether a character is continuous or discrete" />
+<meta property="og:title" content="Print method treedata.table objects — print.treedata.table" />
+<meta property="og:description" content="Print method treedata.table objects" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -103,48 +103,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to detect whether a character is continuous or discrete</h1>
+    <h1>Print method treedata.table objects</h1>
     
-    <div class="hidden name"><code>detectCharacterType.Rd</code></div>
+    <div class="hidden name"><code>print.treedata.table.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Function to detect whether a character is continuous or discrete</p>
+    <p>Print method treedata.table objects</p>
     </div>
 
-    <pre class="usage"><span class='fu'>detectCharacterType</span>(<span class='no'>dat</span>, <span class='kw'>repeatsAsDiscrete</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for treedata.table</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dat</th>
-      <td><p>A vector of data</p></td>
+      <th>x</th>
+      <td><p>an object of class "treedata.table"</p></td>
     </tr>
     <tr>
-      <th>repeatsAsDiscrete</th>
-      <td><p>If TRUE, consider numeric variables that repeat values exactly as discrete; see cutoff</p></td>
-    </tr>
-    <tr>
-      <th>cutoff</th>
-      <td><p>Cutoff value for deciding if numeric data might actually be discrete: if nlev is the number of levels and n the length of dat, then nlev / n should exceed cutoff, or the data will be classified as discrete</p></td>
+      <th>...</th>
+      <td><p>additional arguments passed to "head.treedata.table"</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Either "discrete" or "continuous"</p>
+    <p>Function uses prints the tree and the first lines of the
+data.table object.</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
-<span class='fu'>detectCharacterType</span>(<span class='no'>anolis</span>$<span class='no'>dat</span>[,<span class='fl'>1</span>])</div><div class='output co'>#&gt; [1] "discrete"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
