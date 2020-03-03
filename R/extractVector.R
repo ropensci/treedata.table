@@ -27,8 +27,8 @@ extractVector <- function(tdObject, ...){
     lapply(vecs, function(x) stats::setNames(x, tdObject$phy$tip.label)) }else{
       lapply(vecs, function(x) stats::setNames(x, tdObject$phy[[1]]$tip.label))
     }
-  if(length(vecs)==1){
-    vecs = vecs[[1]]
+  if(length(vecs) == 1){
+    vecs <- vecs[[1]]
   } else {names(vecs) <- args}
   return(vecs)
 }

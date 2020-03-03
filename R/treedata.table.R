@@ -23,28 +23,28 @@
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
 #' td[,SVL]
 #' td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
-#' td[, head(.SD, 1), by = .(ecomorph, island)]
+#' td[, utils::head(.SD, 1), by = .(ecomorph, island)]
 #'
 #' #A multiphylo object that fully matches the data
 #' td <- as.treedata.table(tree=treesFM, data=anolis$dat)
 #' td <- as.treedata.table(treesFM, anolis$dat)
 #' td[,SVL]
 #' td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
-#' td[, head(.SD, 1), by = .(ecomorph, island)]
+#' td[, utils::head(.SD, 1), by = .(ecomorph, island)]
 
 #' #A phylo object that partially matches the data
 #' td <- as.treedata.table(tree=anolis1, data=anolis$dat)
 #' td <- as.treedata.table(anolis1, anolis$dat)
 #' td[,SVL]
 #' td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
-#' td[, head(.SD, 1), by = .(ecomorph, island)]
+#' td[, utils::head(.SD, 1), by = .(ecomorph, island)]
 #'
 #' #A multiphylo object that partially matches the data
 #' td <- as.treedata.table(tree=trees, data=anolis$dat)
 #' td <- as.treedata.table(trees, anolis$dat)
 #' td[,SVL]
 #' td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
-#' td[, head(.SD, 1), by = .(ecomorph, island)]
+#' td[, utils::head(.SD, 1), by = .(ecomorph, island)]
 #'
 #' @export
 
@@ -64,9 +64,9 @@
   #.phy <- ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"]))) #CRP: using "rowid" instead of rowid & unlist
 
   .phy<- if(class(x$phy)=='phylo'){
-    ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"])))
+    ape::drop.tip(x$phy, which(!1:seq_along(x$dat) %in% unlist(.dat[, "rowid"])))
   }else{
-    tr<-lapply(x$phy,ape::drop.tip,tip=which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"])))
+    tr<-lapply(x$phy,ape::drop.tip,tip=which(!1:seq_along(x$dat) %in% unlist(.dat[, "rowid"])))
     class(tr)<-'multiPhylo'
     tr
   }

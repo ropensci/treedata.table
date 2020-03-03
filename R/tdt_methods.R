@@ -13,7 +13,7 @@
 head.treedata.table <- function(x, n=6L, ...){
   uhead <- utils::head
   stopifnot(length(n) == 1L)
-  i = seq_len(if (n < 0L) max(nrow(x$dat) + n, 0L) else min(n,
+  i <- seq_len(if (n < 0L) max(nrow(x$dat) + n, 0L) else min(n,
                                                         nrow(x$dat)))
   x$dat[i, , ]
   #fun = utils::getFromNamespace("head.data.table", "data.table")
@@ -34,7 +34,7 @@ print.treedata.table <- function(x, ...){
   cat("$phy \n")
   print(x$phy)
   cat("\n$dat \n")
-  print(head(x, ...))
+  print(utils::head(x, ...))
 }
 
 
@@ -74,7 +74,7 @@ summary.treedata.table <- function(object, ...){
   cat(paste("These taxa were dropped from the data:", paste(attributes(object)$data_not_tree,
                                                             collapse = ", "), "\n"))
   print(object, ...)
-  if( is.null(attr(object, "modified"))==F ){ message("\n    This is NOT the original treedata.table object") } ##Include warning for treedata.objects that were modified
+  if( is.null(attr(object, "modified")) == FALSE ){ message("\n    This is NOT the original treedata.table object") } ##Include warning for treedata.objects that were modified
 }
 
 

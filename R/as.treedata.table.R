@@ -36,12 +36,12 @@
 #' @export
 
 as.treedata.table<-function(tree, data, name_column="detect"){
-  if(class(tree) %in%  c("phylo", 'multiPhylo')==F ){
+  if(class(tree) %in%  c("phylo", 'multiPhylo') == FALSE ){
     stop("Please use a class 'phylo' or 'multiPhylo' tree \n")
   }
   if( class(tree) == 'multiPhylo' ){
     equal_T<-length(unique(lapply(seq_along(tree), function(x) sort(tree[[x]]$tip.label) ))) == 1
-    if( equal_T == F ) {stop("Please make sure that tip labels are equivalent across trees in the multiPhylo object \n")}
+    if( equal_T == FALSE ) {stop("Please make sure that tip labels are equivalent across trees in the multiPhylo object \n")}
   }
 
 
@@ -56,7 +56,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
     colnames(data) <- "trait"
   }
   if(is.null(colnames(data))){
-    colnames(data) <- paste("trait", 1:ncol(data), sep="")
+    colnames(data) <- paste("trait", 1:seq_len(data), sep="")
   }
   coln <- colnames(data)
   if(name_column=="detect"){
@@ -68,7 +68,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
       offset <- 1
     }
 
-    matches <- sapply(tmp.df, function(x) sum(x %in% if( class(tree) == 'phylo'){tree$tip.label }else{ tree[[1]]$tip.label } ) )
+    matches <- vapply(tmp.df, function(x) sum(x %in% if( class(tree) == 'phylo'){tree$tip.label }else{ tree[[1]]$tip.label }), integer(1) )
 
     if(all(matches==0)) stop("No matching names found between data and tree")
     name_column <- which(matches==max(matches))-offset
@@ -115,7 +115,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
 
   }
 
-  i <- sapply(data, is.factor);data[i] <- lapply(data[i], as.character) ##Tranform factors into character vectors
+  i <- vapply(data, is.factor, logical(1));data[i] <- lapply(data[i], as.character) ##Tranform factors into character vectors
 
   data<- if( class(tree) == 'phylo'){ data[match(tree$tip.label, data[,name_column]),] }else{
     data[match(tree[[1]]$tip.label, data[,name_column]),]

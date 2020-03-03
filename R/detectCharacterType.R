@@ -73,17 +73,17 @@ filterMatrix<-function(mat, charType, returnType="discrete") {
 #' hasNames(anolis$dat, "row")
 #' @export
 hasNames <- function(dat, nameType="row") {
-	nType = match.arg(nameType, c("row", "col", "rowcol"))
-	if(nType=="row") {
+	nType <- match.arg(nameType, c("row", "col", "rowcol"))
+	if(nType == "row") {
 		res<-!is.null(rownames(dat))
 	}
-	if(nType=="col") {
+	if(nType == "col") {
 		res<-!is.null(colnames(dat))
 	}
-	if(nType=="rowcol") {
+	if(nType == "rowcol") {
 		res<-!is.null(rownames(dat)) & !is.null(colnames(dat))
 	}
-	names(res)<-nameType
+	names(res) <- nameType
 	res
 }
 
@@ -101,15 +101,15 @@ hasNames <- function(dat, nameType="row") {
 #' forceNames(anolis$dat, "row")
 #' @export
 forceNames <- function(dat, nameType="row") {
-	nType = match.arg(nameType, c("row", "col", "rowcol"))
-	if(nType=="row" | nType=="rowcol") {
-		if(!hasNames(dat, nameType="row")) {
+	nType <- match.arg(nameType, c("row", "col", "rowcol"))
+	if(nType == "row" | nType == "rowcol") {
+		if(!hasNames(dat, nameType = "row")) {
 			nrows<-dim(dat)[1]
 			rownames(dat) <- paste("n", 1:nrows, sep="")
 		}
 	}
-	if(nType=="col" | nType=="rowcol") {
-		if(!hasNames(dat, nameType="col")) {
+	if(nType == "col" | nType == "rowcol") {
+		if(!hasNames(dat, nameType = "col")) {
 			ncols<-dim(dat)[2]
 			colnames(dat) <- paste("n", 1:ncols, sep="")
 		}
