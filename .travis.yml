@@ -14,5 +14,7 @@ notifications:
     on_success: change
     on_failure: change
 osx_image: xcode9.2
+packages:
+      - libmagick++-dev
 
 
