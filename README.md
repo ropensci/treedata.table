@@ -8,3 +8,10 @@ A wrapper for data.table that enables fast manipulation of  phylogenetic trees m
 The [`data.table` package](https://github.com/Rdatatable/data.table) enables high-performance extended functionality for 
 data tables in R. `treedata.table` is a wrapper for `data.table` for phylogenetic analyses that matches a phylogeny to the 
 data.table, and preserves matching during `data.table` operations.
+
+## Basic Installation
+
+If you just want to use the treedata.table package within R follow these instuctions run the following commands in R. 
+
+library(devtools)
+install_github("uyedaj/treedata.table")
