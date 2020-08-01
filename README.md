@@ -13,8 +13,10 @@ data.table, and preserves matching during `data.table` operations.
 
 If you just want to use the treedata.table package within R follow these instuctions run the following commands in R. 
 
+```r
 library(devtools)
 install_github("uyedaj/treedata.table")
+```
 
 ## Contribution guidelines 
 
