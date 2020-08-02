@@ -14,7 +14,12 @@ notifications:
     on_success: change
     on_failure: change
 osx_image: xcode9.2
-packages:
+addons:
+  apt:
+    update: true
+    sources:
+      - sourceline: 'ppa:opencpu/imagemagick'
+      - sourceline: 'ppa:ubuntugis/ppa'
+    packages:
       - libmagick++-dev
-
 
