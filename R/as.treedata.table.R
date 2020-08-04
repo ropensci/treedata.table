@@ -68,7 +68,8 @@ as.treedata.table<-function(tree, data, name_column="detect"){
       offset <- 1
     }
 
-    matches <- vapply(tmp.df, function(x) sum(x %in% if( class(tree) == 'phylo'){tree$tip.label }else{ tree[[1]]$tip.label }), integer(1) )
+    matches <- vapply(tmp.df, function(x) sum(x %in% if( class(tree) == 'phylo'){
+      tree$tip.label }else{ tree[[1]]$tip.label }), integer(1) )
 
     if(all(matches==0)) stop("No matching names found between data and tree")
     name_column <- which(matches==max(matches))-offset
