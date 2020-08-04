@@ -1,5 +1,5 @@
 Package: treedata.table
-Title: A Wrapper For data.table For Fast Manipulation Of Phylogenetic Trees Matched To Data
+Title: A Wrapper for Data.table for Fast Manipulation of Phylogenetic Trees Matched to Data
 Version: 0.1.0
 Authors@R: as.person(c(
     "Josef Uyeda <juyeda@vt.edu> [aut, cre]", 
