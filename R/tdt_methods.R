@@ -31,9 +31,9 @@ head.treedata.table <- function(x, n=6L, ...){
 #'
 #' @export
 print.treedata.table <- function(x, ...){
-  cat("$phy \n")
+  message("$phy \n")
   print(x$phy)
-  cat("\n$dat \n")
+  message("\n$dat \n")
   print(utils::head(x, ...))
 }
 
@@ -59,20 +59,20 @@ summary.treedata.table <- function(object, ...){
     stop("Please use a class 'treedata.table' object \n")
   }
 
-  cat("A treedata.table object", "\n")
-  cat(paste("The dataset contains ", ncol(object$dat), " traits"),
+  message("A treedata.table object", "\n")
+  message(paste("The dataset contains ", ncol(object$dat), " traits"),
       "\n")
   types <- stats::setNames(suppressWarnings(detectAllCharacters(as.matrix(object$dat))),
                     colnames(object$dat))
-  cat("Continuous traits: ", names(types)[which(types == "continuous")],
+  message("Continuous traits: ", names(types)[which(types == "continuous")],
       "\n")
-  cat("Discrete traits: ", names(types)[which(types == "discrete")],
+  message("Discrete traits: ", names(types)[which(types == "discrete")],
       "\n")
-  cat(paste("The following traits have missing values:", paste(names(types)[apply(object$dat,
+  message(paste("The following traits have missing values:", paste(names(types)[apply(object$dat,
                                                                                   2, function(y) any(is.na(y)))], collapse = ", "), "\n"))
-  cat(paste("These taxa were dropped from the tree:", paste(attributes(object)$tree_not_data,
+  message(paste("These taxa were dropped from the tree:", paste(attributes(object)$tree_not_data,
                                                             collapse = ", "), "\n"))
-  cat(paste("These taxa were dropped from the data:", paste(attributes(object)$data_not_tree,
+  message(paste("These taxa were dropped from the data:", paste(attributes(object)$data_not_tree,
                                                             collapse = ", "), "\n"))
   print(object, ...)
   if( !is.null(attr(object, "modified")) ){ message("\n    This is NOT the original treedata.table object") }

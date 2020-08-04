@@ -80,7 +80,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
 
 
   if(inherits(tree, c('phylo')) ){
-    cat("Phylo object detected \n")
+    message("Phylo object detected \n")
     if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
       data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
       tree_not_data <- setdiff(tree$tip.label, data[,1])
@@ -95,7 +95,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
     }
 
   }else{
-    cat("Multiphylo object detected \n")
+    message("Multiphylo object detected \n")
 
     if( geiger::name.check(tree[[1]], data.names = data[,1] )[1]    != "OK"   ){
       data_not_tree <- setdiff(as.character(data[,1]), tree[[1]]$tip.label)

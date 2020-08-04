@@ -44,7 +44,7 @@ tdt <- function(tdObject, ...){
   env$dat <- tdObject$dat
 
   if(inherits(tdObject$phy, c('phylo'))){
-    cat("Phylo object detected. Expect a single function output")
+    message("Phylo object detected. Expect a single function output")
     env$phy <- tdObject$phy
     out <- eval(call, env)
     if(is.null(out)){
@@ -53,7 +53,7 @@ tdt <- function(tdObject, ...){
       return(out)
     }
   }else{
-    cat("Multiphylo object detected. Expect a list of function outputs")
+    message("Multiphylo object detected. Expect a list of function outputs")
     lapply(seq_along(tdObject$phy), function(x){
       env$phy <- tdObject$phy[[x]]
       out <- eval(call, env)
