@@ -81,13 +81,13 @@ as.treedata.table<-function(tree, data, name_column="detect"){
 
   if(inherits(tree, c('phylo')) ){
     message("Phylo object detected \n")
-    if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
-      data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
-      tree_not_data <- setdiff(tree$tip.label, data[,1])
+    if(geiger::name.check(tree, data.names = data[,name_column] )[1] != "OK"){
+      data_not_tree <- setdiff(as.character(data[,name_column]), tree$tip.label)
+      tree_not_data <- setdiff(tree$tip.label, data[,name_column])
       message(length(c(tree_not_data)) ," tip(s) dropped from the original tree",
                      "\n", length(c(data_not_tree)) ," tip(s)  dropped from the original dataset")
       tree<- ape::drop.tip(tree, tree_not_data)
-      data<-data[! as.character(data[,1]) ==data_not_tree   ,]
+      data<-data[! as.character(data[,name_column]) ==data_not_tree   ,]
     }else{
       message("No tips were dropped from the original tree/dataset")
       data_not_tree <- "OK"
@@ -97,13 +97,13 @@ as.treedata.table<-function(tree, data, name_column="detect"){
   }else{
     message("Multiphylo object detected \n")
 
-    if( geiger::name.check(tree[[1]], data.names = data[,1] )[1]    != "OK"   ){
-      data_not_tree <- setdiff(as.character(data[,1]), tree[[1]]$tip.label)
-      tree_not_data <- setdiff(tree[[1]]$tip.label, data[,1])
+    if( geiger::name.check(tree[[1]], data.names = data[,name_column] )[1]    != "OK"   ){
+      data_not_tree <- setdiff(as.character(data[,name_column]), tree[[1]]$tip.label)
+      tree_not_data <- setdiff(tree[[1]]$tip.label, data[,name_column])
 
       tree<- lapply(tree,ape::drop.tip,tip=tree_not_data)
       class(tree)<-"multiPhylo"
-      data<-data[! as.character(data[,1]) ==data_not_tree   ,]
+      data<-data[! as.character(data[,name_column]) ==data_not_tree   ,]
       message(length(c(tree_not_data)) ," tip(s) dropped from ", length(tree) ," trees",
                      "\n", length(c(data_not_tree)) ," tip(s)  dropped from the original dataset")
 
