@@ -10,15 +10,21 @@
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
 #' head(td)
 #' @export
-head.treedata.table <- function(x, n=6L, ...){
+head.treedata.table <- function(x, n = 6L, ...) {
   uhead <- utils::head
   stopifnot(length(n) == 1L)
-  i <- seq_len(if (n < 0L) max(nrow(x$dat) + n, 0L) else min(n,
-                                                        nrow(x$dat)))
+  i <- seq_len(if (n < 0L) {
+    max(nrow(x$dat) + n, 0L)
+  } else {
+    min(
+      n,
+      nrow(x$dat)
+    )
+  })
   x$dat[i, , ]
-  #fun = utils::getFromNamespace("head.data.table", "data.table")
-  #fun(x$dat, n=n, ...)
-  #data.table:::head.data.table(x$dat, ...)
+  # fun = utils::getFromNamespace("head.data.table", "data.table")
+  # fun(x$dat, n=n, ...)
+  # data.table:::head.data.table(x$dat, ...)
 }
 
 #' Print method treedata.table objects
@@ -30,7 +36,7 @@ head.treedata.table <- function(x, n=6L, ...){
 #' data.table object.
 #'
 #' @export
-print.treedata.table <- function(x, ...){
+print.treedata.table <- function(x, ...) {
   message("$phy \n")
   print(x$phy)
   message("\n$dat \n")
@@ -53,31 +59,41 @@ print.treedata.table <- function(x, ...){
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
 #' summary(td)
 #' @export
-summary.treedata.table <- function(object, ...){
-  !inherits(object, c('treedata.table'))
-  if(!inherits(object, c('treedata.table')) ){
+summary.treedata.table <- function(object, ...) {
+  !inherits(object, c("treedata.table"))
+  if (!inherits(object, c("treedata.table"))) {
     stop("Please use a class 'treedata.table' object \n")
   }
 
   message("A treedata.table object", "\n")
-  message("The dataset contains ", ncol(object$dat), " traits",
-      "\n")
-  types <- stats::setNames(suppressWarnings(detectAllCharacters(as.matrix(object$dat))),
-                    colnames(object$dat))
-  message("Continuous traits: ", names(types)[which(types == "continuous")],
-      "\n")
-  message("Discrete traits: ", names(types)[which(types == "discrete")],
-      "\n")
-  message("The following traits have missing values:", paste(names(types)[apply(object$dat,
-                                                                                  2, function(y) any(is.na(y)))], collapse = ", "), "\n")
+  message(
+    "The dataset contains ", ncol(object$dat), " traits",
+    "\n"
+  )
+  types <- stats::setNames(
+    suppressWarnings(detectAllCharacters(as.matrix(object$dat))),
+    colnames(object$dat)
+  )
+  message(
+    "Continuous traits: ", names(types)[which(types == "continuous")],
+    "\n"
+  )
+  message(
+    "Discrete traits: ", names(types)[which(types == "discrete")],
+    "\n"
+  )
+  message("The following traits have missing values:", paste(names(types)[apply(
+    object$dat,
+    2, function(y) any(is.na(y))
+  )], collapse = ", "), "\n")
   message("These taxa were dropped from the tree:", paste(attributes(object)$tree_not_data,
-                                                            collapse = ", "), "\n")
+    collapse = ", "
+  ), "\n")
   message("These taxa were dropped from the data:", paste(attributes(object)$data_not_tree,
-                                                            collapse = ", "), "\n")
+    collapse = ", "
+  ), "\n")
   print(object, ...)
-  if( !is.null(attr(object, "modified")) ){ message("\n    This is NOT the original treedata.table object") }
+  if (!is.null(attr(object, "modified"))) {
+    message("\n    This is NOT the original treedata.table object")
+  }
 }
-
-
-
-

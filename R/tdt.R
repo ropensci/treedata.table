@@ -13,29 +13,27 @@
 #' data(anolis)
 #' \dontrun{
 #'
-#' #A treedata.table object with a phylo $phy
+#' # A treedata.table object with a phylo $phy
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
-#' tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
-#' tdt(td, phytools::phenogram(phy, extractVector(td, SVL), quiet=TRUE, spread.labels=FALSE))
+#' tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model = "BM", ncores = 1))
+#' tdt(td, phytools::phenogram(phy, extractVector(td, SVL), quiet = TRUE, spread.labels = FALSE))
 #'
 #'
-#' #A treedata.table object with a multiPhylo $phy
-#' treesFM<-list(anolis$phy,anolis$phy)
+#' # A treedata.table object with a multiPhylo $phy
+#' treesFM <- list(anolis$phy, anolis$phy)
 #' class(treesFM) <- "multiPhylo"
 #' td <- as.treedata.table(treesFM, anolis$dat)
-#' tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
-#' tdt(td, phytools::phenogram(phy, extractVector(td, SVL), quiet=TRUE, spread.labels=FALSE))
-#'
+#' tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model = "BM", ncores = 1))
+#' tdt(td, phytools::phenogram(phy, extractVector(td, SVL), quiet = TRUE, spread.labels = FALSE))
 #' }
 #' @export
 
-tdt <- function(tdObject, ...){
-
-  if(!inherits(tdObject, c('treedata.table')) ){
+tdt <- function(tdObject, ...) {
+  if (!inherits(tdObject, c("treedata.table"))) {
     stop("Please use a class 'treedata.table' object \n")
   }
 
-  if(!is.call(substitute(...))){
+  if (!is.call(substitute(...))) {
     call <- list(...)[[1]]
   } else {
     call <- substitute(...)
@@ -43,21 +41,21 @@ tdt <- function(tdObject, ...){
   env <- new.env(parent = parent.frame(), size = 1L)
   env$dat <- tdObject$dat
 
-  if(inherits(tdObject$phy, c('phylo'))){
+  if (inherits(tdObject$phy, c("phylo"))) {
     message("Phylo object detected. Expect a single function output")
     env$phy <- tdObject$phy
     out <- eval(call, env)
-    if(is.null(out)){
+    if (is.null(out)) {
       invisible()
     } else {
       return(out)
     }
-  }else{
+  } else {
     message("Multiphylo object detected. Expect a list of function outputs")
-    lapply(seq_along(tdObject$phy), function(x){
+    lapply(seq_along(tdObject$phy), function(x) {
       env$phy <- tdObject$phy[[x]]
       out <- eval(call, env)
-      if(is.null(out)){
+      if (is.null(out)) {
         invisible()
       } else {
         return(out)

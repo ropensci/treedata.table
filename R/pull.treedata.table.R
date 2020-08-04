@@ -12,20 +12,19 @@
 #' @export
 
 pull.treedata.table <- function(tdObject, type = "dat") {
-  if(!inherits(tdObject, c('treedata.table')) ){
+  if (!inherits(tdObject, c("treedata.table"))) {
     stop("Please use a class 'treedata.table' object \n")
   }
   full <-
     if (type == "dat") {
       matches <- vapply(tdObject$dat, function(x) sum(x %in% tdObject$phy$tip.label), integer(1))
-      if(any(matches==nrow(tdObject$dat))){
+      if (any(matches == nrow(tdObject$dat))) {
         tdObject$dat
-      } else{
+      } else {
         cbind(tip.label = tdObject$phy$tip.label, tdObject$dat)
       }
-    } else{
+    } else {
       tdObject$phy
     }
   return(full)
 }
-

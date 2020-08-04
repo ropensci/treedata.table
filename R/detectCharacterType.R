@@ -6,19 +6,19 @@
 #' @return Either "discrete" or "continuous"
 #' @examples
 #' data(anolis)
-#' detectCharacterType(anolis$dat[,1])
+#' detectCharacterType(anolis$dat[, 1])
 #' @export
-detectCharacterType<-function(dat, repeatsAsDiscrete=TRUE, cutoff=0.1) {
-	if(is.factor(dat)) {
-			charType<-"discrete"
-	} else if(nlevels(as.factor(dat))/length(dat) < cutoff) {
-			warning("Guessing that this is a discrete character based on repeated values")
-			charType<-"discrete"
-	} else {
-			charType<-"continuous"
-	}
-	return(charType)
-}		# needless to say, this is not yet robust
+detectCharacterType <- function(dat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
+  if (is.factor(dat)) {
+    charType <- "discrete"
+  } else if (nlevels(as.factor(dat)) / length(dat) < cutoff) {
+    warning("Guessing that this is a discrete character based on repeated values")
+    charType <- "discrete"
+  } else {
+    charType <- "continuous"
+  }
+  return(charType)
+} # needless to say, this is not yet robust
 
 #' Apply detectCharacterType over an entire matrix
 #'
@@ -30,14 +30,14 @@ detectCharacterType<-function(dat, repeatsAsDiscrete=TRUE, cutoff=0.1) {
 #' data(anolis)
 #' detectAllCharacters(anolis$dat)
 #' @export
-detectAllCharacters<-function(mat, repeatsAsDiscrete=TRUE, cutoff=0.1) {
+detectAllCharacters <- function(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
   mat <- as.matrix(mat)
-	nchar<-dim(mat)[2]
-	result<-numeric(nchar)
-	for(i in 1:nchar) {
-		result[i]<-detectCharacterType(mat[,i], repeatsAsDiscrete, cutoff)
-	}
-	return(result)
+  nchar <- dim(mat)[2]
+  result <- numeric(nchar)
+  for (i in 1:nchar) {
+    result[i] <- detectCharacterType(mat[, i], repeatsAsDiscrete, cutoff)
+  }
+  return(result)
 }
 
 #' Filter a matrix, returning either all continuous or all discrete characters
@@ -48,14 +48,14 @@ detectAllCharacters<-function(mat, repeatsAsDiscrete=TRUE, cutoff=0.1) {
 #' @return Matrix with only discrete or continuous characters
 #' @examples
 #' data(anolis)
-#' aType<-detectAllCharacters(anolis$dat)
+#' aType <- detectAllCharacters(anolis$dat)
 #' filterMatrix(anolis$dat, aType, "discrete")
 #' @export
 
-filterMatrix<-function(mat, charType, returnType="discrete") {
-  rType<-match.arg(returnType, c("discrete", "continuous"))
-  columnFilter<-charType==rType
-  result<-mat[,columnFilter]
+filterMatrix <- function(mat, charType, returnType = "discrete") {
+  rType <- match.arg(returnType, c("discrete", "continuous"))
+  columnFilter <- charType == rType
+  result <- mat[, columnFilter]
   return(result)
 }
 
@@ -67,24 +67,24 @@ filterMatrix<-function(mat, charType, returnType="discrete") {
 #'     \item{"row"}{Rows}
 #'   	 \item{"col"}{Columns}
 #' 		 \item{"rowcol"}{Both rows and columns}
-#'	}
+#' 	}
 #' @examples
 #' data(anolis)
 #' hasNames(anolis$dat, "row")
 #' @export
-hasNames <- function(dat, nameType="row") {
-	nType <- match.arg(nameType, c("row", "col", "rowcol"))
-	if(nType == "row") {
-		res<-!is.null(rownames(dat))
-	}
-	if(nType == "col") {
-		res<-!is.null(colnames(dat))
-	}
-	if(nType == "rowcol") {
-		res<-!is.null(rownames(dat)) & !is.null(colnames(dat))
-	}
-	names(res) <- nameType
-	res
+hasNames <- function(dat, nameType = "row") {
+  nType <- match.arg(nameType, c("row", "col", "rowcol"))
+  if (nType == "row") {
+    res <- !is.null(rownames(dat))
+  }
+  if (nType == "col") {
+    res <- !is.null(colnames(dat))
+  }
+  if (nType == "rowcol") {
+    res <- !is.null(rownames(dat)) & !is.null(colnames(dat))
+  }
+  names(res) <- nameType
+  res
 }
 
 #' Force names for rows, columns, or both
@@ -95,25 +95,25 @@ hasNames <- function(dat, nameType="row") {
 #'     \item{"row"}{Rows}
 #' 		 \item{"col"}{Columns}
 #' 		 \item{"rowcol"}{Both rows and columns}
-#'	}
+#' 	}
 #' @examples
 #' data(anolis)
 #' forceNames(anolis$dat, "row")
 #' @export
-forceNames <- function(dat, nameType="row") {
-	nType <- match.arg(nameType, c("row", "col", "rowcol"))
-	if(nType == "row" | nType == "rowcol") {
-		if(!hasNames(dat, nameType = "row")) {
-			nrows<-dim(dat)[1]
-			rownames(dat) <- paste("n", 1:nrows, sep="")
-		}
-	}
-	if(nType == "col" | nType == "rowcol") {
-		if(!hasNames(dat, nameType = "col")) {
-			ncols<-dim(dat)[2]
-			colnames(dat) <- paste("n", 1:ncols, sep="")
-		}
-	}
+forceNames <- function(dat, nameType = "row") {
+  nType <- match.arg(nameType, c("row", "col", "rowcol"))
+  if (nType == "row" | nType == "rowcol") {
+    if (!hasNames(dat, nameType = "row")) {
+      nrows <- dim(dat)[1]
+      rownames(dat) <- paste("n", 1:nrows, sep = "")
+    }
+  }
+  if (nType == "col" | nType == "rowcol") {
+    if (!hasNames(dat, nameType = "col")) {
+      ncols <- dim(dat)[2]
+      colnames(dat) <- paste("n", 1:ncols, sep = "")
+    }
+  }
 
-	dat
+  dat
 }

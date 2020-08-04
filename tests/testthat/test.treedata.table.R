@@ -5,13 +5,15 @@ library(ape)
 data(anolis)
 td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
 tdt_output <-
-  tdt(td,
-      geiger::fitContinuous(
-        phy,
-        extractVector(td, SVL),
-        model = "BM",
-        ncores = 1
-      ))
+  tdt(
+    td,
+    geiger::fitContinuous(
+      phy,
+      extractVector(td, SVL),
+      model = "BM",
+      ncores = 1
+    )
+  )
 
 test_that("The resulting td object is of class treedata.table", {
   expect_is(td, "treedata.table")
@@ -22,9 +24,7 @@ test_that("Trees are the same", {
 })
 
 test_that("Species in tree and trait dataframe are the same", {
-
   expect_equal(td$phy$tip.label, td$dat$tip.label)
-
 })
 
 
@@ -51,21 +51,22 @@ test_that(
   "The  number of rows is the same after filtering the original and tdt object
           under the same criteria",
   {
-    expect_equal(nrow(anolis$dat[anolis$dat$island == "Cuba" &
-                                   anolis$dat$ecomorph == "TG", ]),
-                 nrow(td[island == "Cuba" & ecomorph == "TG", ]$dat))
-
+    expect_equal(
+      nrow(anolis$dat[anolis$dat$island == "Cuba" &
+        anolis$dat$ecomorph == "TG", ]),
+      nrow(td[island == "Cuba" & ecomorph == "TG", ]$dat)
+    )
   }
 )
 
-test_that("[[ extracts a named character vector",{
+test_that("[[ extracts a named character vector", {
   expect_is(names(td[["SVL"]]), "character")
   expect_is(td[["SVL"]], "numeric")
 })
 
 
 
-test_that("phy and dat objects can be extracted correctly using pull.treedata.table",{
+test_that("phy and dat objects can be extracted correctly using pull.treedata.table", {
   expect_is(pull.treedata.table(td, type = "phy"), "phylo")
   expect_is(pull.treedata.table(td, type = "dat"), "data.table")
 })
@@ -77,6 +78,5 @@ test_that("Column containing tip labs can be correctly detected", {
   dat2 <- dat[, sample(ncol(dat), ncol(dat))]
   td1 <- as.treedata.table(tre, dat)
   td2 <- as.treedata.table(tre, dat2)
-  expect_equal(td1$phy,td2$phy)
+  expect_equal(td1$phy, td2$phy)
 })
-
