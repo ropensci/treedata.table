@@ -55,7 +55,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
     colnames(data) <- "trait"
   }
   if(is.null(colnames(data))){
-    colnames(data) <- paste("trait", 1:seq_len(data), sep="")
+    colnames(data) <- paste("trait", seq_along(data), sep="")
   }
   coln <- colnames(data)
   if(name_column=="detect"){
