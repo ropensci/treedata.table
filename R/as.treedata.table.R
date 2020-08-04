@@ -36,12 +36,12 @@
 #' @export
 
 as.treedata.table<-function(tree, data, name_column="detect"){
-  if(class(tree) %in%  c("phylo", 'multiPhylo') == FALSE ){
+  if(! class(tree) %in%  c("phylo", 'multiPhylo') ){
     stop("Please use a class 'phylo' or 'multiPhylo' tree \n")
   }
   if( class(tree) == 'multiPhylo' ){
     equal_T<-length(unique(lapply(seq_along(tree), function(x) sort(tree[[x]]$tip.label) ))) == 1
-    if( equal_T == FALSE ) {stop("Please make sure that tip labels are equivalent across trees in the multiPhylo object \n")}
+    if( !equal_T ) {stop("Please make sure that tip labels are equivalent across trees in the multiPhylo object \n")}
   }
 
 

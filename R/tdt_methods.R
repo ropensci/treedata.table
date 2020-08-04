@@ -74,7 +74,7 @@ summary.treedata.table <- function(object, ...){
   cat(paste("These taxa were dropped from the data:", paste(attributes(object)$data_not_tree,
                                                             collapse = ", "), "\n"))
   print(object, ...)
-  if( is.null(attr(object, "modified")) == FALSE ){ message("\n    This is NOT the original treedata.table object") } ##Include warning for treedata.objects that were modified
+  if( !is.null(attr(object, "modified")) ){ message("\n    This is NOT the original treedata.table object") }
 }
 
 
