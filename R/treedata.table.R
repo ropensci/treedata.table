@@ -63,7 +63,7 @@
   }
   #.phy <- ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"]))) #CRP: using "rowid" instead of rowid & unlist
 
-  .phy<- if(class(x$phy)=='phylo'){
+  .phy<- if(inherits(x$phy, c('phylo'))){
     ape::drop.tip(x$phy, which(!1:seq_along(x$dat) %in% unlist(.dat[, "rowid"])))
   }else{
     tr<-lapply(x$phy,ape::drop.tip,tip=which(!1:seq_along(x$dat) %in% unlist(.dat[, "rowid"])))
@@ -106,7 +106,7 @@
   if (length(res) != nrow(y)) {
     stop("Use '[' for selecting multiple columns")
   }
-  return(stats::setNames(res, if(class(x$phy)=='phylo'){ x$phy$tip.label} else{x$phy[[1]]$tip.label}))
+  return(stats::setNames(res, if(inherits(x$phy, c('phylo'))){ x$phy$tip.label} else{x$phy[[1]]$tip.label}))
 }
 
 

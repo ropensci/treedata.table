@@ -54,7 +54,8 @@ print.treedata.table <- function(x, ...){
 #' summary(td)
 #' @export
 summary.treedata.table <- function(object, ...){
-  if(class(object) != "treedata.table" ){
+  !inherits(object, c('treedata.table'))
+  if(!inherits(object, c('treedata.table')) ){
     stop("Please use a class 'treedata.table' object \n")
   }
 

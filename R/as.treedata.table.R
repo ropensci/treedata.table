@@ -36,16 +36,15 @@
 #' @export
 
 as.treedata.table<-function(tree, data, name_column="detect"){
-  if(! class(tree) %in%  c("phylo", 'multiPhylo') ){
+  if(! inherits(tree, c("multiPhylo", 'phylo')) ){
     stop("Please use a class 'phylo' or 'multiPhylo' tree \n")
   }
-  if( class(tree) == 'multiPhylo' ){
+  if( inherits(tree, "multiPhylo") ){
     equal_T<-length(unique(lapply(seq_along(tree), function(x) sort(tree[[x]]$tip.label) ))) == 1
     if( !equal_T ) {stop("Please make sure that tip labels are equivalent across trees in the multiPhylo object \n")}
   }
 
-
-  if(class(data) != "data.frame" ){
+  if( ! inherits(data, "data.frame") ){
     stop("Your data MUST be of class data.frame")
     }
   #if(dim(data)[2] < 2){
@@ -68,7 +67,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
       offset <- 1
     }
 
-    matches <- vapply(tmp.df, function(x) sum(x %in% if( class(tree) == 'phylo'){
+    matches <- vapply(tmp.df, function(x) sum(x %in% if( inherits(tree, c('phylo'))){
       tree$tip.label }else{ tree[[1]]$tip.label }), integer(1) )
 
     if(all(matches==0)) stop("No matching names found between data and tree")
@@ -80,7 +79,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
   }
 
 
-  if(class(tree)== 'phylo' ){
+  if(inherits(tree, c('phylo')) ){
     cat("Phylo object detected \n")
     if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
       data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
@@ -119,7 +118,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
   i <- vapply(data, is.factor, logical(1))
   data[i] <- lapply(data[i], as.character)
 
-  data<- if( class(tree) == 'phylo'){ data[match(tree$tip.label, data[,name_column]),] }else{
+  data<- if( inherits(tree, c('phylo'))){ data[match(tree$tip.label, data[,name_column]),] }else{
     data[match(tree[[1]]$tip.label, data[,name_column]),]
   }
 
@@ -127,7 +126,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
   colnames(data)[name_column] <- "tip.label"
   dr<-which(tree$tip.label %in% c(tree_not_data,data_not_tree))
 
-  tree<- if( class(tree) == 'phylo'){ ape::drop.tip(tree, dr) }else{
+  tree<- if( inherits(tree, c('phylo'))){ ape::drop.tip(tree, dr) }else{
     nt<-lapply(tree,ape::drop.tip,tip=dr)
     class(nt)<-"multiPhylo"
     nt

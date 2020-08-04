@@ -37,7 +37,7 @@ droptreedata.table <- function(tdObject, taxa) {
     .dat <- tdObject$dat
     .phy <- tdObject$phy
 
-    if(class(.phy ) == 'phylo' ){
+    if(inherits(.phy, c('phylo')) ){
 
       .dat <-.dat[!.phy$tip.label %in% taxa]
       .phy <- ape::drop.tip(.phy, which(.phy$tip.label %in% taxa))

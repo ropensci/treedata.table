@@ -14,7 +14,8 @@
 #' @export
 
 extractVector <- function(tdObject, ...){
-  if(class(tdObject) != "treedata.table" ){
+
+  if(!inherits(tdObject, c('treedata.table'))){
     stop("Please use a class 'treedata.table' object \n")
   }
 
@@ -23,7 +24,7 @@ extractVector <- function(tdObject, ...){
   arg_sub <- utils::type.convert(args)
   if(is.numeric(arg_sub) | is.integer(arg_sub)) args <- arg_sub
   vecs <- lapply(args,function(x) dat[[x]])
-  vecs <- if(class(tdObject$phy) =='phylo' ){
+  vecs <- if(inherits(tdObject$phy, c('phylo')) ){
     lapply(vecs, function(x) stats::setNames(x, tdObject$phy$tip.label)) }else{
       lapply(vecs, function(x) stats::setNames(x, tdObject$phy[[1]]$tip.label))
     }

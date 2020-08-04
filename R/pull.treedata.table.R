@@ -12,7 +12,7 @@
 #' @export
 
 pull.treedata.table <- function(tdObject, type = "dat") {
-  if(class(tdObject) != "treedata.table" ){
+  if(!inherits(tdObject, c('treedata.table')) ){
     stop("Please use a class 'treedata.table' object \n")
   }
   full <-
