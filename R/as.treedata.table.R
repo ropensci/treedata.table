@@ -72,6 +72,7 @@ as.treedata.table<-function(tree, data, name_column="detect"){
 
     if(all(matches==0)) stop("No matching names found between data and tree")
     name_column <- which(matches==max(matches))-offset
+    message('Tip labels detected in column: ', colnames(data)[name_column]  )
   } else{
     if(is.character(name_column)){
       name_column <- which(name_column==coln)[1]
