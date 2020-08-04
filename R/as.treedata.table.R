@@ -115,7 +115,8 @@ as.treedata.table<-function(tree, data, name_column="detect"){
 
   }
 
-  i <- vapply(data, is.factor, logical(1));data[i] <- lapply(data[i], as.character) ##Tranform factors into character vectors
+  i <- vapply(data, is.factor, logical(1))
+  data[i] <- lapply(data[i], as.character)
 
   data<- if( class(tree) == 'phylo'){ data[match(tree$tip.label, data[,name_column]),] }else{
     data[match(tree[[1]]$tip.label, data[,name_column]),]
