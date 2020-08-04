@@ -72,11 +72,3 @@ test_that("phy and dat objects can be extracted correctly using pull.treedata.ta
 })
 
 
-test_that("Column containing tip labs can be correctly detected", {
-  tre <- anolis$phy
-  dat1 <- anolis$dat
-  dat2 <- dat[, sample(ncol(dat), ncol(dat))]
-  td1 <- as.treedata.table(tre, dat)
-  td2 <- as.treedata.table(tre, dat2)
-  expect_equal(td1$phy, td2$phy)
-})
