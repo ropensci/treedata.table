@@ -84,12 +84,12 @@ as.treedata.table<-function(tree, data, name_column="detect"){
     if(geiger::name.check(tree, data.names = data[,1] )[1] != "OK"){
       data_not_tree <- setdiff(as.character(data[,1]), tree$tip.label)
       tree_not_data <- setdiff(tree$tip.label, data[,1])
-      message(paste0(length(c(tree_not_data)) ," tip(s) dropped from the original tree",
-                     "\n", length(c(data_not_tree)) ," tip(s)  dropped from the original dataset"))
+      message(length(c(tree_not_data)) ," tip(s) dropped from the original tree",
+                     "\n", length(c(data_not_tree)) ," tip(s)  dropped from the original dataset")
       tree<- ape::drop.tip(tree, tree_not_data)
       data<-data[! as.character(data[,1]) ==data_not_tree   ,]
     }else{
-      message(paste0("No tips were dropped from the original tree/dataset"))
+      message("No tips were dropped from the original tree/dataset")
       data_not_tree <- "OK"
       tree_not_data <- "OK"
     }
@@ -104,11 +104,11 @@ as.treedata.table<-function(tree, data, name_column="detect"){
       tree<- lapply(tree,ape::drop.tip,tip=tree_not_data)
       class(tree)<-"multiPhylo"
       data<-data[! as.character(data[,1]) ==data_not_tree   ,]
-      message(paste0(length(c(tree_not_data)) ," tip(s) dropped from ", length(tree) ," trees",
-                     "\n", length(c(data_not_tree)) ," tip(s)  dropped from the original dataset"))
+      message(length(c(tree_not_data)) ," tip(s) dropped from ", length(tree) ," trees",
+                     "\n", length(c(data_not_tree)) ," tip(s)  dropped from the original dataset")
 
     }else{
-      message(paste0("No tips were dropped from the original trees/dataset"))
+      message("No tips were dropped from the original trees/dataset")
       data_not_tree <- "OK"
       tree_not_data <- "OK"
     }
