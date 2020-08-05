@@ -40,11 +40,11 @@ fun = utils::getFromNamespace("tail.data.table", "data.table")
 #' @importFrom utils head
 #'
 #' @export
-print.treedata.table <- function(x, ...) {
+print.treedata.table <- function(x,...) {
   message("$phy \n")
   print(x$phy)
   message("\n$dat \n")
-  utils::head(x$dat)
+  print(utils::head(x$dat,...))
 }
 
 
