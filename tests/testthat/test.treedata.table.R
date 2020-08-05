@@ -79,9 +79,3 @@ test_that("Column containing tip labs can be correctly detected", {
   td2 <- as.treedata.table(tre, dat2)
   expect_equal(td1$phy, td2$phy)
 })
-
-
-test_that("CFind the correct number of discrete/continuous characters in the anolis dataset", {
-  expect_equal(detectCharacterType(anolis$dat[,1]), detectAllCharacters(anolis$dat)[1])
-})
-
