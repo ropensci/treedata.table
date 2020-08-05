@@ -101,14 +101,12 @@ forceNames <- function(dat, nameType = "row") {
   nType <- match.arg(nameType, c("row", "col", "rowcol"))
   if (nType == "row" | nType == "rowcol") {
     if (!hasNames(dat, nameType = "row")) {
-      nrows <- dim(dat)[1]
-      rownames(dat) <- paste("n", 1:nrows, sep = "")
+      rownames(dat) <- paste("n", seq_along(dat[,1]), sep = "")
     }
   }
   if (nType == "col" | nType == "rowcol") {
     if (!hasNames(dat, nameType = "col")) {
-      ncols <- dim(dat)[2]
-      colnames(dat) <- paste("n", 1:ncols, sep = "")
+      colnames(dat) <- paste("n", seq_along(dat[1,]), sep = "")
     }
   }
 
