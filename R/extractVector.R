@@ -10,6 +10,7 @@
 #' data(anolis)
 #' td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
 #' extractVector(td, "SVL") # extracts the named vector for SVL from the td object
+#' extractVector(td, "SVL","ecomorph") # extracts the named vector for SVL and ecomorph from the td object
 #' @export
 
 extractVector <- function(tdObject, ...) {

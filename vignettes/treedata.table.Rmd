@@ -63,9 +63,14 @@ td[["SVL"]]
 The same functionality can also be accomplished through the `extractVector` function. Both the double bracket syntax and the `extractVector` function will return a named vector.
 
 ```{r}
-extractVector(td, SVL)
+extractVector(td, 'SVL')
 ```
 
+Multiple traits can also be extracted simultaneously from the same object.
+
+```{r}
+extractVector(td, 'SVL','ecomorph')
+```
 
 The real power in treedata.table is in co-indexing the tree and table. For example, in the below command, we use `data.table` syntax to take the first representative from each ecomorph. We retain all data columns. If you examine the tree object, you will see that it has had all the tips not in the resultant `data.table` dropped.
 
@@ -78,6 +83,13 @@ We could also do the same operation with multiple columns:
 
 ```{r}
 td[, head(.SD, 1), by = .(ecomorph, island)]
+
+```
+
+Tail is also implemented
+
+```{r}
+ td[, tail(.SD, 1), by = "ecomorph"]
 
 ```
 
