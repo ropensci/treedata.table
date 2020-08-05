@@ -14,7 +14,7 @@ hasNames(dat, nameType = "row")
     \item{"row"}{Rows}
        \item{"col"}{Columns}
          \item{"rowcol"}{Both rows and columns}
-}}
+    }}
 }
 \description{
 Row and column name check

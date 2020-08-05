@@ -21,6 +21,6 @@ Filter a matrix, returning either all continuous or all discrete characters
 }
 \examples{
 data(anolis)
-aType<-detectAllCharacters(anolis$dat)
+aType <- detectAllCharacters(anolis$dat)
 filterMatrix(anolis$dat, aType, "discrete")
 }

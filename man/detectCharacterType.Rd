@@ -21,5 +21,5 @@ Function to detect whether a character is continuous or discrete
 }
 \examples{
 data(anolis)
-detectCharacterType(anolis$dat[,1])
+detectCharacterType(anolis$dat[, 1])
 }

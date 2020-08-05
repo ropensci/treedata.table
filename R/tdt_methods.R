@@ -1,9 +1,7 @@
-#' Return the first or last part of an treedata.table object
+#' Return the first part of an treedata.table object
 #'
 #' @param x a treedata.table object
-#' @param n a single integer. If positive or zero, number of rows
-#' for the resulting object. If negative, all but the n last/first
-#' rows of x.
+#' @param n a single positive integer.
 #' @param ... Additional arguments passed to head.data.table
 #' @examples
 #' data(anolis)
@@ -13,14 +11,32 @@
 head.treedata.table <- function(x, n = 6L, ...) {
   uhead <- utils::head
   stopifnot(length(n) == 1L)
-  i <- seq_len(if (n < 0L) {
-    max(nrow(x$dat) + n, 0L)
-  } else {
+  i <- seq_len(
     min(
       n,
       nrow(x$dat)
     )
-  })
+  )
+  x$dat[i, , ]
+  # fun = utils::getFromNamespace("head.data.table", "data.table")
+  # fun(x$dat, n=n, ...)
+  # data.table:::head.data.table(x$dat, ...)
+}
+
+#' Return the last part of an treedata.table object
+#'
+#' @param x a treedata.table object
+#' @param n a single positive integer.
+#' @param ... Additional arguments passed to head.data.table
+#' @examples
+#' data(anolis)
+#' td <- as.treedata.table(anolis$phy, anolis$dat)
+#' tail(td)
+#' @export
+tail.treedata.table <- function(x, n = 6L, ...) {
+  utail <- utils::tail
+  stopifnot(length(n) == 1L)
+  i <- seq(nrow(x$dat)-(n-1),nrow(x$dat))
   x$dat[i, , ]
   # fun = utils::getFromNamespace("head.data.table", "data.table")
   # fun(x$dat, n=n, ...)
