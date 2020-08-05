@@ -18,10 +18,8 @@ extractVector <- function(tdObject, ...) {
   }
 
   dat <- tdObject$dat
-  args <- as.character(substitute(list(...)))[-1L]
-  arg_sub <- utils::type.convert(args)
-  if (is.numeric(arg_sub) | is.integer(arg_sub)) args <- arg_sub
-  vecs <- lapply(args, function(x) dat[[x]])
+  dots <- lazyeval::lazy_dots(...)
+  vecs <- lapply(list(...), function(x) dat[[x]])
   vecs <- if (inherits(tdObject$phy, c("phylo"))) {
     lapply(vecs, function(x) stats::setNames(x, tdObject$phy$tip.label))
   } else {
@@ -30,7 +28,7 @@ extractVector <- function(tdObject, ...) {
   if (length(vecs) == 1) {
     vecs <- vecs[[1]]
   } else {
-    names(vecs) <- args
+    names(vecs) <- lapply(dots, function(x) x[[1]])
   }
   return(vecs)
 }
