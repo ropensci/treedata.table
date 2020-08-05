@@ -31,7 +31,6 @@ detectCharacterType <- function(dat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
 #' detectAllCharacters(anolis$dat)
 #' @export
 detectAllCharacters <- function(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
-  mat <- as.matrix(mat)
   nchar <- dim(mat)[2]
   result <- numeric(nchar)
   for (i in 1:nchar) {
