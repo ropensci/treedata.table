@@ -21,20 +21,17 @@
 
 
 droptreedata.table <- function(tdObject, taxa) {
-  if (class(tdObject) != "treedata.table") {
+
+  if (!inherits(tdObject, c("treedata.table"))) {
     stop("Please use a class 'treedata.table' object \n")
   }
 
-  if (class(taxa) != "character") {
+  if (!inherits(taxa, c("character"))) {
     stop("Please use a class 'character' object for taxa \n")
   }
 
-
-  message("Please confirm that you would like to make changes to the ORIGINAL data?")
-  n <- readline(prompt = "Type: (1) YES, (2) NO: ")
-  if (n == 1 | n == "yes" | n == "YES") {
-    .dat <- tdObject$dat
-    .phy <- tdObject$phy
+    .phy<-tdObject$phy
+    .dat<-tdObject$dat
 
     if (inherits(.phy, c("phylo"))) {
       .dat <- .dat[!.phy$tip.label %in% taxa]
@@ -49,10 +46,8 @@ droptreedata.table <- function(tdObject, taxa) {
     tdObject$dat <- .dat
     tdObject$phy <- .phy
     attr(tdObject, "modified") <- 1
+    message(length(taxa), " taxa were dropped from the ORIGINAL treedata.table object")
+
     return(tdObject)
-    message("Changes were included to the ORIGINAL data")
-  } else {
-    message("NO changes made to the ORIGINAL data")
-    return(tdObject)
-  }
+
 }
