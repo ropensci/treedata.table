@@ -1,14 +1,13 @@
 #' Function to detect whether a character is continuous or discrete
 #'
 #' @param dat A vector of data
-#' @param repeatsAsDiscrete If TRUE, consider numeric variables that repeat values exactly as discrete; see cutoff
 #' @param cutoff Cutoff value for deciding if numeric data might actually be discrete: if nlev is the number of levels and n the length of dat, then nlev / n should exceed cutoff, or the data will be classified as discrete
 #' @return Either "discrete" or "continuous"
 #' @examples
 #' data(anolis)
 #' detectCharacterType(anolis$dat[, 1])
 #' @export
-detectCharacterType <- function(dat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
+detectCharacterType <- function(dat, cutoff = 0.1) {
   if (is.factor(dat)) {
     charType <- "discrete"
   } else if (nlevels(as.factor(dat)) / length(dat) < cutoff) {
@@ -23,14 +22,13 @@ detectCharacterType <- function(dat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
 #' Apply detectCharacterType over an entire matrix
 #'
 #' @param mat A matrix of data
-#' @param repeatsAsDiscrete If TRUE, consider numeric variables that repeat values exactly as discrete; see cutoff
 #' @param cutoff Cutoff value for deciding if numeric data might actually be discrete: if nlev is the number of levels and n the length of dat, then nlev / n should exceed cutoff, or the data will be classified as discrete
 #' @return Vector of either "discrete" or "continuous" for each variable in matrix
 #' @examples
 #' data(anolis)
 #' detectAllCharacters(anolis$dat)
 #' @export
-detectAllCharacters <- function(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
+detectAllCharacters <- function(mat, cutoff = 0.1) {
   mat <- as.matrix(mat)
   nchar <- dim(mat)[2]
   result <- numeric(nchar)
