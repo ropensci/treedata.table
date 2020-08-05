@@ -33,7 +33,7 @@ detectCharacterType <- function(dat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
 detectAllCharacters <- function(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
   nchar <- dim(mat)[2]
   result <- numeric(nchar)
-  for (i in 1:nchar) {
+  for (i in seq_len(nchar)) {
     result[i] <- detectCharacterType(mat[, i], repeatsAsDiscrete, cutoff)
   }
   return(result)
