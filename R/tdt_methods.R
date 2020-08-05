@@ -10,17 +10,17 @@
 #' @export head.treedata.table
 
 head.treedata.table <- function(x, n = 6L, ...) {
-  # uhead <- utils::head
-  # stopifnot(length(n) == 1L)
-  # i <- seq_len(
-  #   min(
-  #     n,
-  #     nrow(x$dat)
-  #   )
-  # )
-  # x$dat[i, , ]
-   fun = utils::getFromNamespace("head.data.table", "data.table")
-   fun(x$dat, n=n, ...)
+   uhead <- utils::head
+   stopifnot(length(n) == 1L)
+   i <- seq_len(
+     min(
+       n,
+       nrow(x$dat)
+     )
+   )
+   x$dat[i, , ]
+  # fun = utils::getFromNamespace("head.data.table", "data.table")
+  # fun(x$dat, n=n, ...)
 }
 
 #' Return the last part of an treedata.table object
@@ -34,12 +34,12 @@ head.treedata.table <- function(x, n = 6L, ...) {
 #' tail(td)
 #' @export tail.treedata.table
 tail.treedata.table <- function(x, n = 6L, ...) {
-  # utail <- utils::tail
-  # stopifnot(length(n) == 1L)
-  # i <- seq(nrow(x$dat)-(n-1),nrow(x$dat))
-  # x$dat[i, , ]
-   fun = utils::getFromNamespace("tail.data.table", "data.table")
-   fun(x$dat, n=n, ...)
+   utail <- utils::tail
+   stopifnot(length(n) == 1L)
+   i <- seq(nrow(x$dat)-(n-1),nrow(x$dat))
+   x$dat[i, , ]
+   #fun = utils::getFromNamespace("tail.data.table", "data.table")
+  # fun(x$dat, n=n, ...)
 }
 
 #' Print method treedata.table objects
