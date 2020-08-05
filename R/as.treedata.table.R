@@ -12,6 +12,8 @@
 #' @param data A dataset in format \code{data.frame}
 #' @param name_column A character indicating the name of taxa in \code{data.frame}
 #' @return treedata.table An object of type \code{treedata.table} containing the tree and data.table
+#' @importFrom ape drop.tip
+#' @importFrom geiger name.check
 #' @examples
 #'
 #' data(anolis)

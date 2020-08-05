@@ -45,6 +45,7 @@
 #' td[, SVL]
 #' td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
 #' td[, utils::head(.SD, 1), by = .(ecomorph, island)]
+#' @importFrom lazyeval lazy_dots
 #' @export
 
 `[.treedata.table` <- function(x, ...) {

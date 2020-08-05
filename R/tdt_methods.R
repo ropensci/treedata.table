@@ -7,21 +7,12 @@
 #' data(anolis)
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
 #' head(td)
-#' @export head.treedata.table
-
-head.treedata.table <- function(x, n = 6L, ...) {
-   uhead <- utils::head
-   stopifnot(length(n) == 1L)
-   i <- seq_len(
-     min(
-       n,
-       nrow(x$dat)
-     )
-   )
-   x$dat[i, , ]
-  # fun = utils::getFromNamespace("head.data.table", "data.table")
-  # fun(x$dat, n=n, ...)
+#' @importFrom utils head
+#' @export
+head.treedata.table <- function(x, n = 6L, ...){
+  utils::head(x$dat, n ,...)
 }
+
 
 #' Return the last part of an treedata.table object
 #'
@@ -32,14 +23,12 @@ head.treedata.table <- function(x, n = 6L, ...) {
 #' data(anolis)
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
 #' tail(td)
-#' @export tail.treedata.table
+#' @importFrom utils tail
+#' @export
+
 tail.treedata.table <- function(x, n = 6L, ...) {
-   utail <- utils::tail
-   stopifnot(length(n) == 1L)
-   i <- seq(nrow(x$dat)-(n-1),nrow(x$dat))
-   x$dat[i, , ]
-   #fun = utils::getFromNamespace("tail.data.table", "data.table")
-  # fun(x$dat, n=n, ...)
+fun = utils::getFromNamespace("tail.data.table", "data.table")
+  utils::tail(x$dat,n,...)
 }
 
 #' Print method treedata.table objects
@@ -48,13 +37,14 @@ tail.treedata.table <- function(x, n = 6L, ...) {
 #' @param ... additional arguments passed to "head.treedata.table"
 #' @return Function uses prints the tree and the first lines of the
 #' data.table object.
+#' @importFrom utils head
 #'
 #' @export
 print.treedata.table <- function(x, ...) {
   message("$phy \n")
   print(x$phy)
   message("\n$dat \n")
-  print(utils::head(x, ...))
+  utils::head(x$dat)
 }
 
 
