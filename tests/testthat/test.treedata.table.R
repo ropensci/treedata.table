@@ -9,7 +9,7 @@ tdt_output <-
     td,
     geiger::fitContinuous(
       phy,
-      extractVector(td, SVL),
+      extractVector(td, 'SVL'),
       model = "BM",
       ncores = 1
     )
