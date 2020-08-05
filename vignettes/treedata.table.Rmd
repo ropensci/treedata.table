@@ -50,7 +50,7 @@ td$phy$tip.label == td$dat$tip.label
 Your data table can be indexed in the same way any other `data.table` object would be. For example, if we wanted to look at our snout-vent length column, we can do that like so.
 
 ```{r pressure, echo=TRUE}
-td$dat[,SVL]
+td$dat[,'SVL']
 
 ```
 
@@ -66,7 +66,7 @@ The same functionality can also be accomplished through the `extractVector` func
 extractVector(td, 'SVL')
 ```
 
-Multiple traits can also be extracted simultaneously from the same object.
+Multiple traits can also be extracted using `extractVector`.
 
 ```{r}
 extractVector(td, 'SVL','ecomorph')
@@ -104,7 +104,7 @@ We can extend this tidy approach to actually estimating values for our data usin
 
 ```{r}
 
-tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
+tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model="BM", ncores=1))
 
 ```
 
@@ -188,7 +188,7 @@ td[, head(.SD, 1), by = "ecomorph"]
 Functions can also be run on any `treedata.table` object with `multiphylo` data. For instance, the following line will fit a phenogram for `SVL` on each of the trees we provided in the `multiPhylo` object.
 
 ```{r}
-tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
+tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model="BM", ncores=1))
 ```
 
 The output is an object of class `list` with each element corresponding to the output function of each tree in the provided `multiPhylo` object. 
