@@ -7,20 +7,20 @@
 #' data(anolis)
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
 #' head(td)
-#' @export
+#' @export head.treedata.table
+
 head.treedata.table <- function(x, n = 6L, ...) {
-  uhead <- utils::head
-  stopifnot(length(n) == 1L)
-  i <- seq_len(
-    min(
-      n,
-      nrow(x$dat)
-    )
-  )
-  x$dat[i, , ]
-  # fun = utils::getFromNamespace("head.data.table", "data.table")
-  # fun(x$dat, n=n, ...)
-  # data.table:::head.data.table(x$dat, ...)
+  # uhead <- utils::head
+  # stopifnot(length(n) == 1L)
+  # i <- seq_len(
+  #   min(
+  #     n,
+  #     nrow(x$dat)
+  #   )
+  # )
+  # x$dat[i, , ]
+   fun = utils::getFromNamespace("head.data.table", "data.table")
+   fun(x$dat, n=n, ...)
 }
 
 #' Return the last part of an treedata.table object
@@ -32,22 +32,20 @@ head.treedata.table <- function(x, n = 6L, ...) {
 #' data(anolis)
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
 #' tail(td)
-#' @export
+#' @export tail.treedata.table
 tail.treedata.table <- function(x, n = 6L, ...) {
-  utail <- utils::tail
-  stopifnot(length(n) == 1L)
-  i <- seq(nrow(x$dat)-(n-1),nrow(x$dat))
-  x$dat[i, , ]
-  # fun = utils::getFromNamespace("head.data.table", "data.table")
-  # fun(x$dat, n=n, ...)
-  # data.table:::head.data.table(x$dat, ...)
+  # utail <- utils::tail
+  # stopifnot(length(n) == 1L)
+  # i <- seq(nrow(x$dat)-(n-1),nrow(x$dat))
+  # x$dat[i, , ]
+   fun = utils::getFromNamespace("tail.data.table", "data.table")
+   fun(x$dat, n=n, ...)
 }
 
 #' Print method treedata.table objects
 #'
 #' @param x an object of class "treedata.table"
 #' @param ... additional arguments passed to "head.treedata.table"
-#'
 #' @return Function uses prints the tree and the first lines of the
 #' data.table object.
 #'
@@ -91,23 +89,35 @@ summary.treedata.table <- function(object, ...) {
     colnames(object$dat)
   )
   message(
-    "Continuous traits: ", names(types)[which(types == "continuous")],
+    "Continuous traits: ", paste(names(types)[which(types == "continuous")],collapse=', ') ,
     "\n"
   )
   message(
-    "Discrete traits: ", names(types)[which(types == "discrete")],
+    "Discrete traits: ", paste(names(types)[which(types == "discrete")],collapse=', ' ),
     "\n"
   )
-  message("The following traits have missing values:", paste(names(types)[apply(
+
+  obswm<-names(types)[apply(
     object$dat,
     2, function(y) any(is.na(y))
-  )], collapse = ", "), "\n")
-  message("These taxa were dropped from the tree:", paste(attributes(object)$tree_not_data,
-    collapse = ", "
-  ), "\n")
-  message("These taxa were dropped from the data:", paste(attributes(object)$data_not_tree,
-    collapse = ", "
-  ), "\n")
+  )]
+
+  message("The following traits have missing values:",
+          ifelse(length(obswm)==0,' 0',
+                 paste(obswm, collapse = ' ,')), "\n")
+
+
+
+  message("Taxa dropped from the tree: ",
+          ifelse(attributes(object)$tree_not_data[1]=='OK',
+          ' 0', paste(attributes(object)$tree_not_data,
+          collapse = ", "  )), "\n")
+  message("Taxa dropped from the data: ",
+          ifelse(attributes(object)$data_not_tree[1]=='OK',
+                 ' 0', paste(attributes(object)$data_not_tree,
+                 collapse = ", "
+          ))
+          , "\n")
   print(object, ...)
   if (!is.null(attr(object, "modified"))) {
     message("\n    This is NOT the original treedata.table object")

@@ -45,6 +45,10 @@ droptreedata.table <- function(tdObject, taxa) {
 
     tdObject$dat <- .dat
     tdObject$phy <- .phy
+    attr(tdObject, "data_not_tree") <- if(attr(tdObject, "data_not_tree") =="OK"){
+      taxa}else{ c(attr(tdObject, "data_not_tree"),taxa)}
+    attr(tdObject, "tree_not_data") <- if(attr(tdObject, "tree_not_data") =="OK"){
+      taxa}else{ c(attr(tdObject, "tree_not_data"),taxa)}
     attr(tdObject, "modified") <- 1
     message(length(taxa), " taxa were dropped from the ORIGINAL treedata.table object")
 
