@@ -80,6 +80,84 @@ test_that("Column containing tip labs can be correctly detected", {
   expect_equal(td1$phy, td2$phy)
 })
 
-test_that("CFind the correct number of discrete/continuous characters in the anolis dataset", {
+test_that("Find the correct number of discrete/continuous characters in the anolis dataset", {
   expect_equal(detectCharacterType(anolis$dat[,1]), detectAllCharacters(anolis$dat)[1])
 })
+
+
+
+test_that("head() returns a data.table object",{
+  expect_is(head(td), "data.table")
+})
+
+test_that("tail() returns a data.table object",{
+  expect_is(tail(td), "data.table")
+})
+
+test_that("Error is shown when tips with different tip labels are used",{
+  anolis2 <- anolis$phy
+  anolis2$tip.label[1] <- "NAA"
+  tree2<-list(anolis$phy,anolis2)
+  class(tree2)<-'multiPhylo'
+  expect_error(as.treedata.table(tree = tree2, data = as.anolis$dat),
+  "Please make sure that tip labels are equivalent across trees in the multiPhylo object \n", fixed=T)
+})
+
+test_that("Error is a non-phylo (or multiPhylo) object is used in the phy",{
+  expect_error(as.treedata.table(tree = anolis$dat, data = as.anolis$dat),
+               "Please use a class 'phylo' or 'multiPhylo' tree \n", fixed=T)
+})
+
+
+
+test_that("Error is a non-data.frame is used in as.treedata.table",{
+  expect_error(as.treedata.table(tree = anolis$phy, data = as.matrix(anolis$dat)),
+               "Your data MUST be of class data.frame", fixed=T)
+})
+
+
+test_that("Normal as.treedata.table",{
+  expect_is(as.treedata.table(tree = anolis$phy, data = anolis$dat),
+            "treedata.table")
+
+})
+
+
+test_that("Normal as.treedata.table but data without column names",{
+  data=anolis$dat
+  colnames(data)<-NULL
+  expect_is(as.treedata.table(tree = anolis$phy, data = data),
+            "treedata.table")
+
+})
+
+
+test_that("Normal as.treedata.table but testing the no tips dropped message",{
+  expect_message(as.treedata.table(tree = anolis$phy, data = anolis$dat),
+            "No tips were dropped from the original tree/dataset", fixed=T)
+
+})
+
+
+test_that("Normal as.treedata.table but testing if the tips dropped message is shown for trees dropped from tree",{
+  anolis1 <- anolis$phy
+  anolis1$tip.label[1] <- "NAA"
+
+  expect_message(as.treedata.table(tree = anolis1, data = anolis$dat),
+                 " tip(s) dropped from the original tree", fixed=T)
+
+})
+
+
+test_that("Normal as.treedata.table but testing if the tips dropped message is shown for trees dropped from data",{
+  anolis1 <- anolis$phy
+  anolis1$tip.label[1] <- "NAA"
+
+  expect_message(as.treedata.table(tree = anolis1, data = anolis$dat),
+                 " dropped from the original dataset", fixed=T)
+
+})
+
+
+
+

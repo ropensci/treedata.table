@@ -17,7 +17,7 @@ Description: This package combines trait data and a phylogenetic tree (or trees)
 License: MIT + file LICENSE
 Depends:
   lazyeval, ape, geiger, utils,  data.table, R (>= 2.10)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown,
