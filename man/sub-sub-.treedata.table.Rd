@@ -32,5 +32,5 @@ td <- as.treedata.table(treesFM, anolis$dat)
 td[["SVL"]]
 }
 \seealso{
-\code{\link{data.table}}
+\code{\link[=data.table]{data.table()}}
 }

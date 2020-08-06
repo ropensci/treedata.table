@@ -1,17 +1,17 @@
 #' Combine tree (or set of trees) and data.frame into a single treedata.table object
 #'
-#' This function takes as input a tree of class \code{phylo} or \code{multiPhylo} and a \code{data.frame}
-#' and combines them into a treedata.table. If a \code{multiPhylo} is provided, all trees must have the same tip.labels.
-#' \code{treedata.table} object is sorted such that the rows in the data.table are matched to the tip.labels
+#' This function takes as input a tree of class `phylo` or `multiPhylo` and a `data.frame`
+#' and combines them into a treedata.table. If a `multiPhylo` is provided, all trees must have the same tip.labels.
+#' `treedata.table` object is sorted such that the rows in the data.table are matched to the tip.labels
 #' of the phylogeny. Tip.labels on the tree must match a column of tip
 #' names in the input data.frame. The output of this function will be a
 #' treedata.table, which can be manipulated as a data.table.
 #'
 #' @importFrom data.table setDT as.data.table
-#' @param tree A tree of class \code{phylo} or multiple trees of class \code{multiPhylo}
-#' @param data A dataset in format \code{data.frame}
-#' @param name_column A character indicating the name of taxa in \code{data.frame}
-#' @return treedata.table An object of type \code{treedata.table} containing the tree and data.table
+#' @param tree A tree of class `phylo` or multiple trees of class `multiPhylo`
+#' @param data A dataset in format `data.frame`
+#' @param name_column A character indicating the name of taxa in `data.frame`
+#' @return treedata.table An object of type `treedata.table` containing the tree and data.table
 #' @importFrom ape drop.tip
 #' @importFrom geiger name.check
 #' @examples

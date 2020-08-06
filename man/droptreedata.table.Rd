@@ -12,11 +12,11 @@ droptreedata.table(tdObject, taxa)
 \item{taxa}{A vector class \code{character} containing all taxa that needs to be dropped from the original \code{treedata.table} object}
 }
 \value{
-An object of class \code{treedata.table} with matching \code{$dat} and \code{$phy} elements based on whether \code{taxa} were dropped or not.
+An object of class \code{treedata.table} with matching \verb{$dat} and \verb{$phy} elements based on whether \code{taxa} were dropped or not.
 }
 \description{
 This function can be used to remove species from an object of class \code{treedata.table}. The resulting \code{treedata.table} will
-include fully matching \code{$dat} and \code{$phy} elements. The user should confirm the changes before they are processed.
+include fully matching \verb{$dat} and \verb{$phy} elements. The user should confirm the changes before they are processed.
 }
 \examples{
 data(anolis)

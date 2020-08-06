@@ -1,11 +1,11 @@
-#' Function for performing data.table operations on an object of class \code{treedata.table}
+#' Function for performing data.table operations on an object of class `treedata.table`
 #'
-#' This function can be used to subset rows, select and compute on columns \link[data.table]{data.table}.
+#' This function can be used to subset rows, select and compute on columns [data.table][data.table::data.table].
 #'
-#' @param x An object of class \code{treedata.table}
-#' @param ... Arguments in the structure of \code{data.table} used to perform changes on the \code{treedata.table} object
-#' @return A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using \link[data.table]{data.table}'s structure.
-#' @seealso \link[data.table]{data.table}
+#' @param x An object of class `treedata.table`
+#' @param ... Arguments in the structure of `data.table` used to perform changes on the `treedata.table` object
+#' @return A new object of class `treedata.table` with `$dat` and `$phy` corresponding with the changes set to `$dat` using [data.table][data.table::data.table]'s structure.
+#' @seealso [data.table][data.table::data.table]
 #' @examples
 #'
 #' data(anolis)
@@ -78,15 +78,15 @@
 
 
 
-#' Function for extract a named vector from an object of class \code{treedata.table}
+#' Function for extract a named vector from an object of class `treedata.table`
 #'
-#' This function extracts a named vector for any  trait from an object of class \code{treedata.table}.
+#' This function extracts a named vector for any  trait from an object of class `treedata.table`.
 #'
-#' @param x An object of class \code{treedata.table}
-#' @param ... Column name in class \code{character}
+#' @param x An object of class `treedata.table`
+#' @param ... Column name in class `character`
 #' @param exact whether exact search should be conducted
-#' @return A new object of class \code{vector} with names set to labels corresponding to tip labels in the provided \code{treedata.table} object.
-#' @seealso \code{\link{data.table}}
+#' @return A new object of class `vector` with names set to labels corresponding to tip labels in the provided `treedata.table` object.
+#' @seealso [data.table()]
 #' @examples
 #' data(anolis)
 #' # With a phylo object

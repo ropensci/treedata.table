@@ -11,10 +11,10 @@ forceNames(dat, nameType = "row")
 
 \item{nameType, }{either:
 \describe{
-    \item{"row"}{Rows}
-         \item{"col"}{Columns}
-         \item{"rowcol"}{Both rows and columns}
-    }}
+\item{"row"}{Rows}
+\item{"col"}{Columns}
+\item{"rowcol"}{Both rows and columns}
+}}
 }
 \description{
 Force names for rows, columns, or both

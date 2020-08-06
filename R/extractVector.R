@@ -12,7 +12,7 @@
 #' # extracts the named vector for SVL from the td object
 #' extractVector(td, "SVL")
 #' # extracts the named vector for SVL and ecomorph from the td object
-#' extractVector(td, "SVL","ecomorph")
+#' extractVector(td, "SVL", "ecomorph")
 #' @export
 
 extractVector <- function(tdObject, ...) {

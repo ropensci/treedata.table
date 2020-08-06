@@ -9,8 +9,8 @@
 #' head(td)
 #' @importFrom utils head
 #' @export
-head.treedata.table <- function(x, n = 6L, ...){
-  utils::head(x$dat, n ,...)
+head.treedata.table <- function(x, n = 6L, ...) {
+  utils::head(x$dat, n, ...)
 }
 
 
@@ -27,8 +27,8 @@ head.treedata.table <- function(x, n = 6L, ...){
 #' @export
 
 tail.treedata.table <- function(x, n = 6L, ...) {
-fun = utils::getFromNamespace("tail.data.table", "data.table")
-  utils::tail(x$dat,n,...)
+  fun <- utils::getFromNamespace("tail.data.table", "data.table")
+  utils::tail(x$dat, n, ...)
 }
 
 #' Print method treedata.table objects
@@ -40,11 +40,11 @@ fun = utils::getFromNamespace("tail.data.table", "data.table")
 #' @importFrom utils head
 #'
 #' @export
-print.treedata.table <- function(x,...) {
+print.treedata.table <- function(x, ...) {
   message("$phy \n")
   print(x$phy)
   message("\n$dat \n")
-  print(utils::head(x$dat,...))
+  print(utils::head(x$dat, ...))
 }
 
 
@@ -64,7 +64,6 @@ print.treedata.table <- function(x,...) {
 #' summary(td)
 #' @export
 summary.treedata.table <- function(object, ...) {
-
   if (!inherits(object, c("treedata.table"))) {
     stop("Please use a class 'treedata.table' object \n")
   }
@@ -79,35 +78,45 @@ summary.treedata.table <- function(object, ...) {
     colnames(object$dat)
   )
   message(
-    "Continuous traits: ", paste(names(types)[which(types == "continuous")],collapse=', ') ,
+    "Continuous traits: ", paste(names(types)[which(types == "continuous")], collapse = ", "),
     "\n"
   )
   message(
-    "Discrete traits: ", paste(names(types)[which(types == "discrete")],collapse=', ' ),
+    "Discrete traits: ", paste(names(types)[which(types == "discrete")], collapse = ", "),
     "\n"
   )
 
-  obswm<-names(types)[apply(
+  obswm <- names(types)[apply(
     object$dat,
     2, function(y) any(is.na(y))
   )]
 
-  message("The following traits have missing values:",
-          ifelse(length(obswm)==0,' 0',
-                 paste(obswm, collapse = ' ,')), "\n")
+  message(
+    "The following traits have missing values:",
+    ifelse(length(obswm) == 0, " 0",
+      paste(obswm, collapse = " ,")
+    ), "\n"
+  )
 
 
 
-  message("Taxa dropped from the tree: ",
-          ifelse(attributes(object)$tree_not_data[1]=='OK',
-          ' 0', paste(attributes(object)$tree_not_data,
-          collapse = ", "  )), "\n")
-  message("Taxa dropped from the data: ",
-          ifelse(attributes(object)$data_not_tree[1]=='OK',
-                 ' 0', paste(attributes(object)$data_not_tree,
-                 collapse = ", "
-          ))
-          , "\n")
+  message(
+    "Taxa dropped from the tree: ",
+    ifelse(attributes(object)$tree_not_data[1] == "OK",
+      " 0", paste(attributes(object)$tree_not_data,
+        collapse = ", "
+      )
+    ), "\n"
+  )
+  message(
+    "Taxa dropped from the data: ",
+    ifelse(attributes(object)$data_not_tree[1] == "OK",
+      " 0", paste(attributes(object)$data_not_tree,
+        collapse = ", "
+      )
+    ),
+    "\n"
+  )
   print(object, ...)
   if (!is.null(attr(object, "modified"))) {
     message("\n    This is NOT the original treedata.table object")

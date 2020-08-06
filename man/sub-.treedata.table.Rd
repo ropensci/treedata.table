@@ -12,10 +12,10 @@
 \item{...}{Arguments in the structure of \code{data.table} used to perform changes on the \code{treedata.table} object}
 }
 \value{
-A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using \link[data.table]{data.table}'s structure.
+A new object of class \code{treedata.table} with \verb{$dat} and \verb{$phy} corresponding with the changes set to \verb{$dat} using \link[data.table:data.table]{data.table}'s structure.
 }
 \description{
-This function can be used to subset rows, select and compute on columns \link[data.table]{data.table}.
+This function can be used to subset rows, select and compute on columns \link[data.table:data.table]{data.table}.
 }
 \examples{
 
@@ -58,5 +58,5 @@ td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
 td[, utils::head(.SD, 1), by = .(ecomorph, island)]
 }
 \seealso{
-\link[data.table]{data.table}
+\link[data.table:data.table]{data.table}
 }
