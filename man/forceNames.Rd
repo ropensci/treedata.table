@@ -16,8 +16,12 @@ forceNames(dat, nameType = "row")
 \item{"rowcol"}{Both rows and columns}
 }}
 }
+\value{
+An object of type `data.frame with labeled columns, rows, or both.
+}
 \description{
-Force names for rows, columns, or both
+This function creates column names (\code{colnames}), row.names (\code{row.names}), or both
+in an unnamed \code{data.frame} or \code{matrix}.
 }
 \examples{
 data(anolis)

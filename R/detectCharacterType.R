@@ -60,6 +60,9 @@ filterMatrix <- function(mat, charType, returnType = "discrete") {
 
 #' Row and column name check
 #'
+#' This function checks whether a given `data.frame` or `matrix` has
+#' column names (`colnames`), row.names (`row.names`), or both.
+#'
 #' @param dat A vector of data
 #' @param nameType, either:
 #' \describe{
@@ -67,6 +70,7 @@ filterMatrix <- function(mat, charType, returnType = "discrete") {
 #'   	 \item{"col"}{Columns}
 #' 		 \item{"rowcol"}{Both rows and columns}
 #' 	}
+#' @return `TRUE` or `FALSE` indicating if the object has names (`columns`, `rows`, or `both`)
 #' @examples
 #' data(anolis)
 #' hasNames(anolis$dat, "row")
@@ -88,6 +92,9 @@ hasNames <- function(dat, nameType = "row") {
 
 #' Force names for rows, columns, or both
 #'
+#' This function creates column names (`colnames`), row.names (`row.names`), or both
+#' in an unnamed `data.frame` or `matrix`.
+#'
 #' @param dat A vector of data
 #' @param nameType, either:
 #' \describe{
@@ -98,6 +105,7 @@ hasNames <- function(dat, nameType = "row") {
 #' @examples
 #' data(anolis)
 #' forceNames(anolis$dat, "row")
+#' @return An object of type `data.frame with labeled columns, rows, or both.
 #' @export
 forceNames <- function(dat, nameType = "row") {
   nType <- match.arg(nameType, c("row", "col", "rowcol"))
