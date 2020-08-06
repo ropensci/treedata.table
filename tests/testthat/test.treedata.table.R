@@ -287,6 +287,109 @@ test_that("Message when using tdt on multiPhylo",{
                  'Multiphylo object detected. Expect a list of function outputs', fixed=T )
 })
 
+test_that("detectCharacterType",{
+  data(anolis)
+  expect_is(detectCharacterType(anolis$dat[, 1]),'character')
+ })
+
+test_that("detectCharacterType warning",{
+  dat=c(rep('1',20,), rep('2',20))
+  expect_warning(detectCharacterType(dat),
+                           'Guessing that this is a discrete character based on repeated values',
+                           fixed=T)
+})
+
+test_that("filterMatrix testing",{
+  aType <- detectAllCharacters(anolis$dat)
+  expect_equal(ncol(filterMatrix(anolis$dat, aType, "discrete")),3)
+})
+
+
+test_that("hasNames anolis$dat rows with rownames",{
+  expect_true(  hasNames(anolis$dat, "row"))
+})
+
+
+test_that("hasNames anolis$dat rows without rownames",{
+  df<-as.matrix(data.frame(a=c(2,3,5), b=c('A','f','E')))
+  expect_false(  hasNames(df, "row"))
+})
+
+test_that("hasNames anolis$dat cols with colnames",{
+  expect_true(  hasNames(anolis$dat, "col"))
+})
+
+
+test_that("hasNames anolis$dat cols without colnames",{
+  df<-as.matrix(data.frame(a=c(2,3,5), b=c('A','f','E')))
+  colnames(df)<-NULL
+  expect_false(  hasNames(df, "col"))
+})
+
+
+test_that("hasNames anolis$dat rows and cols with names",{
+  expect_true(  hasNames(anolis$dat, "rowcol"))
+})
+
+
+test_that("hasNames anolis$dat rows and cols with names",{
+  df<-as.matrix(data.frame(a=c(2,3,5), b=c('A','f','E')))
+  colnames(df)<-NULL
+  expect_false(  hasNames(df, "rowcol"))
+})
+
+
+test_that("forcenames anolis$dat rows and cols with names",{
+  expect_equal(forceNames(anolis$dat, "row"), anolis$dat)
+})
+
+test_that("forcenames without rownames",{
+  df<-as.matrix(data.frame(a=c(2,3,5), b=c('A','f','E')))
+  expect_is(row.names(forceNames(df, "row")), 'character')
+})
+
+
+test_that("Print() prints the phylo",{
+ expect_message(print(td),'$phy \n', fixed=T)
+})
+
+test_that("Print() prints the data",{
+  expect_message(print(td),'$dat \n', fixed=T)
+})
+
+
+test_that("Summary() using a treedata.table object",{
+  expect_message(summary(td),"A treedata.table object", fixed=T)
+})
+
+test_that("Summary() detecting continuous characters",{
+  expect_message(summary(td),"Continuous traits: ", fixed=T)
+})
+
+test_that("Summary() detecting discrete characters",{
+  expect_message(summary(td),"Discrete traits: ", fixed=T)
+})
+
+
+test_that("Summary() detecting discrete characters",{
+  expect_message(summary(td),"The following traits have missing values:", fixed=T)
+})
+
+
+
+test_that("Summary() detecting taxa dropped",{
+  expect_message(summary(td),"Taxa dropped from the tree:", fixed=T)
+})
+
+
+
+
+
+
+
+
+
+
 
 
 
