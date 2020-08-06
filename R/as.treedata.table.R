@@ -11,7 +11,7 @@
 #' @param tree A tree of class `phylo` or multiple trees of class `multiPhylo`
 #' @param data A dataset in format `data.frame`
 #' @param name_column A character indicating the name of taxa in `data.frame`. If set to `detect` (the default) `as treedata.table` will auto-detect this column
-#' @return treedata.table An object of type `treedata.table` containing the tree and data.table
+#' @return An object of type `treedata.table` containing the tree and data.table
 #' @importFrom ape drop.tip
 #' @importFrom geiger name.check
 #' @examples

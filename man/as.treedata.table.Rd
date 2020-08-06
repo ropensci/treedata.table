@@ -11,10 +11,10 @@ as.treedata.table(tree, data, name_column = "detect")
 
 \item{data}{A dataset in format \code{data.frame}}
 
-\item{name_column}{A character indicating the name of taxa in \code{data.frame}}
+\item{name_column}{A character indicating the name of taxa in \code{data.frame}. If set to \code{detect} (the default) \verb{as treedata.table} will auto-detect this column}
 }
 \value{
-treedata.table An object of type \code{treedata.table} containing the tree and data.table
+An object of type \code{treedata.table} containing the tree and data.table
 }
 \description{
 This function takes as input a tree of class \code{phylo} or \code{multiPhylo} and a \code{data.frame}
