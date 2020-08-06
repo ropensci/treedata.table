@@ -66,9 +66,9 @@ test_that("[[ extracts a named character vector", {
 
 
 
-test_that("phy and dat objects can be extracted correctly using pull.treedata.table", {
-  expect_is(pull.treedata.table(td, type = "phy"), "phylo")
-  expect_is(pull.treedata.table(td, type = "dat"), "data.table")
+test_that("phy and dat objects can be extracted correctly using pulltreedata.table", {
+  expect_is(pulltreedata.table(td, type = "phy"), "phylo")
+  expect_is(pulltreedata.table(td, type = "dat"), "data.table")
 })
 
 test_that("Column containing tip labs can be correctly detected", {

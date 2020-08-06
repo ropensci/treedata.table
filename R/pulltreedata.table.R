@@ -7,11 +7,11 @@
 #' @examples
 #' data(anolis)
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
-#' pull.treedata.table(td, type = "phy")
-#' pull.treedata.table(td, type = "dat")
+#' pulltreedata.table(td, type = "phy")
+#' pulltreedata.table(td, type = "dat")
 #' @export
 
-pull.treedata.table <- function(tdObject, type = "dat") {
+pulltreedata.table <- function(tdObject, type = "dat") {
   if (!inherits(tdObject, c("treedata.table"))) {
     stop("Please use a class 'treedata.table' object \n")
   }
