@@ -9,10 +9,10 @@ extractVector(tdObject, ...)
 \arguments{
 \item{tdObject}{A treedata.table object}
 
-\item{...}{The name of the column to select}
+\item{...}{The name of the column or columns to select.}
 }
 \value{
-A named vector
+A named vector or a list of named vectors
 }
 \description{
 Returning a named vector from a treedata.table object

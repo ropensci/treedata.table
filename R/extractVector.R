@@ -1,9 +1,9 @@
 #' Returning a named vector from a treedata.table object
 #'
 #' @param tdObject A treedata.table object
-#' @param ... The name of the column to select
+#' @param ... The name of the column or columns to select.
 #'
-#' @return A named vector
+#' @return A named vector or a list of named vectors
 #'
 #' @examples
 #'
