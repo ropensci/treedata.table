@@ -139,6 +139,15 @@ test_that("Normal as.treedata.table but testing the no tips dropped message",{
 })
 
 
+test_that("Normal as.treedata.table with data.frame without row.names
+          but testing the no tips dropped message",{
+  data=anolis$dat
+  row.names(data)<-NULL
+  expect_message(as.treedata.table(tree = anolis$phy, data = data),
+                 "No tips were dropped from the original tree/dataset", fixed=T)
+
+})
+
 test_that("Normal as.treedata.table but testing if the tips dropped message is shown for trees dropped from tree",{
   anolis1 <- anolis$phy
   anolis1$tip.label[1] <- "NAA"
@@ -156,6 +165,126 @@ test_that("Normal as.treedata.table but testing if the tips dropped message is s
   expect_message(as.treedata.table(tree = anolis1, data = anolis$dat),
                  " dropped from the original dataset", fixed=T)
 
+})
+
+test_that("Message when dropping taxa droptreedata.table",{
+  expect_message(droptreedata.table(tdObject = td, taxa = c("chamaeleonides", "eugenegrahami")),
+                 " taxa were dropped from the ORIGINAL treedata.table object", fixed=T)
+
+})
+
+
+test_that("Error when a non-treedata.table object is used in droptreedata.table",{
+  expect_error(droptreedata.table(tdObject = td$phy, taxa = c("chamaeleonides", "eugenegrahami")),
+                 "Please use a class 'treedata.table' object \n", fixed=T)
+
+})
+
+
+
+test_that("Expect a phylo object when dropping taxa from phylo in droptreedata.table",{
+
+  expect_is(droptreedata.table(tdObject = td, taxa = c("chamaeleonides", "eugenegrahami"))$phy,
+            "phylo")
+
+})
+
+
+test_that("Expect a multiphylo object when dropping taxa from phylo in droptreedata.table",{
+   treesFM <- list(anolis$phy, anolis$phy)
+   class(treesFM) <- "multiPhylo"
+   td <- as.treedata.table(treesFM, anolis$dat)
+  expect_is(droptreedata.table(tdObject = td, taxa = c("chamaeleonides", "eugenegrahami"))$phy,
+            "multiPhylo")
+})
+
+test_that("Error when a non-character vector is used in droptreedata.table",{
+  expect_error(droptreedata.table(tdObject = td, taxa = 1),
+               "Please use a class 'character' object for taxa \n", fixed=T)
+
+})
+
+
+
+test_that("Error when a non-treedata.table object in extractVector",{
+  expect_error(extractVector(td$phy, "SVL","ecomorph"),
+               "Please use a class 'treedata.table' object \n", fixed=T)
+
+})
+
+
+test_that("Expect list when using extractVector with multiple arguments",{
+  expect_is(extractVector(td, "SVL","ecomorph"),'list')
+})
+
+
+test_that("Expect list when using extractVector with multiple arguments (for SVL)",{
+  expect_is(extractVector(td, "SVL"),'numeric')
+})
+
+
+test_that("Test if extractVector works with multiPhylo",{
+  treesFM <- list(anolis$phy, anolis$phy)
+  class(treesFM) <- "multiPhylo"
+  td <- as.treedata.table(treesFM, anolis$dat)
+  expect_is(extractVector(td, "SVL"),'numeric')
+})
+
+
+test_that("[.treedata.table for multiphylo produces a data.table as output",{
+  treesFM <- list(anolis$phy, anolis$phy)
+  class(treesFM) <- "multiPhylo"
+  td <- as.treedata.table(treesFM, anolis$dat)
+  expect_is(td[, SVL]$dat,'data.table')
+})
+
+
+test_that("[.treedata.table for multiphylo produces a multiphylo",{
+  treesFM <- list(anolis$phy, anolis$phy)
+  class(treesFM) <- "multiPhylo"
+  td <- as.treedata.table(treesFM, anolis$dat)
+  expect_is(td[, SVL]$phy,'multiPhylo')
+})
+
+
+test_that("[.treedata.table for multiphylo produces a vector as output",{
+  treesFM <- list(anolis$phy, anolis$phy)
+  class(treesFM) <- "multiPhylo"
+  td <- as.treedata.table(treesFM, anolis$dat)
+  expect_is(td[['SVL']],'numeric')
+})
+
+
+test_that("Error when a non-treedata.table object in tdt",{
+  expect_error(tdt(td$phy, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model = "BM", ncores = 1)),
+               "Please use a class 'treedata.table' object \n", fixed=T)
+
+})
+
+
+
+
+test_that("Single list when using tdt on phylo",{
+  expect_is(tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model = "BM", ncores = 1)),
+               'list')
+
+})
+
+test_that("Expect list with lenght >1 when using tdt on multiPhylo",{
+  treesFM <- list(anolis$phy, anolis$phy)
+  class(treesFM) <- "multiPhylo"
+  td <- as.treedata.table(treesFM, anolis$dat)
+  out<-tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model = "BM", ncores = 1))
+  expect_equal(length(td), length(out))
+})
+
+
+test_that("Message when using tdt on multiPhylo",{
+  treesFM <- list(anolis$phy, anolis$phy)
+  class(treesFM) <- "multiPhylo"
+  td <- as.treedata.table(treesFM, anolis$dat)
+  expect_message(tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model = "BM", ncores = 1)),
+                 'Multiphylo object detected. Expect a list of function outputs', fixed=T )
 })
 
 
