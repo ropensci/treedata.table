@@ -1,8 +1,11 @@
 #' Function to detect whether a character is continuous or discrete
 #'
 #' @param dat A vector of data
-#' @param repeatsAsDiscrete If TRUE, consider numeric variables that repeat values exactly as discrete; see cutoff
-#' @param cutoff Cutoff value for deciding if numeric data might actually be discrete: if nlev is the number of levels and n the length of dat, then nlev / n should exceed cutoff, or the data will be classified as discrete
+#' @param repeatsAsDiscrete If TRUE, consider numeric variables that repeat
+#' values exactly as discrete; see cutoff
+#' @param cutoff Cutoff value for deciding if numeric data might actually be
+#' discrete: if nlev is the number of levels and n the length of dat, then
+#' nlev / n should exceed cutoff, or the data will be classified as discrete
 #' @return Either "discrete" or "continuous"
 #' @examples
 #' data(anolis)
@@ -12,7 +15,8 @@ detectCharacterType <- function(dat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
   if (is.factor(dat)) {
     charType <- "discrete"
   } else if (nlevels(as.factor(dat)) / length(dat) < cutoff) {
-    warning("Guessing that this is a discrete character based on repeated values")
+    warning("Guessing that this is a discrete character based on repeated
+              values")
     charType <- "discrete"
   } else {
     charType <- "continuous"
@@ -23,9 +27,13 @@ detectCharacterType <- function(dat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
 #' Apply detectCharacterType over an entire matrix
 #'
 #' @param mat A matrix of data
-#' @param repeatsAsDiscrete If TRUE, consider numeric variables that repeat values exactly as discrete; see cutoff
-#' @param cutoff Cutoff value for deciding if numeric data might actually be discrete: if nlev is the number of levels and n the length of dat, then nlev / n should exceed cutoff, or the data will be classified as discrete
-#' @return Vector of either "discrete" or "continuous" for each variable in matrix
+#' @param repeatsAsDiscrete If TRUE, consider numeric variables that repeat
+#' values exactly as discrete; see cutoff
+#' @param cutoff Cutoff value for deciding if numeric data might actually be
+#' discrete: if nlev is the number of levels and n the length of dat, then
+#' nlev / n should exceed cutoff, or the data will be classified as discrete
+#' @return Vector of either "discrete" or "continuous" for each variable in
+#' matrix
 #' @examples
 #' data(anolis)
 #' detectAllCharacters(anolis$dat)
@@ -42,7 +50,8 @@ detectAllCharacters <- function(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
 #' Filter a matrix, returning either all continuous or all discrete characters
 #'
 #' @param mat A matrix of data
-#' @param charType A vector of character types (perhaps from detectAllCharacters)
+#' @param charType A vector of character types (perhaps from
+#' detectAllCharacters)
 #' @param returnType Either discrete or continuous
 #' @return Matrix with only discrete or continuous characters
 #' @examples
@@ -70,7 +79,9 @@ filterMatrix <- function(mat, charType, returnType = "discrete") {
 #'   	 \item{"col"}{Columns}
 #' 		 \item{"rowcol"}{Both rows and columns}
 #' 	}
-#' @return `TRUE` or `FALSE` indicating if the object has names (`columns`, `rows`, or `both`)
+#' @return `TRUE` or `FALSE` indicating if the object has names (`columns`,
+#'                                                               `rows`, or
+#'                                                               `both`)
 #' @examples
 #' data(anolis)
 #' hasNames(anolis$dat, "row")
@@ -92,8 +103,8 @@ hasNames <- function(dat, nameType = "row") {
 
 #' Force names for rows, columns, or both
 #'
-#' This function creates column names (`colnames`), row.names (`row.names`), or both
-#' in an unnamed `data.frame` or `matrix`.
+#' This function creates column names (`colnames`), row.names (`row.names`),
+#' or both in an unnamed `data.frame` or `matrix`.
 #'
 #' @param dat A vector of data
 #' @param nameType, either:

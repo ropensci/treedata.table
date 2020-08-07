@@ -75,13 +75,11 @@ summary.treedata.table <- function(object, ...) {
     colnames(object$dat)
   )
   message(
-    "Continuous traits: ", paste(names(types)[which(types == "continuous")], collapse = ", "),
-    "\n"
-  )
+    "Continuous traits: ", paste(names(types)[which(types == "continuous")],
+                                 collapse = ", "), "\n")
   message(
-    "Discrete traits: ", paste(names(types)[which(types == "discrete")], collapse = ", "),
-    "\n"
-  )
+    "Discrete traits: ", paste(names(types)[which(types == "discrete")],
+                               collapse = ", "), "\n")
 
   obswm <- names(types)[apply(
     object$dat,

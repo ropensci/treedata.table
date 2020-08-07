@@ -3,11 +3,11 @@
 #' @param tdObject A treedata.table object
 #' @param ... A function call.
 #'
-#' @details This function allows R functions that use trees and data to be run on
-#' `treedata.table` objects.
+#' @details This function allows R functions that use trees and data to be run
+#' on`treedata.table` objects.
 #'
-#' @return Function output for a single tree (phylo) or a list of function outputs
-#' (one per each tree in the MultiPhylo object)
+#' @return Function output for a single tree (phylo) or a list of function
+#' outputs (one per each tree in the MultiPhylo object)
 #'
 #' @examples
 #' data(anolis)
@@ -15,16 +15,20 @@
 #'
 #' # A treedata.table object with a phylo $phy
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
-#' tdt(td, geiger::fitContinuous(phy, extractVector(td, "SVL"), model = "BM", ncores = 1))
-#' tdt(td, phytools::phenogram(phy, extractVector(td, "SVL"), quiet = TRUE, spread.labels = FALSE))
+#' tdt(td, geiger::fitContinuous(phy, extractVector(td, "SVL"),
+#'                               model = "BM", ncores = 1))
+#' tdt(td, phytools::phenogram(phy, extractVector(td, "SVL"), quiet = TRUE,
+#'      spread.labels = FALSE))
 #'
 #'
 #' # A treedata.table object with a multiPhylo $phy
 #' treesFM <- list(anolis$phy, anolis$phy)
 #' class(treesFM) <- "multiPhylo"
 #' td <- as.treedata.table(treesFM, anolis$dat)
-#' tdt(td, geiger::fitContinuous(phy, extractVector(td, "SVL"), model = "BM", ncores = 1))
-#' tdt(td, phytools::phenogram(phy, extractVector(td, "SVL"), quiet = TRUE, spread.labels = FALSE))
+#' tdt(td, geiger::fitContinuous(phy, extractVector(td, "SVL"), model = "BM",
+#'                               ncores = 1))
+#' tdt(td, phytools::phenogram(phy, extractVector(td, "SVL"), quiet = TRUE,
+#'                            spread.labels = FALSE))
 #' }
 #' @export
 

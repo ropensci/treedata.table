@@ -1,10 +1,15 @@
-#' Function for performing data.table operations on an object of class `treedata.table`
+#' Function for performing data.table operations on an object of class
+#' `treedata.table`
 #'
-#' This function can be used to subset rows, select and compute on columns [data.table][data.table::data.table].
+#' This function can be used to subset rows, select and compute on columns
+#' [data.table][data.table::data.table].
 #'
 #' @param x An object of class `treedata.table`
-#' @param ... Arguments in the structure of `data.table` used to perform changes on the `treedata.table` object
-#' @return A new object of class `treedata.table` with `$dat` and `$phy` corresponding with the changes set to `$dat` using [data.table][data.table::data.table]'s structure.
+#' @param ... Arguments in the structure of `data.table` used to perform changes
+#' on the `treedata.table` object
+#' @return A new object of class `treedata.table` with `$dat` and `$phy`
+#' corresponding with the changes set to `$dat` using
+#' [data.table][data.table::data.table]'s structure.
 #' @seealso [data.table][data.table::data.table]
 #' @examples
 #'
@@ -50,7 +55,8 @@
 
 `[.treedata.table` <- function(x, ...) {
   .dat <- x$dat
-  .dat <- base::cbind(.dat, "rowid" = seq_len(nrow(.dat))) # CRP: using cbind instead of :=
+  .dat <- base::cbind(.dat, "rowid" = seq_len(nrow(.dat))) # CRP: using cbind
+                                                            # instead of :=
   dots <- lazyeval::lazy_dots(...)
   if ("by" %in% names(dots)) {
     .dat <- .dat[...]
@@ -61,12 +67,14 @@
       .dat <- .dat[...]
     }
   }
-  # .phy <- ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"]))) #CRP: using "rowid" instead of rowid & unlist
+  # .phy <- ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in%
+  #  unlist(.dat[, "rowid"]))) #CRP: using "rowid" instead of rowid & unlist
 
   .phy <- if (inherits(x$phy, c("phylo"))) {
     ape::drop.tip(x$phy, which(!seq_along(x$dat) %in% unlist(.dat[, "rowid"])))
   } else {
-    tr <- lapply(x$phy, ape::drop.tip, tip = which(!seq_along(x$dat) %in% unlist(.dat[, "rowid"])))
+    tr <- lapply(x$phy, ape::drop.tip, tip = which(!seq_along(x$dat)
+                                                  %in% unlist(.dat[, "rowid"])))
     class(tr) <- "multiPhylo"
     tr
   }
@@ -80,12 +88,14 @@
 
 #' Function for extract a named vector from an object of class `treedata.table`
 #'
-#' This function extracts a named vector for any  trait from an object of class `treedata.table`.
+#' This function extracts a named vector for any  trait from an object of class
+#' `treedata.table`.
 #'
 #' @param x An object of class `treedata.table`
 #' @param ... Column name in class `character`
 #' @param exact whether exact search should be conducted
-#' @return A new object of class `vector` with names set to labels corresponding to tip labels in the provided `treedata.table` object.
+#' @return A new object of class `vector` with names set to labels corresponding
+#' to tip labels in the provided `treedata.table` object.
 #' @seealso [data.table()]
 #' @examples
 #' data(anolis)

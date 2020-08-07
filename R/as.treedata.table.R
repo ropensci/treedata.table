@@ -1,8 +1,10 @@
-#' Combine tree (or set of trees) and data.frame into a single treedata.table object
+#' Combine tree (or set of trees) and data.frame into a single treedata.table
+#' object
 #'
-#' This function takes as input a tree of class `phylo` or `multiPhylo` and a `data.frame`
-#' and combines them into a treedata.table. If a `multiPhylo` is provided, all trees must have the same tip.labels.
-#' `treedata.table` object is sorted such that the rows in the data.table are matched to the tip.labels
+#' This function takes as input a tree of class `phylo` or `multiPhylo` and a
+#' `data.frame` and combines them into a treedata.table. If a `multiPhylo` is
+#' provided, all trees must have the same tip.labels. `treedata.table` object is
+#' sorted such that the rows in the data.table are matched to the tip.labels
 #' of the phylogeny. Tip.labels on the tree must match a column of tip
 #' names in the input data.frame. The output of this function will be a
 #' treedata.table, which can be manipulated as a data.table.
@@ -10,7 +12,9 @@
 #' @importFrom data.table setDT as.data.table
 #' @param tree A tree of class `phylo` or multiple trees of class `multiPhylo`
 #' @param data A dataset in format `data.frame`
-#' @param name_column A character indicating the name of taxa in `data.frame`. If set to `detect` (the default) `as treedata.table` will auto-detect this column
+#' @param name_column A character indicating the name of taxa in `data.frame`.
+#' If set to `detect` (the default) `as treedata.table` will auto-detect this
+#' column
 #' @return An object of type `treedata.table` containing the tree and data.table
 #' @importFrom ape drop.tip
 #' @importFrom geiger name.check
@@ -41,9 +45,11 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
     stop("Please use a class 'phylo' or 'multiPhylo' tree \n")
   }
   if (inherits(tree, "multiPhylo")) {
-    equal_T <- length(unique(lapply(seq_along(tree), function(x) sort(tree[[x]]$tip.label)))) == 1
+    equal_T <- length(unique(lapply(seq_along(tree), function(x)
+               sort(tree[[x]]$tip.label)))) == 1
     if (!equal_T) {
-      stop("Please make sure that tip labels are equivalent across trees in the multiPhylo object \n")
+      stop("Please make sure that tip labels are equivalent across trees in the
+           multiPhylo object \n")
     }
   }
 
@@ -90,12 +96,15 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
 
   if (inherits(tree, c("phylo"))) {
     message("Phylo object detected \n")
-    if (geiger::name.check(tree, data.names = data[, name_column])[1] != "OK") {
-      data_not_tree <- setdiff(as.character(data[, name_column]), tree$tip.label)
+    if (geiger::name.check(tree, data.names = data[, name_column])[1] != "OK")
+      {
+      data_not_tree <- setdiff(as.character(data[, name_column]),
+                               tree$tip.label)
       tree_not_data <- setdiff(tree$tip.label, data[, name_column])
       message(
         length(c(tree_not_data)), " tip(s) dropped from the original tree",
-        "\n", length(c(data_not_tree)), " tip(s)  dropped from the original dataset"
+        "\n", length(c(data_not_tree)), " tip(s)  dropped from the original
+                                          dataset"
       )
       tree <- ape::drop.tip(tree, tree_not_data)
       data <- data[!as.character(data[, name_column]) == data_not_tree, ]
@@ -107,16 +116,19 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
   } else {
     message("Multiphylo object detected \n")
 
-    if (geiger::name.check(tree[[1]], data.names = data[, name_column])[1] != "OK") {
-      data_not_tree <- setdiff(as.character(data[, name_column]), tree[[1]]$tip.label)
+    if (geiger::name.check(tree[[1]],
+                           data.names = data[, name_column])[1] != "OK") {
+      data_not_tree <- setdiff(as.character(data[, name_column]),
+                               tree[[1]]$tip.label)
       tree_not_data <- setdiff(tree[[1]]$tip.label, data[, name_column])
 
       tree <- lapply(tree, ape::drop.tip, tip = tree_not_data)
       class(tree) <- "multiPhylo"
       data <- data[!as.character(data[, name_column]) == data_not_tree, ]
       message(
-        length(c(tree_not_data)), " tip(s) dropped from ", length(tree), " trees",
-        "\n", length(c(data_not_tree)), " tip(s)  dropped from the original dataset"
+        length(c(tree_not_data)), " tip(s) dropped from ", length(tree),
+        " trees", "\n", length(c(data_not_tree)), " tip(s)  dropped from the
+                                                    original dataset"
       )
     } else {
       message("No tips were dropped from the original trees/dataset")
