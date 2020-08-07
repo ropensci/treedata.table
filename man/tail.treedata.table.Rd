@@ -4,12 +4,10 @@
 \alias{tail.treedata.table}
 \title{Return the last part of an treedata.table object}
 \usage{
-\method{tail}{treedata.table}(x, n = 6L, ...)
+\method{tail}{treedata.table}(x, ...)
 }
 \arguments{
 \item{x}{a treedata.table object}
-
-\item{n}{a single positive integer.}
 
 \item{...}{Additional arguments passed to head.data.table}
 }

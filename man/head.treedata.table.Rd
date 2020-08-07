@@ -4,12 +4,10 @@
 \alias{head.treedata.table}
 \title{Return the first part of an treedata.table object}
 \usage{
-\method{head}{treedata.table}(x, n = 6L, ...)
+\method{head}{treedata.table}(x, ...)
 }
 \arguments{
 \item{x}{a treedata.table object}
-
-\item{n}{a single positive integer.}
 
 \item{...}{Additional arguments passed to head.data.table}
 }

@@ -1,7 +1,6 @@
 #' Return the first part of an treedata.table object
 #'
 #' @param x a treedata.table object
-#' @param n a single positive integer.
 #' @param ... Additional arguments passed to head.data.table
 #' @examples
 #' data(anolis)
@@ -9,15 +8,14 @@
 #' head(td)
 #' @importFrom utils head
 #' @export
-head.treedata.table <- function(x, n = 6L, ...) {
-  utils::head(x$dat, n, ...)
+head.treedata.table <- function(x, ...) {
+  utils::head(x$dat, ...)
 }
 
 
 #' Return the last part of an treedata.table object
 #'
 #' @param x a treedata.table object
-#' @param n a single positive integer.
 #' @param ... Additional arguments passed to head.data.table
 #' @examples
 #' data(anolis)
@@ -26,9 +24,8 @@ head.treedata.table <- function(x, n = 6L, ...) {
 #' @importFrom utils tail
 #' @export
 
-tail.treedata.table <- function(x, n = 6L, ...) {
-  fun <- utils::getFromNamespace("tail.data.table", "data.table")
-  utils::tail(x$dat, n, ...)
+tail.treedata.table <- function(x,...) {
+  utils::tail(x$dat, ...)
 }
 
 #' Print method treedata.table objects
