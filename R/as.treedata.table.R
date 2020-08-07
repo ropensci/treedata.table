@@ -49,8 +49,7 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
       sort(tree[[x]]$tip.label)
     }))) == 1
     if (!equal_T) {
-      stop("Please make sure that tip labels are equivalent across trees in the
-           multiPhylo object \n")
+      stop("Tip labels must be equivalent across trees in multiPhylo object")
     }
   }
 
@@ -105,8 +104,8 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
       tree_not_data <- setdiff(tree$tip.label, data[, name_column])
       message(
         length(c(tree_not_data)), " tip(s) dropped from the original tree",
-        "\n", length(c(data_not_tree)), " tip(s)  dropped from the original
-                                          dataset"
+        "\n", length(c(data_not_tree)),
+        " tip(s) dropped from the original dataset"
       )
       tree <- ape::drop.tip(tree, tree_not_data)
       data <- data[!as.character(data[, name_column]) == data_not_tree, ]

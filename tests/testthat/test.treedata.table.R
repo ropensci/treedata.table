@@ -106,17 +106,12 @@ test_that("Error is shown when tips with different tip labels are used", {
   tree2 <- list(anolis$phy, anolis2)
   class(tree2) <- "multiPhylo"
   expect_error(as.treedata.table(tree = tree2, data = as.anolis$dat),
-    "Please make sure that tip labels are equivalent across trees in the
-    multiPhylo object \n",
-    fixed = T
-  )
+  "Tip labels must be equivalent across trees in multiPhylo object", fixed = T)
 })
 
-test_that("Error is a non-phylo (or multiPhylo) object is used in the phy", {
+test_that("Error is a non-phylo (or multiPhylo) object is used in the phy",{
   expect_error(as.treedata.table(tree = anolis$dat, data = as.anolis$dat),
-    "Please use a class 'phylo' or 'multiPhylo' tree \n",
-    fixed = T
-  )
+               "Please use a class 'phylo' or 'multiPhylo' tree \n", fixed=T)
 })
 
 
@@ -181,14 +176,13 @@ test_that("Normal as.treedata.table but testing if the tips dropped message is
 
 
 test_that("Normal as.treedata.table but testing if the tips dropped message is
-          shown for trees dropped from data", {
+          shown for trees dropped from data",{
   anolis1 <- anolis$phy
   anolis1$tip.label[1] <- "NAA"
 
   expect_message(as.treedata.table(tree = anolis1, data = anolis$dat),
-    " dropped from the original dataset",
-    fixed = T
-  )
+                 "dropped from the original dataset", fixed=T)
+
 })
 
 test_that("Message when dropping taxa droptreedata.table", {
@@ -196,7 +190,7 @@ test_that("Message when dropping taxa droptreedata.table", {
     "chamaeleonides",
     "eugenegrahami"
   )),
-  " taxa were dropped from the ORIGINAL treedata.table object",
+  "2 taxa were dropped from the ORIGINAL treedata.table",
   fixed = T
   )
 })
@@ -354,7 +348,7 @@ test_that("detectCharacterType", {
 test_that("detectCharacterType warning", {
   dat <- c(rep("1", 20, ), rep("2", 20))
   expect_warning(detectCharacterType(dat),
-    "Guessing that this is a discrete character based on repeated values",
+    "Guessing this is a discrete character based on repeated values",
     fixed = T
   )
 })
