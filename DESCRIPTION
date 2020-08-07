@@ -1,11 +1,23 @@
 Package: treedata.table
 Title: A Wrapper for Data.table for Fast Manipulation of Phylogenetic Trees Matched to Data
 Version: 0.1.0
-Authors@R: as.person(c(
-    "Josef Uyeda <juyeda@vt.edu> [aut, cre]", 
-    "Cristian Roman-Palacios <cromanpa94@email.arizona.edu> [aut]",
-    "April Wright <april.wright@southeastern.edu> [aut]"
-  ))
+Authors@R: c(
+    person(given = "Josef",
+           family = "Uyeda", 
+           role=c("aut", "cre"),
+           email="juyeda@vt.edu"
+           ),
+    person(given = "Cristian", 
+            family = "Roman-Palacios",
+            role = c("aut"),
+            email = "cromanpa94@email.arizona.edu"
+            ),
+    person(given = "April",
+          family = "Wright",
+          role = c("aut"),
+          email = "april.wright@southeastern.edu", 
+          comment = c(ORCID="0000-0003-4692-3225"))
+  )
 Maintainer: Cristian Roman-Palacios <cromanpa94@email.arizona.edu>
 URL: https://github.com/uyedaj/treedata.table/
 BugReports: https://github.com/uyedaj/treedata.table/issues
