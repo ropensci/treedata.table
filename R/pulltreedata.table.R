@@ -18,8 +18,9 @@ pulltreedata.table <- function(tdObject, type = "dat") {
   }
   full <-
     if (type == "dat") {
-      matches <- vapply(tdObject$dat, function(x)
-                  sum(x %in% tdObject$phy$tip.label), integer(1))
+      matches <- vapply(tdObject$dat, function(x) {
+        sum(x %in% tdObject$phy$tip.label)
+      }, integer(1))
       if (any(matches == nrow(tdObject$dat))) {
         tdObject$dat
       } else {

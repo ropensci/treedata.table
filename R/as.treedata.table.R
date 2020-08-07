@@ -45,8 +45,9 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
     stop("Please use a class 'phylo' or 'multiPhylo' tree \n")
   }
   if (inherits(tree, "multiPhylo")) {
-    equal_T <- length(unique(lapply(seq_along(tree), function(x)
-               sort(tree[[x]]$tip.label)))) == 1
+    equal_T <- length(unique(lapply(seq_along(tree), function(x) {
+      sort(tree[[x]]$tip.label)
+    }))) == 1
     if (!equal_T) {
       stop("Please make sure that tip labels are equivalent across trees in the
            multiPhylo object \n")
@@ -96,10 +97,11 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
 
   if (inherits(tree, c("phylo"))) {
     message("Phylo object detected \n")
-    if (geiger::name.check(tree, data.names = data[, name_column])[1] != "OK")
-      {
-      data_not_tree <- setdiff(as.character(data[, name_column]),
-                               tree$tip.label)
+    if (geiger::name.check(tree, data.names = data[, name_column])[1] != "OK") {
+      data_not_tree <- setdiff(
+        as.character(data[, name_column]),
+        tree$tip.label
+      )
       tree_not_data <- setdiff(tree$tip.label, data[, name_column])
       message(
         length(c(tree_not_data)), " tip(s) dropped from the original tree",
@@ -117,9 +119,12 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
     message("Multiphylo object detected \n")
 
     if (geiger::name.check(tree[[1]],
-                           data.names = data[, name_column])[1] != "OK") {
-      data_not_tree <- setdiff(as.character(data[, name_column]),
-                               tree[[1]]$tip.label)
+      data.names = data[, name_column]
+    )[1] != "OK") {
+      data_not_tree <- setdiff(
+        as.character(data[, name_column]),
+        tree[[1]]$tip.label
+      )
       tree_not_data <- setdiff(tree[[1]]$tip.label, data[, name_column])
 
       tree <- lapply(tree, ape::drop.tip, tip = tree_not_data)

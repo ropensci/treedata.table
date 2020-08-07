@@ -24,7 +24,7 @@ head.treedata.table <- function(x, ...) {
 #' @importFrom utils tail
 #' @export
 
-tail.treedata.table <- function(x,...) {
+tail.treedata.table <- function(x, ...) {
   utils::tail(x$dat, ...)
 }
 
@@ -76,10 +76,14 @@ summary.treedata.table <- function(object, ...) {
   )
   message(
     "Continuous traits: ", paste(names(types)[which(types == "continuous")],
-                                 collapse = ", "), "\n")
+      collapse = ", "
+    ), "\n"
+  )
   message(
     "Discrete traits: ", paste(names(types)[which(types == "discrete")],
-                               collapse = ", "), "\n")
+      collapse = ", "
+    ), "\n"
+  )
 
   obswm <- names(types)[apply(
     object$dat,

@@ -56,7 +56,7 @@
 `[.treedata.table` <- function(x, ...) {
   .dat <- x$dat
   .dat <- base::cbind(.dat, "rowid" = seq_len(nrow(.dat))) # CRP: using cbind
-                                                            # instead of :=
+  # instead of :=
   dots <- lazyeval::lazy_dots(...)
   if ("by" %in% names(dots)) {
     .dat <- .dat[...]
@@ -74,7 +74,7 @@
     ape::drop.tip(x$phy, which(!seq_along(x$dat) %in% unlist(.dat[, "rowid"])))
   } else {
     tr <- lapply(x$phy, ape::drop.tip, tip = which(!seq_along(x$dat)
-                                                  %in% unlist(.dat[, "rowid"])))
+    %in% unlist(.dat[, "rowid"])))
     class(tr) <- "multiPhylo"
     tr
   }
