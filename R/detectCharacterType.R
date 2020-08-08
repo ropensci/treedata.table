@@ -65,7 +65,7 @@ detectAllCharacters <- function(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
 #' @return Matrix with only discrete or continuous characters
 #' @examples
 #' data(anolis)
-#' filterMatrix(anolis$dat, aType, "discrete")
+#' filterMatrix(anolis$dat, "discrete")
 #' @export
 
 filterMatrix <- function(mat, returnType = "discrete") {
@@ -137,7 +137,7 @@ forceNames <- function(dat, nameType = "row") {
   if (nType == "col" | nType == "rowcol") {
     if (!hasNames(dat, nameType = "col")) {
       ncols <- dim(dat)[2]
-      rownames(dat) <- paste("n", seq_along(dat[1, ]), sep = "")
+      colnames(dat) <- paste("n", seq_along(dat[1, ]), sep = "")
     }
   }
 
