@@ -5,8 +5,6 @@
 [![Lifecycle](https://img.shields.io/badge/lifecycle-uyedaj/treedata.table-blue.svg)](https://www.tidyverse.org/lifecycle/#uyedaj/treedata.table)
 [![Code size](https://img.shields.io/github/languages/code-size/uyedaj/treedata.table.svg)](https://github.com/uyedaj/treedata.table)
 [![Latest commit](https://img.shields.io/github/last-commit/uyedaj/treedata.table.svg)](https://github.com/uyedaj/treedata.table/commits/master)
-[![Dependencies](https://tinyverse.netlify.com/badge/uyedaj/treedata.table)](https://cran.r-project.org/package=uyedaj/treedata.table)
-[![R build status](https://github.com/uyedaj/treedata.table/workflows/R-CMD-check/badge.svg)](https://github.com/uyedaj/treedata.table/actions)
 <!-- badges: end -->
 
 # treedata.table: An R package for manipulating phylogenetic data with _data.table_
