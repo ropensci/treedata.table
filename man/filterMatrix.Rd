@@ -21,5 +21,5 @@ This function filters a matrix based on continuous
 }
 \examples{
 data(anolis)
-filterMatrix(anolis$dat, aType, "discrete")
+filterMatrix(anolis$dat, "discrete")
 }

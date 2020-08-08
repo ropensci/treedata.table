@@ -1,7 +1,7 @@
 ---
 title: "Getting Started With The treedata.table Package"
 author: "Josef Uyeda, Cristian Roman-Palacios, April Wright"
-date: "12/22/2019"
+date: "08/08/2020"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Getting Started With The treedata.table Package}
