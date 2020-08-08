@@ -1,6 +1,13 @@
 <!-- badges: start -->
   [![Travis build status](https://travis-ci.org/uyedaj/treedata.table.svg?branch=master)](https://travis-ci.org/uyedaj/treedata.table)
-  <!-- badges: end -->
+"[![COVER](https://coveralls.io/repos/github/uyedaj/treedata.table/badge.svg?branch=master)](https://coveralls.io/github/uyedaj/treedata.table)"
+[![Devel version](https://img.shields.io/badge/devel%20version-0.1.0-blue.svg)](https://github.com/uyedaj/treedata.table)
+[![Lifecycle](https://img.shields.io/badge/lifecycle-uyedaj/treedata.table-blue.svg)](https://www.tidyverse.org/lifecycle/#uyedaj/treedata.table)
+[![Code size](https://img.shields.io/github/languages/code-size/uyedaj/treedata.table.svg)](https://github.com/uyedaj/treedata.table)
+[![Latest commit](https://img.shields.io/github/last-commit/uyedaj/treedata.table.svg)](https://github.com/uyedaj/treedata.table/commits/master)
+[![Dependencies](https://tinyverse.netlify.com/badge/uyedaj/treedata.table)](https://cran.r-project.org/package=uyedaj/treedata.table)
+[![R build status](https://github.com/uyedaj/treedata.table/workflows/R-CMD-check/badge.svg)](https://github.com/uyedaj/treedata.table/actions)
+<!-- badges: end -->
 
 # treedata.table: An R package for manipulating phylogenetic data with _data.table_
 A wrapper for data.table that enables fast manipulation of  phylogenetic trees matched to data.
