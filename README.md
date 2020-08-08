@@ -1,6 +1,6 @@
 <!-- badges: start -->
   [![Travis build status](https://travis-ci.org/uyedaj/treedata.table.svg?branch=master)](https://travis-ci.org/uyedaj/treedata.table)
-"[![COVER](https://coveralls.io/repos/github/uyedaj/treedata.table/badge.svg?branch=master)](https://coveralls.io/github/uyedaj/treedata.table)"
+[![codecov](https://codecov.io/gh/uyedaj/treedata.table/branch/master/graph/badge.svg)](https://codecov.io/gh/uyedaj/treedata.table)
 [![Devel version](https://img.shields.io/badge/devel%20version-0.1.0-blue.svg)](https://github.com/uyedaj/treedata.table)
 [![Lifecycle](https://img.shields.io/badge/lifecycle-uyedaj/treedata.table-blue.svg)](https://www.tidyverse.org/lifecycle/#uyedaj/treedata.table)
 [![Code size](https://img.shields.io/github/languages/code-size/uyedaj/treedata.table.svg)](https://github.com/uyedaj/treedata.table)
