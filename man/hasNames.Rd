@@ -17,7 +17,9 @@ hasNames(dat, nameType = "row")
 }}
 }
 \value{
-\code{TRUE} or \code{FALSE} indicating if the object has names (\code{columns}, \code{rows}, or \code{both})
+\code{TRUE} or \code{FALSE} indicating if the object has names (\code{columns},
+\code{rows}, or
+\code{both})
 }
 \description{
 This function checks whether a given \code{data.frame} or \code{matrix} has

@@ -4,12 +4,10 @@
 \alias{filterMatrix}
 \title{Filter a matrix, returning either all continuous or all discrete characters}
 \usage{
-filterMatrix(mat, charType, returnType = "discrete")
+filterMatrix(mat, returnType = "discrete")
 }
 \arguments{
 \item{mat}{A matrix of data}
-
-\item{charType}{A vector of character types (perhaps from detectAllCharacters)}
 
 \item{returnType}{Either discrete or continuous}
 }
@@ -21,6 +19,5 @@ Filter a matrix, returning either all continuous or all discrete characters
 }
 \examples{
 data(anolis)
-aType <- detectAllCharacters(anolis$dat)
 filterMatrix(anolis$dat, aType, "discrete")
 }

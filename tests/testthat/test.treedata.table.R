@@ -354,8 +354,7 @@ test_that("detectCharacterType warning", {
 })
 
 test_that("filterMatrix testing", {
-  aType <- detectAllCharacters(anolis$dat)
-  expect_equal(ncol(filterMatrix(anolis$dat, aType, "discrete")), 3)
+  expect_equal(ncol(filterMatrix(anolis$dat, "discrete")), 3)
 })
 
 

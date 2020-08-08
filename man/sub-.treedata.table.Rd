@@ -2,20 +2,25 @@
 % Please edit documentation in R/treedata.table.R
 \name{[.treedata.table}
 \alias{[.treedata.table}
-\title{Function for performing data.table operations on an object of class \code{treedata.table}}
+\title{Function for performing data.table operations on an object of class
+\code{treedata.table}}
 \usage{
 \method{[}{treedata.table}(x, ...)
 }
 \arguments{
 \item{x}{An object of class \code{treedata.table}}
 
-\item{...}{Arguments in the structure of \code{data.table} used to perform changes on the \code{treedata.table} object}
+\item{...}{Arguments in the structure of \code{data.table} used to perform changes
+on the \code{treedata.table} object}
 }
 \value{
-A new object of class \code{treedata.table} with \verb{$dat} and \verb{$phy} corresponding with the changes set to \verb{$dat} using \link[data.table:data.table]{data.table}'s structure.
+A new object of class \code{treedata.table} with \verb{$dat} and \verb{$phy}
+corresponding with the changes set to \verb{$dat} using
+\link[data.table:data.table]{data.table}'s structure.
 }
 \description{
-This function can be used to subset rows, select and compute on columns \link[data.table:data.table]{data.table}.
+This function can be used to subset rows, select and compute on columns
+\link[data.table:data.table]{data.table}.
 }
 \examples{
 

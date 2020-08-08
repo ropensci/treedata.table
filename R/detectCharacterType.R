@@ -49,19 +49,16 @@ detectAllCharacters <- function(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
 #' Filter a matrix, returning either all continuous or all discrete characters
 #'
 #' @param mat A matrix of data
-#' @param charType A vector of character types (perhaps from
-#' detectAllCharacters)
 #' @param returnType Either discrete or continuous
 #' @return Matrix with only discrete or continuous characters
 #' @examples
 #' data(anolis)
-#' aType <- detectAllCharacters(anolis$dat)
 #' filterMatrix(anolis$dat, aType, "discrete")
 #' @export
 
-filterMatrix <- function(mat, charType, returnType = "discrete") {
+filterMatrix <- function(mat, returnType = "discrete") {
   rType <- match.arg(returnType, c("discrete", "continuous"))
-  columnFilter <- charType == rType
+  columnFilter <- detectAllCharacters(mat) == rType
   result <- mat[, columnFilter]
   return(result)
 }

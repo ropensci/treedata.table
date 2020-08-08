@@ -9,24 +9,34 @@ droptreedata.table(tdObject, taxa)
 \arguments{
 \item{tdObject}{An object of class \code{treedata.table}}
 
-\item{taxa}{A vector class \code{character} containing all taxa that needs to be dropped from the original \code{treedata.table} object}
+\item{taxa}{A vector class \code{character} containing all taxa that needs to be
+dropped from the original \code{treedata.table} object}
 }
 \value{
-An object of class \code{treedata.table} with matching \verb{$dat} and \verb{$phy} elements based on whether \code{taxa} were dropped or not.
+An object of class \code{treedata.table} with matching \verb{$dat} and \verb{$phy}
+elements based on whether \code{taxa} were dropped or not.
 }
 \description{
-This function can be used to remove species from an object of class \code{treedata.table}. The resulting \code{treedata.table} will
-include fully matching \verb{$dat} and \verb{$phy} elements. The user should confirm the changes before they are processed.
+This function can be used to remove species from an object of class
+\code{treedata.table}. The resulting \code{treedata.table} will include fully matching
+\verb{$dat} and \verb{$phy} elements. The user should confirm the changes before they
+are processed.
 }
 \examples{
 data(anolis)
 # With a multiphylo object in the treedata.table object
 td <- as.treedata.table(anolis$phy, anolis$dat)
-droptreedata.table(tdObject = td, taxa = c("chamaeleonides", "eugenegrahami"))
+droptreedata.table(
+  tdObject = td, taxa =
+    c("chamaeleonides", "eugenegrahami")
+)
 
 # With a multiphylo object in the treedata.table object
 treesFM <- list(anolis$phy, anolis$phy)
 class(treesFM) <- "multiPhylo"
 td <- as.treedata.table(treesFM, anolis$dat)
-droptreedata.table(tdObject = td, taxa = c("chamaeleonides", "eugenegrahami"))
+droptreedata.table(
+  tdObject = td, taxa =
+    c("chamaeleonides", "eugenegrahami")
+)
 }

@@ -14,10 +14,12 @@
 \item{exact}{whether exact search should be conducted}
 }
 \value{
-A new object of class \code{vector} with names set to labels corresponding to tip labels in the provided \code{treedata.table} object.
+A new object of class \code{vector} with names set to labels corresponding
+to tip labels in the provided \code{treedata.table} object.
 }
 \description{
-This function extracts a named vector for any  trait from an object of class \code{treedata.table}.
+This function extracts a named vector for any  trait from an object of class
+\code{treedata.table}.
 }
 \examples{
 data(anolis)
