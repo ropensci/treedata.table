@@ -1,5 +1,9 @@
 #' Function to detect whether a character is continuous or discrete
 #'
+#' This function detects whether a given vector is a continuous
+#' (e.g., with values 2.45, 9.35, and so on) or a discrete
+#' (e.g., with values blue, red, yellow) character.
+#'
 #' @param dat A vector of data
 #' @param repeatsAsDiscrete If TRUE, consider numeric variables that repeat
 #' values exactly as discrete; see cutoff
@@ -25,6 +29,10 @@ detectCharacterType <- function(dat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
 
 #' Apply detectCharacterType over an entire matrix
 #'
+#' This function detects whether each column in a matrix is a continuous
+#' (e.g., with values 2.45, 9.35, and so on) or a discrete character
+#' (e.g., with values blue, red, yellow).
+#'
 #' @param mat A matrix of data
 #' @param repeatsAsDiscrete If TRUE, consider numeric variables that repeat
 #' values exactly as discrete; see cutoff
@@ -47,6 +55,10 @@ detectAllCharacters <- function(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1) {
 }
 
 #' Filter a matrix, returning either all continuous or all discrete characters
+#'
+#' This function filters a matrix based on continuous
+#' (e.g., with values 2.45, 9.35, and so on) or discrete characters
+#' (e.g., with values blue, red, yellow).
 #'
 #' @param mat A matrix of data
 #' @param returnType Either discrete or continuous

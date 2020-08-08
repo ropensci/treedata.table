@@ -15,7 +15,9 @@ filterMatrix(mat, returnType = "discrete")
 Matrix with only discrete or continuous characters
 }
 \description{
-Filter a matrix, returning either all continuous or all discrete characters
+This function filters a matrix based on continuous
+(e.g., with values 2.45, 9.35, and so on) or discrete characters
+(e.g., with values blue, red, yellow).
 }
 \examples{
 data(anolis)

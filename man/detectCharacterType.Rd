@@ -20,7 +20,9 @@ nlev / n should exceed cutoff, or the data will be classified as discrete}
 Either "discrete" or "continuous"
 }
 \description{
-Function to detect whether a character is continuous or discrete
+This function detects whether a given vector is a continuous
+(e.g., with values 2.45, 9.35, and so on) or a discrete
+(e.g., with values blue, red, yellow) character.
 }
 \examples{
 data(anolis)

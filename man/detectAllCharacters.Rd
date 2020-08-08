@@ -21,7 +21,9 @@ Vector of either "discrete" or "continuous" for each variable in
 matrix
 }
 \description{
-Apply detectCharacterType over an entire matrix
+This function detects whether each column in a matrix is a continuous
+(e.g., with values 2.45, 9.35, and so on) or a discrete character
+(e.g., with values blue, red, yellow).
 }
 \examples{
 data(anolis)
