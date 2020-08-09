@@ -1,3 +1,5 @@
+# treedata.table <img src='man/figures/logo.png' align="right" height="137" />
+
 <!-- badges: start -->
   [![Travis build status](https://travis-ci.org/uyedaj/treedata.table.svg?branch=master)](https://travis-ci.org/uyedaj/treedata.table)
 [![codecov](https://codecov.io/gh/uyedaj/treedata.table/branch/master/graph/badge.svg)](https://codecov.io/gh/uyedaj/treedata.table)
