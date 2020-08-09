@@ -4,12 +4,12 @@ Version: 0.1.0
 Authors@R: c(
     person(given = "Josef",
            family = "Uyeda", 
-           role=c("aut", "cre"),
+           role=c("aut"),
            email="juyeda@vt.edu"
            ),
     person(given = "Cristian", 
             family = "Roman-Palacios",
-            role = c("aut"),
+            role = c("cre"),
             email = "cromanpa94@email.arizona.edu"
             ),
     person(given = "April",
