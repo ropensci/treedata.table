@@ -5,12 +5,14 @@ Authors@R: c(
     person(given = "Josef",
            family = "Uyeda", 
            role=c("aut"),
-           email="juyeda@vt.edu"
+           email="juyeda@vt.edu", 
+          comment = c(ORCID="0000-0003-4624-9680")
            ),
     person(given = "Cristian", 
             family = "Roman-Palacios",
             role = c("cre"),
-            email = "cromanpa94@email.arizona.edu"
+            email = "cromanpa94@email.arizona.edu", 
+          comment = c(ORCID="0000-0003-1696-4886")
             ),
     person(given = "April",
           family = "Wright",
