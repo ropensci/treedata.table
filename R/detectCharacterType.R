@@ -58,7 +58,7 @@ detectAllCharacters <- function(mat, cutoff = 0.1) {
 #'
 #' @param mat A matrix of data
 #' @param returnType Either discrete or continuous
-#' @return Matrix with only discrete or continuous characters
+#' @return Matrix with only discrete (default) or continuous characters
 #' @examples
 #' data(anolis)
 #' filterMatrix(anolis$dat, "discrete")
@@ -79,7 +79,7 @@ filterMatrix <- function(mat, returnType = "discrete") {
 #' @param dat A vector of data
 #' @param nameType, either:
 #' \describe{
-#'     \item{"row"}{Rows}
+#'     \item{"row"}{Rows (default)}
 #'   	 \item{"col"}{Columns}
 #' 		 \item{"rowcol"}{Both rows and columns}
 #' 	}
@@ -113,7 +113,7 @@ hasNames <- function(dat, nameType = "row") {
 #' @param dat A vector of data
 #' @param nameType, either:
 #' \describe{
-#'     \item{"row"}{Rows}
+#'     \item{"row"}{Rows (default)}
 #' 		 \item{"col"}{Columns}
 #' 		 \item{"rowcol"}{Both rows and columns}
 #' 	}

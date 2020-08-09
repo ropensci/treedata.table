@@ -11,7 +11,7 @@ forceNames(dat, nameType = "row")
 
 \item{nameType, }{either:
 \describe{
-\item{"row"}{Rows}
+\item{"row"}{Rows (default)}
 \item{"col"}{Columns}
 \item{"rowcol"}{Both rows and columns}
 }}

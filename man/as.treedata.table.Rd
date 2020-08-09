@@ -13,7 +13,7 @@ as.treedata.table(tree, data, name_column = "detect")
 \item{data}{A dataset in format \code{data.frame}}
 
 \item{name_column}{A character indicating the name of taxa in \code{data.frame}.
-If set to \code{detect} (the default) \code{as treedata.table} will auto-detect this
+If set to \code{detect} (default) \code{as treedata.table} will auto-detect this
 column}
 }
 \value{

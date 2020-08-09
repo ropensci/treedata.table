@@ -12,7 +12,7 @@ filterMatrix(mat, returnType = "discrete")
 \item{returnType}{Either discrete or continuous}
 }
 \value{
-Matrix with only discrete or continuous characters
+Matrix with only discrete (default) or continuous characters
 }
 \description{
 This function filters a matrix based on continuous
