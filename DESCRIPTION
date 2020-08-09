@@ -36,7 +36,9 @@ Description: This package combines trait data and a phylogenetic tree (or trees)
     performing operations on the trait dataset within the treedata.table object.
 License: MIT + file LICENSE
 Depends:
-  lazyeval, ape, geiger, utils,  data.table, R (>= 2.10)
+  R (>= 2.10)
+Imports: 
+  lazyeval, ape, geiger, utils,  data.table
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
