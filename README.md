@@ -1,4 +1,6 @@
-# treedata.table <img src='man/figures/logo.png' align="right" height="250" />
+# treedata.table
+##  An R package for manipulating phylogenetic data with _data.table_
+A wrapper for data.table that enables fast manipulation of  phylogenetic trees matched to data. <img src='man/figures/logo.png' align="right" height="250" />
 
 <!-- badges: start -->
   [![Travis build status](https://travis-ci.org/uyedaj/treedata.table.svg?branch=master)](https://travis-ci.org/uyedaj/treedata.table)
@@ -9,14 +11,11 @@
 [![Latest commit](https://img.shields.io/github/last-commit/uyedaj/treedata.table.svg)](https://github.com/uyedaj/treedata.table/commits/master)
 <!-- badges: end -->
 
-# treedata.table: An R package for manipulating phylogenetic data with _data.table_
-A wrapper for data.table that enables fast manipulation of  phylogenetic trees matched to data.
-
 The [`data.table` package](https://github.com/Rdatatable/data.table) enables high-performance extended functionality for 
 data tables in R. `treedata.table` is a wrapper for `data.table` for phylogenetic analyses that matches a phylogeny to the 
 data.table, and preserves matching during `data.table` operations.
 
-# Installing `treedata.table`
+## Installing `treedata.table`
 
 treedata.table can be installed from GitHub at the present. We presently recommend installing using
 [`remotes`](https://cran.r-project.org/web/packages/remotes/index.html):
@@ -25,7 +24,7 @@ treedata.table can be installed from GitHub at the present. We presently recomme
  remotes::install_github("uyedaj/treedata.table")
  ```
 
-# What Can I Do With `treedata.table`?
+## What Can I Do With `treedata.table`?
 
 `treedata.table` is designed with the intention of being able to efficiently manipulate trait data and
 phylogenetic trees to enable comparative analyses. With the package is bundled some example data. Let's load it in and look at some common analyses.
@@ -37,7 +36,7 @@ td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
 
 The function `as.treedata.table` converts a normal comma- or tab-delimited file to the `data.table` [format](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html). This enables a range of efficient and intutive indexing and selection operations. 
 
-As an example, in our dataset is the column 'SVL', or snout-to-vent length in our anoles. We can index out this column on the fly, and run a Brownian motion analysis on this trait using the R package Geiger:
+As an example, in our dataset is the column `SVL`, or snout-to-vent length in our anoles. We can index out this column on the fly, and run a Brownian motion analysis on this trait using the R package Geiger:
 
 ```{r}
 tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model="BM", ncores=1))
@@ -49,15 +48,15 @@ We can also do efficient dropping of taxa from the analysis like so:
 dt <- droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" ))
 ```
 
-## tl;dr
+### tl;dr
 
 `treedata.table` is a library for syncing data between a dataset and the tipcs of trees to enable efficient data and taxon management, as well as on-the-fly indexing and data selection in comparative analyses.
 
-# Contributing. 
+## Contributing
 
-Please see our contributing guide.
+Please see our [contributing guide](CONTRIBUTING).
 
-# Contact
+## Contact
 
-Please see the package DESCRIPTION for package authors.
+Please see the package [DESCRIPTION](DESCRIPTION) for package authors.
 
