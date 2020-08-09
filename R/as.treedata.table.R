@@ -9,7 +9,7 @@
 #' names in the input data.frame. The output of this function will be a
 #' treedata.table, which can be manipulated as a data.table.
 #'
-#' @importFrom data.table setDT as.data.table
+#' @importFrom data.table as.data.table
 #' @param tree A tree of class `phylo` or multiple trees of class `multiPhylo`
 #' @param data A dataset in format `data.frame`
 #' @param name_column A character indicating the name of taxa in `data.frame`.

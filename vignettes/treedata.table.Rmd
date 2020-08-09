@@ -134,7 +134,7 @@ When you're done, the data.table and tree can both be extracted from the object:
 
 ```{r}
 df <- pulltreedata.table(td, "dat")
-tree <- pulltreedata.table(td, "tree")
+tree <- pulltreedata.table(td, "phy")
 ```
 
 The table
