@@ -12,10 +12,11 @@
 #' pulltreedata.table(td, type = "dat")
 #' @export
 
-pulltreedata.table <- function(tdObject, type = "dat") {
+pulltreedata.table <- function(tdObject, type = c("dat", "phy") ) {
   if (!inherits(tdObject, c("treedata.table"))) {
     stop("Please use a class 'treedata.table' object \n")
   }
+  type <- match.arg(type)
   full <-
     if (type == "dat") {
       matches <- vapply(tdObject$dat, function(x) {

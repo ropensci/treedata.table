@@ -4,7 +4,7 @@
 \alias{pulltreedata.table}
 \title{Returns the character matrix or phylogeny from a treedata.table object}
 \usage{
-pulltreedata.table(tdObject, type = "dat")
+pulltreedata.table(tdObject, type = c("dat", "phy"))
 }
 \arguments{
 \item{tdObject}{A treedata.table object}
