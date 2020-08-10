@@ -68,13 +68,10 @@
     }
   }
 
-  # .phy <- ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in%
-  #  unlist(.dat[, "rowid"]))) #CRP: using "rowid" instead of rowid & unlist
-
   .phy <- if (inherits(x$phy, c("phylo"))) {
-    ape::drop.tip(x$phy, which(!1:nrow(x$dat) %in% unlist(.dat[, "rowid"])))
+    ape::drop.tip(x$phy, which(!seq_len(nrow(x$dat)) %in% unlist(.dat[, "rowid"])))
   } else {
-    tr <- lapply(x$phy, ape::drop.tip, tip = which(!1:nrow(x$dat)
+    tr <- lapply(x$phy, ape::drop.tip, tip = which(!seq_len(nrow(x$dat))
     %in% unlist(.dat[, "rowid"])))
     class(tr) <- "multiPhylo"
     tr
