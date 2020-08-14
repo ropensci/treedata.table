@@ -20,7 +20,7 @@ data.table, and preserves matching during `data.table` operations.
 Although the simulatenous processing of phylogenetic trees compromises `treedata.table`'s speed by **90%** (relative to `data.table`; *Fig. 1A*), data manipulation in `treedata.table` is significantly faster than in other commonly used packages such as `base` (**>35%**), `treeplyr` (**>60%**), and `dplyr` (**>90%**). Additionally, `treedata.table` is **>400%** faster than `treeplyr` during the initial data/tree matching step (*Fig. 1B*).  
 
 <div style="text-align:center">
-<img src='man/figures/bench_TDT_Aug14.png' align="middle"width="400" />
+<img src='man/figures/bench_TDT_Aug14.png' align="middle"width="500" />
 </div>
 
  <font size="2"> **Fig. 1.** Results for the `treedata.table` microbenchmark during (**A**) data manipulation (`treedata.table[`) and (**B**) tree/data matching steps. We compare the performance of `treedata.table` against `treedata.table`, `base`, `treeplyr`, and `dplyr` using the `microbenchmark` R package.</font> 
