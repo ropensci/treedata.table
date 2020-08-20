@@ -403,11 +403,11 @@ test_that("forcenames without rownames", {
 
 
 test_that("Print() prints the phylo", {
-  expect_message(print(td), "$phy \n", fixed = T)
+  expect_output(print(td), "$phy \n", fixed = T)
 })
 
 test_that("Print() prints the data", {
-  expect_message(print(td), "$dat \n", fixed = T)
+  expect_output(print(td), "$dat \n", fixed = T)
 })
 
 
