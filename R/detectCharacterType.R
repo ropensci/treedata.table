@@ -50,15 +50,15 @@ detectAllCharacters <- function(mat, cutoff = 0.1) {
   return(result)
 }
 
-#' Filter a matrix, returning either all continuous or all discrete characters
+#' Filter a character matrix, returning either all continuous or all discrete characters
 #'
-#' This function filters a matrix based on continuous
+#' This function filters a character matrix based on continuous
 #' (e.g., with values 2.45, 9.35, and so on) or discrete characters
 #' (e.g., with values blue, red, yellow).
 #'
-#' @param mat A matrix of data
+#' @param mat A character matrix of class data.frame
 #' @param returnType Either discrete or continuous
-#' @return Matrix with only discrete (default) or continuous characters
+#' @return data.frame with only discrete (default) or continuous characters
 #' @examples
 #' data(anolis)
 #' filterMatrix(anolis$dat, "discrete")

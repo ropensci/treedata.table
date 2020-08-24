@@ -70,7 +70,7 @@ droptreedata.table <- function(tdObject, taxa) {
     c(attr(tdObject, "tree_not_data"), taxa)
   }
   attr(tdObject, "modified") <- 1
-  message(length(taxa), " taxa were dropped from the ORIGINAL treedata.table")
+  message(length(taxa), " taxa were dropped from the treedata.table object")
 
   return(tdObject)
 }
