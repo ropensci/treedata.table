@@ -38,9 +38,9 @@ tail.treedata.table <- function(x, ...) {
 #'
 #' @export
 print.treedata.table <- function(x, ...) {
-  message("$phy \n")
+  cat("$phy \n")
   print(x$phy)
-  message("\n$dat \n")
+  cat("\n$dat \n")
   print(utils::head(x$dat, ...))
 }
 

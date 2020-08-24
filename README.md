@@ -31,7 +31,7 @@ Although the simulatenous processing of phylogenetic trees compromises `treedata
 treedata.table can be installed from GitHub at the present. We presently recommend installing using
 [`remotes`](https://cran.r-project.org/web/packages/remotes/index.html):
 
-```{r}
+```r
  remotes::install_github("uyedaj/treedata.table")
  ```
 
@@ -40,7 +40,7 @@ treedata.table can be installed from GitHub at the present. We presently recomme
 `treedata.table` is designed with the intention of being able to efficiently manipulate trait data and
 phylogenetic trees to enable comparative analyses. With the package is bundled some example data. Let's load it in and look at some common analyses.
 
-```{r}
+```r
 data(anolis)
 td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
 ```
@@ -49,13 +49,13 @@ The function `as.treedata.table` converts a normal comma- or tab-delimited file 
 
 As an example, in our dataset is the column `SVL`, or snout-to-vent length in our anoles. We can index out this column on the fly, and run a Brownian motion analysis on this trait using the R package Geiger:
 
-```{r}
+```r
 tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model="BM", ncores=1))
 ```
 
 We can also do efficient dropping of taxa from the analysis like so:
 
-```{r}
+```r
 dt <- droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" ))
 ```
 

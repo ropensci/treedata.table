@@ -26,7 +26,6 @@ Authors@R: c(
           family = "Norman",
           role = c("rev"))
   )
-Maintainer: Cristian Roman-Palacios <cromanpa94@email.arizona.edu>
 URL: https://github.com/uyedaj/treedata.table/
 BugReports: https://github.com/uyedaj/treedata.table/issues
 Description: This package combines trait data and a phylogenetic tree (or trees) into a 
