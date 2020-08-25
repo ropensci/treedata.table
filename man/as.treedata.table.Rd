@@ -2,7 +2,8 @@
 % Please edit documentation in R/as.treedata.table.R
 \name{as.treedata.table}
 \alias{as.treedata.table}
-\title{Combine tree (or set of trees) and data.frame into a single treedata.table object}
+\title{Combine tree (or set of trees) and data.frame into a single treedata.table
+object}
 \usage{
 as.treedata.table(tree, data, name_column = "detect")
 }
@@ -11,15 +12,18 @@ as.treedata.table(tree, data, name_column = "detect")
 
 \item{data}{A dataset in format \code{data.frame}}
 
-\item{name_column}{A character indicating the name of taxa in \code{data.frame}}
+\item{name_column}{A character indicating the name of taxa in \code{data.frame}.
+If set to \code{detect} (default) \code{as treedata.table} will auto-detect this
+column}
 }
 \value{
-treedata.table An object of type \code{treedata.table} containing the tree and data.table
+An object of type \code{treedata.table} containing the tree and data.table
 }
 \description{
-This function takes as input a tree of class \code{phylo} or \code{multiPhylo} and a \code{data.frame}
-and combines them into a treedata.table. If a \code{multiPhylo} is provided, all trees must have the same tip.labels.
-\code{treedata.table} object is sorted such that the rows in the data.table are matched to the tip.labels
+This function takes as input a tree of class \code{phylo} or \code{multiPhylo} and a
+\code{data.frame} and combines them into a treedata.table. If a \code{multiPhylo} is
+provided, all trees must have the same tip.labels. \code{treedata.table} object is
+sorted such that the rows in the data.table are matched to the tip.labels
 of the phylogeny. Tip.labels on the tree must match a column of tip
 names in the input data.frame. The output of this function will be a
 treedata.table, which can be manipulated as a data.table.
@@ -27,22 +31,21 @@ treedata.table, which can be manipulated as a data.table.
 \examples{
 
 data(anolis)
-anolis2<-anolis$phy
-anolis2$tip.label[1]<-'NAA'
-anolis1<-anolis$phy
-anolis1$tip.label[1]<-'NAA'
-trees<-list(anolis1,anolis2)
+anolis2 <- anolis$phy
+anolis2$tip.label[1] <- "NAA"
+anolis1 <- anolis$phy
+anolis1$tip.label[1] <- "NAA"
+trees <- list(anolis1, anolis2)
 class(trees) <- "multiPhylo"
-treesFM<-list(anolis$phy,anolis$phy)
+treesFM <- list(anolis$phy, anolis$phy)
 class(treesFM) <- "multiPhylo"
 
-#A phylo object that fully matches the data
-td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
-#A multiphylo object that fully matches the data
-td <- as.treedata.table(tree=treesFM, data=anolis$dat)
-#A phylo object that partially matches the data
-td <- as.treedata.table(tree=anolis1, data=anolis$dat)
-#A multiphylo object that partially matches the data
-td <- as.treedata.table(tree=trees, data=anolis$dat)
-
+# A phylo object that fully matches the data
+td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
+# A multiphylo object that fully matches the data
+td <- as.treedata.table(tree = treesFM, data = anolis$dat)
+# A phylo object that partially matches the data
+td <- as.treedata.table(tree = anolis1, data = anolis$dat)
+# A multiphylo object that partially matches the data
+td <- as.treedata.table(tree = trees, data = anolis$dat)
 }

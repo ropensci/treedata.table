@@ -1,7 +1,7 @@
 ---
 title: "Getting Started With The treedata.table Package"
-author: "the vignette on the orient express"
-date: "12/22/2019"
+author: "Josef Uyeda, Cristian Roman-Palacios, April Wright"
+date: "08/08/2020"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Getting Started With The treedata.table Package}
@@ -50,7 +50,7 @@ td$phy$tip.label == td$dat$tip.label
 Your data table can be indexed in the same way any other `data.table` object would be. For example, if we wanted to look at our snout-vent length column, we can do that like so.
 
 ```{r pressure, echo=TRUE}
-td$dat[,SVL]
+td$dat[,'SVL']
 
 ```
 
@@ -63,9 +63,16 @@ td[["SVL"]]
 The same functionality can also be accomplished through the `extractVector` function. Both the double bracket syntax and the `extractVector` function will return a named vector.
 
 ```{r}
-extractVector(td, SVL)
+extractVector(td, 'SVL')
 ```
 
+Multiple traits can also be extracted using `extractVector`.
+
+```{r}
+extractVector(td, 'SVL','ecomorph')
+```
+
+However, there's a couple aspects that are unique to `[[.treedata.table()` and `extractVector()`. First, `[[.treedata.table()` has an extra exact argument to enable partial match. Second, `extractVector()` can extract multiple columns and accepts non-standard evaluation.
 
 The real power in treedata.table is in co-indexing the tree and table. For example, in the below command, we use `data.table` syntax to take the first representative from each ecomorph. We retain all data columns. If you examine the tree object, you will see that it has had all the tips not in the resultant `data.table` dropped.
 
@@ -81,6 +88,13 @@ td[, head(.SD, 1), by = .(ecomorph, island)]
 
 ```
 
+Tail is also implemented
+
+```{r}
+ td[, tail(.SD, 1), by = "ecomorph"]
+
+```
+
 Columns in the `data.table` can also be operated on using `data.table` syntax. In the below example, the tree is pruned to those tips that occur in Cuba. This is the `data.table` equivalent of `dplyr`'s filter. Then, a new column is created in the `data.table`, assigned the name "Index", and assigned the value of the SVL + the hostility index. This enables concurrent manipulation of the phylogeny, and the calculation of a new index for only those tips we would actually like to use.
 
 ```{r}
@@ -92,38 +106,35 @@ We can extend this tidy approach to actually estimating values for our data usin
 
 ```{r}
 
-tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
+tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model="BM", ncores=1))
 
 ```
 
 
-We can also drop tips directly from the tree, and have those tips drop concurrently from the data.table. In the example below, we  remove two taxa by name. Please note that the below is intended as an interactive function.
+We can also drop tips directly from the tree, and have those tips drop concurrently from the data.table. In the example below, we  remove two taxa by name. 
 
-```{r, eval=FALSE}
-to_drop <- c("chamaeleonides" ,"eugenegrahami" )
-
-dt <- droptreedata.table(tdObject=td, taxa=to_drop)
-
-to_drop %in% dt$phy$tip.label
-
-[1] FALSE FALSE
-
-to_drop %in% dt$dat$X
-
-[1] FALSE FALSE
-
-
+```{r}
+dt <- droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" ))
 ```
 
+We can check if *A. chamaeleonides* and *A. eugenegrahami* are still in the tree
 
+```{r}
+c("chamaeleonides" ,"eugenegrahami" ) %in% dt$phy$tip.label
+```
+
+And we can do the same with the data in out `treedata.table` object
+
+```{r}
+c("chamaeleonides" ,"eugenegrahami" ) %in% dt$dat$X
+```
 
 
 When you're done, the data.table and tree can both be extracted from the object:
 
 ```{r}
-
-df <- pull.treedata.table(td, "dat")
-tree <- pull.treedata.table(td, "tree")
+df <- pulltreedata.table(td, "dat")
+tree <- pulltreedata.table(td, "phy")
 ```
 
 The table
@@ -138,6 +149,74 @@ and the respective tree
 tree
 ```
 
+
+# Additional functions for manipulating data
+
+`treedata.table` includes additional functions that allow the identification of `discrete` and `continuous` character in a given dataset. For instance, the `detectCharacterType()` function can be used to examine whether `SVL` is `discrete` or `continuous`: 
+
+```{r}
+detectCharacterType(anolis$dat$SVL)
+```
+
+We can further examine the type of characters we have in our dataset by using the `detectAllCharacters()` function:
+
+```{r}
+detectAllCharacters(anolis$dat)
+```
+
+Summarizing this information in a table, we get:
+
+```{r}
+cbind.data.frame(character=colnames(anolis$dat),type=detectAllCharacters(anolis$dat))
+```
+
+Finally, we can use the `filterMatrix()` function to subset our dataset to only a certain type of characters. For instance, let's extract all discrete characters in the *Anolis* dataset:
+
+```{r}
+filterMatrix(anolis$dat, "discrete")
+```
+
+Two additional functions in `treedata.table` are designed to examine and modify column and row names in any dataset. For instance, we can ask if the *Anolis* dataset has column names:
+
+```{r}
+hasNames(anolis$dat, "col")
+```
+
+It does have column names. Let's just remove the column names and check if `hasNames()` can detect this change. Here's our new dataset:
+
+```{r}
+data=anolis$dat
+colnames(data)<-NULL
+head(data,2)
+```
+
+Let's run `hasNames()` on our new dataset:
+
+```{r}
+hasNames(data, "col")
+```
+
+Now, we can create new column names using the `forceNames()` function:
+
+```{r}
+data <- forceNames(data, "col")
+```
+
+The new dataset, with column names (n1...), looks like this:
+
+```{r}
+head(data,2)
+```
+
+And we can finally ask whether our new dataset actually have column names by running the `hasNames()` function again:
+
+
+```{r}
+hasNames(data, "col")
+```
+
+
+We can apply the same procedure for columns (`col`), rows (`row`) or both (`rowcol`).
 
 
 # Advanced methods
@@ -176,7 +255,7 @@ td[, head(.SD, 1), by = "ecomorph"]
 Functions can also be run on any `treedata.table` object with `multiphylo` data. For instance, the following line will fit a phenogram for `SVL` on each of the trees we provided in the `multiPhylo` object.
 
 ```{r}
-tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
+tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model="BM", ncores=1))
 ```
 
 The output is an object of class `list` with each element corresponding to the output function of each tree in the provided `multiPhylo` object. 

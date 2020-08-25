@@ -4,20 +4,23 @@
 \alias{detectAllCharacters}
 \title{Apply detectCharacterType over an entire matrix}
 \usage{
-detectAllCharacters(mat, repeatsAsDiscrete = TRUE, cutoff = 0.1)
+detectAllCharacters(mat, cutoff = 0.1)
 }
 \arguments{
 \item{mat}{A matrix of data}
 
-\item{repeatsAsDiscrete}{If TRUE, consider numeric variables that repeat values exactly as discrete; see cutoff}
-
-\item{cutoff}{Cutoff value for deciding if numeric data might actually be discrete: if nlev is the number of levels and n the length of dat, then nlev / n should exceed cutoff, or the data will be classified as discrete}
+\item{cutoff}{Cutoff value for deciding if numeric data might actually be
+discrete: if nlev is the number of levels and n the length of dat, then
+nlev / n should exceed cutoff, or the data will be classified as discrete}
 }
 \value{
-Vector of either "discrete" or "continuous" for each variable in matrix
+Vector of either "discrete" or "continuous" for each variable in
+matrix
 }
 \description{
-Apply detectCharacterType over an entire matrix
+This function detects whether each column in a matrix is a continuous
+(e.g., with values 2.45, 9.35, and so on) or a discrete character
+(e.g., with values blue, red, yellow).
 }
 \examples{
 data(anolis)

@@ -9,10 +9,10 @@ extractVector(tdObject, ...)
 \arguments{
 \item{tdObject}{A treedata.table object}
 
-\item{...}{The name of the column to select}
+\item{...}{The name of the column or columns to select.}
 }
 \value{
-A named vector
+A named vector or a list of named vectors
 }
 \description{
 Returning a named vector from a treedata.table object
@@ -20,7 +20,9 @@ Returning a named vector from a treedata.table object
 \examples{
 
 data(anolis)
-td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
-extractVector(td, "SVL") #extracts the named vector for SVL from the td object
-
+td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
+# extracts the named vector for SVL from the td object
+extractVector(td, "SVL")
+# extracts the named vector for SVL and ecomorph from the td object
+extractVector(td, "SVL", "ecomorph")
 }

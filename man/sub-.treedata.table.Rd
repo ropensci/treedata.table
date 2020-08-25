@@ -2,61 +2,66 @@
 % Please edit documentation in R/treedata.table.R
 \name{[.treedata.table}
 \alias{[.treedata.table}
-\title{Function for performing data.table operations on an object of class \code{treedata.table}}
+\title{Function for performing data.table operations on an object of class
+\code{treedata.table}}
 \usage{
 \method{[}{treedata.table}(x, ...)
 }
 \arguments{
 \item{x}{An object of class \code{treedata.table}}
 
-\item{...}{Arguments in the structure of \code{data.table} used to perform changes on the \code{treedata.table} object}
+\item{...}{Arguments in the structure of \code{data.table} used to perform changes
+on the \code{treedata.table} object}
 }
 \value{
-A new object of class \code{treedata.table} with \code{$dat} and \code{$phy} corresponding with the changes set to \code{$dat} using \link[data.table]{data.table}'s structure.
+A new object of class \code{treedata.table} with \code{$dat} and \code{$phy}
+corresponding with the changes set to \code{$dat} using
+\link[data.table:data.table]{data.table}'s structure.
 }
 \description{
-This function can be used to subset rows, select and compute on columns \link[data.table]{data.table}.
+This function can be used to subset rows, select and compute on columns
+\link[data.table:data.table]{data.table}.
 }
 \examples{
 
 data(anolis)
-anolis2<-anolis$phy
-anolis2$tip.label[1]<-'NAA'
-anolis1<-anolis$phy
-anolis1$tip.label[1]<-'NAA'
-trees<-list(anolis1,anolis2)
+anolis2 <- anolis$phy
+anolis2$tip.label[1] <- "NAA"
+anolis1 <- anolis$phy
+anolis1$tip.label[1] <- "NAA"
+trees <- list(anolis1, anolis2)
 class(trees) <- "multiPhylo"
-treesFM<-list(anolis$phy,anolis$phy)
+treesFM <- list(anolis$phy, anolis$phy)
 class(treesFM) <- "multiPhylo"
 
-#A phylo object that fully matches the data
-td <- as.treedata.table(tree=anolis$phy, data=anolis$dat)
+# A phylo object that fully matches the data
+td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
 td <- as.treedata.table(anolis$phy, anolis$dat)
-td[,SVL]
+td[, SVL]
 td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
-td[, head(.SD, 1), by = .(ecomorph, island)]
+td[, utils::head(.SD, 1), by = .(ecomorph, island)]
 
-#A multiphylo object that fully matches the data
-td <- as.treedata.table(tree=treesFM, data=anolis$dat)
+# A multiphylo object that fully matches the data
+td <- as.treedata.table(tree = treesFM, data = anolis$dat)
 td <- as.treedata.table(treesFM, anolis$dat)
-td[,SVL]
+td[, SVL]
 td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
-td[, head(.SD, 1), by = .(ecomorph, island)]
-#A phylo object that partially matches the data
-td <- as.treedata.table(tree=anolis1, data=anolis$dat)
+td[, utils::head(.SD, 1), by = .(ecomorph, island)]
+
+# A phylo object that partially matches the data
+td <- as.treedata.table(tree = anolis1, data = anolis$dat)
 td <- as.treedata.table(anolis1, anolis$dat)
-td[,SVL]
+td[, SVL]
 td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
-td[, head(.SD, 1), by = .(ecomorph, island)]
+td[, utils::head(.SD, 1), by = .(ecomorph, island)]
 
-#A multiphylo object that partially matches the data
-td <- as.treedata.table(tree=trees, data=anolis$dat)
+# A multiphylo object that partially matches the data
+td <- as.treedata.table(tree = trees, data = anolis$dat)
 td <- as.treedata.table(trees, anolis$dat)
-td[,SVL]
+td[, SVL]
 td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
-td[, head(.SD, 1), by = .(ecomorph, island)]
-
+td[, utils::head(.SD, 1), by = .(ecomorph, island)]
 }
 \seealso{
-\link[data.table]{data.table}
+\link[data.table:data.table]{data.table}
 }

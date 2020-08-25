@@ -1,41 +1,50 @@
-#' Run a function on a \code{treedata.table} object
+#' Run a function on a `treedata.table` object
 #'
 #' @param tdObject A treedata.table object
 #' @param ... A function call.
 #'
-#' @details This function allows R functions that use trees and data to be run on
-#' \code{treedata.table} objects.
+#' @details This function allows R functions that use trees and data to be run
+#' on`treedata.table` objects.
 #'
-#' @return Function output for a single tree (phylo) or a list of function outputs
-#' (one per each tree in the MultiPhylo object)
+#' @return Function output for a single tree (phylo) or a list of function
+#' outputs (one per each tree in the MultiPhylo object)
 #'
 #' @examples
 #' data(anolis)
 #' \dontrun{
 #'
-#' #A treedata.table object with a phylo $phy
+#' # A treedata.table object with a phylo $phy
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
-#' tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
-#' tdt(td, phytools::phenogram(phy, extractVector(td, SVL), quiet=TRUE, spread.labels=FALSE))
+#' tdt(td, geiger::fitContinuous(phy, extractVector(td, "SVL"),
+#'   model = "BM", ncores = 1
+#' ))
+#' tdt(td, phytools::phenogram(phy, extractVector(td, "SVL"),
+#'   quiet = TRUE,
+#'   spread.labels = FALSE
+#' ))
 #'
 #'
-#' #A treedata.table object with a multiPhylo $phy
-#' treesFM<-list(anolis$phy,anolis$phy)
+#' # A treedata.table object with a multiPhylo $phy
+#' treesFM <- list(anolis$phy, anolis$phy)
 #' class(treesFM) <- "multiPhylo"
 #' td <- as.treedata.table(treesFM, anolis$dat)
-#' tdt(td, geiger::fitContinuous(phy, extractVector(td, SVL), model="BM", ncores=1))
-#' tdt(td, phytools::phenogram(phy, extractVector(td, SVL), quiet=TRUE, spread.labels=FALSE))
-#'
+#' tdt(td, geiger::fitContinuous(phy, extractVector(td, "SVL"),
+#'   model = "BM",
+#'   ncores = 1
+#' ))
+#' tdt(td, phytools::phenogram(phy, extractVector(td, "SVL"),
+#'   quiet = TRUE,
+#'   spread.labels = FALSE
+#' ))
 #' }
 #' @export
 
-tdt <- function(tdObject, ...){
-
-  if(class(tdObject) != "treedata.table" ){
+tdt <- function(tdObject, ...) {
+  if (!inherits(tdObject, c("treedata.table"))) {
     stop("Please use a class 'treedata.table' object \n")
   }
 
-  if(!is.call(substitute(...))){
+  if (!is.call(substitute(...))) {
     call <- list(...)[[1]]
   } else {
     call <- substitute(...)
@@ -43,21 +52,21 @@ tdt <- function(tdObject, ...){
   env <- new.env(parent = parent.frame(), size = 1L)
   env$dat <- tdObject$dat
 
-  if(class(tdObject$phy) == "phylo"){
-    cat("Phylo object detected. Expect a single function output")
+  if (inherits(tdObject$phy, c("phylo"))) {
+    message("Phylo object detected. Expect a single function output")
     env$phy <- tdObject$phy
     out <- eval(call, env)
-    if(is.null(out)){
+    if (is.null(out)) {
       invisible()
     } else {
       return(out)
     }
-  }else{
-    cat("Multiphylo object detected. Expect a list of function outputs")
-    lapply(seq_along(tdObject$phy), function(x){
+  } else {
+    message("Multiphylo object detected. Expect a list of function outputs")
+    lapply(seq_along(tdObject$phy), function(x) {
       env$phy <- tdObject$phy[[x]]
       out <- eval(call, env)
-      if(is.null(out)){
+      if (is.null(out)) {
         invisible()
       } else {
         return(out)

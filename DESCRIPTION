@@ -1,13 +1,31 @@
 Package: treedata.table
-Type: Package
-Title: A Wrapper For data.table For Fast Manipulation Of Phylogenetic Trees Matched To Data
+Title: A Wrapper for Data.table for Fast Manipulation of Phylogenetic Trees Matched to Data
 Version: 0.1.0
-Authors@R: as.person(c(
-    "Josef Uyeda <juyeda@vt.edu> [aut, cre]", 
-    "Cristian Roman-Palacios <cromanpa94@email.arizona.edu> [aut]",
-    "April Wright <april.wright@southeastern.edu> [aut]"
-  ))
-Maintainer: Cristian Roman-Palacios <cromanpa94@email.arizona.edu>
+Authors@R: c(
+    person(given = "Josef",
+           family = "Uyeda", 
+           role=c("aut"),
+           email="juyeda@vt.edu",
+           comment = c(ORCID="0000-0003-4624-9680")
+           ),
+    person(given = "Cristian", 
+            family = "Roman-Palacios",
+            role = c("cre"),
+            email = "cromanpa94@email.arizona.edu", 
+          comment = c(ORCID="0000-0003-4692-3225")
+            ),
+    person(given = "April",
+          family = "Wright",
+          role = c("aut"),
+          email = "april.wright@southeastern.edu", 
+          comment = c(ORCID="0000-0003-4692-3225")),
+    person(given = "Hugo",
+          family = "Gruson",
+          role = c("rev")),
+    person(given = "Kari",
+          family = "Norman",
+          role = c("rev"))
+  )
 URL: https://github.com/uyedaj/treedata.table/
 BugReports: https://github.com/uyedaj/treedata.table/issues
 Description: This package combines trait data and a phylogenetic tree (or trees) into a 
@@ -17,10 +35,14 @@ Description: This package combines trait data and a phylogenetic tree (or trees)
     performing operations on the trait dataset within the treedata.table object.
 License: MIT + file LICENSE
 Depends:
-  lazyeval, ape, geiger, utils,  data.table, R (>= 2.10)
-RoxygenNote: 7.0.2
+  R (>= 2.10)
+Imports: 
+  lazyeval, ape, geiger, utils,  data.table
+RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown,
     testthat
 VignetteBuilder: knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)

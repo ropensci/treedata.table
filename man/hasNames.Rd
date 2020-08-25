@@ -11,13 +11,19 @@ hasNames(dat, nameType = "row")
 
 \item{nameType, }{either:
 \describe{
-    \item{"row"}{Rows}
-       \item{"col"}{Columns}
-         \item{"rowcol"}{Both rows and columns}
+\item{"row"}{Rows (default)}
+\item{"col"}{Columns}
+\item{"rowcol"}{Both rows and columns}
 }}
 }
+\value{
+\code{TRUE} or \code{FALSE} indicating if the object has names (\code{columns},
+\code{rows}, or
+\code{both})
+}
 \description{
-Row and column name check
+This function checks whether a given \code{data.frame} or \code{matrix} has
+column names (\code{colnames}), row.names (\code{row.names}), or both.
 }
 \examples{
 data(anolis)

@@ -2,25 +2,24 @@
 % Please edit documentation in R/detectCharacterType.R
 \name{filterMatrix}
 \alias{filterMatrix}
-\title{Filter a matrix, returning either all continuous or all discrete characters}
+\title{Filter a character matrix, returning either all continuous or all discrete characters}
 \usage{
-filterMatrix(mat, charType, returnType = "discrete")
+filterMatrix(mat, returnType = "discrete")
 }
 \arguments{
-\item{mat}{A matrix of data}
-
-\item{charType}{A vector of character types (perhaps from detectAllCharacters)}
+\item{mat}{A character matrix of class data.frame}
 
 \item{returnType}{Either discrete or continuous}
 }
 \value{
-Matrix with only discrete or continuous characters
+data.frame with only discrete (default) or continuous characters
 }
 \description{
-Filter a matrix, returning either all continuous or all discrete characters
+This function filters a character matrix based on continuous
+(e.g., with values 2.45, 9.35, and so on) or discrete characters
+(e.g., with values blue, red, yellow).
 }
 \examples{
 data(anolis)
-aType<-detectAllCharacters(anolis$dat)
-filterMatrix(anolis$dat, aType, "discrete")
+filterMatrix(anolis$dat, "discrete")
 }
