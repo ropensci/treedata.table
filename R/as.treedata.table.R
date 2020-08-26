@@ -133,6 +133,7 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
         length(c(tree_not_data)), " tip(s) dropped from ", length(tree),
         " trees", "\n", length(c(data_not_tree)), " tip(s)  dropped from the ",
         " original dataset"
+
       )
     } else {
       message("No tips were dropped from the original trees/dataset")

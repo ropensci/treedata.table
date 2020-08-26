@@ -190,7 +190,7 @@ test_that("Message when dropping taxa droptreedata.table", {
     "chamaeleonides",
     "eugenegrahami"
   )),
-  "2 taxa were dropped from the ORIGINAL treedata.table",
+  "2 taxa were dropped from the treedata.table object",
   fixed = T
   )
 })
