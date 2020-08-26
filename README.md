@@ -15,9 +15,9 @@ The [`data.table` package](https://github.com/Rdatatable/data.table) enables hig
 data tables in R. `treedata.table` is a wrapper for `data.table` for phylogenetic analyses that matches a phylogeny to the 
 data.table, and preserves matching during `data.table` operations.
 
-## Why to use `treedata.table`?
+## Why use `treedata.table`?
 
-Although the simulatenous processing of phylogenetic trees compromises `treedata.table`'s speed by **90%** (relative to `data.table`; *Fig. 1A*), data manipulation in `treedata.table` is significantly faster than in other commonly used packages such as `base` (**>35%**), `treeplyr` (**>60%**), and `dplyr` (**>90%**). Additionally, `treedata.table` is **>400%** faster than `treeplyr` during the initial data/tree matching step (*Fig. 1B*).  
+Simultaneous processing of phylogenetic trees and data remains a computationally-intensive task. For example, processing a dataset of phylogenetic characters alongside a tree in `treedata.table` takes **90%** longer than processing the data alone in `data.table` (*Fig. 1A*). `treedata.table` provides new tools for increasing the speed and efficiency of phylogenetic data processing. Data manipulation in `treedata.table` is significantly faster than in other commonly used packages such as `base` (**>35%**), `treeplyr` (**>60%**), and `dplyr` (**>90%**). Additionally, `treedata.table` is **>400%** faster than `treeplyr` during the initial data/tree matching step (*Fig. 1B*).  
 
 <div style="text-align:center">
 <img src='man/figures/bench_TDT_Aug14.png' align="middle"width="600" />
