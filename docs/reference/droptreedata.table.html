@@ -8,25 +8,36 @@
 
 <title>Function dropping taxa from an object of class <code>treedata.table</code> — droptreedata.table • treedata.table</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -36,9 +47,11 @@
 
 
 <meta property="og:title" content="Function dropping taxa from an object of class <code>treedata.table</code> — droptreedata.table" />
-<meta property="og:description" content="This function can be used to remove species from an object of class treedata.table. The resulting treedata.table will
-include fully matching $dat and $phy elements. The user should confirm the changes before they are processed." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:description" content="This function can be used to remove species from an object of class
+treedata.table. The resulting treedata.table will include fully matching
+$dat and $phy elements. The user should confirm the changes before they
+are processed." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -56,7 +69,7 @@ include fully matching $dat and $phy elements. The user should confirm the chang
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -83,14 +96,28 @@ include fully matching $dat and $phy elements. The user should confirm the chang
   </a>
 </li>
 <li>
-  <a href="../articles/treedata.table.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/treedata.table.html">Getting Started With The treedata.table Package</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/uyedaj/treedata.table/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -105,13 +132,15 @@ include fully matching $dat and $phy elements. The user should confirm the chang
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Function dropping taxa from an object of class <code>treedata.table</code></h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/uyedaj/treedata.table/blob/master/R/droptreedata.table.R'><code>R/droptreedata.table.R</code></a></small>
     <div class="hidden name"><code>droptreedata.table.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function can be used to remove species from an object of class <code>treedata.table</code>. The resulting <code>treedata.table</code> will
-include fully matching <code>$dat</code> and <code>$phy</code> elements. The user should confirm the changes before they are processed.</p>
+    <p>This function can be used to remove species from an object of class
+<code>treedata.table</code>. The resulting <code>treedata.table</code> will include fully matching
+<code>$dat</code> and <code>$phy</code> elements. The user should confirm the changes before they
+are processed.</p>
     </div>
 
     <pre class="usage"><span class='fu'>droptreedata.table</span>(<span class='no'>tdObject</span>, <span class='no'>taxa</span>)</pre>
@@ -125,20 +154,25 @@ include fully matching <code>$dat</code> and <code>$phy</code> elements. The use
     </tr>
     <tr>
       <th>taxa</th>
-      <td><p>A vector class <code>character</code> containing all taxa that needs to be dropped from the original <code>treedata.table</code> object</p></td>
+      <td><p>A vector class <code>character</code> containing all taxa that needs to be
+dropped from the original <code>treedata.table</code> object</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>treedata.table</code> with matching <code>$dat</code> and <code>$phy</code> elements based on whether <code>taxa</code> were dropped or not.</p>
+    <p>An object of class <code>treedata.table</code> with matching <code>$dat</code> and <code>$phy</code>
+elements based on whether <code>taxa</code> were dropped or not.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
-<span class='co'>#With a multiphylo object in the treedata.table object</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Phylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(<span class='kw'>tdObject</span><span class='kw'>=</span><span class='no'>td</span>, <span class='kw'>taxa</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chamaeleonides"</span> ,<span class='st'>"eugenegrahami"</span> ))</div><div class='output co'>#&gt; <span class='message'>Please confirm that you would like to make changes to the ORIGINAL data?</span></div><div class='output co'>#&gt; Type: (1) YES, (2) NO: </div><div class='output co'>#&gt; <span class='message'>NO changes made to the ORIGINAL data</span></div><div class='output co'>#&gt; $phy 
+<span class='co'># With a multiphylo object in the treedata.table object</span>
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(
+  <span class='kw'>tdObject</span> <span class='kw'>=</span> <span class='no'>td</span>, <span class='kw'>taxa</span> <span class='kw'>=</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chamaeleonides"</span>, <span class='st'>"eugenegrahami"</span>)
+)</div><div class='output co'>#&gt; <span class='message'>2 taxa were dropped from the treedata.table object</span></div><div class='output co'>#&gt; $phy 
 #&gt; 
-#&gt; Phylogenetic tree with 100 tips and 99 internal nodes.
+#&gt; Phylogenetic tree with 98 tips and 97 internal nodes.
 #&gt; 
 #&gt; Tip labels:
 #&gt; 	ahli, allogus, rubribarbus, imias, sagrei, bremeri, ...
@@ -160,10 +194,13 @@ include fully matching <code>$dat</code> and <code>$phy</code> elements. The use
 #&gt; 4:        -2.112606   0.1694260 -0.4108123  0.1963580       TG   Cuba
 #&gt; 5:        -1.375769  -0.6304338  0.7193130 -1.2228276       TG   Cuba
 #&gt; 6:        -1.626299  -1.7543006  1.4127184  0.1832345       TG   Cuba</div><div class='input'>
-<span class='co'>#With a multiphylo object in the treedata.table object</span>
-<span class='no'>treesFM</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>,<span class='no'>anolis</span>$<span class='no'>phy</span>)
+<span class='co'># With a multiphylo object in the treedata.table object</span>
+<span class='no'>treesFM</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>phy</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>treesFM</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>treesFM</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; Multiphylo object detected </div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(<span class='kw'>tdObject</span><span class='kw'>=</span><span class='no'>td</span>, <span class='kw'>taxa</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chamaeleonides"</span> ,<span class='st'>"eugenegrahami"</span> ))</div><div class='output co'>#&gt; <span class='message'>Please confirm that you would like to make changes to the ORIGINAL data?</span></div><div class='output co'>#&gt; Type: (1) YES, (2) NO: </div><div class='output co'>#&gt; <span class='message'>NO changes made to the ORIGINAL data</span></div><div class='output co'>#&gt; $phy 
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>treesFM</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(
+  <span class='kw'>tdObject</span> <span class='kw'>=</span> <span class='no'>td</span>, <span class='kw'>taxa</span> <span class='kw'>=</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chamaeleonides"</span>, <span class='st'>"eugenegrahami"</span>)
+)</div><div class='output co'>#&gt; <span class='message'>2 taxa were dropped from the treedata.table object</span></div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
 #&gt; $dat 
@@ -180,17 +217,12 @@ include fully matching <code>$dat</code> and <code>$phy</code> elements. The use
 #&gt; 3:        -2.087433  -0.4277574  0.4800445 -0.9674263       TG   Cuba
 #&gt; 4:        -2.112606   0.1694260 -0.4108123  0.1963580       TG   Cuba
 #&gt; 5:        -1.375769  -0.6304338  0.7193130 -1.2228276       TG   Cuba
-#&gt; 6:        -1.626299  -1.7543006  1.4127184  0.1832345       TG   Cuba</div><div class='input'>
-</div></pre>
+#&gt; 6:        -1.626299  -1.7543006  1.4127184  0.1832345       TG   Cuba</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -201,7 +233,7 @@ include fully matching <code>$dat</code> and <code>$phy</code> elements. The use
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

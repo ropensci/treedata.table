@@ -6,19 +6,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Getting Started With The treedata.table Package • treedata.table</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started With The treedata.table Package">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="treedata.table">
+<meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,13 +51,29 @@
   </a>
 </li>
 <li>
-  <a href="../articles/treedata.table.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/treedata.table.html">Getting Started With The treedata.table Package</a>
+    </li>
+  </ul>
+</li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/uyedaj/treedata.table/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -60,15 +83,15 @@
 
       
 
-      </header><div class="row">
+      </header><script src="treedata.table_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Getting Started With The treedata.table Package</h1>
-                        <h4 class="author">the vignette on the orient express</h4>
+      <h1 data-toc-skip>Getting Started With The treedata.table Package</h1>
+                        <h4 class="author">Josef Uyeda, Cristian Roman-Palacios, April Wright</h4>
             
-            <h4 class="date">12/22/2019</h4>
+            <h4 class="date">08/08/2020</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/uyedaj/treedata.table/blob/master/vignettes/treedata.table.Rmd"><code>vignettes/treedata.table.Rmd</code></a></small>
       <div class="hidden name"><code>treedata.table.Rmd</code></div>
 
     </div>
@@ -81,20 +104,19 @@
 <p>The aim of the treedata.table R package is to allow researchers to access and manipulate phylogenetic data using tools from the <code>data.table</code> package. <code>data.table</code> has many functions for rapidly manipulating data in a memory efficient way.</p>
 <p>Using the <code>treedata.table</code> package begins with creating a <code>treedata.table</code> object. The <code>treedata.table</code> matches the tip.labels of the phylogeny to a column of names in your <code>data.frame</code>. This allows you to manipulate the data, and the corresponding tree together.</p>
 <p>A <code>treedata.table</code> is created using the <code>as.treedata.table</code> function.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ape)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(treedata.table)</a></code></pre></div>
-<pre><code>## Loading required package: data.table</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Load example data</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(anolis)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#Create treedata.table object with as.treedata.table</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">td &lt;-<span class="st"> </span><span class="kw"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="dt">tree =</span> anolis<span class="op">$</span>phy, <span class="dt">data =</span> anolis<span class="op">$</span>dat)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ape</span>)</pre></body></html></div>
+<pre><code>## Warning: package 'ape' was built under R version 4.0.2</code></pre>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">treedata.table</span>)
+
+<span class="co"># Load example data</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">anolis</span>)
+<span class="co">#Create treedata.table object with as.treedata.table</span>
+<span class="no">td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="kw">tree</span> <span class="kw">=</span> <span class="no">anolis</span>$<span class="no">phy</span>, <span class="kw">data</span> <span class="kw">=</span> <span class="no">anolis</span>$<span class="no">dat</span>)</pre></body></html></div>
+<pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Phylo object detected</code></pre>
-<pre><code>## Registered S3 method overwritten by 'geiger':
-##   method            from
-##   unique.multiPhylo ape</code></pre>
 <pre><code>## No tips were dropped from the original tree/dataset</code></pre>
 <p>We may inspect our object by calling it by name. You will notice that your <code>data.frame</code> is now a <code>data.table</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">td</a></code></pre></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">td</span></pre></body></html></div>
 <pre><code>## $phy 
 ## 
 ## Phylogenetic tree with 100 tips and 99 internal nodes.
@@ -119,40 +141,8 @@
 ## 4:        -2.112606   0.1694260 -0.4108123  0.1963580       TG   Cuba
 ## 5:        -1.375769  -0.6304338  0.7193130 -1.2228276       TG   Cuba
 ## 6:        -1.626299  -1.7543006  1.4127184  0.1832345       TG   Cuba</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(td)</a></code></pre></div>
-<pre><code>## A treedata.table object 
-## The dataset contains  11  traits 
-## Continuous traits:  tip.label SVL PCI_limbs PCII_head PCIII_padwidth_vs_tail PCIV_lamella_num awesomeness hostility attitude 
-## Discrete traits:  ecomorph island 
-## The following traits have missing values:  
-## These taxa were dropped from the tree: OK 
-## These taxa were dropped from the data: OK 
-## $phy 
-## 
-## Phylogenetic tree with 100 tips and 99 internal nodes.
-## 
-## Tip labels:
-##  ahli, allogus, rubribarbus, imias, sagrei, bremeri, ...
-## 
-## Rooted; includes branch lengths.
-## 
-## $dat 
-##      tip.label      SVL PCI_limbs PCII_head PCIII_padwidth_vs_tail
-## 1:        ahli 4.039125 -3.248286 0.3722519             -1.0422187
-## 2:     allogus 4.040138 -2.845570 0.6001134             -1.0253056
-## 3: rubribarbus 4.078469 -2.238349 1.1199779             -1.1929572
-## 4:       imias 4.099687 -3.048917 2.3320349              0.1616442
-## 5:      sagrei 4.067162 -1.741055 2.0228243              0.1693635
-## 6:     bremeri 4.113371 -1.813611 2.6067501              0.6399320
-##    PCIV_lamella_num awesomeness  hostility   attitude ecomorph island
-## 1:        -2.414742  -0.2416517 -0.1734769  0.6443771       TG   Cuba
-## 2:        -2.463311   0.6244689 -0.5000962  0.7128910       TG   Cuba
-## 3:        -2.087433  -0.4277574  0.4800445 -0.9674263       TG   Cuba
-## 4:        -2.112606   0.1694260 -0.4108123  0.1963580       TG   Cuba
-## 5:        -1.375769  -0.6304338  0.7193130 -1.2228276       TG   Cuba
-## 6:        -1.626299  -1.7543006  1.4127184  0.1832345       TG   Cuba</code></pre>
 <p>Furthermore, the new <code>data.table</code> has been reordered into the same order as the tip.labels of your tree.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">td<span class="op">$</span>phy<span class="op">$</span>tip.label <span class="op">==</span><span class="st"> </span>td<span class="op">$</span>dat<span class="op">$</span>tip.label</a></code></pre></div>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">td</span>$<span class="no">phy</span>$<span class="no">tip.label</span> <span class="kw">==</span> <span class="no">td</span>$<span class="no">dat</span>$<span class="no">tip.label</span></pre></body></html></div>
 <pre><code>##   [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ##  [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ##  [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
@@ -165,22 +155,111 @@
 <h2 class="hasAnchor">
 <a href="#manipulating-data" class="anchor"></a>Manipulating Data</h2>
 <p>Your data table can be indexed in the same way any other <code>data.table</code> object would be. For example, if we wanted to look at our snout-vent length column, we can do that like so.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">td<span class="op">$</span>dat[,SVL]</a></code></pre></div>
-<pre><code>##   [1] 4.039125 4.040138 4.078469 4.099687 4.067162 4.113371 3.901619 3.637962
-##   [9] 3.987147 3.952605 4.032806 3.938442 3.877457 4.769473 3.838376 4.154274
-##  [17] 4.321524 4.128612 4.482607 4.165605 3.869881 3.886500 3.799022 4.188105
-##  [25] 3.820378 4.091535 4.189820 3.874155 3.911743 3.831810 3.916546 3.928796
-##  [33] 3.663932 3.588941 3.696631 3.793899 3.657991 4.288780 3.800471 4.097479
-##  [41] 4.316542 4.051111 4.121684 4.210982 3.983003 4.242103 4.274271 4.079485
-##  [49] 5.053056 5.076958 5.013963 4.128504 3.884652 4.875012 5.003946 5.038034
-##  [57] 5.042349 5.036953 3.842994 3.845670 3.657088 4.375390 4.258991 3.757869
-##  [65] 3.697941 3.466860 3.701240 3.763884 3.773967 3.682924 3.815705 3.788595
-##  [73] 3.802961 3.554891 3.537439 3.758726 3.462014 3.630161 3.526655 3.715765
-##  [81] 3.626206 3.971307 4.198915 4.280547 4.802849 5.042780 5.083473 5.035096
-##  [89] 5.101085 5.113994 3.770613 3.827445 3.908550 3.859835 4.302036 4.036557
-##  [97] 4.057997 4.275448 4.297965 3.663049</code></pre>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">td</span>$<span class="no">dat</span>[,<span class="st">'SVL'</span>]</pre></body></html></div>
+<pre><code>##           SVL
+##   1: 4.039125
+##   2: 4.040138
+##   3: 4.078469
+##   4: 4.099687
+##   5: 4.067162
+##   6: 4.113371
+##   7: 3.901619
+##   8: 3.637962
+##   9: 3.987147
+##  10: 3.952605
+##  11: 4.032806
+##  12: 3.938442
+##  13: 3.877457
+##  14: 4.769473
+##  15: 3.838376
+##  16: 4.154274
+##  17: 4.321524
+##  18: 4.128612
+##  19: 4.482607
+##  20: 4.165605
+##  21: 3.869881
+##  22: 3.886500
+##  23: 3.799022
+##  24: 4.188105
+##  25: 3.820378
+##  26: 4.091535
+##  27: 4.189820
+##  28: 3.874155
+##  29: 3.911743
+##  30: 3.831810
+##  31: 3.916546
+##  32: 3.928796
+##  33: 3.663932
+##  34: 3.588941
+##  35: 3.696631
+##  36: 3.793899
+##  37: 3.657991
+##  38: 4.288780
+##  39: 3.800471
+##  40: 4.097479
+##  41: 4.316542
+##  42: 4.051111
+##  43: 4.121684
+##  44: 4.210982
+##  45: 3.983003
+##  46: 4.242103
+##  47: 4.274271
+##  48: 4.079485
+##  49: 5.053056
+##  50: 5.076958
+##  51: 5.013963
+##  52: 4.128504
+##  53: 3.884652
+##  54: 4.875012
+##  55: 5.003946
+##  56: 5.038034
+##  57: 5.042349
+##  58: 5.036953
+##  59: 3.842994
+##  60: 3.845670
+##  61: 3.657088
+##  62: 4.375390
+##  63: 4.258991
+##  64: 3.757869
+##  65: 3.697941
+##  66: 3.466860
+##  67: 3.701240
+##  68: 3.763884
+##  69: 3.773967
+##  70: 3.682924
+##  71: 3.815705
+##  72: 3.788595
+##  73: 3.802961
+##  74: 3.554891
+##  75: 3.537439
+##  76: 3.758726
+##  77: 3.462014
+##  78: 3.630161
+##  79: 3.526655
+##  80: 3.715765
+##  81: 3.626206
+##  82: 3.971307
+##  83: 4.198915
+##  84: 4.280547
+##  85: 4.802849
+##  86: 5.042780
+##  87: 5.083473
+##  88: 5.035096
+##  89: 5.101085
+##  90: 5.113994
+##  91: 3.770613
+##  92: 3.827445
+##  93: 3.908550
+##  94: 3.859835
+##  95: 4.302036
+##  96: 4.036557
+##  97: 4.057997
+##  98: 4.275448
+##  99: 4.297965
+## 100: 3.663049
+##           SVL</code></pre>
 <p>You can also use double bracket syntax to directly return column data as a named list.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">td[[<span class="st">"SVL"</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">td</span><span class="kw">[[</span><span class="st">"SVL"</span>]]</pre></body></html></div>
 <pre><code>##            ahli         allogus     rubribarbus           imias          sagrei 
 ##        4.039125        4.040138        4.078469        4.099687        4.067162 
 ##         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
@@ -222,7 +301,7 @@
 ##        aliniger      singularis    chlorocyanus     coelestinus        occultus 
 ##        4.036557        4.057997        4.275448        4.297965        3.663049</code></pre>
 <p>The same functionality can also be accomplished through the <code>extractVector</code> function. Both the double bracket syntax and the <code>extractVector</code> function will return a named vector.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="../reference/extractVector.html">extractVector</a></span>(td, SVL)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="no">td</span>, <span class="st">'SVL'</span>)</pre></body></html></div>
 <pre><code>##            ahli         allogus     rubribarbus           imias          sagrei 
 ##        4.039125        4.040138        4.078469        4.099687        4.067162 
 ##         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
@@ -263,8 +342,94 @@
 ##        3.770613        3.827445        3.908550        3.859835        4.302036 
 ##        aliniger      singularis    chlorocyanus     coelestinus        occultus 
 ##        4.036557        4.057997        4.275448        4.297965        3.663049</code></pre>
+<p>Multiple traits can also be extracted using <code>extractVector</code>.</p>
+<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="no">td</span>, <span class="st">'SVL'</span>,<span class="st">'ecomorph'</span>)</pre></body></html></div>
+<pre><code>## $SVL
+##            ahli         allogus     rubribarbus           imias          sagrei 
+##        4.039125        4.040138        4.078469        4.099687        4.067162 
+##         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
+##        4.113371        3.901619        3.637962        3.987147        3.952605 
+##      homolechis        confusus           guafe         garmani        opalinus 
+##        4.032806        3.938442        3.877457        4.769473        3.838376 
+##         grahami     valencienni      lineatopus      reconditus       evermanni 
+##        4.154274        4.321524        4.128612        4.482607        4.165605 
+##       stratulus           krugi      pulchellus       gundlachi       poncensis 
+##        3.869881        3.886500        3.799022        4.188105        3.820378 
+##           cooki    cristatellus    brevirostris        caudalis          marron 
+##        4.091535        4.189820        3.874155        3.911743        3.831810 
+##        websteri       distichus        barbouri         alumina    semilineatus 
+##        3.916546        3.928796        3.663932        3.588941        3.696631 
+##         olssoni      etheridgei         fowleri       insolitus       whitemani 
+##        3.793899        3.657991        4.288780        3.800471        4.097479 
+##       haetianus        breslini         armouri         cybotes         shrevei 
+##        4.316542        4.051111        4.121684        4.210982        3.983003 
+##   longitibialis         strahmi        marcanoi        baleatus       barahonae 
+##        4.242103        4.274271        4.079485        5.053056        5.076958 
+##        ricordii   eugenegrahami     christophei         cuvieri        barbatus 
+##        5.013963        4.128504        3.884652        4.875012        5.003946 
+##          porcus  chamaeleonides       guamuhaya   altitudinalis        oporinus 
+##        5.038034        5.042349        5.036953        3.842994        3.845670 
+##        isolepis        allisoni        porcatus     argillaceus       centralis 
+##        3.657088        4.375390        4.258991        3.757869        3.697941 
+##         pumilis        loysiana         guazuma        placidus        sheplani 
+##        3.466860        3.701240        3.763884        3.773967        3.682924 
+##         alayoni     angusticeps        paternus       alutaceus    inexpectatus 
+##        3.815705        3.788595        3.802961        3.554891        3.537439 
+##       clivicola    cupeyalensis    cyanopleurus         alfaroi      macilentus 
+##        3.758726        3.462014        3.630161        3.526655        3.715765 
+##       vanidicus     argenteolus          lucius        bartschi    vermiculatus 
+##        3.626206        3.971307        4.198915        4.280547        4.802849 
+##        baracoae          noblei      smallwoodi    luteogularis       equestris 
+##        5.042780        5.083473        5.035096        5.101085        5.113994 
+##       monticola   bahorucoensis dolichocephalus      hendersoni     darlingtoni 
+##        3.770613        3.827445        3.908550        3.859835        4.302036 
+##        aliniger      singularis    chlorocyanus     coelestinus        occultus 
+##        4.036557        4.057997        4.275448        4.297965        3.663049 
+## 
+## $ecomorph
+##            ahli         allogus     rubribarbus           imias          sagrei 
+##            "TG"            "TG"            "TG"            "TG"            "TG" 
+##         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
+##            "TG"            "TG"            "GB"            "TG"            "TG" 
+##      homolechis        confusus           guafe         garmani        opalinus 
+##            "TG"            "TG"            "TG"            "CG"            "TC" 
+##         grahami     valencienni      lineatopus      reconditus       evermanni 
+##            "TC"            "TW"            "TG"             "U"            "TC" 
+##       stratulus           krugi      pulchellus       gundlachi       poncensis 
+##            "TC"            "GB"            "GB"            "TG"            "GB" 
+##           cooki    cristatellus    brevirostris        caudalis          marron 
+##            "TG"            "TG"             "T"             "T"             "T" 
+##        websteri       distichus        barbouri         alumina    semilineatus 
+##             "T"             "T"             "U"            "GB"            "GB" 
+##         olssoni      etheridgei         fowleri       insolitus       whitemani 
+##            "GB"             "U"             "U"            "TW"            "TG" 
+##       haetianus        breslini         armouri         cybotes         shrevei 
+##            "TG"            "TG"            "TG"            "TG"            "TG" 
+##   longitibialis         strahmi        marcanoi        baleatus       barahonae 
+##            "TG"            "TG"            "TG"            "CG"            "CG" 
+##        ricordii   eugenegrahami     christophei         cuvieri        barbatus 
+##            "CG"             "U"             "U"            "CG"             "U" 
+##          porcus  chamaeleonides       guamuhaya   altitudinalis        oporinus 
+##             "U"             "U"             "U"            "TC"            "TC" 
+##        isolepis        allisoni        porcatus     argillaceus       centralis 
+##            "TC"            "TC"            "TC"             "U"             "U" 
+##         pumilis        loysiana         guazuma        placidus        sheplani 
+##             "U"             "T"            "TW"            "TW"            "TW" 
+##         alayoni     angusticeps        paternus       alutaceus    inexpectatus 
+##            "TW"            "TW"            "TW"            "GB"            "GB" 
+##       clivicola    cupeyalensis    cyanopleurus         alfaroi      macilentus 
+##            "GB"            "GB"            "GB"            "GB"            "GB" 
+##       vanidicus     argenteolus          lucius        bartschi    vermiculatus 
+##            "GB"             "U"             "U"             "U"             "U" 
+##        baracoae          noblei      smallwoodi    luteogularis       equestris 
+##            "CG"            "CG"            "CG"            "CG"            "CG" 
+##       monticola   bahorucoensis dolichocephalus      hendersoni     darlingtoni 
+##             "U"            "GB"            "GB"            "GB"            "TW" 
+##        aliniger      singularis    chlorocyanus     coelestinus        occultus 
+##            "TC"            "TC"            "TC"            "TC"            "TW"</code></pre>
+<p>However, there’s a couple aspects that are unique to <code>[[.treedata.table()</code> and <code><a href="../reference/extractVector.html">extractVector()</a></code>. First, <code>[[.treedata.table()</code> has an extra exact argument to enable partial match. Second, <code><a href="../reference/extractVector.html">extractVector()</a></code> can extract multiple columns and accepts non-standard evaluation.</p>
 <p>The real power in treedata.table is in co-indexing the tree and table. For example, in the below command, we use <code>data.table</code> syntax to take the first representative from each ecomorph. We retain all data columns. If you examine the tree object, you will see that it has had all the tips not in the resultant <code>data.table</code> dropped.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"> td[, <span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(.SD, <span class="dv">1</span>), by =<span class="st"> "ecomorph"</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb19"><html><body><pre class="r"> <span class="no">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">.SD</span>, <span class="fl">1</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="st">"ecomorph"</span>]</pre></body></html></div>
 <pre><code>## $phy 
 ## 
 ## Phylogenetic tree with 7 tips and 6 internal nodes.
@@ -290,7 +455,7 @@
 ## 5:        0.1288233 -0.08837008  0.46528679 -0.56754896     Jamaica
 ## 6:       -0.7992905  0.26096544 -0.27169792  0.01367143     Jamaica</code></pre>
 <p>We could also do the same operation with multiple columns:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">td[, <span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(.SD, <span class="dv">1</span>), by =<span class="st"> </span>.(ecomorph, island)]</a></code></pre></div>
+<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="no">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">.SD</span>, <span class="fl">1</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="fu">.</span>(<span class="no">ecomorph</span>, <span class="no">island</span>)]</pre></body></html></div>
 <pre><code>## $phy 
 ## 
 ## Phylogenetic tree with 23 tips and 22 internal nodes.
@@ -315,8 +480,34 @@
 ## 4:              1.5569939        0.9366501  1.48302162 -0.90826653  0.7261348
 ## 5:              1.6852579        1.0144193  0.41064280 -0.11746257  0.7022959
 ## 6:              1.8543308        0.1288233 -0.08837008  0.46528679 -0.5675490</code></pre>
+<p>Tail is also implemented</p>
+<div class="sourceCode" id="cb23"><html><body><pre class="r"> <span class="no">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span>(<span class="no">.SD</span>, <span class="fl">1</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="st">"ecomorph"</span>]</pre></body></html></div>
+<pre><code>## $phy 
+## 
+## Phylogenetic tree with 7 tips and 6 internal nodes.
+## 
+## Tip labels:
+##  marcanoi, loysiana, equestris, monticola, hendersoni, coelestinus, ...
+## 
+## Rooted; includes branch lengths.
+## 
+## $dat 
+##    ecomorph   tip.label      SVL   PCI_limbs  PCII_head PCIII_padwidth_vs_tail
+## 1:       TG    marcanoi 4.079485 -2.84448243 -2.7864415             -0.8020303
+## 2:       GB  hendersoni 3.859835  1.28963045 -2.0630985             -3.4656535
+## 3:       CG   equestris 5.113994  1.05461517  0.7072039              0.7108046
+## 4:       TC coelestinus 4.297965 -0.02721683  0.3687537              1.6364316
+## 5:       TW    occultus 3.663049  7.92078444 -0.1901397              2.4922819
+## 6:        U   monticola 3.770613 -3.25118016  0.1559934             -2.2390082
+##    PCIV_lamella_num awesomeness  hostility   attitude      island
+## 1:      -1.04842823   1.1823433 -0.1671936  0.5827900  Hispaniola
+## 2:       2.58336718   0.3854544 -0.7133164 -0.3959792  Hispaniola
+## 3:       1.66043194   1.0805662 -1.2666114  0.6673026        Cuba
+## 4:       1.02571762   0.2909266 -0.6209660  1.2803335  Hispaniola
+## 5:      -0.09577977  -1.1916870  1.2153014  0.0324486 Puerto Rico
+## 6:       0.13156827   0.6289893  0.1468777 -0.4409775  Hispaniola</code></pre>
 <p>Columns in the <code>data.table</code> can also be operated on using <code>data.table</code> syntax. In the below example, the tree is pruned to those tips that occur in Cuba. This is the <code>data.table</code> equivalent of <code>dplyr</code>’s filter. Then, a new column is created in the <code>data.table</code>, assigned the name “Index”, and assigned the value of the SVL + the hostility index. This enables concurrent manipulation of the phylogeny, and the calculation of a new index for only those tips we would actually like to use.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">td[island <span class="op">==</span><span class="st"> "Cuba"</span>,.(<span class="dt">Index=</span>SVL<span class="op">+</span>hostility)]</a></code></pre></div>
+<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="no">td</span>[<span class="no">island</span> <span class="kw">==</span> <span class="st">"Cuba"</span>,<span class="fu">.</span>(<span class="kw">Index</span><span class="kw">=</span><span class="no">SVL</span>+<span class="no">hostility</span>)]</pre></body></html></div>
 <pre><code>## $phy 
 ## 
 ## Phylogenetic tree with 47 tips and 46 internal nodes.
@@ -335,7 +526,7 @@
 ## 5: 4.786475
 ## 6: 5.526089</code></pre>
 <p>We can extend this tidy approach to actually estimating values for our data using <code>tdt</code>. In the below command, we extract two vectors from our data.table and use <code>geiger</code>’s continuous model fitting to estimate a Brownian motion model for the data.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw"><a href="../reference/tdt.html">tdt</a></span>(td, geiger<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span>(phy, <span class="kw"><a href="../reference/extractVector.html">extractVector</a></span>(td, SVL), <span class="dt">model=</span><span class="st">"BM"</span>, <span class="dt">ncores=</span><span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="fu"><a href="../reference/tdt.html">tdt</a></span>(<span class="no">td</span>, <span class="kw pkg">geiger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span>(<span class="no">phy</span>, <span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="no">td</span>, <span class="st">'SVL'</span>), <span class="kw">model</span><span class="kw">=</span><span class="st">"BM"</span>, <span class="kw">ncores</span><span class="kw">=</span><span class="fl">1</span>))</pre></body></html></div>
 <pre><code>## Phylo object detected. Expect a single function output</code></pre>
 <pre><code>## GEIGER-fitted comparative model of continuous data
 ##  fitted 'BM' model parameters:
@@ -351,6 +542,7 @@
 ## Convergence diagnostics:
 ##  optimization iterations = 100
 ##  failed iterations = 0
+##  number of iterations with same best fit = 100
 ##  frequency of best fit = 1.00
 ## 
 ##  object summary:
@@ -358,23 +550,20 @@
 ##  'bnd' -- bounds for likelihood search
 ##  'res' -- optimization iteration summary
 ##  'opt' -- maximum likelihood parameter estimates</code></pre>
-<p>We can also drop tips directly from the tree, and have those tips drop concurrently from the data.table. In the example below, we remove two taxa by name. Please note that the below is intended as an interactive function.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">to_drop &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> )</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">dt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/droptreedata.table.html">droptreedata.table</a></span>(<span class="dt">tdObject=</span>td, <span class="dt">taxa=</span>to_drop)</a>
-<a class="sourceLine" id="cb28-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb28-5" data-line-number="5">to_drop <span class="op">%in%</span><span class="st"> </span>dt<span class="op">$</span>phy<span class="op">$</span>tip.label</a>
-<a class="sourceLine" id="cb28-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb28-7" data-line-number="7">[<span class="dv">1</span>] <span class="ot">FALSE</span> <span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb28-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb28-9" data-line-number="9">to_drop <span class="op">%in%</span><span class="st"> </span>dt<span class="op">$</span>dat<span class="op">$</span>X</a>
-<a class="sourceLine" id="cb28-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb28-11" data-line-number="11">[<span class="dv">1</span>] <span class="ot">FALSE</span> <span class="ot">FALSE</span></a></code></pre></div>
+<p>We can also drop tips directly from the tree, and have those tips drop concurrently from the data.table. In the example below, we remove two taxa by name.</p>
+<div class="sourceCode" id="cb30"><html><body><pre class="r"><span class="no">dt</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/droptreedata.table.html">droptreedata.table</a></span>(<span class="kw">tdObject</span><span class="kw">=</span><span class="no">td</span>, <span class="kw">taxa</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> ))</pre></body></html></div>
+<pre><code>## 2 taxa were dropped from the treedata.table object</code></pre>
+<p>We can check if <em>A. chamaeleonides</em> and <em>A. eugenegrahami</em> are still in the tree</p>
+<div class="sourceCode" id="cb32"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> ) <span class="kw">%in%</span> <span class="no">dt</span>$<span class="no">phy</span>$<span class="no">tip.label</span></pre></body></html></div>
+<pre><code>## [1] FALSE FALSE</code></pre>
+<p>And we can do the same with the data in out <code>treedata.table</code> object</p>
+<div class="sourceCode" id="cb34"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> ) <span class="kw">%in%</span> <span class="no">dt</span>$<span class="no">dat</span>$<span class="no">X</span></pre></body></html></div>
+<pre><code>## [1] FALSE FALSE</code></pre>
 <p>When you’re done, the data.table and tree can both be extracted from the object:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/pull.treedata.table.html">pull.treedata.table</a></span>(td, <span class="st">"dat"</span>)</a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">tree &lt;-<span class="st"> </span><span class="kw"><a href="../reference/pull.treedata.table.html">pull.treedata.table</a></span>(td, <span class="st">"tree"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pulltreedata.table.html">pulltreedata.table</a></span>(<span class="no">td</span>, <span class="st">"dat"</span>)
+<span class="no">tree</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pulltreedata.table.html">pulltreedata.table</a></span>(<span class="no">td</span>, <span class="st">"phy"</span>)</pre></body></html></div>
 <p>The table</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">df</a></code></pre></div>
+<div class="sourceCode" id="cb37"><html><body><pre class="r"><span class="no">df</span></pre></body></html></div>
 <pre><code>##            tip.label      SVL   PCI_limbs   PCII_head PCIII_padwidth_vs_tail
 ##   1:            ahli 4.039125 -3.24828599  0.37225191             -1.0422187
 ##   2:         allogus 4.040138 -2.84557021  0.60011341             -1.0253056
@@ -682,7 +871,7 @@
 ## 100: Puerto Rico
 ##           island</code></pre>
 <p>and the respective tree</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">tree</a></code></pre></div>
+<div class="sourceCode" id="cb39"><html><body><pre class="r"><span class="no">tree</span></pre></body></html></div>
 <pre><code>## 
 ## Phylogenetic tree with 100 tips and 99 internal nodes.
 ## 
@@ -690,6 +879,168 @@
 ##  ahli, allogus, rubribarbus, imias, sagrei, bremeri, ...
 ## 
 ## Rooted; includes branch lengths.</code></pre>
+</div>
+<div id="additional-functions-for-manipulating-data" class="section level1">
+<h1 class="hasAnchor">
+<a href="#additional-functions-for-manipulating-data" class="anchor"></a>Additional functions for manipulating data</h1>
+<p><code>treedata.table</code> includes additional functions that allow the identification of <code>discrete</code> and <code>continuous</code> character in a given dataset. For instance, the <code><a href="../reference/detectCharacterType.html">detectCharacterType()</a></code> function can be used to examine whether <code>SVL</code> is <code>discrete</code> or <code>continuous</code>:</p>
+<div class="sourceCode" id="cb41"><html><body><pre class="r"><span class="fu"><a href="../reference/detectCharacterType.html">detectCharacterType</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>$<span class="no">SVL</span>)</pre></body></html></div>
+<pre><code>## [1] "continuous"</code></pre>
+<p>We can further examine the type of characters we have in our dataset by using the <code><a href="../reference/detectAllCharacters.html">detectAllCharacters()</a></code> function:</p>
+<div class="sourceCode" id="cb43"><html><body><pre class="r"><span class="fu"><a href="../reference/detectAllCharacters.html">detectAllCharacters</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>)</pre></body></html></div>
+<pre><code>##  [1] "discrete"   "continuous" "continuous" "continuous" "continuous"
+##  [6] "continuous" "continuous" "continuous" "continuous" "discrete"  
+## [11] "discrete"</code></pre>
+<p>Summarizing this information in a table, we get:</p>
+<div class="sourceCode" id="cb45"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span>(<span class="kw">character</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>),<span class="kw">type</span><span class="kw">=</span><span class="fu"><a href="../reference/detectAllCharacters.html">detectAllCharacters</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>))</pre></body></html></div>
+<pre><code>##                 character       type
+## 1                       X   discrete
+## 2                     SVL continuous
+## 3               PCI_limbs continuous
+## 4               PCII_head continuous
+## 5  PCIII_padwidth_vs_tail continuous
+## 6        PCIV_lamella_num continuous
+## 7             awesomeness continuous
+## 8               hostility continuous
+## 9                attitude continuous
+## 10               ecomorph   discrete
+## 11                 island   discrete</code></pre>
+<p>Finally, we can use the <code><a href="../reference/filterMatrix.html">filterMatrix()</a></code> function to subset our dataset to only a certain type of characters. For instance, let’s extract all discrete characters in the <em>Anolis</em> dataset:</p>
+<div class="sourceCode" id="cb47"><html><body><pre class="r"><span class="fu"><a href="../reference/filterMatrix.html">filterMatrix</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>, <span class="st">"discrete"</span>)</pre></body></html></div>
+<pre><code>##                   X ecomorph      island
+## 1              ahli       TG        Cuba
+## 2           alayoni       TW        Cuba
+## 3           alfaroi       GB        Cuba
+## 4          aliniger       TC  Hispaniola
+## 5          allisoni       TC        Cuba
+## 6           allogus       TG        Cuba
+## 7     altitudinalis       TC        Cuba
+## 8           alumina       GB  Hispaniola
+## 9         alutaceus       GB        Cuba
+## 10      angusticeps       TW        Cuba
+## 11      argenteolus        U        Cuba
+## 12      argillaceus        U        Cuba
+## 13          armouri       TG  Hispaniola
+## 14    bahorucoensis       GB  Hispaniola
+## 15         baleatus       CG  Hispaniola
+## 16         baracoae       CG        Cuba
+## 17        barahonae       CG  Hispaniola
+## 18         barbatus        U        Cuba
+## 19         barbouri        U  Hispaniola
+## 20         bartschi        U        Cuba
+## 21          bremeri       TG        Cuba
+## 22         breslini       TG  Hispaniola
+## 23     brevirostris        T  Hispaniola
+## 24         caudalis        T  Hispaniola
+## 25        centralis        U        Cuba
+## 26   chamaeleonides        U        Cuba
+## 27     chlorocyanus       TC  Hispaniola
+## 28      christophei        U  Hispaniola
+## 29        clivicola       GB        Cuba
+## 30      coelestinus       TC  Hispaniola
+## 31         confusus       TG        Cuba
+## 32            cooki       TG Puerto Rico
+## 33     cristatellus       TG Puerto Rico
+## 34     cupeyalensis       GB        Cuba
+## 35          cuvieri       CG Puerto Rico
+## 36     cyanopleurus       GB        Cuba
+## 37          cybotes       TG  Hispaniola
+## 38      darlingtoni       TW  Hispaniola
+## 39        distichus        T  Hispaniola
+## 40  dolichocephalus       GB  Hispaniola
+## 41        equestris       CG        Cuba
+## 42       etheridgei        U  Hispaniola
+## 43    eugenegrahami        U  Hispaniola
+## 44        evermanni       TC Puerto Rico
+## 45          fowleri        U  Hispaniola
+## 46          garmani       CG Puerto Rico
+## 47          grahami       TC Puerto Rico
+## 48            guafe       TG        Cuba
+## 49        guamuhaya        U        Cuba
+## 50          guazuma       TW        Cuba
+## 51        gundlachi       TG Puerto Rico
+## 52        haetianus       TG  Hispaniola
+## 53       hendersoni       GB  Hispaniola
+## 54       homolechis       TG        Cuba
+## 55            imias       TG        Cuba
+## 56     inexpectatus       GB        Cuba
+## 57        insolitus       TW  Hispaniola
+## 58         isolepis       TC        Cuba
+## 59            jubar       TG        Cuba
+## 60            krugi       GB Puerto Rico
+## 61       lineatopus       TG     Jamaica
+## 62    longitibialis       TG  Hispaniola
+## 63         loysiana        T        Cuba
+## 64           lucius        U        Cuba
+## 65     luteogularis       CG        Cuba
+## 66       macilentus       GB        Cuba
+## 67         marcanoi       TG  Hispaniola
+## 68           marron        T  Hispaniola
+## 69          mestrei       TG        Cuba
+## 70        monticola        U  Hispaniola
+## 71           noblei       CG        Cuba
+## 72         occultus       TW Puerto Rico
+## 73          olssoni       GB  Hispaniola
+## 74         opalinus       TC     Jamaica
+## 75       ophiolepis       GB        Cuba
+## 76         oporinus       TC        Cuba
+## 77         paternus       TW        Cuba
+## 78         placidus       TW  Hispaniola
+## 79        poncensis       GB Puerto Rico
+## 80         porcatus       TC        Cuba
+## 81           porcus        U        Cuba
+## 82       pulchellus       GB Puerto Rico
+## 83          pumilis        U        Cuba
+## 84  quadriocellifer       TG        Cuba
+## 85       reconditus        U     Jamaica
+## 86         ricordii       CG  Hispaniola
+## 87      rubribarbus       TG        Cuba
+## 88           sagrei       TG        Cuba
+## 89     semilineatus       GB  Hispaniola
+## 90         sheplani       TW  Hispaniola
+## 91          shrevei       TG  Hispaniola
+## 92       singularis       TC  Hispaniola
+## 93       smallwoodi       CG        Cuba
+## 94          strahmi       TG  Hispaniola
+## 95        stratulus       TC Puerto Rico
+## 96      valencienni       TW     Jamaica
+## 97        vanidicus       GB        Cuba
+## 98     vermiculatus        U        Cuba
+## 99         websteri        T  Hispaniola
+## 100       whitemani       TG  Hispaniola</code></pre>
+<p>Two additional functions in <code>treedata.table</code> are designed to examine and modify column and row names in any dataset. For instance, we can ask if the <em>Anolis</em> dataset has column names:</p>
+<div class="sourceCode" id="cb49"><html><body><pre class="r"><span class="fu"><a href="../reference/hasNames.html">hasNames</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>, <span class="st">"col"</span>)</pre></body></html></div>
+<pre><code>##  col 
+## TRUE</code></pre>
+<p>It does have column names. Let’s just remove the column names and check if <code><a href="../reference/hasNames.html">hasNames()</a></code> can detect this change. Here’s our new dataset:</p>
+<div class="sourceCode" id="cb51"><html><body><pre class="r"><span class="no">data</span><span class="kw">=</span><span class="no">anolis</span>$<span class="no">dat</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">data</span>)<span class="kw">&lt;-</span><span class="kw">NULL</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">data</span>,<span class="fl">2</span>)</pre></body></html></div>
+<pre><code>##                                                                        
+## 1    ahli 4.039125 -3.248286  0.3722519 -1.042219 -2.4147423 -0.2416517
+## 2 alayoni 3.815705  3.408886 -1.7833585  2.208451  0.9496969 -0.2590322
+##                               
+## 1 -0.1734769 0.6443771 TG Cuba
+## 2  0.1273443 0.2959732 TW Cuba</code></pre>
+<p>Let’s run <code><a href="../reference/hasNames.html">hasNames()</a></code> on our new dataset:</p>
+<div class="sourceCode" id="cb53"><html><body><pre class="r"><span class="fu"><a href="../reference/hasNames.html">hasNames</a></span>(<span class="no">data</span>, <span class="st">"col"</span>)</pre></body></html></div>
+<pre><code>##   col 
+## FALSE</code></pre>
+<p>Now, we can create new column names using the <code><a href="../reference/forceNames.html">forceNames()</a></code> function:</p>
+<div class="sourceCode" id="cb55"><html><body><pre class="r"><span class="no">data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/forceNames.html">forceNames</a></span>(<span class="no">data</span>, <span class="st">"col"</span>)</pre></body></html></div>
+<p>The new dataset, with column names (n1…), looks like this:</p>
+<div class="sourceCode" id="cb56"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">data</span>,<span class="fl">2</span>)</pre></body></html></div>
+<pre><code>##        n1       n2        n3         n4        n5         n6         n7
+## 1    ahli 4.039125 -3.248286  0.3722519 -1.042219 -2.4147423 -0.2416517
+## 2 alayoni 3.815705  3.408886 -1.7833585  2.208451  0.9496969 -0.2590322
+##           n8        n9 n10  n11
+## 1 -0.1734769 0.6443771  TG Cuba
+## 2  0.1273443 0.2959732  TW Cuba</code></pre>
+<p>And we can finally ask whether our new dataset actually have column names by running the <code><a href="../reference/hasNames.html">hasNames()</a></code> function again:</p>
+<div class="sourceCode" id="cb58"><html><body><pre class="r"><span class="fu"><a href="../reference/hasNames.html">hasNames</a></span>(<span class="no">data</span>, <span class="st">"col"</span>)</pre></body></html></div>
+<pre><code>##  col 
+## TRUE</code></pre>
+<p>We can apply the same procedure for columns (<code>col</code>), rows (<code>row</code>) or both (<code>rowcol</code>).</p>
 </div>
 <div id="advanced-methods" class="section level1">
 <h1 class="hasAnchor">
@@ -699,20 +1050,21 @@
 <a href="#working-with-multiphylo-objects" class="anchor"></a>Working with multiphylo objects</h2>
 <p><code>treedata.table</code> further allows the matching of multiple phylogenies (<code>multiPhylo</code>) against a single dataset (<code>data.frame</code>). Below, we modified the anole dataset to explain the extended functionality of <code>treedata.table</code> with <code>multiPhylo</code> objects.</p>
 <p>We first create a <code>multiPhylo</code> object including only two <code>phylo</code> objects. Users can provide any number of <code>phylo</code> objects within the <code>multiPhylo</code> object. However, trees should only differ in their topology. In other words, all trees must have the same tip labels. Nevertheless, both the provided <code>multiPhylo</code> and <code>data.frame</code> should partially overlap.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">trees&lt;-<span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(anolis<span class="op">$</span>phy,anolis<span class="op">$</span>phy)</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/class.html">class</a></span>(trees) &lt;-<span class="st"> "multiPhylo"</span></a>
-<a class="sourceLine" id="cb34-3" data-line-number="3">trees</a></code></pre></div>
+<div class="sourceCode" id="cb60"><html><body><pre class="r"><span class="no">trees</span><span class="kw">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">anolis</span>$<span class="no">phy</span>,<span class="no">anolis</span>$<span class="no">phy</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="no">trees</span>) <span class="kw">&lt;-</span> <span class="st">"multiPhylo"</span>
+<span class="no">trees</span></pre></body></html></div>
 <pre><code>## 2 phylogenetic trees</code></pre>
 <p>Now, we create our treedata.table object by combining the trait data (<code>data.frame</code>) and the newly generated <code>multiPhylo</code> object.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">td &lt;-<span class="st"> </span><span class="kw"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="dt">tree=</span>trees, <span class="dt">data=</span>anolis<span class="op">$</span>dat)</a></code></pre></div>
+<div class="sourceCode" id="cb62"><html><body><pre class="r"><span class="no">td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="kw">tree</span><span class="kw">=</span><span class="no">trees</span>, <span class="kw">data</span><span class="kw">=</span><span class="no">anolis</span>$<span class="no">dat</span>)</pre></body></html></div>
+<pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Multiphylo object detected</code></pre>
 <pre><code>## No tips were dropped from the original trees/dataset</code></pre>
 <p>The resulting <code>td</code> object now returns a <code>multiPhylo</code> object under <code>phy</code></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/class.html">class</a></span>(td<span class="op">$</span>phy);td<span class="op">$</span>phy</a></code></pre></div>
+<div class="sourceCode" id="cb66"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="no">td</span>$<span class="no">phy</span>);<span class="no">td</span>$<span class="no">phy</span></pre></body></html></div>
 <pre><code>## [1] "multiPhylo"</code></pre>
 <pre><code>## 2 phylogenetic trees</code></pre>
 <p>Please note that all the basic <code>treedata.table</code> functions highlighted above for <code>phylo</code> objects are still functional when <code>treedata.table</code> objects include <code>multiPhylo</code> objects.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">td[, <span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(.SD, <span class="dv">1</span>), by =<span class="st"> "ecomorph"</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb69"><html><body><pre class="r"><span class="no">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">.SD</span>, <span class="fl">1</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="st">"ecomorph"</span>]</pre></body></html></div>
 <pre><code>## $phy 
 ## 2 phylogenetic trees
 ## 
@@ -732,7 +1084,7 @@
 ## 5:        0.1288233 -0.08837008  0.46528679 -0.56754896     Jamaica
 ## 6:       -0.7992905  0.26096544 -0.27169792  0.01367143     Jamaica</code></pre>
 <p>Functions can also be run on any <code>treedata.table</code> object with <code>multiphylo</code> data. For instance, the following line will fit a phenogram for <code>SVL</code> on each of the trees we provided in the <code>multiPhylo</code> object.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw"><a href="../reference/tdt.html">tdt</a></span>(td, geiger<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span>(phy, <span class="kw"><a href="../reference/extractVector.html">extractVector</a></span>(td, SVL), <span class="dt">model=</span><span class="st">"BM"</span>, <span class="dt">ncores=</span><span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb71"><html><body><pre class="r"><span class="fu"><a href="../reference/tdt.html">tdt</a></span>(<span class="no">td</span>, <span class="kw pkg">geiger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span>(<span class="no">phy</span>, <span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="no">td</span>, <span class="st">'SVL'</span>), <span class="kw">model</span><span class="kw">=</span><span class="st">"BM"</span>, <span class="kw">ncores</span><span class="kw">=</span><span class="fl">1</span>))</pre></body></html></div>
 <pre><code>## Multiphylo object detected. Expect a list of function outputs</code></pre>
 <pre><code>## [[1]]
 ## GEIGER-fitted comparative model of continuous data
@@ -749,6 +1101,7 @@
 ## Convergence diagnostics:
 ##  optimization iterations = 100
 ##  failed iterations = 0
+##  number of iterations with same best fit = 100
 ##  frequency of best fit = 1.00
 ## 
 ##  object summary:
@@ -772,6 +1125,7 @@
 ## Convergence diagnostics:
 ##  optimization iterations = 100
 ##  failed iterations = 0
+##  number of iterations with same best fit = 100
 ##  frequency of best fit = 1.00
 ## 
 ##  object summary:
@@ -786,9 +1140,9 @@
 <a href="#partially-matching-trait-data-and-trees" class="anchor"></a>Partially matching trait data and tree(s)</h2>
 <p>The <code>as.treedata.table</code> function enables users to match a tree (or multiple trees) against a single trait database.</p>
 <p>Tips that are not common between the tree (or trees) and dataset are dropped from the resulting <code>treedata.table</code> object. For instance, below I have modified the original anole phylogeny such that <em>A. ahli</em> (<strong>ahi</strong>) is replaced for a label that is not present in the dataset (<strong>NAA</strong>).</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">anolis_newtip&lt;-anolis<span class="op">$</span>phy</a>
-<a class="sourceLine" id="cb47-2" data-line-number="2">anolis_newtip<span class="op">$</span>tip.label[<span class="dv">1</span>]&lt;-<span class="st">'NAA'</span></a>
-<a class="sourceLine" id="cb47-3" data-line-number="3">anolis_newtip</a></code></pre></div>
+<div class="sourceCode" id="cb74"><html><body><pre class="r"><span class="no">anolis_newtip</span><span class="kw">&lt;-</span><span class="no">anolis</span>$<span class="no">phy</span>
+<span class="no">anolis_newtip</span>$<span class="no">tip.label</span>[<span class="fl">1</span>]<span class="kw">&lt;-</span><span class="st">'NAA'</span>
+<span class="no">anolis_newtip</span></pre></body></html></div>
 <pre><code>## 
 ## Phylogenetic tree with 100 tips and 99 internal nodes.
 ## 
@@ -797,12 +1151,13 @@
 ## 
 ## Rooted; includes branch lengths.</code></pre>
 <p>We then use this modified tree to fit a <code>treedata.table</code> object using the <code>as.treedata.table</code> function:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">td &lt;-<span class="st"> </span><span class="kw"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="dt">tree=</span>anolis_newtip, <span class="dt">data=</span>anolis<span class="op">$</span>dat)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><html><body><pre class="r"><span class="no">td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="kw">tree</span><span class="kw">=</span><span class="no">anolis_newtip</span>, <span class="kw">data</span><span class="kw">=</span><span class="no">anolis</span>$<span class="no">dat</span>)</pre></body></html></div>
+<pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Phylo object detected</code></pre>
 <pre><code>## 1 tip(s) dropped from the original tree
-## 1 tip(s)  dropped from the original dataset</code></pre>
+## 1 tip(s) dropped from the original dataset</code></pre>
 <p>Note that <code>as.treedata.table</code> drops all non-overlapping tips (<strong>NAA</strong> [present in the tree but not in the trait data] and <strong>ahi</strong> [present in the database but not in tree] in this case) and returns a <code>treedata.table</code> object with fully matching <code>phy</code> and <code>data</code> objects.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">td</a></code></pre></div>
+<div class="sourceCode" id="cb80"><html><body><pre class="r"><span class="no">td</span></pre></body></html></div>
 <pre><code>## $phy 
 ## 
 ## Phylogenetic tree with 99 tips and 98 internal nodes.
@@ -829,21 +1184,22 @@
 ## 6:        -2.105059  -0.2576389  0.4627081 -0.2712794       TG   Cuba</code></pre>
 <p>Fully-matching matrix and trees are also returned in <code>treedata.table</code> objects with <code>multiPhylo</code> objects in their <code>phy</code> component. See the example below.</p>
 <p>We first construct a <code>multiPhylo</code> object that partially overlaps the original trait database by using <strong>NAA</strong> instead of <strong>ahi</strong>.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">anolis2&lt;-anolis<span class="op">$</span>phy</a>
-<a class="sourceLine" id="cb54-2" data-line-number="2">anolis2<span class="op">$</span>tip.label[<span class="dv">1</span>]&lt;-<span class="st">'NAA'</span></a>
-<a class="sourceLine" id="cb54-3" data-line-number="3">anolis1&lt;-anolis<span class="op">$</span>phy</a>
-<a class="sourceLine" id="cb54-4" data-line-number="4">anolis1<span class="op">$</span>tip.label[<span class="dv">1</span>]&lt;-<span class="st">'NAA'</span></a>
-<a class="sourceLine" id="cb54-5" data-line-number="5">trees&lt;-<span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(anolis1,anolis2)</a>
-<a class="sourceLine" id="cb54-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/class.html">class</a></span>(trees) &lt;-<span class="st"> "multiPhylo"</span></a>
-<a class="sourceLine" id="cb54-7" data-line-number="7">trees</a></code></pre></div>
+<div class="sourceCode" id="cb82"><html><body><pre class="r"><span class="no">anolis2</span><span class="kw">&lt;-</span><span class="no">anolis</span>$<span class="no">phy</span>
+<span class="no">anolis2</span>$<span class="no">tip.label</span>[<span class="fl">1</span>]<span class="kw">&lt;-</span><span class="st">'NAA'</span>
+<span class="no">anolis1</span><span class="kw">&lt;-</span><span class="no">anolis</span>$<span class="no">phy</span>
+<span class="no">anolis1</span>$<span class="no">tip.label</span>[<span class="fl">1</span>]<span class="kw">&lt;-</span><span class="st">'NAA'</span>
+<span class="no">trees</span><span class="kw">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">anolis1</span>,<span class="no">anolis2</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="no">trees</span>) <span class="kw">&lt;-</span> <span class="st">"multiPhylo"</span>
+<span class="no">trees</span></pre></body></html></div>
 <pre><code>## 2 phylogenetic trees</code></pre>
 <p>Next, we fit the <code>treedata.table</code> object using the relevant <code>multiPhylo</code> object and the original trait database.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">td &lt;-<span class="st"> </span><span class="kw"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="dt">tree=</span>trees, <span class="dt">data=</span>anolis<span class="op">$</span>dat)</a></code></pre></div>
+<div class="sourceCode" id="cb84"><html><body><pre class="r"><span class="no">td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="kw">tree</span><span class="kw">=</span><span class="no">trees</span>, <span class="kw">data</span><span class="kw">=</span><span class="no">anolis</span>$<span class="no">dat</span>)</pre></body></html></div>
+<pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Multiphylo object detected</code></pre>
 <pre><code>## 1 tip(s) dropped from 2 trees
 ## 1 tip(s)  dropped from the original dataset</code></pre>
 <p>Note that 1 tip was dropped for all trees in the <code>multiPhylo</code> object and a single row was deleted from the <code>data.table</code> object in the <code>treedata.table</code> object.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">td</a></code></pre></div>
+<div class="sourceCode" id="cb88"><html><body><pre class="r"><span class="no">td</span></pre></body></html></div>
 <pre><code>## $phy 
 ## 2 phylogenetic trees
 ## 
@@ -866,23 +1222,11 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#getting-started-with-the-treedata-table-package">Getting Started With The <code>treedata.table</code> Package</a></li>
-      <li><a href="#manipulating-data">Manipulating Data</a></li>
-      <li>
-<a href="#advanced-methods">Advanced methods</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#working-with-multiphylo-objects">Working with multiphylo objects</a></li>
-      <li><a href="#partially-matching-trait-data-and-trees">Partially matching trait data and tree(s)</a></li>
-      </ul>
-</li>
-      </ul>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
 
@@ -893,7 +1237,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

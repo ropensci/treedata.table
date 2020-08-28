@@ -6,27 +6,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Filter a matrix, returning either all continuous or all discrete characters — filterMatrix • treedata.table</title>
+<title>Filter a character matrix, returning either all continuous or all discrete characters — filterMatrix • treedata.table</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -35,9 +46,11 @@
 
 
 
-<meta property="og:title" content="Filter a matrix, returning either all continuous or all discrete characters — filterMatrix" />
-<meta property="og:description" content="Filter a matrix, returning either all continuous or all discrete characters" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Filter a character matrix, returning either all continuous or all discrete characters — filterMatrix" />
+<meta property="og:description" content="This function filters a character matrix based on continuous
+(e.g., with values 2.45, 9.35, and so on) or discrete characters
+(e.g., with values blue, red, yellow)." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -55,7 +68,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -82,14 +95,28 @@
   </a>
 </li>
 <li>
-  <a href="../articles/treedata.table.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/treedata.table.html">Getting Started With The treedata.table Package</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/uyedaj/treedata.table/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -103,27 +130,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Filter a matrix, returning either all continuous or all discrete characters</h1>
-    
+    <h1>Filter a character matrix, returning either all continuous or all discrete characters</h1>
+    <small class="dont-index">Source: <a href='https://github.com/uyedaj/treedata.table/blob/master/R/detectCharacterType.R'><code>R/detectCharacterType.R</code></a></small>
     <div class="hidden name"><code>filterMatrix.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Filter a matrix, returning either all continuous or all discrete characters</p>
+    <p>This function filters a character matrix based on continuous
+(e.g., with values 2.45, 9.35, and so on) or discrete characters
+(e.g., with values blue, red, yellow).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>filterMatrix</span>(<span class='no'>mat</span>, <span class='no'>charType</span>, <span class='kw'>returnType</span> <span class='kw'>=</span> <span class='st'>"discrete"</span>)</pre>
+    <pre class="usage"><span class='fu'>filterMatrix</span>(<span class='no'>mat</span>, <span class='kw'>returnType</span> <span class='kw'>=</span> <span class='st'>"discrete"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>mat</th>
-      <td><p>A matrix of data</p></td>
-    </tr>
-    <tr>
-      <th>charType</th>
-      <td><p>A vector of character types (perhaps from detectAllCharacters)</p></td>
+      <td><p>A character matrix of class data.frame</p></td>
     </tr>
     <tr>
       <th>returnType</th>
@@ -133,120 +158,116 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Matrix with only discrete or continuous characters</p>
+    <p>data.frame with only discrete (default) or continuous characters</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
-<span class='no'>aType</span><span class='kw'>&lt;-</span><span class='fu'><a href='detectAllCharacters.html'>detectAllCharacters</a></span>(<span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Guessing that this is a discrete character based on repeated values</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Guessing that this is a discrete character based on repeated values</span></div><div class='input'><span class='fu'>filterMatrix</span>(<span class='no'>anolis</span>$<span class='no'>dat</span>, <span class='no'>aType</span>, <span class='st'>"discrete"</span>)</div><div class='output co'>#&gt;     ecomorph      island
-#&gt; 1         TG        Cuba
-#&gt; 2         TW        Cuba
-#&gt; 3         GB        Cuba
-#&gt; 4         TC  Hispaniola
-#&gt; 5         TC        Cuba
-#&gt; 6         TG        Cuba
-#&gt; 7         TC        Cuba
-#&gt; 8         GB  Hispaniola
-#&gt; 9         GB        Cuba
-#&gt; 10        TW        Cuba
-#&gt; 11         U        Cuba
-#&gt; 12         U        Cuba
-#&gt; 13        TG  Hispaniola
-#&gt; 14        GB  Hispaniola
-#&gt; 15        CG  Hispaniola
-#&gt; 16        CG        Cuba
-#&gt; 17        CG  Hispaniola
-#&gt; 18         U        Cuba
-#&gt; 19         U  Hispaniola
-#&gt; 20         U        Cuba
-#&gt; 21        TG        Cuba
-#&gt; 22        TG  Hispaniola
-#&gt; 23         T  Hispaniola
-#&gt; 24         T  Hispaniola
-#&gt; 25         U        Cuba
-#&gt; 26         U        Cuba
-#&gt; 27        TC  Hispaniola
-#&gt; 28         U  Hispaniola
-#&gt; 29        GB        Cuba
-#&gt; 30        TC  Hispaniola
-#&gt; 31        TG        Cuba
-#&gt; 32        TG Puerto Rico
-#&gt; 33        TG Puerto Rico
-#&gt; 34        GB        Cuba
-#&gt; 35        CG Puerto Rico
-#&gt; 36        GB        Cuba
-#&gt; 37        TG  Hispaniola
-#&gt; 38        TW  Hispaniola
-#&gt; 39         T  Hispaniola
-#&gt; 40        GB  Hispaniola
-#&gt; 41        CG        Cuba
-#&gt; 42         U  Hispaniola
-#&gt; 43         U  Hispaniola
-#&gt; 44        TC Puerto Rico
-#&gt; 45         U  Hispaniola
-#&gt; 46        CG Puerto Rico
-#&gt; 47        TC Puerto Rico
-#&gt; 48        TG        Cuba
-#&gt; 49         U        Cuba
-#&gt; 50        TW        Cuba
-#&gt; 51        TG Puerto Rico
-#&gt; 52        TG  Hispaniola
-#&gt; 53        GB  Hispaniola
-#&gt; 54        TG        Cuba
-#&gt; 55        TG        Cuba
-#&gt; 56        GB        Cuba
-#&gt; 57        TW  Hispaniola
-#&gt; 58        TC        Cuba
-#&gt; 59        TG        Cuba
-#&gt; 60        GB Puerto Rico
-#&gt; 61        TG     Jamaica
-#&gt; 62        TG  Hispaniola
-#&gt; 63         T        Cuba
-#&gt; 64         U        Cuba
-#&gt; 65        CG        Cuba
-#&gt; 66        GB        Cuba
-#&gt; 67        TG  Hispaniola
-#&gt; 68         T  Hispaniola
-#&gt; 69        TG        Cuba
-#&gt; 70         U  Hispaniola
-#&gt; 71        CG        Cuba
-#&gt; 72        TW Puerto Rico
-#&gt; 73        GB  Hispaniola
-#&gt; 74        TC     Jamaica
-#&gt; 75        GB        Cuba
-#&gt; 76        TC        Cuba
-#&gt; 77        TW        Cuba
-#&gt; 78        TW  Hispaniola
-#&gt; 79        GB Puerto Rico
-#&gt; 80        TC        Cuba
-#&gt; 81         U        Cuba
-#&gt; 82        GB Puerto Rico
-#&gt; 83         U        Cuba
-#&gt; 84        TG        Cuba
-#&gt; 85         U     Jamaica
-#&gt; 86        CG  Hispaniola
-#&gt; 87        TG        Cuba
-#&gt; 88        TG        Cuba
-#&gt; 89        GB  Hispaniola
-#&gt; 90        TW  Hispaniola
-#&gt; 91        TG  Hispaniola
-#&gt; 92        TC  Hispaniola
-#&gt; 93        CG        Cuba
-#&gt; 94        TG  Hispaniola
-#&gt; 95        TC Puerto Rico
-#&gt; 96        TW     Jamaica
-#&gt; 97        GB        Cuba
-#&gt; 98         U        Cuba
-#&gt; 99         T  Hispaniola
-#&gt; 100       TG  Hispaniola</div></pre>
+<span class='fu'>filterMatrix</span>(<span class='no'>anolis</span>$<span class='no'>dat</span>, <span class='st'>"discrete"</span>)</div><div class='output co'>#&gt;                   X ecomorph      island
+#&gt; 1              ahli       TG        Cuba
+#&gt; 2           alayoni       TW        Cuba
+#&gt; 3           alfaroi       GB        Cuba
+#&gt; 4          aliniger       TC  Hispaniola
+#&gt; 5          allisoni       TC        Cuba
+#&gt; 6           allogus       TG        Cuba
+#&gt; 7     altitudinalis       TC        Cuba
+#&gt; 8           alumina       GB  Hispaniola
+#&gt; 9         alutaceus       GB        Cuba
+#&gt; 10      angusticeps       TW        Cuba
+#&gt; 11      argenteolus        U        Cuba
+#&gt; 12      argillaceus        U        Cuba
+#&gt; 13          armouri       TG  Hispaniola
+#&gt; 14    bahorucoensis       GB  Hispaniola
+#&gt; 15         baleatus       CG  Hispaniola
+#&gt; 16         baracoae       CG        Cuba
+#&gt; 17        barahonae       CG  Hispaniola
+#&gt; 18         barbatus        U        Cuba
+#&gt; 19         barbouri        U  Hispaniola
+#&gt; 20         bartschi        U        Cuba
+#&gt; 21          bremeri       TG        Cuba
+#&gt; 22         breslini       TG  Hispaniola
+#&gt; 23     brevirostris        T  Hispaniola
+#&gt; 24         caudalis        T  Hispaniola
+#&gt; 25        centralis        U        Cuba
+#&gt; 26   chamaeleonides        U        Cuba
+#&gt; 27     chlorocyanus       TC  Hispaniola
+#&gt; 28      christophei        U  Hispaniola
+#&gt; 29        clivicola       GB        Cuba
+#&gt; 30      coelestinus       TC  Hispaniola
+#&gt; 31         confusus       TG        Cuba
+#&gt; 32            cooki       TG Puerto Rico
+#&gt; 33     cristatellus       TG Puerto Rico
+#&gt; 34     cupeyalensis       GB        Cuba
+#&gt; 35          cuvieri       CG Puerto Rico
+#&gt; 36     cyanopleurus       GB        Cuba
+#&gt; 37          cybotes       TG  Hispaniola
+#&gt; 38      darlingtoni       TW  Hispaniola
+#&gt; 39        distichus        T  Hispaniola
+#&gt; 40  dolichocephalus       GB  Hispaniola
+#&gt; 41        equestris       CG        Cuba
+#&gt; 42       etheridgei        U  Hispaniola
+#&gt; 43    eugenegrahami        U  Hispaniola
+#&gt; 44        evermanni       TC Puerto Rico
+#&gt; 45          fowleri        U  Hispaniola
+#&gt; 46          garmani       CG Puerto Rico
+#&gt; 47          grahami       TC Puerto Rico
+#&gt; 48            guafe       TG        Cuba
+#&gt; 49        guamuhaya        U        Cuba
+#&gt; 50          guazuma       TW        Cuba
+#&gt; 51        gundlachi       TG Puerto Rico
+#&gt; 52        haetianus       TG  Hispaniola
+#&gt; 53       hendersoni       GB  Hispaniola
+#&gt; 54       homolechis       TG        Cuba
+#&gt; 55            imias       TG        Cuba
+#&gt; 56     inexpectatus       GB        Cuba
+#&gt; 57        insolitus       TW  Hispaniola
+#&gt; 58         isolepis       TC        Cuba
+#&gt; 59            jubar       TG        Cuba
+#&gt; 60            krugi       GB Puerto Rico
+#&gt; 61       lineatopus       TG     Jamaica
+#&gt; 62    longitibialis       TG  Hispaniola
+#&gt; 63         loysiana        T        Cuba
+#&gt; 64           lucius        U        Cuba
+#&gt; 65     luteogularis       CG        Cuba
+#&gt; 66       macilentus       GB        Cuba
+#&gt; 67         marcanoi       TG  Hispaniola
+#&gt; 68           marron        T  Hispaniola
+#&gt; 69          mestrei       TG        Cuba
+#&gt; 70        monticola        U  Hispaniola
+#&gt; 71           noblei       CG        Cuba
+#&gt; 72         occultus       TW Puerto Rico
+#&gt; 73          olssoni       GB  Hispaniola
+#&gt; 74         opalinus       TC     Jamaica
+#&gt; 75       ophiolepis       GB        Cuba
+#&gt; 76         oporinus       TC        Cuba
+#&gt; 77         paternus       TW        Cuba
+#&gt; 78         placidus       TW  Hispaniola
+#&gt; 79        poncensis       GB Puerto Rico
+#&gt; 80         porcatus       TC        Cuba
+#&gt; 81           porcus        U        Cuba
+#&gt; 82       pulchellus       GB Puerto Rico
+#&gt; 83          pumilis        U        Cuba
+#&gt; 84  quadriocellifer       TG        Cuba
+#&gt; 85       reconditus        U     Jamaica
+#&gt; 86         ricordii       CG  Hispaniola
+#&gt; 87      rubribarbus       TG        Cuba
+#&gt; 88           sagrei       TG        Cuba
+#&gt; 89     semilineatus       GB  Hispaniola
+#&gt; 90         sheplani       TW  Hispaniola
+#&gt; 91          shrevei       TG  Hispaniola
+#&gt; 92       singularis       TC  Hispaniola
+#&gt; 93       smallwoodi       CG        Cuba
+#&gt; 94          strahmi       TG  Hispaniola
+#&gt; 95        stratulus       TC Puerto Rico
+#&gt; 96      valencienni       TW     Jamaica
+#&gt; 97        vanidicus       GB        Cuba
+#&gt; 98     vermiculatus        U        Cuba
+#&gt; 99         websteri        T  Hispaniola
+#&gt; 100       whitemani       TG  Hispaniola</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -257,7 +278,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
