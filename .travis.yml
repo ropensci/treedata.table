@@ -22,4 +22,5 @@ addons:
       - sourceline: 'ppa:ubuntugis/ppa'
     packages:
       - libmagick++-dev
+      - liblapack-dev
 
