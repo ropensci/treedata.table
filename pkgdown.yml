@@ -2,7 +2,9 @@ pandoc: 2.7.3
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
-  treedata.table_extensive: treedata.table_extensive.html
-  treedata.table_spanish: treedata.table_spanish.html
-last_built: 2020-09-07T06:31Z
+  1.1_treedata.table_intro_english: 1.1_treedata.table_intro_english.html
+  1.2_treedata.table_intro_spanish: 1.2_treedata.table_intro_spanish.html
+  2_multiphylo_treedata.table: 2_multiphylo_treedata.table.html
+  3_AdditionalFunctions_treedata.table: 3_AdditionalFunctions_treedata.table.html
+last_built: 2020-09-07T06:50Z
 
