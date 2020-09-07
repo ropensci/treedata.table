@@ -21,7 +21,8 @@ Using the `treedata.table` package begins with creating a `treedata.table` objec
 
 Importantly, the character matrix must must include a column with the taxa names and should be of class `data.frame`. The tree must be of class `phylo` or `multiPhylo`.
 
-A `treedata.table` is created using the `as.treedata.table` function. 
+A `treedata.table` is created using the `as.treedata.table` function. Here we use the 
+*Anolis* dataset from `treeplyr`. Traits in this dataset were randomly generated for a set of 100 species.
 
 ```{r}
 library(ape)

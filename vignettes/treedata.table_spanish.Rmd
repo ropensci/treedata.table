@@ -4,7 +4,7 @@ author: "Cristian Roman-Palacios, April Wright, Josef Uyeda"
 date: "09/06/2020"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting Started With The treedata.table Package}
+  %\VignetteIndexEntry{Breve Introducción al Paquete treedata.table}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
