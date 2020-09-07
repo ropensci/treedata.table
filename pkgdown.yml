@@ -1,0 +1,8 @@
+pandoc: 2.7.3
+pkgdown: 1.5.1
+pkgdown_sha: ~
+articles:
+  treedata.table_extensive: treedata.table_extensive.html
+  treedata.table_spanish: treedata.table_spanish.html
+last_built: 2020-09-07T06:31Z
+
