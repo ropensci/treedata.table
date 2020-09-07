@@ -15,13 +15,11 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
@@ -45,11 +43,13 @@
 
 
 
-
 <meta property="og:title" content="Row and column name check — hasNames" />
+
 <meta property="og:description" content="This function checks whether a given data.frame or matrix has
 column names (colnames), row.names (row.names), or both." />
+
 <meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -104,11 +104,15 @@ column names (colnames), row.names (row.names), or both." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/treedata.table.html">Getting Started With The treedata.table Package</a>
+      <a href="../articles/treedata.table_extensive.html">Getting Started With The treedata.table Package</a>
+    </li>
+    <li>
+      <a href="../articles/treedata.table_spanish.html">Breve Introducción al Paquete treedata.table</a>
     </li>
   </ul>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/uyedaj/treedata.table/">
@@ -135,12 +139,14 @@ column names (colnames), row.names (row.names), or both." />
     </div>
 
     <div class="ref-description">
+    
     <p>This function checks whether a given <code>data.frame</code> or <code>matrix</code> has
 column names (<code>colnames</code>), row.names (<code>row.names</code>), or both.</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>hasNames</span>(<span class='no'>dat</span>, <span class='kw'>nameType</span> <span class='kw'>=</span> <span class='st'>"row"</span>)</pre>
-
+    <pre class="usage"><span class='fu'>hasNames</span>(<span class='kw'>dat</span>, nameType = <span class='st'>"row"</span>)</pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -150,7 +156,7 @@ column names (<code>colnames</code>), row.names (<code>row.names</code>), or bot
     </tr>
     <tr>
       <th>nameType, </th>
-      <td><p>either:</p><dl'>
+      <td><p>either:</p><dl>
 <dt>"row"</dt><dd><p>Rows (default)</p></dd>
 <dt>"col"</dt><dd><p>Columns</p></dd>
 <dt>"rowcol"</dt><dd><p>Both rows and columns</p></dd>
@@ -158,16 +164,18 @@ column names (<code>colnames</code>), row.names (<code>row.names</code>), or bot
 </dl></td>
     </tr>
     </table>
-
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>TRUE</code> or <code>FALSE</code> indicating if the object has names (<code>columns</code>,
 <code>rows</code>, or
 <code>both</code>)</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
-<span class='fu'>hasNames</span>(<span class='no'>anolis</span>$<span class='no'>dat</span>, <span class='st'>"row"</span>)</div><div class='output co'>#&gt;  row 
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>anolis</span>)
+<span class='fu'>hasNames</span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>, <span class='st'>"row"</span>)
+</div><div class='output co'>#&gt;  row 
 #&gt; TRUE </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -184,7 +192,7 @@ column names (<code>colnames</code>), row.names (<code>row.names</code>), or bot
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

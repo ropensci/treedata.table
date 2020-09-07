@@ -15,13 +15,11 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
@@ -45,12 +43,14 @@
 
 
 
-
 <meta property="og:title" content="Function to detect whether a character is continuous or discrete — detectCharacterType" />
+
 <meta property="og:description" content="This function detects whether a given vector is a continuous
 (e.g., with values 2.45, 9.35, and so on) or a discrete
 (e.g., with values blue, red, yellow) character." />
+
 <meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -105,11 +105,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/treedata.table.html">Getting Started With The treedata.table Package</a>
+      <a href="../articles/treedata.table_extensive.html">Getting Started With The treedata.table Package</a>
+    </li>
+    <li>
+      <a href="../articles/treedata.table_spanish.html">Breve Introducción al Paquete treedata.table</a>
     </li>
   </ul>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/uyedaj/treedata.table/">
@@ -136,13 +140,15 @@
     </div>
 
     <div class="ref-description">
+    
     <p>This function detects whether a given vector is a continuous
 (e.g., with values 2.45, 9.35, and so on) or a discrete
 (e.g., with values blue, red, yellow) character.</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>detectCharacterType</span>(<span class='no'>dat</span>, <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)</pre>
-
+    <pre class="usage"><span class='fu'>detectCharacterType</span>(<span class='kw'>dat</span>, cutoff = <span class='fl'>0.1</span>)</pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -157,14 +163,16 @@ discrete: if nlev is the number of levels and n the length of dat, then
 nlev / n should exceed cutoff, or the data will be classified as discrete</p></td>
     </tr>
     </table>
-
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Either "discrete" or "continuous"</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
-<span class='fu'>detectCharacterType</span>(<span class='no'>anolis</span>$<span class='no'>dat</span>[, <span class='fl'>1</span>])</div><div class='output co'>#&gt; [1] "discrete"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>anolis</span>)
+<span class='fu'>detectCharacterType</span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>[, <span class='fl'>1</span>])
+</div><div class='output co'>#&gt; [1] "discrete"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -180,7 +188,7 @@ nlev / n should exceed cutoff, or the data will be classified as discrete</p></t
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Function for performing data.table operations on an object of class
-<code>treedata.table</code> — [.treedata.table • treedata.table</title>
+treedata.table — [.treedata.table • treedata.table</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -16,13 +16,11 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
@@ -46,12 +44,14 @@
 
 
 
-
 <meta property="og:title" content="Function for performing data.table operations on an object of class
-<code>treedata.table</code> — [.treedata.table" />
+treedata.table — [.treedata.table" />
+
 <meta property="og:description" content="This function can be used to subset rows, select and compute on columns
 data.table." />
+
 <meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -106,11 +106,15 @@ data.table." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/treedata.table.html">Getting Started With The treedata.table Package</a>
+      <a href="../articles/treedata.table_extensive.html">Getting Started With The treedata.table Package</a>
+    </li>
+    <li>
+      <a href="../articles/treedata.table_spanish.html">Breve Introducción al Paquete treedata.table</a>
     </li>
   </ul>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/uyedaj/treedata.table/">
@@ -138,13 +142,15 @@ data.table." />
     </div>
 
     <div class="ref-description">
+    
     <p>This function can be used to subset rows, select and compute on columns
 <a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a>.</p>
+    
     </div>
 
     <pre class="usage"># S3 method for treedata.table
 [(x, ...)</pre>
-
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -158,30 +164,35 @@ data.table." />
 on the <code>treedata.table</code> object</p></td>
     </tr>
     </table>
-
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A new object of class <code>treedata.table</code> with <code>$dat</code> and <code>$phy</code>
 corresponding with the changes set to <code>$dat</code> using
 <a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a>'s structure.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
-<span class='no'>anolis2</span> <span class='kw'>&lt;-</span> <span class='no'>anolis</span>$<span class='no'>phy</span>
-<span class='no'>anolis2</span>$<span class='no'>tip.label</span>[<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='st'>"NAA"</span>
-<span class='no'>anolis1</span> <span class='kw'>&lt;-</span> <span class='no'>anolis</span>$<span class='no'>phy</span>
-<span class='no'>anolis1</span>$<span class='no'>tip.label</span>[<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='st'>"NAA"</span>
-<span class='no'>trees</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis1</span>, <span class='no'>anolis2</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>trees</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
-<span class='no'>treesFM</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>phy</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>treesFM</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>anolis</span>)
+<span class='kw'>anolis2</span> <span class='op'>&lt;-</span> <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>
+<span class='kw'>anolis2</span><span class='op'>$</span><span class='kw'>tip.label</span>[<span class='fl'>1</span>] <span class='op'>&lt;-</span> <span class='st'>"NAA"</span>
+<span class='kw'>anolis1</span> <span class='op'>&lt;-</span> <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>
+<span class='kw'>anolis1</span><span class='op'>$</span><span class='kw'>tip.label</span>[<span class='fl'>1</span>] <span class='op'>&lt;-</span> <span class='st'>"NAA"</span>
+<span class='kw'>trees</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>anolis1</span>, <span class='kw'>anolis2</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='kw'>trees</span>) <span class='op'>&lt;-</span> <span class='st'>"multiPhylo"</span>
+<span class='kw'>treesFM</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='kw'>treesFM</span>) <span class='op'>&lt;-</span> <span class='st'>"multiPhylo"</span>
 
 <span class='co'># A phylo object that fully matches the data</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>tree</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='no'>td</span>[, <span class='no'>SVL</span>]</div><div class='output co'>#&gt; $phy 
+<span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(tree = <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>, data = <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='kw'>td</span>[, <span class='kw'>SVL</span>]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 100 tips and 99 internal nodes.
 #&gt; 
@@ -197,7 +208,8 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 3: 4.078469
 #&gt; 4: 4.099687
 #&gt; 5: 4.067162
-#&gt; 6: 4.113371</div><div class='input'><span class='no'>td</span>[<span class='no'>island</span> <span class='kw'>==</span> <span class='st'>"Cuba"</span> <span class='kw'>&amp;</span> <span class='no'>ecomorph</span> <span class='kw'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>, <span class='no'>SVL</span>)]</div><div class='output co'>#&gt; $phy 
+#&gt; 6: 4.113371</div><div class='input'><span class='kw'>td</span>[<span class='kw'>island</span> <span class='op'>==</span> <span class='st'>"Cuba"</span> <span class='op'>&amp;</span> <span class='kw'>ecomorph</span> <span class='op'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='kw'>ecomorph</span>, <span class='kw'>island</span>, <span class='kw'>SVL</span>)]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 12 tips and 11 internal nodes.
 #&gt; 
@@ -213,7 +225,8 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 3:       TG   Cuba 4.078469
 #&gt; 4:       TG   Cuba 4.099687
 #&gt; 5:       TG   Cuba 4.067162
-#&gt; 6:       TG   Cuba 4.113371</div><div class='input'><span class='no'>td</span>[, <span class='kw pkg'>utils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>.SD</span>, <span class='fl'>1</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>)]</div><div class='output co'>#&gt; $phy 
+#&gt; 6:       TG   Cuba 4.113371</div><div class='input'><span class='kw'>td</span>[, <span class='kw'>utils</span>::<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>.SD</span>, <span class='fl'>1</span>), by = <span class='fu'>.</span>(<span class='kw'>ecomorph</span>, <span class='kw'>island</span>)]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 23 tips and 22 internal nodes.
 #&gt; 
@@ -238,7 +251,10 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 5:              1.6852579        1.0144193  0.41064280 -0.11746257  0.7022959
 #&gt; 6:              1.8543308        0.1288233 -0.08837008  0.46528679 -0.5675490</div><div class='input'>
 <span class='co'># A multiphylo object that fully matches the data</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>tree</span> <span class='kw'>=</span> <span class='no'>treesFM</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>treesFM</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='no'>td</span>[, <span class='no'>SVL</span>]</div><div class='output co'>#&gt; $phy 
+<span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(tree = <span class='kw'>treesFM</span>, data = <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>treesFM</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='kw'>td</span>[, <span class='kw'>SVL</span>]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
 #&gt; $dat 
@@ -248,7 +264,8 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 3: 4.078469
 #&gt; 4: 4.099687
 #&gt; 5: 4.067162
-#&gt; 6: 4.113371</div><div class='input'><span class='no'>td</span>[<span class='no'>island</span> <span class='kw'>==</span> <span class='st'>"Cuba"</span> <span class='kw'>&amp;</span> <span class='no'>ecomorph</span> <span class='kw'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>, <span class='no'>SVL</span>)]</div><div class='output co'>#&gt; $phy 
+#&gt; 6: 4.113371</div><div class='input'><span class='kw'>td</span>[<span class='kw'>island</span> <span class='op'>==</span> <span class='st'>"Cuba"</span> <span class='op'>&amp;</span> <span class='kw'>ecomorph</span> <span class='op'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='kw'>ecomorph</span>, <span class='kw'>island</span>, <span class='kw'>SVL</span>)]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
 #&gt; $dat 
@@ -258,7 +275,8 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 3:       TG   Cuba 4.078469
 #&gt; 4:       TG   Cuba 4.099687
 #&gt; 5:       TG   Cuba 4.067162
-#&gt; 6:       TG   Cuba 4.113371</div><div class='input'><span class='no'>td</span>[, <span class='kw pkg'>utils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>.SD</span>, <span class='fl'>1</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>)]</div><div class='output co'>#&gt; $phy 
+#&gt; 6:       TG   Cuba 4.113371</div><div class='input'><span class='kw'>td</span>[, <span class='kw'>utils</span>::<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>.SD</span>, <span class='fl'>1</span>), by = <span class='fu'>.</span>(<span class='kw'>ecomorph</span>, <span class='kw'>island</span>)]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
 #&gt; $dat 
@@ -277,9 +295,12 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 5:              1.6852579        1.0144193  0.41064280 -0.11746257  0.7022959
 #&gt; 6:              1.8543308        0.1288233 -0.08837008  0.46528679 -0.5675490</div><div class='input'>
 <span class='co'># A phylo object that partially matches the data</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>tree</span> <span class='kw'>=</span> <span class='no'>anolis1</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
-#&gt; <span class='message'>1 tip(s) dropped from the original dataset</span></div><div class='input'><span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis1</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
-#&gt; <span class='message'>1 tip(s) dropped from the original dataset</span></div><div class='input'><span class='no'>td</span>[, <span class='no'>SVL</span>]</div><div class='output co'>#&gt; $phy 
+<span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(tree = <span class='kw'>anolis1</span>, data = <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
+#&gt; <span class='message'>1 tip(s) dropped from the original dataset</span></div><div class='input'><span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>anolis1</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
+#&gt; <span class='message'>1 tip(s) dropped from the original dataset</span></div><div class='input'><span class='kw'>td</span>[, <span class='kw'>SVL</span>]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 99 tips and 98 internal nodes.
 #&gt; 
@@ -295,7 +316,8 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 3: 4.099687
 #&gt; 4: 4.067162
 #&gt; 5: 4.113371
-#&gt; 6: 3.901619</div><div class='input'><span class='no'>td</span>[<span class='no'>island</span> <span class='kw'>==</span> <span class='st'>"Cuba"</span> <span class='kw'>&amp;</span> <span class='no'>ecomorph</span> <span class='kw'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>, <span class='no'>SVL</span>)]</div><div class='output co'>#&gt; $phy 
+#&gt; 6: 3.901619</div><div class='input'><span class='kw'>td</span>[<span class='kw'>island</span> <span class='op'>==</span> <span class='st'>"Cuba"</span> <span class='op'>&amp;</span> <span class='kw'>ecomorph</span> <span class='op'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='kw'>ecomorph</span>, <span class='kw'>island</span>, <span class='kw'>SVL</span>)]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 11 tips and 10 internal nodes.
 #&gt; 
@@ -311,7 +333,8 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 3:       TG   Cuba 4.099687
 #&gt; 4:       TG   Cuba 4.067162
 #&gt; 5:       TG   Cuba 4.113371
-#&gt; 6:       TG   Cuba 3.901619</div><div class='input'><span class='no'>td</span>[, <span class='kw pkg'>utils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>.SD</span>, <span class='fl'>1</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>)]</div><div class='output co'>#&gt; $phy 
+#&gt; 6:       TG   Cuba 3.901619</div><div class='input'><span class='kw'>td</span>[, <span class='kw'>utils</span>::<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>.SD</span>, <span class='fl'>1</span>), by = <span class='fu'>.</span>(<span class='kw'>ecomorph</span>, <span class='kw'>island</span>)]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 23 tips and 22 internal nodes.
 #&gt; 
@@ -336,9 +359,12 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 5:              1.6852579        1.0144193  0.41064280 -0.11746257  0.7022959
 #&gt; 6:              1.8543308        0.1288233 -0.08837008  0.46528679 -0.5675490</div><div class='input'>
 <span class='co'># A multiphylo object that partially matches the data</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>tree</span> <span class='kw'>=</span> <span class='no'>trees</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
-#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div><div class='input'><span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>trees</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
-#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div><div class='input'><span class='no'>td</span>[, <span class='no'>SVL</span>]</div><div class='output co'>#&gt; $phy 
+<span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(tree = <span class='kw'>trees</span>, data = <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
+#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div><div class='input'><span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>trees</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
+#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div><div class='input'><span class='kw'>td</span>[, <span class='kw'>SVL</span>]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
 #&gt; $dat 
@@ -348,7 +374,8 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 3: 4.099687
 #&gt; 4: 4.067162
 #&gt; 5: 4.113371
-#&gt; 6: 3.901619</div><div class='input'><span class='no'>td</span>[<span class='no'>island</span> <span class='kw'>==</span> <span class='st'>"Cuba"</span> <span class='kw'>&amp;</span> <span class='no'>ecomorph</span> <span class='kw'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>, <span class='no'>SVL</span>)]</div><div class='output co'>#&gt; $phy 
+#&gt; 6: 3.901619</div><div class='input'><span class='kw'>td</span>[<span class='kw'>island</span> <span class='op'>==</span> <span class='st'>"Cuba"</span> <span class='op'>&amp;</span> <span class='kw'>ecomorph</span> <span class='op'>==</span> <span class='st'>"TG"</span>, <span class='fu'>.</span>(<span class='kw'>ecomorph</span>, <span class='kw'>island</span>, <span class='kw'>SVL</span>)]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
 #&gt; $dat 
@@ -358,7 +385,8 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 3:       TG   Cuba 4.099687
 #&gt; 4:       TG   Cuba 4.067162
 #&gt; 5:       TG   Cuba 4.113371
-#&gt; 6:       TG   Cuba 3.901619</div><div class='input'><span class='no'>td</span>[, <span class='kw pkg'>utils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>.SD</span>, <span class='fl'>1</span>), <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>.</span>(<span class='no'>ecomorph</span>, <span class='no'>island</span>)]</div><div class='output co'>#&gt; $phy 
+#&gt; 6:       TG   Cuba 3.901619</div><div class='input'><span class='kw'>td</span>[, <span class='kw'>utils</span>::<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>.SD</span>, <span class='fl'>1</span>), by = <span class='fu'>.</span>(<span class='kw'>ecomorph</span>, <span class='kw'>island</span>)]
+</div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
 #&gt; $dat 
@@ -391,7 +419,7 @@ corresponding with the changes set to <code>$dat</code> using
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

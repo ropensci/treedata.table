@@ -15,13 +15,11 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
@@ -45,10 +43,12 @@
 
 
 
-
 <meta property="og:title" content="Returning a named vector from a treedata.table object — extractVector" />
+
 <meta property="og:description" content="Returning a named vector from a treedata.table object" />
+
 <meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -103,11 +103,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/treedata.table.html">Getting Started With The treedata.table Package</a>
+      <a href="../articles/treedata.table_extensive.html">Getting Started With The treedata.table Package</a>
+    </li>
+    <li>
+      <a href="../articles/treedata.table_spanish.html">Breve Introducción al Paquete treedata.table</a>
     </li>
   </ul>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/uyedaj/treedata.table/">
@@ -134,11 +138,13 @@
     </div>
 
     <div class="ref-description">
+    
     <p>Returning a named vector from a treedata.table object</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>extractVector</span>(<span class='no'>tdObject</span>, <span class='no'>...</span>)</pre>
-
+    <pre class="usage"><span class='fu'>extractVector</span>(<span class='kw'>tdObject</span>, <span class='kw'>...</span>)</pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -151,16 +157,19 @@
       <td><p>The name of the column or columns to select.</p></td>
     </tr>
     </table>
-
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A named vector or a list of named vectors</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>tree</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='co'># extracts the named vector for SVL from the td object</span>
-<span class='fu'>extractVector</span>(<span class='no'>td</span>, <span class='st'>"SVL"</span>)</div><div class='output co'>#&gt;            ahli         allogus     rubribarbus           imias          sagrei 
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>anolis</span>)
+<span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(tree = <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>, data = <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='co'># extracts the named vector for SVL from the td object</span>
+<span class='fu'>extractVector</span>(<span class='kw'>td</span>, <span class='st'>"SVL"</span>)
+</div><div class='output co'>#&gt;            ahli         allogus     rubribarbus           imias          sagrei 
 #&gt;        4.039125        4.040138        4.078469        4.099687        4.067162 
 #&gt;         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
 #&gt;        4.113371        3.901619        3.637962        3.987147        3.952605 
@@ -200,7 +209,8 @@
 #&gt;        3.770613        3.827445        3.908550        3.859835        4.302036 
 #&gt;        aliniger      singularis    chlorocyanus     coelestinus        occultus 
 #&gt;        4.036557        4.057997        4.275448        4.297965        3.663049 </div><div class='input'><span class='co'># extracts the named vector for SVL and ecomorph from the td object</span>
-<span class='fu'>extractVector</span>(<span class='no'>td</span>, <span class='st'>"SVL"</span>, <span class='st'>"ecomorph"</span>)</div><div class='output co'>#&gt; $SVL
+<span class='fu'>extractVector</span>(<span class='kw'>td</span>, <span class='st'>"SVL"</span>, <span class='st'>"ecomorph"</span>)
+</div><div class='output co'>#&gt; $SVL
 #&gt;            ahli         allogus     rubribarbus           imias          sagrei 
 #&gt;        4.039125        4.040138        4.078469        4.099687        4.067162 
 #&gt;         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
@@ -299,7 +309,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
