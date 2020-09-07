@@ -1,0 +1,79 @@
+---
+title: "Partially Matching of Trait Data and Tree(s) in treedata.table"
+author: "Josef Uyeda, Cristian Roman-Palacios, April Wright"
+date: "08/08/2020"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Partially Matching of Trait Data and Tree(s) in treedata.table}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Partially matching trait data and tree(s)
+
+The `as.treedata.table` function enables users to match a tree (or multiple trees) against a single trait database. We first load the sample dataset.
+
+```{r}
+library(ape)
+library(treedata.table)
+
+# Load example data
+data(anolis)
+#Create treedata.table object with as.treedata.table
+td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
+```
+
+
+Tips that are not common between the tree (or trees) and dataset are dropped from the resulting `treedata.table` object. For instance, below I have modified the original anole phylogeny such that *A. ahli* (**ahi**) is replaced for a label that is not present in the dataset (**NAA**).
+
+```{r}
+anolis_newtip<-anolis$phy
+anolis_newtip$tip.label[1]<-'NAA'
+anolis_newtip
+```
+
+
+We then use this modified tree to fit a `treedata.table` object using the `as.treedata.table` function:
+
+
+```{r}
+td <- as.treedata.table(tree=anolis_newtip, data=anolis$dat)
+```
+
+Note that `as.treedata.table` drops all non-overlapping tips (**NAA** [present in the tree but not in the trait data] and **ahi** [present in the database but not in tree] in this case) and returns a `treedata.table` object with fully matching `phy` and `data` objects. 
+
+```{r}
+td
+```
+
+
+Fully-matching matrix and trees are also returned in `treedata.table` objects with `multiPhylo` objects in their `phy` component. See the example below.
+
+We first construct a `multiPhylo` object that partially overlaps the original trait database by using **NAA** instead of **ahi**.
+
+```{r}
+anolis2<-anolis$phy
+anolis2$tip.label[1]<-'NAA'
+anolis1<-anolis$phy
+anolis1$tip.label[1]<-'NAA'
+trees<-list(anolis1,anolis2)
+class(trees) <- "multiPhylo"
+trees
+```
+
+Next, we fit the `treedata.table` object using the relevant `multiPhylo` object and the original trait database.
+
+```{r}
+td <- as.treedata.table(tree=trees, data=anolis$dat)
+```
+
+Note that 1 tip was dropped for all trees in the `multiPhylo` object and a single row was deleted from the `data.table` object in the `treedata.table` object.
+
+```{r}
+td
+```
+
