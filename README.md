@@ -32,7 +32,7 @@ treedata.table can be installed from GitHub at the present. We presently recomme
 [`remotes`](https://cran.r-project.org/web/packages/remotes/index.html):
 
 ```r
- remotes::install_github("uyedaj/treedata.table")
+ remotes::install_github("ropensci/treedata.table")
  ```
 
 ## What Can I Do With `treedata.table`?
