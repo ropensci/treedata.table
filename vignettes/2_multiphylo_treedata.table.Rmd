@@ -1,0 +1,121 @@
+---
+title: "Working With multiPhylo Objects in treedata.table"
+author: "Josef Uyeda, Cristian Roman-Palacios, April Wright"
+date: "08/08/2020"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Working With multiPhylo Objects in treedata.table}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Working with multiphylo objects
+
+`treedata.table` further allows the matching of multiple phylogenies (`multiPhylo`) against a single dataset (`data.frame`). Below, we modified the anole dataset to explain the extended functionality of `treedata.table` with `multiPhylo` objects.
+
+We first load the sample dataset.
+
+```{r}
+library(ape)
+library(treedata.table)
+
+# Load example data
+data(anolis)
+#Create treedata.table object with as.treedata.table
+td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
+```
+
+
+We first create a `multiPhylo` object including only two `phylo` objects. Users can provide any number of `phylo` objects within the `multiPhylo` object. However, trees should only differ in their topology. In other words, all trees must have the same tip labels. Nevertheless, both the provided `multiPhylo` and `data.frame` should partially overlap.
+
+```{r}
+trees<-list(anolis$phy,anolis$phy)
+class(trees) <- "multiPhylo"
+trees
+```
+
+Now, we create our treedata.table object by combining the trait data (`data.frame`) and the newly generated `multiPhylo` object.
+
+```{r}
+td <- as.treedata.table(tree=trees, data=anolis$dat)
+```
+
+The resulting `td` object now returns a `multiPhylo` object under `phy` 
+
+```{r}
+class(td$phy);td$phy
+```
+
+Please note that all the basic `treedata.table` functions highlighted above for `phylo` objects are still functional when `treedata.table` objects include `multiPhylo` objects.
+
+```{r}
+td[, head(.SD, 1), by = "ecomorph"]
+```
+
+Functions can also be run on any `treedata.table` object with `multiphylo` data. For instance, the following line will fit a phenogram for `SVL` on each of the trees we provided in the `multiPhylo` object.
+
+```{r}
+tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model="BM", ncores=1))
+```
+
+The output is an object of class `list` with each element corresponding to the output function of each tree in the provided `multiPhylo` object. 
+
+
+## Partially matching trait data and tree(s)
+
+The `as.treedata.table` function enables users to match a tree (or multiple trees) against a single trait database.
+
+Tips that are not common between the tree (or trees) and dataset are dropped from the resulting `treedata.table` object. For instance, below I have modified the original anole phylogeny such that *A. ahli* (**ahi**) is replaced for a label that is not present in the dataset (**NAA**).
+
+```{r}
+anolis_newtip<-anolis$phy
+anolis_newtip$tip.label[1]<-'NAA'
+anolis_newtip
+```
+
+
+We then use this modified tree to fit a `treedata.table` object using the `as.treedata.table` function:
+
+
+```{r}
+td <- as.treedata.table(tree=anolis_newtip, data=anolis$dat)
+```
+
+Note that `as.treedata.table` drops all non-overlapping tips (**NAA** [present in the tree but not in the trait data] and **ahi** [present in the database but not in tree] in this case) and returns a `treedata.table` object with fully matching `phy` and `data` objects. 
+
+```{r}
+td
+```
+
+
+Fully-matching matrix and trees are also returned in `treedata.table` objects with `multiPhylo` objects in their `phy` component. See the example below.
+
+We first construct a `multiPhylo` object that partially overlaps the original trait database by using **NAA** instead of **ahi**.
+
+```{r}
+anolis2<-anolis$phy
+anolis2$tip.label[1]<-'NAA'
+anolis1<-anolis$phy
+anolis1$tip.label[1]<-'NAA'
+trees<-list(anolis1,anolis2)
+class(trees) <- "multiPhylo"
+trees
+```
+
+Next, we fit the `treedata.table` object using the relevant `multiPhylo` object and the original trait database.
+
+```{r}
+td <- as.treedata.table(tree=trees, data=anolis$dat)
+```
+
+Note that 1 tip was dropped for all trees in the `multiPhylo` object and a single row was deleted from the `data.table` object in the `treedata.table` object.
+
+```{r}
+td
+```
+
+

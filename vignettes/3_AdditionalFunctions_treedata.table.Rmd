@@ -1,0 +1,95 @@
+---
+title: "Additional Functions for Manipulating Data in treedata.table"
+author: "Josef Uyeda, Cristian Roman-Palacios, April Wright"
+date: "08/08/2020"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Additional Functions for Manipulating Data in treedata.table}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Additional functions for manipulating data
+
+`treedata.table` includes additional functions that allow the identification of `discrete` and `continuous` character in a given dataset. We first load the dataset:
+
+```{r}
+library(ape)
+library(treedata.table)
+
+# Load example data
+data(anolis)
+#Create treedata.table object with as.treedata.table
+td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
+```
+
+The `detectCharacterType()` function can be used to examine whether `SVL` is `discrete` or `continuous`: 
+
+```{r}
+detectCharacterType(anolis$dat$SVL)
+```
+
+We can further examine the type of characters we have in our dataset by using the `detectAllCharacters()` function:
+
+```{r}
+detectAllCharacters(anolis$dat)
+```
+
+Summarizing this information in a table, we get:
+
+```{r}
+cbind.data.frame(character=colnames(anolis$dat),type=detectAllCharacters(anolis$dat))
+```
+
+Finally, we can use the `filterMatrix()` function to subset our dataset to only a certain type of characters. For instance, let's extract all discrete characters in the *Anolis* dataset:
+
+```{r}
+filterMatrix(anolis$dat, "discrete")
+```
+
+Two additional functions in `treedata.table` are designed to examine and modify column and row names in any dataset. For instance, we can ask if the *Anolis* dataset has column names:
+
+```{r}
+hasNames(anolis$dat, "col")
+```
+
+It does have column names. Let's just remove the column names and check if `hasNames()` can detect this change. Here's our new dataset:
+
+```{r}
+data=anolis$dat
+colnames(data)<-NULL
+head(data,2)
+```
+
+Let's run `hasNames()` on our new dataset:
+
+```{r}
+hasNames(data, "col")
+```
+
+Now, we can create new column names using the `forceNames()` function:
+
+```{r}
+data <- forceNames(data, "col")
+```
+
+The new dataset, with column names (n1...), looks like this:
+
+```{r}
+head(data,2)
+```
+
+And we can finally ask whether our new dataset actually have column names by running the `hasNames()` function again:
+
+
+```{r}
+hasNames(data, "col")
+```
+
+
+We can apply the same procedure for columns (`col`), rows (`row`) or both (`rowcol`).
+

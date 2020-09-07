@@ -151,4 +151,4 @@ Y el árbol
 tree
 ```
 
-La misma funcionalidad explicada en este tutorial sobre objetos `phylo` aplica directamente a objetos `multiPhylo`. Más detalles sobre este aspecto es resumida en el tutorial en inglés.
+La misma funcionalidad explicada en este tutorial sobre objetos `phylo` aplica directamente a objetos `multiPhylo`.
