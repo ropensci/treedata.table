@@ -2,10 +2,10 @@ pandoc: 2.7.3
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
-  1.1_treedata.table_intro_english: 1.1_treedata.table_intro_english.html
-  1.2_treedata.table_intro_spanish: 1.2_treedata.table_intro_spanish.html
-  2_multiphylo_treedata.table: 2_multiphylo_treedata.table.html
-  3_PartialMatching: 3_PartialMatching.html
-  4_AdditionalFunctions_treedata.table: 4_AdditionalFunctions_treedata.table.html
-last_built: 2020-09-07T06:59Z
+  AA_treedata.table_intro_english: AA_treedata.table_intro_english.html
+  AB_treedata.table_intro_spanish: AB_treedata.table_intro_spanish.html
+  B_multiphylo_treedata.table: B_multiphylo_treedata.table.html
+  C_PartialMatching: C_PartialMatching.html
+  D_AdditionalFunctions_treedata.table: D_AdditionalFunctions_treedata.table.html
+last_built: 2020-09-07T07:26Z
 
