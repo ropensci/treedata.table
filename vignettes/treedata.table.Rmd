@@ -15,9 +15,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Getting Started With The `treedata.table` Package
 
-The aim of the treedata.table R package is to allow researchers to access and manipulate phylogenetic data using tools from the `data.table` package. `data.table` has many functions for rapidly manipulating data in a memory efficient way. 
+The aim of the `treedata.table` R package is to allow researchers to access and manipulate phylogenetic data using tools from the `data.table` package. `data.table` has many functions for rapidly manipulating data in a memory efficient way. 
 
-Using the `treedata.table` package begins with creating a `treedata.table` object. The `treedata.table` matches the tip.labels of the phylogeny to a column of names in your `data.frame`. This allows you to manipulate the data, and the corresponding tree together.
+Using the `treedata.table` package begins with creating a `treedata.table` object. The `treedata.table` matches the tip.labels of the phylogeny to a column of names in your `data.frame`. This allows you to manipulate the data, and the corresponding tree together. 
+
+Importantly, the character matrix must must include a column with the taxa names and should be of class `data.frame`. The tree must be of class `phylo` or `multiPhylo`.
 
 A `treedata.table` is created using the `as.treedata.table` function. 
 
@@ -95,13 +97,13 @@ Tail is also implemented
 
 ```
 
-Columns in the `data.table` can also be operated on using `data.table` syntax. In the below example, the tree is pruned to those tips that occur in Cuba. This is the `data.table` equivalent of `dplyr`'s filter. Then, a new column is created in the `data.table`, assigned the name "Index", and assigned the value of the SVL + the hostility index. This enables concurrent manipulation of the phylogeny, and the calculation of a new index for only those tips we would actually like to use.
+Columns in the `treedata.table` object can also be operated on using `data.table` syntax. In the below example, the tree is pruned to those tips that occur in Cuba. This is the `data.table` equivalent of `dplyr`'s filter. Then, a new column is created in the `data.table`, assigned the name "Index", and assigned the value of the SVL + the hostility index. This enables concurrent manipulation of the phylogeny, and the calculation of a new index for only those tips we would actually like to use.
 
 ```{r}
 td[island == "Cuba",.(Index=SVL+hostility)]
 ```
 
-We can extend this tidy approach to actually estimating values for our data using `tdt`. In the below command, we extract two vectors from our data.table and use `geiger`'s continuous model fitting to estimate a Brownian motion model for the data. 
+We can extend this tidy approach to actually estimating values for our data using `tdt`. In the below command, we extract one vector from our data.table and use `geiger`'s continuous model fitting to estimate a Brownian motion model for the data. 
 
 
 ```{r}
