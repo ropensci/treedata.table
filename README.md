@@ -70,3 +70,7 @@ Please see our [contributing guide](CONTRIBUTING).
 ## Contact
 
 Please see the package [DESCRIPTION](DESCRIPTION) for package authors.
+
+---
+
+[![ropensci_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)
