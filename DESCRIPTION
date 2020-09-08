@@ -26,7 +26,7 @@ Authors@R: c(
           family = "Norman",
           role = c("rev"))
   )
-URL: https://github.com/ropensci/treedata.table/
+URL: https://docs.ropensci.org/treedata.table (website) https://github.com/ropensci/treedata.table/
 BugReports: https://github.com/ropensci/treedata.table/issues
 Description: This package combines trait data and a phylogenetic tree (or trees) into a 
     single object of class treedata.table. The resulting object can be easily 
