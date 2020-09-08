@@ -80,7 +80,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/uyedaj/treedata.table/">
+  <a href="https://github.com/ropensci/treedata.table/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -103,7 +103,7 @@
             
             <h4 class="date">08/08/2020</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/uyedaj/treedata.table/blob/master/vignettes/B_multiphylo_treedata.table.Rmd"><code>vignettes/B_multiphylo_treedata.table.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/treedata.table/blob/master/vignettes/B_multiphylo_treedata.table.Rmd"><code>vignettes/B_multiphylo_treedata.table.Rmd</code></a></small>
       <div class="hidden name"><code>B_multiphylo_treedata.table.Rmd</code></div>
 
     </div>
@@ -117,12 +117,8 @@
 <p>We first load the sample dataset.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ape-package.ird.fr">ape</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/uyedaj/treedata.table">treedata.table</a></span>)
-</pre></div>
-<pre><code>## Registered S3 method overwritten by 'geiger':
-##   method            from
-##   unique.multiPhylo ape</code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://docs.ropensci.org/treedata">treedata.table</a></span>)
+
 <span class="co"># Load example data</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="kw">anolis</span>)
 <span class="co">#Create treedata.table object with as.treedata.table</span>
@@ -132,56 +128,49 @@
 <pre><code>## Phylo object detected</code></pre>
 <pre><code>## No tips were dropped from the original tree/dataset</code></pre>
 <p>We then create a <code>multiPhylo</code> object including only two <code>phylo</code> objects. Users can provide any number of <code>phylo</code> objects within the <code>multiPhylo</code> object. However, trees should only differ in their topology. In other words, all trees must have the same tip labels. Nevertheless, both the provided <code>multiPhylo</code> and <code>data.frame</code> should partially overlap.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
+<div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="kw">trees</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">anolis</span><span class="op">$</span><span class="kw">phy</span>,<span class="kw">anolis</span><span class="op">$</span><span class="kw">phy</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="kw">trees</span>) <span class="op">&lt;-</span> <span class="st">"multiPhylo"</span>
 <span class="kw">trees</span>
 </pre></div>
 <pre><code>## 2 phylogenetic trees</code></pre>
 <p>Now, we create our treedata.table object by combining the trait data (<code>data.frame</code>) and the newly generated <code>multiPhylo</code> object.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
+<div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="kw">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(tree=<span class="kw">trees</span>, data=<span class="kw">anolis</span><span class="op">$</span><span class="kw">dat</span>)
 </pre></div>
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Multiphylo object detected</code></pre>
 <pre><code>## No tips were dropped from the original trees/dataset</code></pre>
 <p>The resulting <code>td</code> object now returns a <code>multiPhylo</code> object under <code>phy</code></p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
+<div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="kw">td</span><span class="op">$</span><span class="kw">phy</span>);<span class="kw">td</span><span class="op">$</span><span class="kw">phy</span>
 </pre></div>
 <pre><code>## [1] "multiPhylo"</code></pre>
 <pre><code>## 2 phylogenetic trees</code></pre>
 <p>Please note that all the basic <code>treedata.table</code> functions highlighted above for <code>phylo</code> objects are still functional when <code>treedata.table</code> objects include <code>multiPhylo</code> objects.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit">
+<div class="sourceCode" id="cb14"><pre class="downlit">
 <span class="kw">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">.SD</span>, <span class="fl">1</span>), by = <span class="st">"ecomorph"</span>]
 </pre></div>
 <pre><code>## $phy 
 ## 2 phylogenetic trees
 ## 
 ## $dat 
-##    ecomorph   tip.label      SVL  PCI_limbs  PCII_head
-## 1:       TG        ahli 4.039125 -3.2482860  0.3722519
-## 2:       GB  ophiolepis 3.637962  0.7915117  1.4585760
-## 3:       CG     garmani 4.769473 -0.7735264  0.9371249
-## 4:       TC    opalinus 3.838376 -1.7794371 -0.3245381
-## 5:       TW valencienni 4.321524  2.9424139 -0.8846007
-## 6:        U  reconditus 4.482607 -2.7270416 -0.2104066
-##    PCIII_padwidth_vs_tail PCIV_lamella_num awesomeness   hostility
-## 1:             -1.0422187       -2.4147423 -0.24165170 -0.17347691
-## 2:             -1.3152005       -2.2377514  0.35441877  0.05366142
-## 3:              0.2594994        0.1051149  0.16779131  0.67675600
-## 4:              1.5569939        0.9366501  1.48302162 -0.90826653
-## 5:              1.8543308        0.1288233 -0.08837008  0.46528679
-## 6:             -2.3534242       -0.7992905  0.26096544 -0.27169792
-##       attitude      island
-## 1:  0.64437708        Cuba
-## 2: -0.09389530        Cuba
-## 3: -0.69460080 Puerto Rico
-## 4:  0.72613483     Jamaica
-## 5: -0.56754896     Jamaica
-## 6:  0.01367143     Jamaica</code></pre>
+##    ecomorph   tip.label      SVL  PCI_limbs  PCII_head PCIII_padwidth_vs_tail
+## 1:       TG        ahli 4.039125 -3.2482860  0.3722519             -1.0422187
+## 2:       GB  ophiolepis 3.637962  0.7915117  1.4585760             -1.3152005
+## 3:       CG     garmani 4.769473 -0.7735264  0.9371249              0.2594994
+## 4:       TC    opalinus 3.838376 -1.7794371 -0.3245381              1.5569939
+## 5:       TW valencienni 4.321524  2.9424139 -0.8846007              1.8543308
+## 6:        U  reconditus 4.482607 -2.7270416 -0.2104066             -2.3534242
+##    PCIV_lamella_num awesomeness   hostility    attitude      island
+## 1:       -2.4147423 -0.24165170 -0.17347691  0.64437708        Cuba
+## 2:       -2.2377514  0.35441877  0.05366142 -0.09389530        Cuba
+## 3:        0.1051149  0.16779131  0.67675600 -0.69460080 Puerto Rico
+## 4:        0.9366501  1.48302162 -0.90826653  0.72613483     Jamaica
+## 5:        0.1288233 -0.08837008  0.46528679 -0.56754896     Jamaica
+## 6:       -0.7992905  0.26096544 -0.27169792  0.01367143     Jamaica</code></pre>
 <p>Functions can also be run on any <code>treedata.table</code> object with <code>multiphylo</code> data. For instance, the following line will fit a phenogram for <code>SVL</code> on each of the trees we provided in the <code>multiPhylo</code> object.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit">
+<div class="sourceCode" id="cb16"><pre class="downlit">
 <span class="fu"><a href="../reference/tdt.html">tdt</a></span>(<span class="kw">td</span>, <span class="kw">geiger</span>::<span class="fu"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span>(<span class="kw">phy</span>, <span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="kw">td</span>, <span class="st">'SVL'</span>), model=<span class="st">"BM"</span>, ncores=<span class="fl">1</span>))
 </pre></div>
 <pre><code>## Multiphylo object detected. Expect a list of function outputs</code></pre>
@@ -200,6 +189,7 @@
 ## Convergence diagnostics:
 ##  optimization iterations = 100
 ##  failed iterations = 0
+##  number of iterations with same best fit = 100
 ##  frequency of best fit = 1.00
 ## 
 ##  object summary:
@@ -223,6 +213,7 @@
 ## Convergence diagnostics:
 ##  optimization iterations = 100
 ##  failed iterations = 0
+##  number of iterations with same best fit = 100
 ##  frequency of best fit = 1.00
 ## 
 ##  object summary:
@@ -235,6 +226,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+
         <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
     </nav>
 </div>
@@ -248,7 +240,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

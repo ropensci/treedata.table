@@ -16,11 +16,13 @@ object — as.treedata.table • treedata.table</title>
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
@@ -44,9 +46,9 @@ object — as.treedata.table • treedata.table</title>
 
 
 
+
 <meta property="og:title" content="Combine tree (or set of trees) and data.frame into a single treedata.table
 object — as.treedata.table" />
-
 <meta property="og:description" content="This function takes as input a tree of class phylo or multiPhylo and a
 data.frame and combines them into a treedata.table. If a multiPhylo is
 provided, all trees must have the same tip.labels. treedata.table object is
@@ -54,9 +56,7 @@ sorted such that the rows in the data.table are matched to the tip.labels
 of the phylogeny. Tip.labels on the tree must match a column of tip
 names in the input data.frame. The output of this function will be a
 treedata.table, which can be manipulated as a data.table." />
-
 <meta property="og:image" content="/logo.png" />
-
 
 
 
@@ -128,10 +128,9 @@ treedata.table, which can be manipulated as a data.table." />
   </ul>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/uyedaj/treedata.table/">
+  <a href="https://github.com/ropensci/treedata.table/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -151,12 +150,11 @@ treedata.table, which can be manipulated as a data.table." />
     <div class="page-header">
     <h1>Combine tree (or set of trees) and data.frame into a single treedata.table
 object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/uyedaj/treedata.table/blob/master/R/as.treedata.table.R'><code>R/as.treedata.table.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/treedata.table/blob/master/R/as.treedata.table.R'><code>R/as.treedata.table.R</code></a></small>
     <div class="hidden name"><code>as.treedata.table.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
     <p>This function takes as input a tree of class <code>phylo</code> or <code>multiPhylo</code> and a
 <code>data.frame</code> and combines them into a treedata.table. If a <code>multiPhylo</code> is
 provided, all trees must have the same tip.labels. <code>treedata.table</code> object is
@@ -164,11 +162,10 @@ sorted such that the rows in the data.table are matched to the tip.labels
 of the phylogeny. Tip.labels on the tree must match a column of tip
 names in the input data.frame. The output of this function will be a
 treedata.table, which can be manipulated as a data.table.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>as.treedata.table</span>(<span class='kw'>tree</span>, <span class='kw'>data</span>, name_column = <span class='st'>"detect"</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -187,11 +184,10 @@ If set to <code>detect</code> (default) <code>as treedata.table</code> will auto
 column</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of type <code>treedata.table</code> containing the tree and data.table</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -231,7 +227,7 @@ column</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
