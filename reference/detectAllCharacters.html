@@ -153,7 +153,7 @@
 (e.g., with values blue, red, yellow).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>detectAllCharacters</span>(<span class='no'>mat</span>, <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>0.1</span>)</pre>
+    <pre class="usage"><span class='fu'>detectAllCharacters</span>(<span class='kw'>mat</span>, cutoff = <span class='fl'>0.1</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,8 +176,9 @@ nlev / n should exceed cutoff, or the data will be classified as discrete</p></t
 matrix</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
-<span class='fu'>detectAllCharacters</span>(<span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt;  [1] "discrete"   "continuous" "continuous" "continuous" "continuous"
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>anolis</span>)
+<span class='fu'>detectAllCharacters</span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt;  [1] "discrete"   "continuous" "continuous" "continuous" "continuous"
 #&gt;  [6] "continuous" "continuous" "continuous" "continuous" "discrete"  
 #&gt; [11] "discrete"  </div></pre>
   </div>
@@ -195,7 +196,7 @@ matrix</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>

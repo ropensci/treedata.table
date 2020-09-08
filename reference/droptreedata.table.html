@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function dropping taxa from an object of class <code>treedata.table</code> — droptreedata.table • treedata.table</title>
+<title>Function dropping taxa from an object of class treedata.table — droptreedata.table • treedata.table</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Function dropping taxa from an object of class <code>treedata.table</code> — droptreedata.table" />
+<meta property="og:title" content="Function dropping taxa from an object of class treedata.table — droptreedata.table" />
 <meta property="og:description" content="This function can be used to remove species from an object of class
 treedata.table. The resulting treedata.table will include fully matching
 $dat and $phy elements. The user should confirm the changes before they
@@ -155,7 +155,7 @@ are processed." />
 are processed.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>droptreedata.table</span>(<span class='no'>tdObject</span>, <span class='no'>taxa</span>)</pre>
+    <pre class="usage"><span class='fu'>droptreedata.table</span>(<span class='kw'>tdObject</span>, <span class='kw'>taxa</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,12 +177,14 @@ dropped from the original <code>treedata.table</code> object</p></td>
 elements based on whether <code>taxa</code> were dropped or not.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>anolis</span>)
 <span class='co'># With a multiphylo object in the treedata.table object</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(
-  <span class='kw'>tdObject</span> <span class='kw'>=</span> <span class='no'>td</span>, <span class='kw'>taxa</span> <span class='kw'>=</span>
+<span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(
+  tdObject = <span class='kw'>td</span>, taxa =
     <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chamaeleonides"</span>, <span class='st'>"eugenegrahami"</span>)
-)</div><div class='output co'>#&gt; <span class='message'>2 taxa were dropped from the treedata.table object</span></div><div class='output co'>#&gt; $phy 
+)
+</div><div class='output co'>#&gt; <span class='message'>2 taxa were dropped from the treedata.table object</span></div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 98 tips and 97 internal nodes.
 #&gt; 
@@ -207,12 +209,14 @@ elements based on whether <code>taxa</code> were dropped or not.</p>
 #&gt; 5:        -1.375769  -0.6304338  0.7193130 -1.2228276       TG   Cuba
 #&gt; 6:        -1.626299  -1.7543006  1.4127184  0.1832345       TG   Cuba</div><div class='input'>
 <span class='co'># With a multiphylo object in the treedata.table object</span>
-<span class='no'>treesFM</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>phy</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>treesFM</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>treesFM</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(
-  <span class='kw'>tdObject</span> <span class='kw'>=</span> <span class='no'>td</span>, <span class='kw'>taxa</span> <span class='kw'>=</span>
+<span class='kw'>treesFM</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='kw'>treesFM</span>) <span class='op'>&lt;-</span> <span class='st'>"multiPhylo"</span>
+<span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>treesFM</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='fu'>droptreedata.table</span>(
+  tdObject = <span class='kw'>td</span>, taxa =
     <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"chamaeleonides"</span>, <span class='st'>"eugenegrahami"</span>)
-)</div><div class='output co'>#&gt; <span class='message'>2 taxa were dropped from the treedata.table object</span></div><div class='output co'>#&gt; $phy 
+)
+</div><div class='output co'>#&gt; <span class='message'>2 taxa were dropped from the treedata.table object</span></div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
 #&gt; $dat 
@@ -245,7 +249,7 @@ elements based on whether <code>taxa</code> were dropped or not.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
