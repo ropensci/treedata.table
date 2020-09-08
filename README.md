@@ -64,6 +64,9 @@ dt <- droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" )
 
 `treedata.table` is a library for syncing data between a dataset and the tipcs of trees to enable efficient data and taxon management, as well as on-the-fly indexing and data selection in comparative analyses.
 
+More detailed information on `treedata.table` can be found on the different
+vignettes or in the [package's website](https://ropensci.github.io/treedata.table/)
+
 ## Contributing
 
 Please see our [contributing guide](CONTRIBUTING).
