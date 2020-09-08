@@ -3,12 +3,12 @@
 A wrapper for data.table that enables fast manipulation of  phylogenetic trees matched to data. <img src='man/figures/logo.png' align="right" height="250" />
 
 <!-- badges: start -->
-  [![Travis build status](https://travis-ci.org/uyedaj/treedata.table.svg?branch=master)](https://travis-ci.org/uyedaj/treedata.table)
-[![codecov](https://codecov.io/gh/uyedaj/treedata.table/branch/master/graph/badge.svg)](https://codecov.io/gh/uyedaj/treedata.table)
-[![Devel version](https://img.shields.io/badge/devel%20version-0.1.0-blue.svg)](https://github.com/uyedaj/treedata.table)
-[![Lifecycle](https://img.shields.io/badge/lifecycle-uyedaj/treedata.table-blue.svg)](https://www.tidyverse.org/lifecycle/#uyedaj/treedata.table)
-[![Code size](https://img.shields.io/github/languages/code-size/uyedaj/treedata.table.svg)](https://github.com/uyedaj/treedata.table)
-[![Latest commit](https://img.shields.io/github/last-commit/uyedaj/treedata.table.svg)](https://github.com/uyedaj/treedata.table/commits/master)
+  [![Travis build status](https://travis-ci.org/ropensci/treedata.table.svg?branch=master)](https://travis-ci.org/ropensci/treedata.table)
+[![codecov](https://codecov.io/gh/ropensci/treedata.table/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/treedata.table)
+[![Devel version](https://img.shields.io/badge/devel%20version-0.1.0-blue.svg)](https://github.com/ropensci/treedata.table)
+[![Lifecycle](https://img.shields.io/badge/lifecycle-ropensci/treedata.table-blue.svg)](https://www.tidyverse.org/lifecycle/#ropensci/treedata.table)
+[![Code size](https://img.shields.io/github/languages/code-size/ropensci/treedata.table.svg)](https://github.com/ropensci/treedata.table)
+[![Latest commit](https://img.shields.io/github/last-commit/ropensci/treedata.table.svg)](https://github.com/ropensci/treedata.table/commits/master)
 <!-- badges: end -->
 
 The [`data.table` package](https://github.com/Rdatatable/data.table) enables high-performance extended functionality for
