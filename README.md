@@ -67,7 +67,7 @@ dt <- droptreedata.table(tdObject=td, taxa=c("chamaeleonides" ,"eugenegrahami" )
 
 ## Additional resources
 
-More detailed information about the functions implemented in `treedata.table` can be found in the different vignettes associated with the package or in our [website](https://ropensci.github.io/treedata.table/)
+More details about the functions implemented in `treedata.table` can be found in the different vignettes associated with the package or in our [website](https://ropensci.github.io/treedata.table/).
 
 ## Contributing
 
