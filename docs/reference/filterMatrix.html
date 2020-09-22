@@ -119,6 +119,9 @@
     <li>
       <a href="../articles/D_AdditionalFunctions_treedata.table.html">Additional Functions for Manipulating Data in treedata.table</a>
     </li>
+    <li>
+      <a href="../articles/E_Preprint.html">Preprint: treedata.table</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -153,7 +156,7 @@
 (e.g., with values blue, red, yellow).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>filterMatrix</span>(<span class='kw'>mat</span>, returnType = <span class='st'>"discrete"</span>)</pre>
+    <pre class="usage"><span class='fu'>filterMatrix</span>(<span class='no'>mat</span>, <span class='kw'>returnType</span> <span class='kw'>=</span> <span class='st'>"discrete"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,9 +176,8 @@
     <p>data.frame with only discrete (default) or continuous characters</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>anolis</span>)
-<span class='fu'>filterMatrix</span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>, <span class='st'>"discrete"</span>)
-</div><div class='output co'>#&gt;                   X ecomorph      island
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
+<span class='fu'>filterMatrix</span>(<span class='no'>anolis</span>$<span class='no'>dat</span>, <span class='st'>"discrete"</span>)</div><div class='output co'>#&gt;                   X ecomorph      island
 #&gt; 1              ahli       TG        Cuba
 #&gt; 2           alayoni       TW        Cuba
 #&gt; 3           alfaroi       GB        Cuba
@@ -291,7 +293,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

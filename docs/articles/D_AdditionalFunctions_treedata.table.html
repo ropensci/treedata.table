@@ -75,6 +75,9 @@
     <li>
       <a href="../articles/D_AdditionalFunctions_treedata.table.html">Additional Functions for Manipulating Data in treedata.table</a>
     </li>
+    <li>
+      <a href="../articles/E_Preprint.html">Preprint: treedata.table</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -95,7 +98,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="D_AdditionalFunctions_treedata.table_files/header-attrs-2.3/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Additional Functions for Manipulating Data in treedata.table</h1>
@@ -114,34 +117,27 @@
 <h2 class="hasAnchor">
 <a href="#additional-functions-for-manipulating-data" class="anchor"></a>Additional functions for manipulating data</h2>
 <p><code>treedata.table</code> includes additional functions that allow the identification of <code>discrete</code> and <code>continuous</code> character in a given dataset. We first load the dataset:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ape-package.ird.fr">ape</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://docs.ropensci.org/treedata">treedata.table</a></span>)
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ape</span>)</pre></body></html></div>
+<pre><code>## Warning: package 'ape' was built under R version 4.0.2</code></pre>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">treedata.table</span>)
 
 <span class="co"># Load example data</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="kw">anolis</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">anolis</span>)
 <span class="co">#Create treedata.table object with as.treedata.table</span>
-<span class="kw">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(tree = <span class="kw">anolis</span><span class="op">$</span><span class="kw">phy</span>, data = <span class="kw">anolis</span><span class="op">$</span><span class="kw">dat</span>)
-</pre></div>
+<span class="no">td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="kw">tree</span> <span class="kw">=</span> <span class="no">anolis</span>$<span class="no">phy</span>, <span class="kw">data</span> <span class="kw">=</span> <span class="no">anolis</span>$<span class="no">dat</span>)</pre></body></html></div>
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Phylo object detected</code></pre>
 <pre><code>## No tips were dropped from the original tree/dataset</code></pre>
 <p>The <code><a href="../reference/detectCharacterType.html">detectCharacterType()</a></code> function can be used to examine whether <code>SVL</code> is <code>discrete</code> or <code>continuous</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="../reference/detectCharacterType.html">detectCharacterType</a></span>(<span class="kw">anolis</span><span class="op">$</span><span class="kw">dat</span><span class="op">$</span><span class="kw">SVL</span>)
-</pre></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="../reference/detectCharacterType.html">detectCharacterType</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>$<span class="no">SVL</span>)</pre></body></html></div>
 <pre><code>## [1] "continuous"</code></pre>
 <p>We can further examine the type of characters we have in our dataset by using the <code><a href="../reference/detectAllCharacters.html">detectAllCharacters()</a></code> function:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="../reference/detectAllCharacters.html">detectAllCharacters</a></span>(<span class="kw">anolis</span><span class="op">$</span><span class="kw">dat</span>)
-</pre></div>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/detectAllCharacters.html">detectAllCharacters</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>)</pre></body></html></div>
 <pre><code>##  [1] "discrete"   "continuous" "continuous" "continuous" "continuous"
 ##  [6] "continuous" "continuous" "continuous" "continuous" "discrete"  
 ## [11] "discrete"</code></pre>
 <p>Summarizing this information in a table, we get:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span>(character=<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="kw">anolis</span><span class="op">$</span><span class="kw">dat</span>),type=<span class="fu"><a href="../reference/detectAllCharacters.html">detectAllCharacters</a></span>(<span class="kw">anolis</span><span class="op">$</span><span class="kw">dat</span>))
-</pre></div>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span>(<span class="kw">character</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>),<span class="kw">type</span><span class="kw">=</span><span class="fu"><a href="../reference/detectAllCharacters.html">detectAllCharacters</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>))</pre></body></html></div>
 <pre><code>##                 character       type
 ## 1                       X   discrete
 ## 2                     SVL continuous
@@ -155,9 +151,7 @@
 ## 10               ecomorph   discrete
 ## 11                 island   discrete</code></pre>
 <p>Finally, we can use the <code><a href="../reference/filterMatrix.html">filterMatrix()</a></code> function to subset our dataset to only a certain type of characters. For instance, let’s extract all discrete characters in the <em>Anolis</em> dataset:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="../reference/filterMatrix.html">filterMatrix</a></span>(<span class="kw">anolis</span><span class="op">$</span><span class="kw">dat</span>, <span class="st">"discrete"</span>)
-</pre></div>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="../reference/filterMatrix.html">filterMatrix</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>, <span class="st">"discrete"</span>)</pre></body></html></div>
 <pre><code>##                   X ecomorph      island
 ## 1              ahli       TG        Cuba
 ## 2           alayoni       TW        Cuba
@@ -260,17 +254,13 @@
 ## 99         websteri        T  Hispaniola
 ## 100       whitemani       TG  Hispaniola</code></pre>
 <p>Two additional functions in <code>treedata.table</code> are designed to examine and modify column and row names in any dataset. For instance, we can ask if the <em>Anolis</em> dataset has column names:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="../reference/hasNames.html">hasNames</a></span>(<span class="kw">anolis</span><span class="op">$</span><span class="kw">dat</span>, <span class="st">"col"</span>)
-</pre></div>
+<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="../reference/hasNames.html">hasNames</a></span>(<span class="no">anolis</span>$<span class="no">dat</span>, <span class="st">"col"</span>)</pre></body></html></div>
 <pre><code>##  col 
 ## TRUE</code></pre>
 <p>It does have column names. Let’s just remove the column names and check if <code><a href="../reference/hasNames.html">hasNames()</a></code> can detect this change. Here’s our new dataset:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit">
-<span class="kw">data</span><span class="op">=</span><span class="kw">anolis</span><span class="op">$</span><span class="kw">dat</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="kw">data</span>)<span class="op">&lt;-</span><span class="kw">NULL</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">data</span>,<span class="fl">2</span>)
-</pre></div>
+<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="no">data</span><span class="kw">=</span><span class="no">anolis</span>$<span class="no">dat</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">data</span>)<span class="kw">&lt;-</span><span class="kw">NULL</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">data</span>,<span class="fl">2</span>)</pre></body></html></div>
 <pre><code>##                                                                        
 ## 1    ahli 4.039125 -3.248286  0.3722519 -1.042219 -2.4147423 -0.2416517
 ## 2 alayoni 3.815705  3.408886 -1.7833585  2.208451  0.9496969 -0.2590322
@@ -278,19 +268,13 @@
 ## 1 -0.1734769 0.6443771 TG Cuba
 ## 2  0.1273443 0.2959732 TW Cuba</code></pre>
 <p>Let’s run <code><a href="../reference/hasNames.html">hasNames()</a></code> on our new dataset:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit">
-<span class="fu"><a href="../reference/hasNames.html">hasNames</a></span>(<span class="kw">data</span>, <span class="st">"col"</span>)
-</pre></div>
+<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="fu"><a href="../reference/hasNames.html">hasNames</a></span>(<span class="no">data</span>, <span class="st">"col"</span>)</pre></body></html></div>
 <pre><code>##   col 
 ## FALSE</code></pre>
 <p>Now, we can create new column names using the <code><a href="../reference/forceNames.html">forceNames()</a></code> function:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit">
-<span class="kw">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/forceNames.html">forceNames</a></span>(<span class="kw">data</span>, <span class="st">"col"</span>)
-</pre></div>
+<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="no">data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/forceNames.html">forceNames</a></span>(<span class="no">data</span>, <span class="st">"col"</span>)</pre></body></html></div>
 <p>The new dataset, with column names (n1…), looks like this:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">data</span>,<span class="fl">2</span>)
-</pre></div>
+<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">data</span>,<span class="fl">2</span>)</pre></body></html></div>
 <pre><code>##        n1       n2        n3         n4        n5         n6         n7
 ## 1    ahli 4.039125 -3.248286  0.3722519 -1.042219 -2.4147423 -0.2416517
 ## 2 alayoni 3.815705  3.408886 -1.7833585  2.208451  0.9496969 -0.2590322
@@ -298,9 +282,7 @@
 ## 1 -0.1734769 0.6443771  TG Cuba
 ## 2  0.1273443 0.2959732  TW Cuba</code></pre>
 <p>And we can finally ask whether our new dataset actually have column names by running the <code><a href="../reference/hasNames.html">hasNames()</a></code> function again:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit">
-<span class="fu"><a href="../reference/hasNames.html">hasNames</a></span>(<span class="kw">data</span>, <span class="st">"col"</span>)
-</pre></div>
+<div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="fu"><a href="../reference/hasNames.html">hasNames</a></span>(<span class="no">data</span>, <span class="st">"col"</span>)</pre></body></html></div>
 <pre><code>##  col 
 ## TRUE</code></pre>
 <p>We can apply the same procedure for columns (<code>col</code>), rows (<code>row</code>) or both (<code>rowcol</code>).</p>
@@ -322,7 +304,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

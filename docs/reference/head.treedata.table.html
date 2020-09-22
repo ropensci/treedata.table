@@ -117,6 +117,9 @@
     <li>
       <a href="../articles/D_AdditionalFunctions_treedata.table.html">Additional Functions for Manipulating Data in treedata.table</a>
     </li>
+    <li>
+      <a href="../articles/E_Preprint.html">Preprint: treedata.table</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -150,7 +153,7 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for treedata.table</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,10 +170,8 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>anolis</span>)
-<span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
-</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw'>td</span>)
-</div><div class='output co'>#&gt;      tip.label      SVL PCI_limbs PCII_head PCIII_padwidth_vs_tail
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>td</span>)</div><div class='output co'>#&gt;      tip.label      SVL PCI_limbs PCII_head PCIII_padwidth_vs_tail
 #&gt; 1:        ahli 4.039125 -3.248286 0.3722519             -1.0422187
 #&gt; 2:     allogus 4.040138 -2.845570 0.6001134             -1.0253056
 #&gt; 3: rubribarbus 4.078469 -2.238349 1.1199779             -1.1929572
@@ -199,7 +200,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

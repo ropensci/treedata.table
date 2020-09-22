@@ -75,6 +75,9 @@
     <li>
       <a href="../articles/D_AdditionalFunctions_treedata.table.html">Additional Functions for Manipulating Data in treedata.table</a>
     </li>
+    <li>
+      <a href="../articles/E_Preprint.html">Preprint: treedata.table</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -95,7 +98,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="AA_treedata.table_intro_english_files/header-attrs-2.3/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Getting Started With The treedata.table Package</h1>
@@ -117,22 +120,19 @@
 <p>Using the <code>treedata.table</code> package begins with creating a <code>treedata.table</code> object. The <code>treedata.table</code> matches the tip.labels of the phylogeny to a column of names in your <code>data.frame</code>. This allows you to manipulate the data, and the corresponding tree together.</p>
 <p>Importantly, the character matrix must must include a column with the taxa names and should be of class <code>data.frame</code>. The tree must be of class <code>phylo</code> or <code>multiPhylo</code>.</p>
 <p>A <code>treedata.table</code> is created using the <code>as.treedata.table</code> function. Here we use the <em>Anolis</em> dataset from <code>treeplyr</code>. Traits in this dataset were randomly generated for a set of 100 species.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ape-package.ird.fr">ape</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://docs.ropensci.org/treedata">treedata.table</a></span>)
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ape</span>)</pre></body></html></div>
+<pre><code>## Warning: package 'ape' was built under R version 4.0.2</code></pre>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">treedata.table</span>)
 
 <span class="co"># Load example data</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="kw">anolis</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">anolis</span>)
 <span class="co">#Create treedata.table object with as.treedata.table</span>
-<span class="kw">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(tree = <span class="kw">anolis</span><span class="op">$</span><span class="kw">phy</span>, data = <span class="kw">anolis</span><span class="op">$</span><span class="kw">dat</span>)
-</pre></div>
+<span class="no">td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="kw">tree</span> <span class="kw">=</span> <span class="no">anolis</span>$<span class="no">phy</span>, <span class="kw">data</span> <span class="kw">=</span> <span class="no">anolis</span>$<span class="no">dat</span>)</pre></body></html></div>
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Phylo object detected</code></pre>
 <pre><code>## No tips were dropped from the original tree/dataset</code></pre>
 <p>We may inspect our object by calling it by name. You will notice that your <code>data.frame</code> is now a <code>data.table</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="kw">td</span>
-</pre></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">td</span></pre></body></html></div>
 <pre><code>## $phy 
 ## 
 ## Phylogenetic tree with 100 tips and 99 internal nodes.
@@ -158,9 +158,7 @@
 ## 5:        -1.375769  -0.6304338  0.7193130 -1.2228276       TG   Cuba
 ## 6:        -1.626299  -1.7543006  1.4127184  0.1832345       TG   Cuba</code></pre>
 <p>Furthermore, the new <code>data.table</code> has been reordered into the same order as the tip.labels of your tree.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="kw">td</span><span class="op">$</span><span class="kw">phy</span><span class="op">$</span><span class="kw">tip.label</span> <span class="op">==</span> <span class="kw">td</span><span class="op">$</span><span class="kw">dat</span><span class="op">$</span><span class="kw">tip.label</span>
-</pre></div>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">td</span>$<span class="no">phy</span>$<span class="no">tip.label</span> <span class="kw">==</span> <span class="no">td</span>$<span class="no">dat</span>$<span class="no">tip.label</span></pre></body></html></div>
 <pre><code>##   [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ##  [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ##  [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
@@ -173,9 +171,7 @@
 <h2 class="hasAnchor">
 <a href="#manipulating-data" class="anchor"></a>Manipulating Data</h2>
 <p>Your data table can be indexed in the same way any other <code>data.table</code> object would be. For example, if we wanted to look at our snout-vent length column, we can do that like so.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="kw">td</span><span class="op">$</span><span class="kw">dat</span>[,<span class="st">'SVL'</span>]
-</pre></div>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">td</span>$<span class="no">dat</span>[,<span class="st">'SVL'</span>]</pre></body></html></div>
 <pre><code>##           SVL
 ##   1: 4.039125
 ##   2: 4.040138
@@ -279,9 +275,7 @@
 ## 100: 3.663049
 ##           SVL</code></pre>
 <p>You can also use double bracket syntax to directly return column data as a named list.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="kw">td</span>[[<span class="st">"SVL"</span>]]
-</pre></div>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">td</span><span class="kw">[[</span><span class="st">"SVL"</span>]]</pre></body></html></div>
 <pre><code>##            ahli         allogus     rubribarbus           imias          sagrei 
 ##        4.039125        4.040138        4.078469        4.099687        4.067162 
 ##         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
@@ -323,9 +317,7 @@
 ##        aliniger      singularis    chlorocyanus     coelestinus        occultus 
 ##        4.036557        4.057997        4.275448        4.297965        3.663049</code></pre>
 <p>The same functionality can also be accomplished through the <code>extractVector</code> function. Both the double bracket syntax and the <code>extractVector</code> function will return a named vector.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="kw">td</span>, <span class="st">'SVL'</span>)
-</pre></div>
+<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="no">td</span>, <span class="st">'SVL'</span>)</pre></body></html></div>
 <pre><code>##            ahli         allogus     rubribarbus           imias          sagrei 
 ##        4.039125        4.040138        4.078469        4.099687        4.067162 
 ##         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
@@ -367,9 +359,7 @@
 ##        aliniger      singularis    chlorocyanus     coelestinus        occultus 
 ##        4.036557        4.057997        4.275448        4.297965        3.663049</code></pre>
 <p>Multiple traits can also be extracted using <code>extractVector</code>.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit">
-<span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="kw">td</span>, <span class="st">'SVL'</span>,<span class="st">'ecomorph'</span>)
-</pre></div>
+<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="no">td</span>, <span class="st">'SVL'</span>,<span class="st">'ecomorph'</span>)</pre></body></html></div>
 <pre><code>## $SVL
 ##            ahli         allogus     rubribarbus           imias          sagrei 
 ##        4.039125        4.040138        4.078469        4.099687        4.067162 
@@ -455,9 +445,7 @@
 ##            "TC"            "TC"            "TC"            "TC"            "TW"</code></pre>
 <p>However, there’s a couple aspects that are unique to <code>[[.treedata.table()</code> and <code><a href="../reference/extractVector.html">extractVector()</a></code>. First, <code>[[.treedata.table()</code> has an extra exact argument to enable partial match. Second, <code><a href="../reference/extractVector.html">extractVector()</a></code> can extract multiple columns and accepts non-standard evaluation.</p>
 <p>The real power in treedata.table is in co-indexing the tree and table. For example, in the below command, we use <code>data.table</code> syntax to take the first representative from each ecomorph. We retain all data columns. If you examine the tree object, you will see that it has had all the tips not in the resultant <code>data.table</code> dropped.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit">
- <span class="kw">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">.SD</span>, <span class="fl">1</span>), by = <span class="st">"ecomorph"</span>]
-</pre></div>
+<div class="sourceCode" id="cb19"><html><body><pre class="r"> <span class="no">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">.SD</span>, <span class="fl">1</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="st">"ecomorph"</span>]</pre></body></html></div>
 <pre><code>## $phy 
 ## 
 ## Phylogenetic tree with 7 tips and 6 internal nodes.
@@ -483,9 +471,7 @@
 ## 5:        0.1288233 -0.08837008  0.46528679 -0.56754896     Jamaica
 ## 6:       -0.7992905  0.26096544 -0.27169792  0.01367143     Jamaica</code></pre>
 <p>We could also do the same operation with multiple columns:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit">
-<span class="kw">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">.SD</span>, <span class="fl">1</span>), by = <span class="fu">.</span>(<span class="kw">ecomorph</span>, <span class="kw">island</span>)]
-</pre></div>
+<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="no">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">.SD</span>, <span class="fl">1</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="fu">.</span>(<span class="no">ecomorph</span>, <span class="no">island</span>)]</pre></body></html></div>
 <pre><code>## $phy 
 ## 
 ## Phylogenetic tree with 23 tips and 22 internal nodes.
@@ -511,9 +497,7 @@
 ## 5:              1.6852579        1.0144193  0.41064280 -0.11746257  0.7022959
 ## 6:              1.8543308        0.1288233 -0.08837008  0.46528679 -0.5675490</code></pre>
 <p>Tail is also implemented</p>
-<div class="sourceCode" id="cb21"><pre class="downlit">
- <span class="kw">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span>(<span class="kw">.SD</span>, <span class="fl">1</span>), by = <span class="st">"ecomorph"</span>]
-</pre></div>
+<div class="sourceCode" id="cb23"><html><body><pre class="r"> <span class="no">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span>(<span class="no">.SD</span>, <span class="fl">1</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="st">"ecomorph"</span>]</pre></body></html></div>
 <pre><code>## $phy 
 ## 
 ## Phylogenetic tree with 7 tips and 6 internal nodes.
@@ -539,9 +523,7 @@
 ## 5:      -0.09577977  -1.1916870  1.2153014  0.0324486 Puerto Rico
 ## 6:       0.13156827   0.6289893  0.1468777 -0.4409775  Hispaniola</code></pre>
 <p>Columns in the <code>treedata.table</code> object can also be operated on using <code>data.table</code> syntax. In the below example, the tree is pruned to those tips that occur in Cuba. This is the <code>data.table</code> equivalent of <code>dplyr</code>’s filter. Then, a new column is created in the <code>data.table</code>, assigned the name “Index”, and assigned the value of the SVL + the hostility index. This enables concurrent manipulation of the phylogeny, and the calculation of a new index for only those tips we would actually like to use.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit">
-<span class="kw">td</span>[<span class="kw">island</span> <span class="op">==</span> <span class="st">"Cuba"</span>,<span class="fu">.</span>(Index=<span class="kw">SVL</span><span class="op">+</span><span class="kw">hostility</span>)]
-</pre></div>
+<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="no">td</span>[<span class="no">island</span> <span class="kw">==</span> <span class="st">"Cuba"</span>,<span class="fu">.</span>(<span class="kw">Index</span><span class="kw">=</span><span class="no">SVL</span>+<span class="no">hostility</span>)]</pre></body></html></div>
 <pre><code>## $phy 
 ## 
 ## Phylogenetic tree with 47 tips and 46 internal nodes.
@@ -560,9 +542,7 @@
 ## 5: 4.786475
 ## 6: 5.526089</code></pre>
 <p>We can extend this tidy approach to actually estimating values for our data using <code>tdt</code>. In the below command, we extract one vector from our data.table and use <code>geiger</code>’s continuous model fitting to estimate a Brownian motion model for the data.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit">
-<span class="fu"><a href="../reference/tdt.html">tdt</a></span>(<span class="kw">td</span>, <span class="kw">geiger</span>::<span class="fu"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span>(<span class="kw">phy</span>, <span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="kw">td</span>, <span class="st">'SVL'</span>), model=<span class="st">"BM"</span>, ncores=<span class="fl">1</span>))
-</pre></div>
+<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="fu"><a href="../reference/tdt.html">tdt</a></span>(<span class="no">td</span>, <span class="kw pkg">geiger</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span>(<span class="no">phy</span>, <span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="no">td</span>, <span class="st">'SVL'</span>), <span class="kw">model</span><span class="kw">=</span><span class="st">"BM"</span>, <span class="kw">ncores</span><span class="kw">=</span><span class="fl">1</span>))</pre></body></html></div>
 <pre><code>## Phylo object detected. Expect a single function output</code></pre>
 <pre><code>## GEIGER-fitted comparative model of continuous data
 ##  fitted 'BM' model parameters:
@@ -587,29 +567,19 @@
 ##  'res' -- optimization iteration summary
 ##  'opt' -- maximum likelihood parameter estimates</code></pre>
 <p>We can also drop tips directly from the tree, and have those tips drop concurrently from the data.table. In the example below, we remove two taxa by name.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit">
-<span class="kw">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/droptreedata.table.html">droptreedata.table</a></span>(tdObject=<span class="kw">td</span>, taxa=<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> ))
-</pre></div>
+<div class="sourceCode" id="cb30"><html><body><pre class="r"><span class="no">dt</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/droptreedata.table.html">droptreedata.table</a></span>(<span class="kw">tdObject</span><span class="kw">=</span><span class="no">td</span>, <span class="kw">taxa</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> ))</pre></body></html></div>
 <pre><code>## 2 taxa were dropped from the treedata.table object</code></pre>
 <p>We can check if <em>A. chamaeleonides</em> and <em>A. eugenegrahami</em> are still in the tree</p>
-<div class="sourceCode" id="cb30"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> ) <span class="op">%in%</span> <span class="kw">dt</span><span class="op">$</span><span class="kw">phy</span><span class="op">$</span><span class="kw">tip.label</span>
-</pre></div>
+<div class="sourceCode" id="cb32"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> ) <span class="kw">%in%</span> <span class="no">dt</span>$<span class="no">phy</span>$<span class="no">tip.label</span></pre></body></html></div>
 <pre><code>## [1] FALSE FALSE</code></pre>
 <p>And we can do the same with the data in out <code>treedata.table</code> object</p>
-<div class="sourceCode" id="cb32"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> ) <span class="op">%in%</span> <span class="kw">dt</span><span class="op">$</span><span class="kw">dat</span><span class="op">$</span><span class="kw">X</span>
-</pre></div>
+<div class="sourceCode" id="cb34"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> ) <span class="kw">%in%</span> <span class="no">dt</span>$<span class="no">dat</span>$<span class="no">X</span></pre></body></html></div>
 <pre><code>## [1] FALSE FALSE</code></pre>
 <p>When you’re done, the data.table and tree can both be extracted from the object:</p>
-<div class="sourceCode" id="cb34"><pre class="downlit">
-<span class="kw">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pulltreedata.table.html">pulltreedata.table</a></span>(<span class="kw">td</span>, <span class="st">"dat"</span>)
-<span class="kw">tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pulltreedata.table.html">pulltreedata.table</a></span>(<span class="kw">td</span>, <span class="st">"phy"</span>)
-</pre></div>
+<div class="sourceCode" id="cb36"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pulltreedata.table.html">pulltreedata.table</a></span>(<span class="no">td</span>, <span class="st">"dat"</span>)
+<span class="no">tree</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pulltreedata.table.html">pulltreedata.table</a></span>(<span class="no">td</span>, <span class="st">"phy"</span>)</pre></body></html></div>
 <p>The table</p>
-<div class="sourceCode" id="cb35"><pre class="downlit">
-<span class="kw">df</span>
-</pre></div>
+<div class="sourceCode" id="cb37"><html><body><pre class="r"><span class="no">df</span></pre></body></html></div>
 <pre><code>##            tip.label      SVL   PCI_limbs   PCII_head PCIII_padwidth_vs_tail
 ##   1:            ahli 4.039125 -3.24828599  0.37225191             -1.0422187
 ##   2:         allogus 4.040138 -2.84557021  0.60011341             -1.0253056
@@ -917,9 +887,7 @@
 ## 100: Puerto Rico
 ##           island</code></pre>
 <p>and the corresponding tree</p>
-<div class="sourceCode" id="cb37"><pre class="downlit">
-<span class="kw">tree</span>
-</pre></div>
+<div class="sourceCode" id="cb39"><html><body><pre class="r"><span class="no">tree</span></pre></body></html></div>
 <pre><code>## 
 ## Phylogenetic tree with 100 tips and 99 internal nodes.
 ## 
@@ -945,7 +913,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
