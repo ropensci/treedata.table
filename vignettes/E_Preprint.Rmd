@@ -327,7 +327,7 @@ co-authors assisted with edits and approved publication.
 **Data accessibility**
 
 The treedata.table package and documentation are hosted at
-[[https://github.com/uyedaj/treedata.table]{.underline}](https://github.com/uyedaj/treedata.table).
+[[https://github.com/ropensci/treedata.table]{.underline}](https://github.com/ropensci/treedata.table/).
 
 **References**
 
@@ -369,7 +369,7 @@ The treedata.table package and documentation are hosted at
 >
 > R Core Team (2013). R: A language and environment for statistical
 > computing. R Foundation for Statistical Computing, Vienna, Austria.
-> [[http://www.R-project.org/]{.underline}](http://www.r-project.org/)
+> [[https://www.R-project.org/]{.underline}](https://www.r-project.org/)
 > (accessed 26 August 2020).
 >
 > Redelings, B.D. & Holder, M.T. (2017). A supertree pipeline for
