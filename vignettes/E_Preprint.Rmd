@@ -415,7 +415,7 @@ The treedata.table package and documentation are hosted at
 
 **Figures**
 
-![](media/image1.png){width="6in" height="4in"}
+![](media/Image1.png){width="6in" height="4in"}
 
 **Fig. 1.** Temporal change in phylogenetic tree sizes between 1978 and
 2020 based on 927 publications for different animal and plant groups. We
@@ -425,7 +425,7 @@ package (Michonneau et al. 2016). A linear regression that accounted for
 lineage identity indicated the significant increase in tree size over
 time (R^2^=0.2077, *p\<*0.001).
 
-![](media/image2.png){width="6in" height="3in"}
+![](media/Image2.png){width="6in" height="3in"}
 
 **Fig. 2.** Results for the treedata.table microbenchmark during
 tree/data matching steps. Estimates of the timing during the tree/data
@@ -433,7 +433,7 @@ matching steps under treedata.table are shown in relation to treeplyr.
 We show median and lower/upper quartiles times for the performance of
 each package.
 
-![](media/image3.png){width="6in" height="4in"}
+![](media/Image3.png){width="6in" height="4in"}
 
 **Fig. 3.** Results for the treedata.table microbenchmark during data
 manipulation. We compare the performance of treedata.table against

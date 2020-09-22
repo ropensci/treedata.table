@@ -13,13 +13,13 @@ droptreedata.table(tdObject, taxa)
 dropped from the original \code{treedata.table} object}
 }
 \value{
-An object of class \code{treedata.table} with matching \code{$dat} and \code{$phy}
+An object of class \code{treedata.table} with matching \verb{$dat} and \verb{$phy}
 elements based on whether \code{taxa} were dropped or not.
 }
 \description{
 This function can be used to remove species from an object of class
 \code{treedata.table}. The resulting \code{treedata.table} will include fully matching
-\code{$dat} and \code{$phy} elements. The user should confirm the changes before they
+\verb{$dat} and \verb{$phy} elements. The user should confirm the changes before they
 are processed.
 }
 \examples{

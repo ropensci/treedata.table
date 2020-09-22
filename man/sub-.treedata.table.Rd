@@ -14,8 +14,8 @@
 on the \code{treedata.table} object}
 }
 \value{
-A new object of class \code{treedata.table} with \code{$dat} and \code{$phy}
-corresponding with the changes set to \code{$dat} using
+A new object of class \code{treedata.table} with \verb{$dat} and \verb{$phy}
+corresponding with the changes set to \verb{$dat} using
 \link[data.table:data.table]{data.table}'s structure.
 }
 \description{
