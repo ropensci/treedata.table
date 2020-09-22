@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^docs/.+$
 ^CONTRIBUTING
+^README.md
 ^\.travis\.yml$
 ^_pkgdown\.yml$
 ^docs$

@@ -28,7 +28,7 @@ Authors@R: c(
   )
 URL: https://docs.ropensci.org/treedata.table (website) https://github.com/ropensci/treedata.table/
 BugReports: https://github.com/ropensci/treedata.table/issues
-Description: This package combines trait data and a phylogenetic tree (or trees) into a 
+Description: An implementation that combines trait data and a phylogenetic tree (or trees) into a 
     single object of class treedata.table. The resulting object can be easily 
     manipulated to simultaneously change the trait- and tree-level sampling.
     Currently implemented functions allow users to use a data.table syntax when
