@@ -1,6 +1,12 @@
 pandoc: 2.7.3
-pkgdown: 1.6.0
+pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: []
-last_built: 2020-09-11T19:00Z
+articles:
+  AA_treedata.table_intro_english: AA_treedata.table_intro_english.html
+  AB_treedata.table_intro_spanish: AB_treedata.table_intro_spanish.html
+  B_multiphylo_treedata.table: B_multiphylo_treedata.table.html
+  C_PartialMatching: C_PartialMatching.html
+  D_AdditionalFunctions_treedata.table: D_AdditionalFunctions_treedata.table.html
+  E_Preprint: E_Preprint.html
+last_built: 2020-09-22T15:34Z
 
