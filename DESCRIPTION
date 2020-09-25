@@ -1,5 +1,5 @@
 Package: treedata.table
-Title: Manipulation of Phylogenies Matched to Data using data.table
+Title: Manipulation of Matched Phylogenies and Data using data.table
 Version: 0.1.0
 Authors@R: c(
     person(given = "Josef",
