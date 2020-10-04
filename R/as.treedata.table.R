@@ -108,7 +108,13 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
         " tip(s) dropped from the original dataset"
       )
       tree <- ape::drop.tip(tree, tree_not_data)
-      data <- data[!as.character(data[, name_column]) == data_not_tree, ]
+
+      data<-if( length(data_not_tree) != 0){
+        data[!as.character(data[, name_column]) ==
+               data_not_tree, ] }else{
+                 data
+               }
+
     } else {
       message("No tips were dropped from the original tree/dataset")
       data_not_tree <- "OK"
@@ -128,7 +134,11 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
 
       tree <- lapply(tree, ape::drop.tip, tip = tree_not_data)
       class(tree) <- "multiPhylo"
-      data <- data[!as.character(data[, name_column]) == data_not_tree, ]
+      data<-if( length(data_not_tree) != 0){
+        data[!as.character(data[, name_column]) ==
+               data_not_tree, ] }else{
+                 data
+               }
       message(
         length(c(tree_not_data)), " tip(s) dropped from ", length(tree),
         " trees", "\n", length(c(data_not_tree)), " tip(s)  dropped from the",
