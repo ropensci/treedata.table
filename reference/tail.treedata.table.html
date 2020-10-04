@@ -153,7 +153,7 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for treedata.table</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,9 +170,9 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>anolis</span>)
-<span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
-</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span>(<span class='kw'>td</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>)</span>
+<span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>td</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;       tip.label      SVL   PCI_limbs  PCII_head PCIII_padwidth_vs_tail
 #&gt; 1:  darlingtoni 4.302036  4.06703170 -1.4937898             -0.2002259
 #&gt; 2:     aliniger 4.036557  0.12323898 -1.6746704              2.3871336

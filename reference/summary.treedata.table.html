@@ -153,7 +153,7 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for treedata.table</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>object</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,9 +176,9 @@ any data have missing data. Also returns the taxa that are
 dropped from either the original tree or the original data.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>anolis</span>)
-<span class='kw'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>phy</span>, <span class='kw'>anolis</span><span class='op'>$</span><span class='kw'>dat</span>)
-</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>td</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>)</span>
+<span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>td</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>A treedata.table object</span></div><div class='output co'>#&gt; <span class='message'>The dataset contains 11 traits</span></div><div class='output co'>#&gt; <span class='message'>Continuous traits: tip.label, SVL, PCI_limbs, PCII_head, PCIII_padwidth_vs_tail, PCIV_lamella_num, awesomeness, hostility, attitude</span></div><div class='output co'>#&gt; <span class='message'>Discrete traits: ecomorph, island</span></div><div class='output co'>#&gt; <span class='message'>The following traits have missing values: 0</span></div><div class='output co'>#&gt; <span class='message'>Taxa dropped from the tree:  0</span></div><div class='output co'>#&gt; <span class='message'>Taxa dropped from the data:  0</span></div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 100 tips and 99 internal nodes.
