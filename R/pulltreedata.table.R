@@ -13,7 +13,7 @@
 #' @export
 
 pulltreedata.table <- function(tdObject, type = c("dat", "phy") ) {
-  if (!inherits(tdObject, c("treedata.table"))) {
+  if (!inherits(tdObject, "treedata.table")) {
     stop("Please use a class 'treedata.table' object \n")
   }
   type <- match.arg(type)

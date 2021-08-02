@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run a function on a <code>treedata.table</code> object — tdt • treedata.table</title>
+<title>Run a function on a treedata.table object — tdt • treedata.table</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,9 @@
 
 
 
-<meta property="og:title" content="Run a function on a <code>treedata.table</code> object — tdt" />
+<meta property="og:title" content="Run a function on a treedata.table object — tdt" />
 <meta property="og:description" content="Run a function on a treedata.table object" />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="https://ropensci.github.io/treedata.table/logo.png" />
 
 
 
@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -126,7 +126,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/treedata.table/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -152,7 +152,7 @@
     <p>Run a function on a <code>treedata.table</code> object</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tdt</span>(<span class='no'>tdObject</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>tdt</span><span class='op'>(</span><span class='va'>tdObject</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,33 +177,94 @@ outputs (one per each tree in the MultiPhylo object)</p>
 on<code>treedata.table</code> objects.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>)</span>
+<span class='co'># \donttest{</span>
 
 <span class='co'># A treedata.table object with a phylo $phy</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)
-<span class='fu'>tdt</span>(<span class='no'>td</span>, <span class='kw pkg'>geiger</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/geiger/man/fitContinuous.html'>fitContinuous</a></span>(<span class='no'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span>(<span class='no'>td</span>, <span class='st'>"SVL"</span>),
-  <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"BM"</span>, <span class='kw'>ncores</span> <span class='kw'>=</span> <span class='fl'>1</span>
-))
-<span class='fu'>tdt</span>(<span class='no'>td</span>, <span class='kw pkg'>phytools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/phytools/man/phenogram.html'>phenogram</a></span>(<span class='no'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span>(<span class='no'>td</span>, <span class='st'>"SVL"</span>),
-  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>spread.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-))
-
+<span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='fu'>tdt</span><span class='op'>(</span><span class='va'>td</span>, <span class='fu'>geiger</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/geiger/man/fitContinuous.html'>fitContinuous</a></span><span class='op'>(</span><span class='va'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span><span class='op'>(</span><span class='va'>td</span>, <span class='st'>"SVL"</span><span class='op'>)</span>,
+  model <span class='op'>=</span> <span class='st'>"BM"</span>, ncores <span class='op'>=</span> <span class='fl'>1</span>
+<span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Phylo object detected. Expect a single function output</span></div><div class='output co'>#&gt; GEIGER-fitted comparative model of continuous data
+#&gt;  fitted ‘BM’ model parameters:
+#&gt; 	sigsq = 0.136160
+#&gt; 	z0 = 4.065918
+#&gt; 
+#&gt;  model summary:
+#&gt; 	log-likelihood = -4.700404
+#&gt; 	AIC = 13.400807
+#&gt; 	AICc = 13.524519
+#&gt; 	free parameters = 2
+#&gt; 
+#&gt; Convergence diagnostics:
+#&gt; 	optimization iterations = 100
+#&gt; 	failed iterations = 0
+#&gt; 	number of iterations with same best fit = 100
+#&gt; 	frequency of best fit = 1.00
+#&gt; 
+#&gt;  object summary:
+#&gt; 	'lik' -- likelihood function
+#&gt; 	'bnd' -- bounds for likelihood search
+#&gt; 	'res' -- optimization iteration summary
+#&gt; 	'opt' -- maximum likelihood parameter estimates</div><div class='input'>
 
 <span class='co'># A treedata.table object with a multiPhylo $phy</span>
-<span class='no'>treesFM</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>phy</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>treesFM</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>treesFM</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)
-<span class='fu'>tdt</span>(<span class='no'>td</span>, <span class='kw pkg'>geiger</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/geiger/man/fitContinuous.html'>fitContinuous</a></span>(<span class='no'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span>(<span class='no'>td</span>, <span class='st'>"SVL"</span>),
-  <span class='kw'>model</span> <span class='kw'>=</span> <span class='st'>"BM"</span>,
-  <span class='kw'>ncores</span> <span class='kw'>=</span> <span class='fl'>1</span>
-))
-<span class='fu'>tdt</span>(<span class='no'>td</span>, <span class='kw pkg'>phytools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/phytools/man/phenogram.html'>phenogram</a></span>(<span class='no'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span>(<span class='no'>td</span>, <span class='st'>"SVL"</span>),
-  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>spread.labels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-))
-}</div></pre>
+<span class='va'>treesFM</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>treesFM</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"multiPhylo"</span>
+<span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>treesFM</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='fu'>tdt</span><span class='op'>(</span><span class='va'>td</span>, <span class='fu'>geiger</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/geiger/man/fitContinuous.html'>fitContinuous</a></span><span class='op'>(</span><span class='va'>phy</span>, <span class='fu'><a href='extractVector.html'>extractVector</a></span><span class='op'>(</span><span class='va'>td</span>, <span class='st'>"SVL"</span><span class='op'>)</span>,
+  model <span class='op'>=</span> <span class='st'>"BM"</span>,
+  ncores <span class='op'>=</span> <span class='fl'>1</span>
+<span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected. Expect a list of function outputs</span></div><div class='output co'>#&gt; [[1]]
+#&gt; GEIGER-fitted comparative model of continuous data
+#&gt;  fitted ‘BM’ model parameters:
+#&gt; 	sigsq = 0.136160
+#&gt; 	z0 = 4.065918
+#&gt; 
+#&gt;  model summary:
+#&gt; 	log-likelihood = -4.700404
+#&gt; 	AIC = 13.400807
+#&gt; 	AICc = 13.524519
+#&gt; 	free parameters = 2
+#&gt; 
+#&gt; Convergence diagnostics:
+#&gt; 	optimization iterations = 100
+#&gt; 	failed iterations = 0
+#&gt; 	number of iterations with same best fit = 100
+#&gt; 	frequency of best fit = 1.00
+#&gt; 
+#&gt;  object summary:
+#&gt; 	'lik' -- likelihood function
+#&gt; 	'bnd' -- bounds for likelihood search
+#&gt; 	'res' -- optimization iteration summary
+#&gt; 	'opt' -- maximum likelihood parameter estimates
+#&gt; 
+#&gt; [[2]]
+#&gt; GEIGER-fitted comparative model of continuous data
+#&gt;  fitted ‘BM’ model parameters:
+#&gt; 	sigsq = 0.136160
+#&gt; 	z0 = 4.065918
+#&gt; 
+#&gt;  model summary:
+#&gt; 	log-likelihood = -4.700404
+#&gt; 	AIC = 13.400807
+#&gt; 	AICc = 13.524519
+#&gt; 	free parameters = 2
+#&gt; 
+#&gt; Convergence diagnostics:
+#&gt; 	optimization iterations = 100
+#&gt; 	failed iterations = 0
+#&gt; 	number of iterations with same best fit = 100
+#&gt; 	frequency of best fit = 1.00
+#&gt; 
+#&gt;  object summary:
+#&gt; 	'lik' -- likelihood function
+#&gt; 	'bnd' -- bounds for likelihood search
+#&gt; 	'res' -- optimization iteration summary
+#&gt; 	'opt' -- maximum likelihood parameter estimates
+#&gt; </div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -219,7 +280,7 @@ on<code>treedata.table</code> objects.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

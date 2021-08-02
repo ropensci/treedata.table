@@ -3,13 +3,16 @@
 A wrapper for data.table that enables fast manipulation of  phylogenetic trees matched to data. <img src='man/figures/logo.png' align="right" height="250" />
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/ropensci/treedata.table.svg?branch=master)](https://travis-ci.org/ropensci/treedata.table)
 [![codecov](https://codecov.io/gh/ropensci/treedata.table/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/treedata.table)
 [![Devel version](https://img.shields.io/badge/devel%20version-0.1.0-blue.svg)](https://github.com/ropensci/treedata.table)
 [![Lifecycle](https://img.shields.io/badge/lifecycle-ropensci/treedata.table-blue.svg)](https://www.tidyverse.org/lifecycle/#ropensci/treedata.table)
 [![Code size](https://img.shields.io/github/languages/code-size/ropensci/treedata.table.svg)](https://github.com/ropensci/treedata.table)
 [![Latest commit](https://img.shields.io/github/last-commit/ropensci/treedata.table.svg)](https://github.com/ropensci/treedata.table/commits/master)
 [![rOpenSci badge](https://badges.ropensci.org/156_status.svg)](https://github.com/ropensci/onboarding/issues/367)
+[![R-CMD-check](https://github.com/ropensci/treedata.table/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/treedata.table/actions)
+[![CodeFactor](https://www.codefactor.io/repository/github/ropensci/treedata.table/badge)](https://www.codefactor.io/repository/github/ropensci/treedata.table)
+[![Codecov test coverage](https://codecov.io/gh/ropensci/treedata.table/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/treedata.table?branch=master)
+[![](https://cranlogs.r-pkg.org/badges/treedata.table)](https://cran.r-project.org/package=treedata.table)
 <!-- badges: end -->
 
 The [`data.table` package](https://github.com/Rdatatable/data.table) enables high-performance extended functionality for
@@ -29,12 +32,13 @@ Simultaneous processing of phylogenetic trees and data remains a computationally
 
 ## Installing `treedata.table`
 
-treedata.table can be installed from GitHub at the present. We presently recommend installing using
-[`remotes`](https://cran.r-project.org/web/packages/remotes/index.html):
-
+treedata.table can be installed from CRAN or GitHub at the present. We presently recommend installing using
+[`remotes`](https://cran.r-project.org/web/packages/remotes/index.html) if using the GitHib version:
 ```r
- remotes::install_github("ropensci/treedata.table")
+install.packages("treedata.table")
+remotes::install_github("ropensci/treedata.table")
  ```
+
 
 ## What Can I Do With `treedata.table`?
 

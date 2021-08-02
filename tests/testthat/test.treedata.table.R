@@ -1,6 +1,4 @@
 context("String length")
-library(treedata.table)
-library(ape)
 
 data(anolis)
 td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)

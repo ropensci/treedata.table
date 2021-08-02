@@ -19,7 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Preprint: treedata.table">
 <meta property="og:description" content="treedata.table">
-<meta property="og:image" content="/logo.png">
+<meta property="og:image" content="https://ropensci.github.io/treedata.table/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -84,7 +84,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/ropensci/treedata.table/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -98,7 +98,7 @@
 
       
 
-      </header><script src="E_Preprint_files/header-attrs-2.3/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Preprint: treedata.table</h1>
@@ -124,7 +124,7 @@
 <p><strong>Introduction</strong></p>
 <p>The number and size of published phylogenetic trees have exponentially increased over the years (Fig. 1; e.g. Smith <em>et al.</em> 2011; FitzJohn <em>et al.</em> 2014; Smith &amp; Brown 2019). Ongoing biodiversity sequencing efforts have triggered the development of phylogenetic computational methods able to deal with datasets involving hundreds of thousands of taxa (McMahon <em>et al.</em> 2015). For instance, the early development of MAFFT (Katoh 2002) significantly decreased CPU times required to perform sequence alignment on molecular datasets with thousands of species. Similarly, RAxML (Stamatakis 2006), PATHd8 (Tamura <em>et al.</em> 2012), and TreePL (Smith &amp; O’Meara 2012) greatly reduced computational times during the inference and absolute dating of phylogenetic trees involving thousands of species. Given the unprecedented pace at which phylogenetic data is accumulating (Piel <em>et al.</em> 2000; Redelings &amp; Holder 2017), updating the current phylogenetic workflow to cope with the increasing size of phylogenetic trees is now more critical than ever. Attention should be paid to the development of faster, computationally efficient, and more user-friendly implementations in R that further increase reproducibility. This language is now central to research utilizing phylogenetic comparative methods, and many essential packages and educational materials are made available using this language (Harmon 2019).</p>
 <p><strong>A short description of data.table</strong></p>
-<p>treedata.table heavily relies on data.table, an R package that enables high-performance extended functionality for data tables (Dowle and Srinivasan 2020). data.table is not only faster than other packages implemented in R, but also is significantly more efficient than tools in other languages such as Python and Julia (<a href="https://h2oai.github.io/db-benchmark/"><u>https://h2oai.github.io/db-benchmark/</u></a>). In addition to speed, data.table has a syntactic structure that is clear and simple to follow. Only three elements are basic to data.table’s primary function: <em>DT<span class="math display">\[i, j, by\]</span></em>. First, the <em>i</em> section is used to specify the rows to be considered in filtering or subsetting operations. Second, the <em>j</em> section indicates the changes happening in the columns (e.g. adding new ones, changing existing ones). Third, the <em>by</em> section is used to perform operations based on grouping variables. A brief but more exhaustive introduction to data.table can be found in the data.table’s vignette and wiki.</p>
+<p>treedata.table heavily relies on data.table, an R package that enables high-performance extended functionality for data tables (Dowle and Srinivasan 2020). data.table is not only faster than other packages implemented in R, but also is significantly more efficient than tools in other languages such as Python and Julia (<a href="https://h2oai.github.io/db-benchmark/"><span class="underline">https://h2oai.github.io/db-benchmark/</span></a>). In addition to speed, data.table has a syntactic structure that is clear and simple to follow. Only three elements are basic to data.table’s primary function: <em>DT<span class="math display">\[i, j, by\]</span></em>. First, the <em>i</em> section is used to specify the rows to be considered in filtering or subsetting operations. Second, the <em>j</em> section indicates the changes happening in the columns (e.g. adding new ones, changing existing ones). Third, the <em>by</em> section is used to perform operations based on grouping variables. A brief but more exhaustive introduction to data.table can be found in the data.table’s vignette and wiki.</p>
 <p><strong>The treedata.table workflow</strong></p>
 <p>treedata.table is a wrapper for data.table for phylogenetic analyses that matches a phylogeny to the data.table (Table 1). After an initial tree/data matching step, treedata.table continuously preserves the tree/data matching across data.table operations. treedata.table also allows users to run functions from other phylogenetic packages on the processed treedata.table objects. Below, we briefly explain the general workflow under treedata.table.</p>
 <ol style="list-style-type: decimal">
@@ -142,38 +142,47 @@
 </ol>
 <p><strong>Using treedata.table </strong></p>
 <p>This brief step-by-step tutorial is based on treeplyr’s <em>Anolis</em> example data, including 100 tips and 11 characters:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">treedata.table</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropensci.github.io/treedata.table">treedata.table</a></span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">anolis</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">anolis</span><span class="op">)</span></code></pre></div>
 <p>To use all the functionalities in treedata.table, we first construct a treedata.table object using the as.treedata.table function, which performs an exact name match between the tip labels of the tree and the column in the dataset with the most matches.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="kw">tree</span> <span class="kw">=</span> <span class="no">anolis</span>$<span class="no">phy</span>, <span class="kw">data</span> <span class="kw">=</span> <span class="no">anolis</span>$<span class="no">dat</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>, data <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <p>The resulting object can be inspected using the summary(), head(), tail(), and print() functions. For instance, we can see a description of the treedata.tree object using the summary() function:</p>
 <p>summary(td)</p>
 <p>Next, we can perform data manipulation steps on the resulting treedata.table object. For instance, we can extract the SVL column (snout-vent length) using the following line:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">td</span>$<span class="no">dat</span>[,<span class="st">'SVL'</span>]</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">td</span><span class="op">$</span><span class="va">dat</span><span class="op">[</span>,<span class="st">'SVL'</span><span class="op">]</span></code></pre></div>
 <p>A named vector of the same trait (SVL) can also be extracted using <code>td[["SVL"]]</code> or <code><a href="../reference/extractVector.html">extractVector(td, 'SVL')</a></code>. However, extractVector further supports extraction of multiple traits. For instance, the following code will extract two named vectors: one for SVL and another for ecomorph.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="no">td</span>, <span class="st">'SVL'</span>, <span class="st">'ecomorph'</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/extractVector.html">extractVector</a></span><span class="op">(</span><span class="va">td</span>, <span class="st">'SVL'</span>, <span class="st">'ecomorph'</span><span class="op">)</span></code></pre></div>
 <p>The real power in treedata.table is in co-indexing the tree and table based on functions from data.table. We can use data.table syntax to subset the treedata.table object and include only the first representative from each ecomorph in the <em>Anolis</em> dataset.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">.SD</span>, <span class="fl">1</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="st">"ecomorph"</span>]</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">td</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">.SD</span>, <span class="fl">1</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"ecomorph"</span><span class="op">]</span></code></pre></div>
 <p>We can also subset the <em>Anolis</em> dataset to include a single species per ecomorph and island:</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">td</span>[, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">.SD</span>, <span class="fl">1</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="fu">.</span>(<span class="no">ecomorph</span>, <span class="no">island</span>)]</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">td</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">.SD</span>, <span class="fl">1</span><span class="op">)</span>, by <span class="op">=</span> <span class="fu">.</span><span class="op">(</span><span class="va">ecomorph</span>, <span class="va">island</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <p>Furthermore, can create a new variable summarizing SVL+hostility for only Cuban anoles.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">td</span>[<span class="no">island</span> <span class="kw">==</span> <span class="st">"Cuba"</span>, <span class="fu">.</span>(<span class="kw">Index</span> <span class="kw">=</span> <span class="no">SVL</span> + <span class="no">hostility</span>)]</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">td</span><span class="op">[</span><span class="va">island</span> <span class="op">==</span> <span class="st">"Cuba"</span>, <span class="fu">.</span><span class="op">(</span>Index <span class="op">=</span> <span class="va">SVL</span> <span class="op">+</span> <span class="va">hostility</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <p>While the options for data manipulations are infinite, the matching between the tree and data attributes is always constant. Finally, users can pass data and trees in treedata.table objects as arguments to functions in other packages. For instance, below we use the tdt function in treedata.table to fit a continuous model of trait evolution for SVL in geiger:</p>
 <p>tdt(td, fitContinuous(phy, extractVector(td, ‘SVL’), model=“BM”))</p>
 <p>All the functions explained above can even handle multiple trees. For instance, below we fit the same model of continuous trait evolution on SVL based on a multiPhylo tree for the <em>Anolis</em> dataset:</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">trees</span> <span class="kw">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">anolis</span>$<span class="no">phy</span>,<span class="no">anolis</span>$<span class="no">phy</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trees</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>,<span class="va">anolis</span><span class="op">$</span><span class="va">phy</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="no">trees</span>) <span class="kw">&lt;-</span> <span class="st">"multiPhylo"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">trees</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"multiPhylo"</span>
 
-<span class="no">td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span>(<span class="kw">tree</span><span class="kw">=</span><span class="no">trees</span>, <span class="kw">data</span><span class="kw">=</span><span class="no">anolis</span>$<span class="no">dat</span>)
+<span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree<span class="op">=</span><span class="va">trees</span>, data<span class="op">=</span><span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/tdt.html">tdt</a></span>(<span class="no">td</span>, <span class="fu">fitContinuous</span>(<span class="no">phy</span>, <span class="fu"><a href="../reference/extractVector.html">extractVector</a></span>(<span class="no">td</span>, <span class="st">'SVL'</span>), <span class="kw">model</span><span class="kw">=</span><span class="st">"BM"</span>))</pre></body></html></div>
+<span class="fu"><a href="../reference/tdt.html">tdt</a></span><span class="op">(</span><span class="va">td</span>, <span class="fu">fitContinuous</span><span class="op">(</span><span class="va">phy</span>, <span class="fu"><a href="../reference/extractVector.html">extractVector</a></span><span class="op">(</span><span class="va">td</span>, <span class="st">'SVL'</span><span class="op">)</span>, model<span class="op">=</span><span class="st">"BM"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The vignette to treedata.table contains further information on the functions outlined above and in Table 1.</p>
 <p><strong>Computational performance</strong></p>
 <p><strong><em>Alternatives to treedata.table.</em></strong> To our knowledge, only treeplyr (Uyeda &amp; Harmon 2020) performs simultaneous operations on combined tree/data objects in R. treeplyr is largely based on dplyr (Wickham <em>et al.</em> 2019)<em>.</em> However, keeping trees and data objects separated in the R environment is a more standard practice. Changes to trees and data are typically performed independently using a combination of functions implemented in ape (Paradis &amp; Schliep 2019), base (R Development Core Team 2013), data.table (Dowle &amp; Srinivasan 2019), or in the tidyverse (Wickham et al. 2019).</p>
 <p><strong><em>Methods.</em></strong> We used the microbenchmark (Mersman 2019) function under default parameters to compare the performance of functions in treedata.table to other packages. First, we compared the performance in the initial tree/data matching step between treedata.table and treeplyr (treedata.table::as.treedata.table() and treeplyr::make.treedata()). We simulated trees with 10, 40, and 100 tips using rtree function in ape (Paradis &amp; Schliep 2019). Additionally, we generated random character matrices (50 discrete and 50 continuous traits) matching 90% of tips in the tree. Second, we compared the performance of data operations in treedata.table relative to data.table (Dowle &amp; Srinivasan 2019), base (R Development Core Team 2013), treeplyr (Uyeda 2020), and dplyr (Wickham <em>et al.</em> 2019). This time, we simulated trees with 1000, 10000, and 500000 tips using the rtree function in ape. Again, we generated random character matrices (50 discrete and 50 continuous traits) matching 90% of tips in simulated trees. We compared the performance of treedata.table::[, data.table::[ treeplyr::%&gt;%, dplyr::%&gt;%, and the equivalent functions in base when (1) subsampling the full dataset for rows matching a single level in one discrete character, and (2) estimating the sum and mean of two continuous traits based on the groups of a second discrete character. In data.table syntax for this process would be:</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">td</span>$<span class="no">dat</span>[<span class="no">Disc1</span> <span class="kw">==</span> <span class="st">"A"</span>, <span class="fu">.</span>(<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">Cont2</span>), <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">Cont3</span>)), <span class="kw">by</span> <span class="kw">=</span> <span class="no">Disc10</span>]</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">td</span><span class="op">$</span><span class="va">dat</span><span class="op">[</span><span class="va">Disc1</span> <span class="op">==</span> <span class="st">"A"</span>, <span class="fu">.</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Cont2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">Cont3</span><span class="op">)</span><span class="op">)</span>, by <span class="op">=</span> <span class="va">Disc10</span><span class="op">]</span></code></pre></div>
 <p><strong><em>Results.</em></strong> treedata.table was &gt;400% faster than treeplyr during the initial data/tree matching step (Fig. 2). For instance, combining a dataset with 10 tips to a character matrix of 40 traits (10% of unmatched tips), as.treedata.table takes an average of 12.314 ns (range=8.100–27.479 ns) relative to the 64.198 ns that were needed in treeplyr (range=48.407–166.328 ns). Differences in the performance between these two functions also scale with the number of taxa.</p>
 <p>Next, we examined the performance of data operations in treedata.table relative to data.table, base, treeplyr, and dplyr (Fig. 3). We found that the simultaneous processing of phylogenetic trees in treedata.table's compromised the speed of our package by 90% relative to relative to data.table. However, data manipulation in treedata.table (which simultaneously processes phylogenies) is still significantly faster than in other commonly used packages for data manipulation only such as base (&gt;35%), treeplyr (&gt;60%), and dplyr (&gt;90%). The higher performance of treedata.table relative to other functions also increases with the size of the dataset.</p>
 <p><strong>Current limitations of treedata.table</strong></p>
@@ -185,15 +194,15 @@
 <p><strong>Authors’ contributions</strong></p>
 <p>A.M.W., J.C.U. conceived the project. C.R.P., A.M.W., and J.C.U. developed the methods. C.R.P. analyzed the data and led the writing. All co-authors assisted with edits and approved publication.</p>
 <p><strong>Data accessibility</strong></p>
-<p>The treedata.table package and documentation are hosted at <a href="https://github.com/uyedaj/treedata.table"><u>https://github.com/uyedaj/treedata.table</u></a>.</p>
+<p>The treedata.table package and documentation are hosted at <a href="https://github.com/ropensci/treedata.table/"><span class="underline">https://github.com/ropensci/treedata.table</span></a>.</p>
 <p><strong>References</strong></p>
 <blockquote>
-<p>Dowle, M. &amp; Srinivasan, A. (2019). data.table: Extension of `data.frame`. R package version 1.12.6. <a href="https://cran.r-project.org/package=data.table"><u>https://CRAN.R-project.org/package=data.table</u></a> (accessed 26 August 2020).</p>
+<p>Dowle, M. &amp; Srinivasan, A. (2019). data.table: Extension of `data.frame`. R package version 1.12.6. <a href="https://cran.r-project.org/package=data.table"><span class="underline">https://CRAN.R-project.org/package=data.table</span></a> (accessed 26 August 2020).</p>
 <p>Fitzjohn, R.G., Pennell, M.W., Zanne, A.E., Stevens, P.F., Tank, D.C. &amp; Cornwell, W.K. (2014). How much of the world is woody? <em>Journal of Ecology</em>, <strong>102</strong>, 1266–1272.</p>
 <p>Harmon, L.J. 2019. Phylogenetic Comparative Methods. No commercial publisher.</p>
 <p>Katoh, K. (2002). MAFFT: a novel method for rapid multiple sequence alignment based on fast Fourier transform. <em>Nucleic Acids Research</em>, <strong>30</strong>, 3059–3066.</p>
 <p>Mcmahon, M.M., Deepak, A., Fernández-Baca, D., Boss, D. &amp; Sanderson, M.J. (2015). STBase: One Million Species Trees for Comparative Biology. <em>Plos One</em>, <strong>10</strong>.</p>
-<p>Mersmann, O. (2019). microbenchmark: Accurate Timing Functions. R package version 1.4-7. <a href="https://cran.r-project.org/package=microbenchmark"><u>https://CRAN.R-project.org/package=microbenchmark</u></a> (accessed 26 August 2020).</p>
+<p>Mersmann, O. (2019). microbenchmark: Accurate Timing Functions. R package version 1.4-7. <a href="https://cran.r-project.org/package=microbenchmark"><span class="underline">https://CRAN.R-project.org/package=microbenchmark</span></a> (accessed 26 August 2020).</p>
 </blockquote>
 <blockquote>
 <p>Michonneau F., Brown J.W., &amp; Winter D.J. (2016). rotl: an R package &gt; to interact with the Open Tree of Life data. <em>Methods in Ecology and Evolution</em>, <strong>7</strong>, 1476–1481.</p>
@@ -201,23 +210,23 @@
 <blockquote>
 <p>Paradis, E. &amp; Schliep, K. (2018). ape 5.0: an environment for modern phylogenetics and evolutionary analyses in R. <em>Bioinformatics</em>, <strong>35</strong>, 526–528.</p>
 <p>Piel, W.H., Donoghue, M.J., Sanderson, M.J., &amp; Netherlands, L. (2000). TreeBASE: a database of phylogenetic information. In Proceedings of the 2nd International Workshop of Species 2000.</p>
-<p>R Core Team (2013). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. <a href="http://www.r-project.org/"><u>http://www.R-project.org/</u></a> (accessed 26 August 2020).</p>
+<p>R Core Team (2013). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.r-project.org/"><span class="underline">https://www.R-project.org/</span></a> (accessed 26 August 2020).</p>
 <p>Redelings, B.D. &amp; Holder, M.T. (2017). A supertree pipeline for summarizing phylogenetic and taxonomic information for millions of species. <em>PeerJ</em>, <strong>5</strong>.</p>
 <p>Smith, S.A. &amp; Brown, J.W. (2018). Constructing a broadly inclusive seed plant phylogeny. <em>American Journal of Botany</em>, <strong>105</strong>, 302–314.</p>
 <p>Smith, S.A. &amp; O’Meara, B.C. (2012). treePL: divergence time estimation using penalized likelihood for large phylogenies. <em>Bioinformatics</em>, <strong>28</strong>, 2689–2690.</p>
 <p>Smith, S.A., Beaulieu, J.M., Stamatakis, A. &amp; Donoghue, M.J. (2011). Understanding angiosperm diversification using small and large phylogenetic trees. <em>American Journal of Botany</em>, <strong>98</strong>, 404–414.</p>
 <p>Stamatakis, A. (2006). RAxML-VI-HPC: maximum likelihood-based phylogenetic analyses with thousands of taxa and mixed models. <em>Bioinformatics</em>, <strong>22</strong>, 2688–2690.</p>
 <p>Tamura, K., Battistuzzi, F.U., Billing-Ross, P., Murillo, O., Filipski, A. &amp; Kumar, S. (2012). Estimating divergence times in large molecular phylogenies. <em>Proceedings of the National Academy of Sciences</em>, <strong>109</strong>, 19333–19338.</p>
-<p>Uyeda, J.C. &amp; Harmon, L.J. (2020). treeplyr: 'dplyr' Functionality for Matched Tree and Data Objects. R package version 0.1.9. <a href="https://github.com/uyedaj/treeplyr"><u>https://github.com/uyedaj/treeplyr</u></a> (accessed 26 August 2020).</p>
+<p>Uyeda, J.C. &amp; Harmon, L.J. (2020). treeplyr: 'dplyr' Functionality for Matched Tree and Data Objects. R package version 0.1.9. <a href="https://github.com/uyedaj/treeplyr"><span class="underline">https://github.com/uyedaj/treeplyr</span></a> (accessed 26 August 2020).</p>
 <p>Wickham, H., Averick, M. , Bryan, J., Chang, W., D'Agostino, L., François, M., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J. Kuhn, M., Pedersen, T.L., Miller, E., Bache, S.M,., Müller, K., Ooms, J., Robinson, D., Seidel, D.P., Spinu, V., Takahashi, K., Vaughan, D., Wilke, C.O., Woo, K., and Yutani H. (2019). Welcome to the tidyverse. Journal of Open Source Software, <strong>4:</strong>1686.</p>
-<p>Wickham, H., François, R., Henry, L. &amp; Müller, K. (2019). dplyr: A Grammar of Data Manipulation. R package version 0.8.3. h<a href="https://cran.r-project.org/package=dplyr"><u>ttps://CRAN.R-project.org/package=dplyr</u></a> (accessed 26 August 2020).</p>
+<p>Wickham, H., François, R., Henry, L. &amp; Müller, K. (2019). dplyr: A Grammar of Data Manipulation. R package version 0.8.3. h<a href="https://cran.r-project.org/package=dplyr"><span class="underline">ttps://CRAN.R-project.org/package=dplyr</span></a> (accessed 26 August 2020).</p>
 </blockquote>
 <p><strong>Figures</strong></p>
-<p><img src="media/image1.png" style="width:6in;height:4in"></p>
+<p><img src="media/Image1.png" style="width:6in;height:4in"></p>
 <p><strong>Fig. 1.</strong> Temporal change in phylogenetic tree sizes between 1978 and 2020 based on 927 publications for different animal and plant groups. We used a LOESS smoothing to depict the temporal trend in tree size over time. Data was retrieved from the Open Tree of Life using the rotl R package (Michonneau et al. 2016). A linear regression that accounted for lineage identity indicated the significant increase in tree size over time (R<sup>2</sup>=0.2077, <em>p&lt;</em>0.001).</p>
-<p><img src="media/image2.png" style="width:6in;height:3in"></p>
+<p><img src="media/Image2.png" style="width:6in;height:3in"></p>
 <p><strong>Fig. 2.</strong> Results for the treedata.table microbenchmark during tree/data matching steps. Estimates of the timing during the tree/data matching steps under treedata.table are shown in relation to treeplyr. We show median and lower/upper quartiles times for the performance of each package.</p>
-<p><img src="media/image3.png" style="width:6in;height:4in"></p>
+<p><img src="media/Image3.png" style="width:6in;height:4in"></p>
 <p><strong>Fig. 3.</strong> Results for the treedata.table microbenchmark during data manipulation. We compare the performance of treedata.table against data.table, base, treeplyr, and dplyr. We show median and lower/upper quartiles times for the performance of each package.</p>
 <p><strong>Tables</strong></p>
 <p><strong>Table 1</strong>. Brief descriptions of the treedata.table functions.</p>
@@ -320,7 +329,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

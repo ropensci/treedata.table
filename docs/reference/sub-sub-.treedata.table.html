@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function for extract a named vector from an object of class <code>treedata.table</code> — [[.treedata.table • treedata.table</title>
+<title>Function for extract a named vector from an object of class treedata.table — [[.treedata.table • treedata.table</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,10 @@
 
 
 
-<meta property="og:title" content="Function for extract a named vector from an object of class <code>treedata.table</code> — [[.treedata.table" />
+<meta property="og:title" content="Function for extract a named vector from an object of class treedata.table — [[.treedata.table" />
 <meta property="og:description" content="This function extracts a named vector for any  trait from an object of class
 treedata.table." />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="https://ropensci.github.io/treedata.table/logo.png" />
 
 
 
@@ -89,7 +89,7 @@ treedata.table." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -127,7 +127,7 @@ treedata.table." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/treedata.table/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -183,9 +183,11 @@ to tip labels in the provided <code>treedata.table</code> object.</p>
     <div class='dont-index'><p><code>data.table()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>)</span>
 <span class='co'># With a phylo object</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='no'>td</span><span class='kw'>[[</span><span class='st'>"SVL"</span>]]</div><div class='output co'>#&gt;            ahli         allogus     rubribarbus           imias          sagrei 
+<span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='va'>td</span><span class='op'>[[</span><span class='st'>"SVL"</span><span class='op'>]</span><span class='op'>]</span>
+</div><div class='output co'>#&gt;            ahli         allogus     rubribarbus           imias          sagrei 
 #&gt;        4.039125        4.040138        4.078469        4.099687        4.067162 
 #&gt;         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
 #&gt;        4.113371        3.901619        3.637962        3.987147        3.952605 
@@ -226,9 +228,11 @@ to tip labels in the provided <code>treedata.table</code> object.</p>
 #&gt;        aliniger      singularis    chlorocyanus     coelestinus        occultus 
 #&gt;        4.036557        4.057997        4.275448        4.297965        3.663049 </div><div class='input'>
 <span class='co'># With a multiPhylo object</span>
-<span class='no'>treesFM</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>phy</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>treesFM</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span>(<span class='no'>treesFM</span>, <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='no'>td</span><span class='kw'>[[</span><span class='st'>"SVL"</span>]]</div><div class='output co'>#&gt;            ahli         allogus     rubribarbus           imias          sagrei 
+<span class='va'>treesFM</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>treesFM</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"multiPhylo"</span>
+<span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>treesFM</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='va'>td</span><span class='op'>[[</span><span class='st'>"SVL"</span><span class='op'>]</span><span class='op'>]</span>
+</div><div class='output co'>#&gt;            ahli         allogus     rubribarbus           imias          sagrei 
 #&gt;        4.039125        4.040138        4.078469        4.099687        4.067162 
 #&gt;         bremeri quadriocellifer      ophiolepis         mestrei           jubar 
 #&gt;        4.113371        3.901619        3.637962        3.987147        3.952605 
@@ -283,7 +287,7 @@ to tip labels in the provided <code>treedata.table</code> object.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

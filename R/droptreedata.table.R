@@ -31,18 +31,18 @@
 
 
 droptreedata.table <- function(tdObject, taxa) {
-  if (!inherits(tdObject, c("treedata.table"))) {
+  if (!inherits(tdObject, "treedata.table")) {
     stop("Please use a class 'treedata.table' object \n")
   }
 
-  if (!inherits(taxa, c("character"))) {
+  if (!inherits(taxa, "character")) {
     stop("Please use a class 'character' object for taxa \n")
   }
 
   .phy <- tdObject$phy
   .dat <- tdObject$dat
 
-  if (inherits(.phy, c("phylo"))) {
+  if (inherits(.phy, "phylo")) {
     .dat <- .dat[!.phy$tip.label %in% taxa]
     .phy <- ape::drop.tip(.phy, which(.phy$tip.label %in% taxa))
   } else {

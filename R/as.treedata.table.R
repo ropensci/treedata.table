@@ -77,7 +77,7 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
     }
 
     matches <- vapply(tmp.df, function(x) {
-      sum(x %in% if (inherits(tree, c("phylo"))) {
+      sum(x %in% if (inherits(tree, "phylo")) {
         tree$tip.label
       } else {
         tree[[1]]$tip.label
@@ -94,7 +94,7 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
   }
 
 
-  if (inherits(tree, c("phylo"))) {
+  if (inherits(tree, "phylo")) {
     message("Phylo object detected \n")
     if (geiger::name.check(tree, data.names = data[, name_column])[1] != "OK") {
       data_not_tree <- setdiff(
@@ -154,7 +154,7 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
   i <- vapply(data, is.factor, logical(1))
   data[i] <- lapply(data[i], as.character)
 
-  data <- if (inherits(tree, c("phylo"))) {
+  data <- if (inherits(tree, "phylo")) {
     data[match(tree$tip.label, data[, name_column]), ]
   } else {
     data[match(tree[[1]]$tip.label, data[, name_column]), ]
@@ -164,7 +164,7 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
   colnames(data)[name_column] <- "tip.label"
   dr <- which(tree$tip.label %in% c(tree_not_data, data_not_tree))
 
-  tree <- if (inherits(tree, c("phylo"))) {
+  tree <- if (inherits(tree, "phylo")) {
     ape::drop.tip(tree, dr)
   } else {
     nt <- lapply(tree, ape::drop.tip, tip = dr)

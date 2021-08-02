@@ -68,7 +68,7 @@
     }
   }
 
-  .phy <- if (inherits(x$phy, c("phylo"))) {
+  .phy <- if (inherits(x$phy, "phylo")) {
     ape::drop.tip(x$phy, which(!seq_len(nrow(x$dat)) %in% unlist(.dat[, "rowid"])))
   } else {
     tr <- lapply(x$phy, ape::drop.tip, tip = which(!seq_len(nrow(x$dat))
@@ -114,7 +114,7 @@
   if (length(res) != nrow(y)) {
     stop("Use '[' for selecting multiple columns")
   }
-  return(stats::setNames(res, if (inherits(x$phy, c("phylo"))) {
+  return(stats::setNames(res, if (inherits(x$phy, "phylo")) {
     x$phy$tip.label
   } else {
     x$phy[[1]]$tip.label

@@ -56,7 +56,7 @@ sorted such that the rows in the data.table are matched to the tip.labels
 of the phylogeny. Tip.labels on the tree must match a column of tip
 names in the input data.frame. The output of this function will be a
 treedata.table, which can be manipulated as a data.table." />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="https://ropensci.github.io/treedata.table/logo.png" />
 
 
 
@@ -96,7 +96,7 @@ treedata.table, which can be manipulated as a data.table." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -134,7 +134,7 @@ treedata.table, which can be manipulated as a data.table." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/treedata.table/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -167,7 +167,7 @@ names in the input data.frame. The output of this function will be a
 treedata.table, which can be manipulated as a data.table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>as.treedata.table</span>(<span class='no'>tree</span>, <span class='no'>data</span>, <span class='kw'>name_column</span> <span class='kw'>=</span> <span class='st'>"detect"</span>)</pre>
+    <pre class="usage"><span class='fu'>as.treedata.table</span><span class='op'>(</span><span class='va'>tree</span>, <span class='va'>data</span>, name_column <span class='op'>=</span> <span class='st'>"detect"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,22 +194,26 @@ column</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>anolis</span>)
-<span class='no'>anolis2</span> <span class='kw'>&lt;-</span> <span class='no'>anolis</span>$<span class='no'>phy</span>
-<span class='no'>anolis2</span>$<span class='no'>tip.label</span>[<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='st'>"NAA"</span>
-<span class='no'>anolis1</span> <span class='kw'>&lt;-</span> <span class='no'>anolis</span>$<span class='no'>phy</span>
-<span class='no'>anolis1</span>$<span class='no'>tip.label</span>[<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='st'>"NAA"</span>
-<span class='no'>trees</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis1</span>, <span class='no'>anolis2</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>trees</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
-<span class='no'>treesFM</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='no'>anolis</span>$<span class='no'>phy</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>treesFM</span>) <span class='kw'>&lt;-</span> <span class='st'>"multiPhylo"</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>)</span>
+<span class='va'>anolis2</span> <span class='op'>&lt;-</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>
+<span class='va'>anolis2</span><span class='op'>$</span><span class='va'>tip.label</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='st'>"NAA"</span>
+<span class='va'>anolis1</span> <span class='op'>&lt;-</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>
+<span class='va'>anolis1</span><span class='op'>$</span><span class='va'>tip.label</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='st'>"NAA"</span>
+<span class='va'>trees</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>anolis1</span>, <span class='va'>anolis2</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>trees</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"multiPhylo"</span>
+<span class='va'>treesFM</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>treesFM</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"multiPhylo"</span>
 
 <span class='co'># A phylo object that fully matches the data</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'>as.treedata.table</span>(<span class='kw'>tree</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>phy</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='co'># A multiphylo object that fully matches the data</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'>as.treedata.table</span>(<span class='kw'>tree</span> <span class='kw'>=</span> <span class='no'>treesFM</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='co'># A phylo object that partially matches the data</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'>as.treedata.table</span>(<span class='kw'>tree</span> <span class='kw'>=</span> <span class='no'>anolis1</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
+<span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'>as.treedata.table</span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='co'># A multiphylo object that fully matches the data</span>
+<span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'>as.treedata.table</span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>treesFM</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='co'># A phylo object that partially matches the data</span>
+<span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'>as.treedata.table</span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>anolis1</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
 #&gt; <span class='message'>1 tip(s) dropped from the original dataset</span></div><div class='input'><span class='co'># A multiphylo object that partially matches the data</span>
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'>as.treedata.table</span>(<span class='kw'>tree</span> <span class='kw'>=</span> <span class='no'>trees</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>anolis</span>$<span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
+<span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'>as.treedata.table</span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>trees</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
 #&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -226,7 +230,7 @@ column</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

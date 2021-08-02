@@ -16,14 +16,14 @@
 #' @export
 
 extractVector <- function(tdObject, ...) {
-  if (!inherits(tdObject, c("treedata.table"))) {
+  if (!inherits(tdObject, "treedata.table")) {
     stop("Please use a class 'treedata.table' object \n")
   }
 
   dat <- tdObject$dat
   dots <- lazyeval::lazy_dots(...)
   vecs <- lapply(list(...), function(x) dat[[x]])
-  vecs <- if (inherits(tdObject$phy, c("phylo"))) {
+  vecs <- if (inherits(tdObject$phy, "phylo")) {
     lapply(vecs, function(x) stats::setNames(x, tdObject$phy$tip.label))
   } else {
     lapply(vecs, function(x) stats::setNames(x, tdObject$phy[[1]]$tip.label))

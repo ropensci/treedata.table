@@ -44,7 +44,7 @@ tdt <- function(tdObject, ...) {
   env <- new.env(parent = parent.frame(), size = 1L)
   env$dat <- tdObject$dat
 
-  if (inherits(tdObject$phy, c("phylo"))) {
+  if (inherits(tdObject$phy, "phylo")) {
     message("Phylo object detected. Expect a single function output")
     env$phy <- tdObject$phy
     out <- eval(call, env)
