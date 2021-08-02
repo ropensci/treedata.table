@@ -119,9 +119,12 @@
 <p>The <code>as.treedata.table</code> function enables users to match a tree (or multiple trees) against a single trait database. We first load the sample dataset.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropensci.github.io/treedata.table">treedata.table</a></span><span class="op">)</span>
-
-<span class="co"># Load example data</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropensci.github.io/treedata.table">treedata.table</a></span><span class="op">)</span></code></pre></div>
+<pre><code>##          Thank you for using the {treedata.table} R package!   
+## 
+##                         🙂Happy coding!!🙂</code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Load example data</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">anolis</span><span class="op">)</span>
 <span class="co">#Create treedata.table object with as.treedata.table</span>
 <span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>, data <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
@@ -129,7 +132,7 @@
 <pre><code>## Phylo object detected</code></pre>
 <pre><code>## No tips were dropped from the original tree/dataset</code></pre>
 <p>Tips that are not common between the tree (or trees) and dataset are dropped from the resulting <code>treedata.table</code> object. For instance, below I have modified the original anole phylogeny such that <em>A. ahli</em> (<strong>ahi</strong>) is replaced for a label that is not present in the dataset (<strong>NAA</strong>).</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">anolis_newtip</span><span class="op">&lt;-</span><span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>
 <span class="va">anolis_newtip</span><span class="op">$</span><span class="va">tip.label</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">'NAA'</span>
 <span class="va">anolis_newtip</span></code></pre></div>
@@ -141,14 +144,14 @@
 ## 
 ## Rooted; includes branch lengths.</code></pre>
 <p>We then use this modified tree to fit a <code>treedata.table</code> object using the <code>as.treedata.table</code> function:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree<span class="op">=</span><span class="va">anolis_newtip</span>, data<span class="op">=</span><span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Phylo object detected</code></pre>
 <pre><code>## 1 tip(s) dropped from the original tree
 ## 1 tip(s) dropped from the original dataset</code></pre>
 <p>Note that <code>as.treedata.table</code> drops all non-overlapping tips (<strong>NAA</strong> [present in the tree but not in the trait data] and <strong>ahi</strong> [present in the database but not in tree] in this case) and returns a <code>treedata.table</code> object with fully matching <code>phy</code> and <code>data</code> objects.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span></code></pre></div>
 <pre><code>## $phy 
 ## 
@@ -176,7 +179,7 @@
 ## 6:        -2.105059  -0.2576389  0.4627081 -0.2712794       TG   Cuba</code></pre>
 <p>Fully-matching matrix and trees are also returned in <code>treedata.table</code> objects with <code>multiPhylo</code> objects in their <code>phy</code> component. See the example below.</p>
 <p>We first construct a <code>multiPhylo</code> object that partially overlaps the original trait database by using <strong>NAA</strong> instead of <strong>ahi</strong>.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">anolis2</span><span class="op">&lt;-</span><span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>
 <span class="va">anolis2</span><span class="op">$</span><span class="va">tip.label</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">'NAA'</span>
 <span class="va">anolis1</span><span class="op">&lt;-</span><span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>
@@ -186,14 +189,14 @@
 <span class="va">trees</span></code></pre></div>
 <pre><code>## 2 phylogenetic trees</code></pre>
 <p>Next, we fit the <code>treedata.table</code> object using the relevant <code>multiPhylo</code> object and the original trait database.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree<span class="op">=</span><span class="va">trees</span>, data<span class="op">=</span><span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Multiphylo object detected</code></pre>
 <pre><code>## 1 tip(s) dropped from 2 trees
 ## 1 tip(s)  dropped from the original dataset</code></pre>
 <p>Note that 1 tip was dropped for all trees in the <code>multiPhylo</code> object and a single row was deleted from the <code>data.table</code> object in the <code>treedata.table</code> object.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span></code></pre></div>
 <pre><code>## $phy 
 ## 2 phylogenetic trees
