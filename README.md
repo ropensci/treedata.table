@@ -11,7 +11,6 @@ A wrapper for data.table that enables fast manipulation of  phylogenetic trees m
 [![rOpenSci badge](https://badges.ropensci.org/156_status.svg)](https://github.com/ropensci/onboarding/issues/367)
 [![R-CMD-check](https://github.com/ropensci/treedata.table/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/treedata.table/actions)
 [![CodeFactor](https://www.codefactor.io/repository/github/ropensci/treedata.table/badge)](https://www.codefactor.io/repository/github/ropensci/treedata.table)
-[![Codecov test coverage](https://codecov.io/gh/ropensci/treedata.table/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/treedata.table?branch=master)
 [![](https://cranlogs.r-pkg.org/badges/treedata.table)](https://cran.r-project.org/package=treedata.table)
 <!-- badges: end -->
 
