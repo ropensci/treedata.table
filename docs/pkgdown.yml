@@ -1,4 +1,4 @@
-pandoc: 2.3.1
+pandoc: 2.11.4
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
@@ -8,7 +8,7 @@ articles:
   C_PartialMatching: C_PartialMatching.html
   D_AdditionalFunctions_treedata.table: D_AdditionalFunctions_treedata.table.html
   E_Preprint: E_Preprint.html
-last_built: 2021-08-02T15:37Z
+last_built: 2021-09-10T20:26Z
 urls:
   reference: https://ropensci.github.io/treedata.table/reference
   article: https://ropensci.github.io/treedata.table/articles

@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">treedata.table</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="E_Preprint_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Preprint: treedata.table</h1>
@@ -124,7 +124,7 @@
 <p><strong>Introduction</strong></p>
 <p>The number and size of published phylogenetic trees have exponentially increased over the years (Fig. 1; e.g. Smith <em>et al.</em> 2011; FitzJohn <em>et al.</em> 2014; Smith &amp; Brown 2019). Ongoing biodiversity sequencing efforts have triggered the development of phylogenetic computational methods able to deal with datasets involving hundreds of thousands of taxa (McMahon <em>et al.</em> 2015). For instance, the early development of MAFFT (Katoh 2002) significantly decreased CPU times required to perform sequence alignment on molecular datasets with thousands of species. Similarly, RAxML (Stamatakis 2006), PATHd8 (Tamura <em>et al.</em> 2012), and TreePL (Smith &amp; O’Meara 2012) greatly reduced computational times during the inference and absolute dating of phylogenetic trees involving thousands of species. Given the unprecedented pace at which phylogenetic data is accumulating (Piel <em>et al.</em> 2000; Redelings &amp; Holder 2017), updating the current phylogenetic workflow to cope with the increasing size of phylogenetic trees is now more critical than ever. Attention should be paid to the development of faster, computationally efficient, and more user-friendly implementations in R that further increase reproducibility. This language is now central to research utilizing phylogenetic comparative methods, and many essential packages and educational materials are made available using this language (Harmon 2019).</p>
 <p><strong>A short description of data.table</strong></p>
-<p>treedata.table heavily relies on data.table, an R package that enables high-performance extended functionality for data tables (Dowle and Srinivasan 2020). data.table is not only faster than other packages implemented in R, but also is significantly more efficient than tools in other languages such as Python and Julia (<a href="https://h2oai.github.io/db-benchmark/"><span class="underline">https://h2oai.github.io/db-benchmark/</span></a>). In addition to speed, data.table has a syntactic structure that is clear and simple to follow. Only three elements are basic to data.table’s primary function: <em>DT<span class="math display">\[i, j, by\]</span></em>. First, the <em>i</em> section is used to specify the rows to be considered in filtering or subsetting operations. Second, the <em>j</em> section indicates the changes happening in the columns (e.g. adding new ones, changing existing ones). Third, the <em>by</em> section is used to perform operations based on grouping variables. A brief but more exhaustive introduction to data.table can be found in the data.table’s vignette and wiki.</p>
+<p>treedata.table heavily relies on data.table, an R package that enables high-performance extended functionality for data tables (Dowle and Srinivasan 2020). data.table is not only faster than other packages implemented in R, but also is significantly more efficient than tools in other languages such as Python and Julia (<a href="https://h2oai.github.io/db-benchmark/"><u>https://h2oai.github.io/db-benchmark/</u></a>). In addition to speed, data.table has a syntactic structure that is clear and simple to follow. Only three elements are basic to data.table’s primary function: <em>DT<span class="math display">\[i, j, by\]</span></em>. First, the <em>i</em> section is used to specify the rows to be considered in filtering or subsetting operations. Second, the <em>j</em> section indicates the changes happening in the columns (e.g. adding new ones, changing existing ones). Third, the <em>by</em> section is used to perform operations based on grouping variables. A brief but more exhaustive introduction to data.table can be found in the data.table’s vignette and wiki.</p>
 <p><strong>The treedata.table workflow</strong></p>
 <p>treedata.table is a wrapper for data.table for phylogenetic analyses that matches a phylogeny to the data.table (Table 1). After an initial tree/data matching step, treedata.table continuously preserves the tree/data matching across data.table operations. treedata.table also allows users to run functions from other phylogenetic packages on the processed treedata.table objects. Below, we briefly explain the general workflow under treedata.table.</p>
 <ol style="list-style-type: decimal">
@@ -194,15 +194,15 @@
 <p><strong>Authors’ contributions</strong></p>
 <p>A.M.W., J.C.U. conceived the project. C.R.P., A.M.W., and J.C.U. developed the methods. C.R.P. analyzed the data and led the writing. All co-authors assisted with edits and approved publication.</p>
 <p><strong>Data accessibility</strong></p>
-<p>The treedata.table package and documentation are hosted at <a href="https://github.com/ropensci/treedata.table/"><span class="underline">https://github.com/ropensci/treedata.table</span></a>.</p>
+<p>The treedata.table package and documentation are hosted at <a href="https://github.com/ropensci/treedata.table/"><u>https://github.com/ropensci/treedata.table</u></a>.</p>
 <p><strong>References</strong></p>
 <blockquote>
-<p>Dowle, M. &amp; Srinivasan, A. (2019). data.table: Extension of `data.frame`. R package version 1.12.6. <a href="https://cran.r-project.org/package=data.table"><span class="underline">https://CRAN.R-project.org/package=data.table</span></a> (accessed 26 August 2020).</p>
+<p>Dowle, M. &amp; Srinivasan, A. (2019). data.table: Extension of `data.frame`. R package version 1.12.6. <a href="https://cran.r-project.org/package=data.table"><u>https://CRAN.R-project.org/package=data.table</u></a> (accessed 26 August 2020).</p>
 <p>Fitzjohn, R.G., Pennell, M.W., Zanne, A.E., Stevens, P.F., Tank, D.C. &amp; Cornwell, W.K. (2014). How much of the world is woody? <em>Journal of Ecology</em>, <strong>102</strong>, 1266–1272.</p>
 <p>Harmon, L.J. 2019. Phylogenetic Comparative Methods. No commercial publisher.</p>
 <p>Katoh, K. (2002). MAFFT: a novel method for rapid multiple sequence alignment based on fast Fourier transform. <em>Nucleic Acids Research</em>, <strong>30</strong>, 3059–3066.</p>
 <p>Mcmahon, M.M., Deepak, A., Fernández-Baca, D., Boss, D. &amp; Sanderson, M.J. (2015). STBase: One Million Species Trees for Comparative Biology. <em>Plos One</em>, <strong>10</strong>.</p>
-<p>Mersmann, O. (2019). microbenchmark: Accurate Timing Functions. R package version 1.4-7. <a href="https://cran.r-project.org/package=microbenchmark"><span class="underline">https://CRAN.R-project.org/package=microbenchmark</span></a> (accessed 26 August 2020).</p>
+<p>Mersmann, O. (2019). microbenchmark: Accurate Timing Functions. R package version 1.4-7. <a href="https://cran.r-project.org/package=microbenchmark"><u>https://CRAN.R-project.org/package=microbenchmark</u></a> (accessed 26 August 2020).</p>
 </blockquote>
 <blockquote>
 <p>Michonneau F., Brown J.W., &amp; Winter D.J. (2016). rotl: an R package &gt; to interact with the Open Tree of Life data. <em>Methods in Ecology and Evolution</em>, <strong>7</strong>, 1476–1481.</p>
@@ -210,23 +210,23 @@
 <blockquote>
 <p>Paradis, E. &amp; Schliep, K. (2018). ape 5.0: an environment for modern phylogenetics and evolutionary analyses in R. <em>Bioinformatics</em>, <strong>35</strong>, 526–528.</p>
 <p>Piel, W.H., Donoghue, M.J., Sanderson, M.J., &amp; Netherlands, L. (2000). TreeBASE: a database of phylogenetic information. In Proceedings of the 2nd International Workshop of Species 2000.</p>
-<p>R Core Team (2013). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.r-project.org/"><span class="underline">https://www.R-project.org/</span></a> (accessed 26 August 2020).</p>
+<p>R Core Team (2013). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.r-project.org/"><u>https://www.R-project.org/</u></a> (accessed 26 August 2020).</p>
 <p>Redelings, B.D. &amp; Holder, M.T. (2017). A supertree pipeline for summarizing phylogenetic and taxonomic information for millions of species. <em>PeerJ</em>, <strong>5</strong>.</p>
 <p>Smith, S.A. &amp; Brown, J.W. (2018). Constructing a broadly inclusive seed plant phylogeny. <em>American Journal of Botany</em>, <strong>105</strong>, 302–314.</p>
 <p>Smith, S.A. &amp; O’Meara, B.C. (2012). treePL: divergence time estimation using penalized likelihood for large phylogenies. <em>Bioinformatics</em>, <strong>28</strong>, 2689–2690.</p>
 <p>Smith, S.A., Beaulieu, J.M., Stamatakis, A. &amp; Donoghue, M.J. (2011). Understanding angiosperm diversification using small and large phylogenetic trees. <em>American Journal of Botany</em>, <strong>98</strong>, 404–414.</p>
 <p>Stamatakis, A. (2006). RAxML-VI-HPC: maximum likelihood-based phylogenetic analyses with thousands of taxa and mixed models. <em>Bioinformatics</em>, <strong>22</strong>, 2688–2690.</p>
 <p>Tamura, K., Battistuzzi, F.U., Billing-Ross, P., Murillo, O., Filipski, A. &amp; Kumar, S. (2012). Estimating divergence times in large molecular phylogenies. <em>Proceedings of the National Academy of Sciences</em>, <strong>109</strong>, 19333–19338.</p>
-<p>Uyeda, J.C. &amp; Harmon, L.J. (2020). treeplyr: 'dplyr' Functionality for Matched Tree and Data Objects. R package version 0.1.9. <a href="https://github.com/uyedaj/treeplyr"><span class="underline">https://github.com/uyedaj/treeplyr</span></a> (accessed 26 August 2020).</p>
+<p>Uyeda, J.C. &amp; Harmon, L.J. (2020). treeplyr: 'dplyr' Functionality for Matched Tree and Data Objects. R package version 0.1.9. <a href="https://github.com/uyedaj/treeplyr"><u>https://github.com/uyedaj/treeplyr</u></a> (accessed 26 August 2020).</p>
 <p>Wickham, H., Averick, M. , Bryan, J., Chang, W., D'Agostino, L., François, M., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J. Kuhn, M., Pedersen, T.L., Miller, E., Bache, S.M,., Müller, K., Ooms, J., Robinson, D., Seidel, D.P., Spinu, V., Takahashi, K., Vaughan, D., Wilke, C.O., Woo, K., and Yutani H. (2019). Welcome to the tidyverse. Journal of Open Source Software, <strong>4:</strong>1686.</p>
-<p>Wickham, H., François, R., Henry, L. &amp; Müller, K. (2019). dplyr: A Grammar of Data Manipulation. R package version 0.8.3. h<a href="https://cran.r-project.org/package=dplyr"><span class="underline">ttps://CRAN.R-project.org/package=dplyr</span></a> (accessed 26 August 2020).</p>
+<p>Wickham, H., François, R., Henry, L. &amp; Müller, K. (2019). dplyr: A Grammar of Data Manipulation. R package version 0.8.3. h<a href="https://cran.r-project.org/package=dplyr"><u>ttps://CRAN.R-project.org/package=dplyr</u></a> (accessed 26 August 2020).</p>
 </blockquote>
 <p><strong>Figures</strong></p>
-<p><img src="media/Image1.png" style="width:6in;height:4in"></p>
+<p><img src="media/Image1.png" alt="Image 1" style="height: 4in; width:6in;"></p>
 <p><strong>Fig. 1.</strong> Temporal change in phylogenetic tree sizes between 1978 and 2020 based on 927 publications for different animal and plant groups. We used a LOESS smoothing to depict the temporal trend in tree size over time. Data was retrieved from the Open Tree of Life using the rotl R package (Michonneau et al. 2016). A linear regression that accounted for lineage identity indicated the significant increase in tree size over time (R<sup>2</sup>=0.2077, <em>p&lt;</em>0.001).</p>
-<p><img src="media/Image2.png" style="width:6in;height:3in"></p>
+<p><img src="media/Image2.png" alt="Image 2" style="height: 3in; width:6in;"></p>
 <p><strong>Fig. 2.</strong> Results for the treedata.table microbenchmark during tree/data matching steps. Estimates of the timing during the tree/data matching steps under treedata.table are shown in relation to treeplyr. We show median and lower/upper quartiles times for the performance of each package.</p>
-<p><img src="media/Image3.png" style="width:6in;height:4in"></p>
+<p><img src="media/Image3.png" alt="Image 3" style="height: 4in; width:6in;"></p>
 <p><strong>Fig. 3.</strong> Results for the treedata.table microbenchmark during data manipulation. We compare the performance of treedata.table against data.table, base, treeplyr, and dplyr. We show median and lower/upper quartiles times for the performance of each package.</p>
 <p><strong>Tables</strong></p>
 <p><strong>Table 1</strong>. Brief descriptions of the treedata.table functions.</p>

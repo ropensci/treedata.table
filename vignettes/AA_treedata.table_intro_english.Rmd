@@ -34,7 +34,7 @@ data(anolis)
 td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
 ```
 
-We may inspect our object by calling it by name. You will notice that your `data.frame` is now a `data.table`.
+We may inspect our object by calling it by name. You will notice that your `data.frame` is now a `data.table`. A `data.table` is simply an advanced version of a `data.frame` that, among other, increase speed in data manipulation steps while simplifying syntax. 
 
 ```{r}
 td
@@ -49,6 +49,9 @@ td$phy$tip.label == td$dat$tip.label
 
 
 ## Manipulating Data
+
+
+### Coindexing
 
 Your data table can be indexed in the same way any other `data.table` object would be. For example, if we wanted to look at our snout-vent length column, we can do that like so.
 
@@ -75,9 +78,9 @@ Multiple traits can also be extracted using `extractVector`.
 extractVector(td, 'SVL','ecomorph')
 ```
 
-However, there's a couple aspects that are unique to `[[.treedata.table()` and `extractVector()`. First, `[[.treedata.table()` has an extra exact argument to enable partial match. Second, `extractVector()` can extract multiple columns and accepts non-standard evaluation.
+However, there's a couple aspects that are unique to `[[.treedata.table()` and `extractVector()`. First, `[[.treedata.table()` has an extra exact argument to enable partial match (i.e. when target strings and those in the `treedata.table` object match partially). Second, `extractVector()` can extract multiple columns and accepts non-standard evaluation (i.e. names are treated as string literals).
 
-The real power in treedata.table is in co-indexing the tree and table. For example, in the below command, we use `data.table` syntax to take the first representative from each ecomorph. We retain all data columns. If you examine the tree object, you will see that it has had all the tips not in the resultant `data.table` dropped.
+The real power in treedata.table is in co-indexing the tree and table. For example, in the below command, we use `data.table` syntax to take the first representative from each ecomorph. We retain all data columns. If you examine the tree object, you will see that it has had all the tips absent from the resultant `data.table`.
 
 ```{r}
  td[, head(.SD, 1), by = "ecomorph"]
@@ -98,13 +101,15 @@ Tail is also implemented
 
 ```
 
-Columns in the `treedata.table` object can also be operated on using `data.table` syntax. In the below example, the tree is pruned to those tips that occur in Cuba. This is the `data.table` equivalent of `dplyr`'s filter. Then, a new column is created in the `data.table`, assigned the name "Index", and assigned the value of the SVL + the hostility index. This enables concurrent manipulation of the phylogeny, and the calculation of a new index for only those tips we would actually like to use.
+Columns in the `treedata.table` object can also be operated on using general `data.table` syntax. In the below example, the tree is pruned to those tips that occur in Cuba. This is the `data.table` equivalent of `dplyr`'s filter. Then, a new column is created in the `data.table`, assigned the name "Index", and assigned the value of the SVL + the hostility index. This enables concurrent manipulation of the phylogeny, and the calculation of a new index for only those tips we would actually like to use.
 
 ```{r}
 td[island == "Cuba",.(Index=SVL+hostility)]
 ```
 
-We can extend this tidy approach to actually estimating values for our data using `tdt`. In the below command, we extract one vector from our data.table and use `geiger`'s continuous model fitting to estimate a Brownian motion model for the data. 
+### Running functions on `treedata.table` objects
+
+In the below command, we extract one vector from our data.table and use `geiger`'s continuous model fitting to estimate a Brownian motion model for the data using the `tdt` function. 
 
 
 ```{r}
@@ -113,6 +118,7 @@ tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model="BM", ncores=
 
 ```
 
+### Dropping and extracting taxa from `treedata.table` objects
 
 We can also drop tips directly from the tree, and have those tips drop concurrently from the data.table. In the example below, we  remove two taxa by name. 
 
@@ -126,7 +132,7 @@ We can check if *A. chamaeleonides* and *A. eugenegrahami* are still in the tree
 c("chamaeleonides" ,"eugenegrahami" ) %in% dt$phy$tip.label
 ```
 
-And we can do the same with the data in out `treedata.table` object
+And we can do the same with the data in the `treedata.table` object
 
 ```{r}
 c("chamaeleonides" ,"eugenegrahami" ) %in% dt$dat$X

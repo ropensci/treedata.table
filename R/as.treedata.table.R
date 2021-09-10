@@ -105,7 +105,7 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
       message(
         length(c(tree_not_data)), " tip(s) dropped from the original tree",
         "\n", length(c(data_not_tree)),
-        " tip(s) dropped from the original dataset"
+        " row(s) dropped from the original dataset"
       )
       tree <- ape::drop.tip(tree, tree_not_data)
 
@@ -116,7 +116,7 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
                }
 
     } else {
-      message("No tips were dropped from the original tree/dataset")
+      message("All tips from original tree/dataset were preserved")
       data_not_tree <- "OK"
       tree_not_data <- "OK"
     }
@@ -141,11 +141,11 @@ as.treedata.table <- function(tree, data, name_column = "detect") {
                }
       message(
         length(c(tree_not_data)), " tip(s) dropped from ", length(tree),
-        " trees", "\n", length(c(data_not_tree)), " tip(s)  dropped from the",
+        " trees", "\n", length(c(data_not_tree)), " row(s) dropped from the",
                                                     " original dataset"
       )
     } else {
-      message("No tips were dropped from the original trees/dataset")
+      message("All tips from original tree/dataset were preserved")
       data_not_tree <- "OK"
       tree_not_data <- "OK"
     }

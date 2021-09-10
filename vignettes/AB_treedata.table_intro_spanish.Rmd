@@ -19,7 +19,7 @@ El paquete `treedata.table` tiene como objetivo permitir a investigadores accede
 
 El primer paso para usar `treedata.table` consiste en crear un objeto `treedata.table`. El objeto `treedata.table` empareja los tip.labels de la filogenia con una columna en el `data.frame` que contiene los nombres de los taxones. Este paso inicial permite la manipulación subsecuente y coordinada de los datos en el árbol y la matriz de caracteres dentro de `treedata.table`.
 
-Para este tutorial vamos a usar los datos de Anolis creados en `treeplyr`. Estos caracteres fueron generados aleatoriamente. Es importante resaltar tres aspectos. Primero, el árbol tiene que ser en formato `phylo` (o `multiPhylo` en caso de múltiples arboles). Segundo, la matriz de caracteres tiene que están en formato `data.frame`. Tercero, la matriz de caracteres tiene que contener una columna con los nombres de los taxones coincidiendo con los tip.labels del árbol (o arboles). 
+Para este tutorial vamos a usar los datos de _Anolis_ creados en `treeplyr`. Estos caracteres fueron generados aleatoriamente. Es importante resaltar tres aspectos. Primero, el árbol tiene que ser en formato `phylo` (o `multiPhylo` en caso de múltiples árboles). Segundo, la matriz de caracteres tiene que estár en formato `data.frame`. Tercero, la matriz de caracteres tiene que contener una columna con los nombres de los taxones coincidiendo con los tip.labels del árbol (o árboles). 
 
 El objeto `treedata.table` se crea usando la función `as.treedata.table`.
 
@@ -62,7 +62,7 @@ También podemos usar los brackets dobles para extraer directamente la misma col
 td[["SVL"]]
 ```
 
-El mismo resultado puede también ser logrado usando la función `extractVector`. El producto de `extractVector` como los brackets dobles es un vector con nombres.
+El mismo resultado puede también ser logrado usando la función `extractVector`. Al igual que con los brackets dobles, el resultado de la función `extractVector` es un vector con nombres.
 
 
 ```{r}
@@ -75,7 +75,7 @@ Múltiples columnas pueden tambien ser extraídas usando `extractVector`.
 extractVector(td, 'SVL','ecomorph')
 ```
 
-Sin embargo, hay un par de aspectos que son únicos a `[[.treedata.table()` y `extractVector()`. Primero, `[[.treedata.table()` tiene un argumento adicional que permite un match parcial del nombre de la columna. Segundo, `extractVector()` puede extraer múltiples columna y permite una evaluación no standard.
+Hay un par de aspectos que son únicos a `[[.treedata.table()` y `extractVector()`. Primero, `[[.treedata.table()` tiene un argumento adicional que permite un correspondencia parcial del nombre de la columna (i.e. cuando el nombre objetivo tiene una superposicion parcial con los elementos en el objeto). Segundo, `extractVector()` puede extraer múltiples columnas y permite una evaluación no estandard (i.e. los nombres son tratados como cadenas de texto literal).
 
 
 El poder real de `treedata.table` está en coindexar el árbol con la matriz de caracteres. Por ejemplo, en el siguiente comando usamos la sintaxis de `data.table` para extraer el primer representante de cada ecomorfo y retener todas las columnas. 
@@ -99,13 +99,13 @@ También implementamos la función `tail`.
 
 ```
 
-Las columnas en `treedata.table` pueden ser también operadas usando sintaxis en `data.table`. En el siguiente ejemplo, los arboles solo incluirán especies distribuidas en Cuba. Este es el equivalente a filtrar usando `dplyr`. Después, una nueva columna llamada “Index” es creada en el objeto `data.table` dentro del objeto `treedata.table` con los valores de SVL+hostility. En resumen, la siguiente línea permite en forma simultanea crear una nueva columna y resumir el numero de taxones en la filogenia a las especies de interés.
+Las columnas en `treedata.table` pueden ser operadas usando la misma sintaxis de `data.table`. En el siguiente ejemplo, los árboles solo incluirán especies distribuidas en Cuba. Este es el equivalente a filtrar usando `dplyr`. Después, una nueva columna llamada “Index” es creada en el objeto `data.table` dentro del objeto `treedata.table` con los valores de SVL+hostility. En resumen, la siguiente línea permite en forma simultánea crear una nueva columna y reducir el número de taxones en la filogenia a las especies de interés.
 
 ```{r}
 td[island == "Cuba",.(Index=SVL+hostility)]
 ```
 
-También podemos usar `treedata.table` para correr funciones en nuestros datos. En el siguiente ejemplo, evaluamos un modelo de evolución browniano sobre los datos de SVL en nuestro set de datos. Usamos una combinación de `tdt`, `extractVector` y `geiger::fitContinuous` para correr funciones en nuestros datos, extraer un vector de caracteres y ajustar el model en cuestión, respectivamente.
+`treedata.table` permite aplicar funciones directamente en nuestros datos de interés. En el siguiente ejemplo, evaluamos un modelo de evolución browniano sobre los datos de SVL en nuestro set de datos. Usamos una combinación de `tdt`, `extractVector` y `geiger::fitContinuous` para correr funciones en nuestros datos, extraer un vector de caracteres y ajustar el model en cuestión, respectivamente.
 
 ```{r}
 
@@ -113,7 +113,7 @@ tdt(td, geiger::fitContinuous(phy, extractVector(td, 'SVL'), model="BM", ncores=
 
 ```
 
-Los tips en el árbol también pueden ser removidos fácilmente, con los cambios también reflejados sobre la matriz de caracteres. En el siguiente ejemplo, removemos dos taxones por sus nombres.
+Los terminales en el árbol también pueden ser removidos fácilmente, con los cambios también reflejados sobre la matriz de caracteres. En el siguiente ejemplo, removemos dos taxones por sus nombres.
 
 
 ```{r}
@@ -132,7 +132,7 @@ Y podemos hacer lo mismo con la matriz de caracteres en el nuevo objeto `treedat
 c("chamaeleonides" ,"eugenegrahami" ) %in% dt$dat$X
 ```
 
-Por ultimo, el arbol y la matriz de caracteres pueden ser extraidos de el objeto `treedata.table` fácilmente usando la función ` pulltreedata.table`. 
+Por último, el árbol y la matriz de caracteres pueden ser extraídos de el objeto `treedata.table` fácilmente usando la función ` pulltreedata.table`. 
 
 ```{r}
 df <- pulltreedata.table(td, "dat")

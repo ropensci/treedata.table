@@ -28,7 +28,7 @@ td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
 ```
 
 
-Tips that are not common between the tree (or trees) and dataset are dropped from the resulting `treedata.table` object. For instance, below I have modified the original anole phylogeny such that *A. ahli* (**ahi**) is replaced for a label that is not present in the dataset (**NAA**).
+Tips that are not common between the tree (or trees) and dataset are dropped from the resulting `treedata.table` object. For instance, below I have modified the original anole phylogeny such that *A. ahli* (**ahli**) is replaced for a label that is not present in the dataset (**NAA**).
 
 ```{r}
 anolis_newtip<-anolis$phy

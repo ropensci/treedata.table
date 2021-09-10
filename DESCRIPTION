@@ -1,6 +1,6 @@
 Package: treedata.table
 Title: Manipulation of Matched Phylogenies and Data using 'data.table'
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person(given = "Josef",
            family = "Uyeda", 
@@ -10,7 +10,7 @@ Authors@R: c(
            ),
     person(given = "Cristian", 
             family = "Roman-Palacios",
-            role = c("cre"),
+            role = c("aut","cre"),
             email = "cromanpa94@email.arizona.edu", 
           comment = c(ORCID="0000-0003-4692-3225")
             ),

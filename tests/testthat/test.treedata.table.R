@@ -143,20 +143,12 @@ test_that("Normal as.treedata.table but data without column names", {
 })
 
 
-test_that("Normal as.treedata.table but testing the no tips dropped message", {
-  expect_message(as.treedata.table(tree = anolis$phy, data = anolis$dat),
-    "No tips were dropped from the original tree/dataset",
-    fixed = T
-  )
-})
-
-
 test_that("Normal as.treedata.table with data.frame without row.names
           but testing the no tips dropped message", {
   data <- anolis$dat
   row.names(data) <- NULL
   expect_message(as.treedata.table(tree = anolis$phy, data = data),
-    "No tips were dropped from the original tree/dataset",
+    "All tips from original tree/dataset were preserved",
     fixed = T
   )
 })

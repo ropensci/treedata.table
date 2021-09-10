@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">treedata.table</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -104,55 +104,56 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="treedata-table" class="section level1">
+<div id="treedatatable" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#treedata-table" class="anchor"></a>treedata.table</h1></div>
-<div id="an-r-package-for-manipulating-phylogenetic-data-with-data-table" class="section level2">
+<a href="#treedatatable" class="anchor"></a>treedata.table</h1></div>
+<div id="an-r-package-for-manipulating-phylogenetic-data-with-datatable" class="section level2">
 <h2 class="hasAnchor">
-<a href="#an-r-package-for-manipulating-phylogenetic-data-with-data-table" class="anchor"></a>An R package for manipulating phylogenetic data with <em>data.table</em>
+<a href="#an-r-package-for-manipulating-phylogenetic-data-with-datatable" class="anchor"></a>An R package for manipulating phylogenetic data with <em>data.table</em>
 </h2>
 <p>A wrapper for data.table that enables fast manipulation of phylogenetic trees matched to data. <img src="reference/figures/logo.png" align="right" height="250"></p>
 <!-- badges: start -->
-<p><a href="https://codecov.io/gh/ropensci/treedata.table"><img src="https://codecov.io/gh/ropensci/treedata.table/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://github.com/ropensci/treedata.table"><img src="https://img.shields.io/badge/devel%20version-0.1.0-blue.svg" alt="Devel version"></a> <a href="https://www.tidyverse.org/lifecycle/#ropensci/treedata.table"><img src="https://img.shields.io/badge/lifecycle-ropensci/treedata.table-blue.svg" alt="Lifecycle"></a> <a href="https://github.com/ropensci/treedata.table"><img src="https://img.shields.io/github/languages/code-size/ropensci/treedata.table.svg" alt="Code size"></a> <a href="https://github.com/ropensci/treedata.table/commits/master"><img src="https://img.shields.io/github/last-commit/ropensci/treedata.table.svg" alt="Latest commit"></a> <a href="https://github.com/ropensci/onboarding/issues/367"><img src="https://badges.ropensci.org/156_status.svg" alt="rOpenSci badge"></a> <a href="https://github.com/ropensci/treedata.table/actions"><img src="https://github.com/ropensci/treedata.table/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://www.codefactor.io/repository/github/ropensci/treedata.table"><img src="https://www.codefactor.io/repository/github/ropensci/treedata.table/badge" alt="CodeFactor"></a> <a href="https://cran.r-project.org/package=treedata.table"><embed src="https://cranlogs.r-pkg.org/badges/treedata.table"></embed></a> <!-- badges: end --></p>
+<p><a href="https://codecov.io/gh/ropensci/treedata.table"><img src="https://codecov.io/gh/ropensci/treedata.table/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://github.com/ropensci/treedata.table"><img src="https://img.shields.io/badge/devel%20version-0.1.0-blue.svg" alt="Devel version"></a> <a href="https://www.tidyverse.org/lifecycle/#ropensci/treedata.table"><img src="https://img.shields.io/badge/lifecycle-ropensci/treedata.table-blue.svg" alt="Lifecycle"></a> <a href="https://github.com/ropensci/treedata.table"><img src="https://img.shields.io/github/languages/code-size/ropensci/treedata.table.svg" alt="Code size"></a> <a href="https://github.com/ropensci/treedata.table/commits/master"><img src="https://img.shields.io/github/last-commit/ropensci/treedata.table.svg" alt="Latest commit"></a> <a href="https://github.com/ropensci/onboarding/issues/367"><img src="https://badges.ropensci.org/156_status.svg" alt="rOpenSci badge"></a> <a href="https://github.com/ropensci/treedata.table/actions"><img src="https://github.com/ropensci/treedata.table/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://www.codefactor.io/repository/github/ropensci/treedata.table"><img src="https://www.codefactor.io/repository/github/ropensci/treedata.table/badge" alt="CodeFactor"></a> <a href="https://cran.r-project.org/package=treedata.table"><img src="https://cranlogs.r-pkg.org/badges/treedata.table"></a> <!-- badges: end --></p>
 <p>The <a href="https://github.com/Rdatatable/data.table"><code>data.table</code> package</a> enables high-performance extended functionality for data tables in R. <code>treedata.table</code> is a wrapper for <code>data.table</code> for phylogenetic analyses that matches a phylogeny to the data.table, and preserves matching during <code>data.table</code> operations.</p>
+<div id="tldr" class="section level3">
+<h3 class="hasAnchor">
+<a href="#tldr" class="anchor"></a>tl;dr</h3>
+<p><code>treedata.table</code> is a library for syncing data between a dataset and the tips of trees to enable efficient data and taxon management, as well as on-the-fly indexing and data selection in comparative analyses.</p>
 </div>
-<div id="why-use-treedata-table" class="section level2">
+</div>
+<div id="why-use-treedatatable" class="section level2">
 <h2 class="hasAnchor">
-<a href="#why-use-treedata-table" class="anchor"></a>Why use <code>treedata.table</code>?</h2>
+<a href="#why-use-treedatatable" class="anchor"></a>Why use <code>treedata.table</code>?</h2>
 <p>Simultaneous processing of phylogenetic trees and data remains a computationally-intensive task. For example, processing a dataset of phylogenetic characters alongside a tree in <code>treedata.table</code> takes <strong>90%</strong> longer than processing the data alone in <code>data.table</code> (<em>Fig. 1A</em>). <code>treedata.table</code> provides new tools for increasing the speed and efficiency of phylogenetic data processing. Data manipulation in <code>treedata.table</code> is significantly faster than in other commonly used packages such as <code>base</code> (<strong>&gt;35%</strong>), <code>treeplyr</code> (<strong>&gt;60%</strong>), and <code>dplyr</code> (<strong>&gt;90%</strong>). Additionally, <code>treedata.table</code> is <strong>&gt;400%</strong> faster than <code>treeplyr</code> during the initial data/tree matching step (<em>Fig. 1B</em>).</p>
 <div style="text-align:center">
-<img src="reference/figures/bench_TDT_Aug14.png" align="middle" width="600">
+<p><img src="reference/figures/bench_TDT_Aug14.png" align="middle" width="600"></p>
 </div>
 <p><font size="2"> <strong>Fig. 1.</strong> Results for the <code>treedata.table</code> microbenchmark during (<strong>A</strong>) data manipulation (<code>treedata.table[</code>) and (<strong>B</strong>) tree/data matching steps. We compare the performance of <code>treedata.table</code> against <code>treedata.table</code>, <code>base</code>, <code>treeplyr</code>, and <code>dplyr</code> using the <code>microbenchmark</code> R package.</font></p>
 </div>
-<div id="installing-treedata-table" class="section level2">
+<div id="installing-treedatatable" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installing-treedata-table" class="anchor"></a>Installing <code>treedata.table</code>
+<a href="#installing-treedatatable" class="anchor"></a>Installing <code>treedata.table</code>
 </h2>
 <p>treedata.table can be installed from CRAN or GitHub at the present. We presently recommend installing using <a href="https://cran.r-project.org/web/packages/remotes/index.html"><code>remotes</code></a> if using the GitHib version:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"treedata.table"</span><span class="op">)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"ropensci/treedata.table"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"ropensci/treedata.table"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropensci.github.io/treedata.table">treedata.table</a></span><span class="op">)</span></code></pre></div>
 </div>
-<div id="what-can-i-do-with-treedata-table" class="section level2">
+<div id="what-can-i-do-with-treedatatable" class="section level2">
 <h2 class="hasAnchor">
-<a href="#what-can-i-do-with-treedata-table" class="anchor"></a>What Can I Do With <code>treedata.table</code>?</h2>
+<a href="#what-can-i-do-with-treedatatable" class="anchor"></a>What Can I Do With <code>treedata.table</code>?</h2>
 <p><code>treedata.table</code> is designed with the intention of being able to efficiently manipulate trait data and phylogenetic trees to enable comparative analyses. With the package is bundled some example data. Let’s load it in and look at some common analyses.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">anolis</span><span class="op">)</span>
 <span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>, data <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
-<p>The function <code>as.treedata.table</code> converts a normal comma- or tab-delimited file to the <code>data.table</code> <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html">format</a>. This enables a range of efficient and intutive indexing and selection operations.</p>
-<p>As an example, in our dataset is the column <code>SVL</code>, or snout-to-vent length in our anoles. We can index out this column on the fly, and run a Brownian motion analysis on this trait using the R package Geiger:</p>
+<p>The function <code>as.treedata.table</code> converts a normal comma- or tab-delimited file to the <code>data.table</code> <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html">format</a>. This enables a range of efficient and intuitive indexing and selection operations.</p>
+<p>Now, we’re going to use the <code>tdt</code> and <code>extractVector</code> functions in <code>data.table</code>. As an example, in our dataset is the column <code>SVL</code>, or snout-to-vent length in our anoles. We can index out this column on the fly, and run a Brownian motion analysis on this trait using the R package Geiger:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/tdt.html">tdt</a></span><span class="op">(</span><span class="va">td</span>, <span class="fu">geiger</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span><span class="op">(</span><span class="va">phy</span>, <span class="fu"><a href="reference/extractVector.html">extractVector</a></span><span class="op">(</span><span class="va">td</span>, <span class="st">'SVL'</span><span class="op">)</span>, model<span class="op">=</span><span class="st">"BM"</span>, ncores<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>We can also do efficient dropping of taxa from the analysis like so:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/droptreedata.table.html">droptreedata.table</a></span><span class="op">(</span>tdObject<span class="op">=</span><span class="va">td</span>, taxa<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> <span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="tldr" class="section level3">
-<h3 class="hasAnchor">
-<a href="#tldr" class="anchor"></a>tl;dr</h3>
-<p><code>treedata.table</code> is a library for syncing data between a dataset and the tipcs of trees to enable efficient data and taxon management, as well as on-the-fly indexing and data selection in comparative analyses.</p>
-</div>
 </div>
 <div id="additional-resources" class="section level2">
 <h2 class="hasAnchor">
@@ -168,6 +169,17 @@
 <h2 class="hasAnchor">
 <a href="#contact" class="anchor"></a>Contact</h2>
 <p>Please see the package <a href="DESCRIPTION">DESCRIPTION</a> for package authors.</p>
+</div>
+<div id="citation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#citation" class="anchor"></a>Citation</h2>
+<p>Please use the following citation when using the package:</p>
+<p><code>Cristian Román-Palacios, Josef Uyeda, and April Wright (2021). treedata.table: Manipulation of Matched Phylogenies and Data using 'data.table'. Available at: https://cran.r-project.org/web/packages/treedata.table/</code></p>
+</div>
+<div id="license" class="section level2">
+<h2 class="hasAnchor">
+<a href="#license" class="anchor"></a>License</h2>
+<p>Please see the package <a href="LICENSE">LICENSE</a>.</p>
 <hr>
 <p><a href="https://ropensci.org"><img src="https://ropensci.org/public_images/ropensci_footer.png" alt="ropensci_footer"></a></p>
 </div>
@@ -198,7 +210,7 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Josef Uyeda <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-4624-9680" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Cristian Roman-Palacios <br><small class="roles"> Maintainer </small> <a href="https://orcid.org/0000-0003-4692-3225" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Cristian Roman-Palacios <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-4692-3225" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>April Wright <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-4692-3225" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>

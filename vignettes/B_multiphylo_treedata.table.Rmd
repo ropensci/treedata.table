@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Working with multiphylo objects
 
-`treedata.table` further allows the matching of multiple phylogenies (`multiPhylo`) against a single dataset (`data.frame`). Below, we modified the anole dataset to explain the extended functionality of `treedata.table` with `multiPhylo` objects.
+`treedata.table` further allows the matching of multiple phylogenies (`multiPhylo`) against a single dataset (`data.frame`). Below, we modified the anole dataset to explain the extended functionality of `treedata.table` with `multiPhylo` objects. Note that all the trees in the `multiPhylo` must have exactly the same taxa.
 
 We first load the sample dataset.
 
@@ -30,7 +30,9 @@ td <- as.treedata.table(tree = anolis$phy, data = anolis$dat)
 ```
 
 
-We then create a `multiPhylo` object including only two `phylo` objects. Users can provide any number of `phylo` objects within the `multiPhylo` object. However, trees should only differ in their topology. In other words, all trees must have the same tip labels. Nevertheless, both the provided `multiPhylo` and `data.frame` should partially overlap.
+We then create a `multiPhylo` object including only two `phylo` objects. Users can provide any number of `phylo` objects within the `multiPhylo` object. However, trees can only differ in their topology. In other words, all trees must have the same tip labels. 
+
+We also note that both the provided `multiPhylo` and `data.frame` should partially overlap
 
 ```{r}
 trees<-list(anolis$phy,anolis$phy)
@@ -38,13 +40,13 @@ class(trees) <- "multiPhylo"
 trees
 ```
 
-Now, we create our treedata.table object by combining the trait data (`data.frame`) and the newly generated `multiPhylo` object.
+Now, we create our treedata.table object by combining the trait data (`data.frame`) and the newly generated `multiPhylo` object. Note that there is only a single character matrix.
 
 ```{r}
 td <- as.treedata.table(tree=trees, data=anolis$dat)
 ```
 
-The resulting `td` object now returns a `multiPhylo` object under `phy` 
+The resulting `td` object now returns a `multiPhylo` object under `phy`. This objectcontains only the overlapping taxa between the multiphylo objects and the input dataset.
 
 ```{r}
 class(td$phy);td$phy

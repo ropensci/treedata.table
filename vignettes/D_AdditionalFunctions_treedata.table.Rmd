@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Additional functions for manipulating data
 
-`treedata.table` includes additional functions that allow the identification of `discrete` and `continuous` character in a given dataset. We first load the dataset:
+`treedata.table` includes additional functions that allow the identification of `discrete` and `continuous` characters in a given dataset. We first load the dataset:
 
 ```{r}
 library(ape)

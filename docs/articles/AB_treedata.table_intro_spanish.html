@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">treedata.table</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -98,7 +98,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="AB_treedata.table_intro_spanish_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Breve Introducción al Paquete treedata.table</h1>
@@ -119,21 +119,24 @@
 </h2>
 <p>El paquete <code>treedata.table</code> tiene como objetivo permitir a investigadores acceder y manipular datos filogenéticos usando herramientas del paquete <code>data.table</code>. <code>data.table</code> tiene diferentes funciones para manipular rápidamente datos en una forma eficiente.</p>
 <p>El primer paso para usar <code>treedata.table</code> consiste en crear un objeto <code>treedata.table</code>. El objeto <code>treedata.table</code> empareja los tip.labels de la filogenia con una columna en el <code>data.frame</code> que contiene los nombres de los taxones. Este paso inicial permite la manipulación subsecuente y coordinada de los datos en el árbol y la matriz de caracteres dentro de <code>treedata.table</code>.</p>
-<p>Para este tutorial vamos a usar los datos de Anolis creados en <code>treeplyr</code>. Estos caracteres fueron generados aleatoriamente. Es importante resaltar tres aspectos. Primero, el árbol tiene que ser en formato <code>phylo</code> (o <code>multiPhylo</code> en caso de múltiples arboles). Segundo, la matriz de caracteres tiene que están en formato <code>data.frame</code>. Tercero, la matriz de caracteres tiene que contener una columna con los nombres de los taxones coincidiendo con los tip.labels del árbol (o arboles).</p>
+<p>Para este tutorial vamos a usar los datos de <em>Anolis</em> creados en <code>treeplyr</code>. Estos caracteres fueron generados aleatoriamente. Es importante resaltar tres aspectos. Primero, el árbol tiene que ser en formato <code>phylo</code> (o <code>multiPhylo</code> en caso de múltiples árboles). Segundo, la matriz de caracteres tiene que estár en formato <code>data.frame</code>. Tercero, la matriz de caracteres tiene que contener una columna con los nombres de los taxones coincidiendo con los tip.labels del árbol (o árboles).</p>
 <p>El objeto <code>treedata.table</code> se crea usando la función <code>as.treedata.table</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropensci.github.io/treedata.table">treedata.table</a></span><span class="op">)</span>
-
-<span class="co"># Cargamos los datos del ejemplo</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropensci.github.io/treedata.table">treedata.table</a></span><span class="op">)</span></code></pre></div>
+<pre><code>##          Thank you for using the {treedata.table} R package!   
+## 
+##                         🙂Happy coding!!🙂</code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Cargamos los datos del ejemplo</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">anolis</span><span class="op">)</span>
 <span class="co"># Creamos el objecto treedata.table con as.treedata.table</span>
 <span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>, data <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Phylo object detected</code></pre>
-<pre><code>## No tips were dropped from the original tree/dataset</code></pre>
+<pre><code>## All tips from original tree/dataset were preserved</code></pre>
 <p>Podemos revisar el objeto resultante simplemente llamando el nombre del objeto en la consola. La matriz de caracteres, antes en <code>data.frame</code>, es ahora un <code>data.table</code></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span></code></pre></div>
 <pre><code>## $phy 
 ## 
@@ -160,7 +163,7 @@
 ## 5:        -1.375769  -0.6304338  0.7193130 -1.2228276       TG   Cuba
 ## 6:        -1.626299  -1.7543006  1.4127184  0.1832345       TG   Cuba</code></pre>
 <p>Adicionalmente, la matriz de caracteres en el nuevo formato <code>data.table</code> ha sido re-ordenado para tener las filas en el mismo orden que los tip.labels en el árbol.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span><span class="op">$</span><span class="va">phy</span><span class="op">$</span><span class="va">tip.label</span> <span class="op">==</span> <span class="va">td</span><span class="op">$</span><span class="va">dat</span><span class="op">$</span><span class="va">tip.label</span></code></pre></div>
 <pre><code>##   [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 ##  [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
@@ -174,7 +177,7 @@
 <h2 class="hasAnchor">
 <a href="#manipulando-datos" class="anchor"></a>Manipulando Datos</h2>
 <p>La matriz de datos en el objeto treedata.table puede ser indexada como cualquier otro objeto <code>data.table</code>. Por ejemplo, podemos hacer lo siguiente para extraer la columna con información de longitud hocico-cloaca (SVL) para cada especie.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span><span class="op">$</span><span class="va">dat</span><span class="op">[</span>,<span class="st">'SVL'</span><span class="op">]</span></code></pre></div>
 <pre><code>##           SVL
 ##   1: 4.039125
@@ -279,7 +282,7 @@
 ## 100: 3.663049
 ##           SVL</code></pre>
 <p>También podemos usar los brackets dobles para extraer directamente la misma columna como un vector con nombres.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span><span class="op">[[</span><span class="st">"SVL"</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <pre><code>##            ahli         allogus     rubribarbus           imias          sagrei 
 ##        4.039125        4.040138        4.078469        4.099687        4.067162 
@@ -321,8 +324,8 @@
 ##        3.770613        3.827445        3.908550        3.859835        4.302036 
 ##        aliniger      singularis    chlorocyanus     coelestinus        occultus 
 ##        4.036557        4.057997        4.275448        4.297965        3.663049</code></pre>
-<p>El mismo resultado puede también ser logrado usando la función <code>extractVector</code>. El producto de <code>extractVector</code> como los brackets dobles es un vector con nombres.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<p>El mismo resultado puede también ser logrado usando la función <code>extractVector</code>. Al igual que con los brackets dobles, el resultado de la función <code>extractVector</code> es un vector con nombres.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/extractVector.html">extractVector</a></span><span class="op">(</span><span class="va">td</span>, <span class="st">'SVL'</span><span class="op">)</span></code></pre></div>
 <pre><code>##            ahli         allogus     rubribarbus           imias          sagrei 
 ##        4.039125        4.040138        4.078469        4.099687        4.067162 
@@ -365,7 +368,7 @@
 ##        aliniger      singularis    chlorocyanus     coelestinus        occultus 
 ##        4.036557        4.057997        4.275448        4.297965        3.663049</code></pre>
 <p>Múltiples columnas pueden tambien ser extraídas usando <code>extractVector</code>.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/extractVector.html">extractVector</a></span><span class="op">(</span><span class="va">td</span>, <span class="st">'SVL'</span>,<span class="st">'ecomorph'</span><span class="op">)</span></code></pre></div>
 <pre><code>## $SVL
 ##            ahli         allogus     rubribarbus           imias          sagrei 
@@ -450,9 +453,9 @@
 ##             "U"            "GB"            "GB"            "GB"            "TW" 
 ##        aliniger      singularis    chlorocyanus     coelestinus        occultus 
 ##            "TC"            "TC"            "TC"            "TC"            "TW"</code></pre>
-<p>Sin embargo, hay un par de aspectos que son únicos a <code>[[.treedata.table()</code> y <code><a href="../reference/extractVector.html">extractVector()</a></code>. Primero, <code>[[.treedata.table()</code> tiene un argumento adicional que permite un match parcial del nombre de la columna. Segundo, <code><a href="../reference/extractVector.html">extractVector()</a></code> puede extraer múltiples columna y permite una evaluación no standard.</p>
+<p>Hay un par de aspectos que son únicos a <code>[[.treedata.table()</code> y <code><a href="../reference/extractVector.html">extractVector()</a></code>. Primero, <code>[[.treedata.table()</code> tiene un argumento adicional que permite un correspondencia parcial del nombre de la columna (i.e. cuando el nombre objetivo tiene una superposicion parcial con los elementos en el objeto). Segundo, <code><a href="../reference/extractVector.html">extractVector()</a></code> puede extraer múltiples columnas y permite una evaluación no estandard (i.e. los nombres son tratados como cadenas de texto literal).</p>
 <p>El poder real de <code>treedata.table</code> está en coindexar el árbol con la matriz de caracteres. Por ejemplo, en el siguiente comando usamos la sintaxis de <code>data.table</code> para extraer el primer representante de cada ecomorfo y retener todas las columnas.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"> <span class="va">td</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">.SD</span>, <span class="fl">1</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"ecomorph"</span><span class="op">]</span></code></pre></div>
 <pre><code>## $phy 
 ## 
@@ -479,7 +482,7 @@
 ## 5:        0.1288233 -0.08837008  0.46528679 -0.56754896     Jamaica
 ## 6:       -0.7992905  0.26096544 -0.27169792  0.01367143     Jamaica</code></pre>
 <p>Podemos hacer la misma operación con múltiples columnas.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">.SD</span>, <span class="fl">1</span><span class="op">)</span>, by <span class="op">=</span> <span class="fu">.</span><span class="op">(</span><span class="va">ecomorph</span>, <span class="va">island</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>## $phy 
 ## 
@@ -506,7 +509,7 @@
 ## 5:              1.6852579        1.0144193  0.41064280 -0.11746257  0.7022959
 ## 6:              1.8543308        0.1288233 -0.08837008  0.46528679 -0.5675490</code></pre>
 <p>También implementamos la función <code>tail</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"> <span class="va">td</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">.SD</span>, <span class="fl">1</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"ecomorph"</span><span class="op">]</span></code></pre></div>
 <pre><code>## $phy 
 ## 
@@ -532,8 +535,8 @@
 ## 4:       1.02571762   0.2909266 -0.6209660  1.2803335  Hispaniola
 ## 5:      -0.09577977  -1.1916870  1.2153014  0.0324486 Puerto Rico
 ## 6:       0.13156827   0.6289893  0.1468777 -0.4409775  Hispaniola</code></pre>
-<p>Las columnas en <code>treedata.table</code> pueden ser también operadas usando sintaxis en <code>data.table</code>. En el siguiente ejemplo, los arboles solo incluirán especies distribuidas en Cuba. Este es el equivalente a filtrar usando <code>dplyr</code>. Después, una nueva columna llamada “Index” es creada en el objeto <code>data.table</code> dentro del objeto <code>treedata.table</code> con los valores de SVL+hostility. En resumen, la siguiente línea permite en forma simultanea crear una nueva columna y resumir el numero de taxones en la filogenia a las especies de interés.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<p>Las columnas en <code>treedata.table</code> pueden ser operadas usando la misma sintaxis de <code>data.table</code>. En el siguiente ejemplo, los árboles solo incluirán especies distribuidas en Cuba. Este es el equivalente a filtrar usando <code>dplyr</code>. Después, una nueva columna llamada “Index” es creada en el objeto <code>data.table</code> dentro del objeto <code>treedata.table</code> con los valores de SVL+hostility. En resumen, la siguiente línea permite en forma simultánea crear una nueva columna y reducir el número de taxones en la filogenia a las especies de interés.</p>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span><span class="op">[</span><span class="va">island</span> <span class="op">==</span> <span class="st">"Cuba"</span>,<span class="fu">.</span><span class="op">(</span>Index<span class="op">=</span><span class="va">SVL</span><span class="op">+</span><span class="va">hostility</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>## $phy 
 ## 
@@ -552,8 +555,8 @@
 ## 4: 3.688875
 ## 5: 4.786475
 ## 6: 5.526089</code></pre>
-<p>También podemos usar <code>treedata.table</code> para correr funciones en nuestros datos. En el siguiente ejemplo, evaluamos un modelo de evolución browniano sobre los datos de SVL en nuestro set de datos. Usamos una combinación de <code>tdt</code>, <code>extractVector</code> y <code><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">geiger::fitContinuous</a></code> para correr funciones en nuestros datos, extraer un vector de caracteres y ajustar el model en cuestión, respectivamente.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<p><code>treedata.table</code> permite aplicar funciones directamente en nuestros datos de interés. En el siguiente ejemplo, evaluamos un modelo de evolución browniano sobre los datos de SVL en nuestro set de datos. Usamos una combinación de <code>tdt</code>, <code>extractVector</code> y <code><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">geiger::fitContinuous</a></code> para correr funciones en nuestros datos, extraer un vector de caracteres y ajustar el model en cuestión, respectivamente.</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tdt.html">tdt</a></span><span class="op">(</span><span class="va">td</span>, <span class="fu">geiger</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span><span class="op">(</span><span class="va">phy</span>, <span class="fu"><a href="../reference/extractVector.html">extractVector</a></span><span class="op">(</span><span class="va">td</span>, <span class="st">'SVL'</span><span class="op">)</span>, model<span class="op">=</span><span class="st">"BM"</span>, ncores<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Phylo object detected. Expect a single function output</code></pre>
 <pre><code>## GEIGER-fitted comparative model of continuous data
@@ -578,24 +581,24 @@
 ##  'bnd' -- bounds for likelihood search
 ##  'res' -- optimization iteration summary
 ##  'opt' -- maximum likelihood parameter estimates</code></pre>
-<p>Los tips en el árbol también pueden ser removidos fácilmente, con los cambios también reflejados sobre la matriz de caracteres. En el siguiente ejemplo, removemos dos taxones por sus nombres.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<p>Los terminales en el árbol también pueden ser removidos fácilmente, con los cambios también reflejados sobre la matriz de caracteres. En el siguiente ejemplo, removemos dos taxones por sus nombres.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/droptreedata.table.html">droptreedata.table</a></span><span class="op">(</span>tdObject<span class="op">=</span><span class="va">td</span>, taxa<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> <span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## 2 taxa were dropped from the treedata.table object</code></pre>
 <p>Revisamos si <em>A. chamaeleonides</em> y <em>A. eugenegrahami</em> aún están en el árbol.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> <span class="op">)</span> <span class="op">%in%</span> <span class="va">dt</span><span class="op">$</span><span class="va">phy</span><span class="op">$</span><span class="va">tip.label</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE</code></pre>
 <p>Y podemos hacer lo mismo con la matriz de caracteres en el nuevo objeto <code>treedata.table</code>.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"chamaeleonides"</span> ,<span class="st">"eugenegrahami"</span> <span class="op">)</span> <span class="op">%in%</span> <span class="va">dt</span><span class="op">$</span><span class="va">dat</span><span class="op">$</span><span class="va">X</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE</code></pre>
-<p>Por ultimo, el arbol y la matriz de caracteres pueden ser extraidos de el objeto <code>treedata.table</code> fácilmente usando la función <code>pulltreedata.table</code>.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<p>Por último, el árbol y la matriz de caracteres pueden ser extraídos de el objeto <code>treedata.table</code> fácilmente usando la función <code>pulltreedata.table</code>.</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pulltreedata.table.html">pulltreedata.table</a></span><span class="op">(</span><span class="va">td</span>, <span class="st">"dat"</span><span class="op">)</span>
 <span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pulltreedata.table.html">pulltreedata.table</a></span><span class="op">(</span><span class="va">td</span>, <span class="st">"phy"</span><span class="op">)</span></code></pre></div>
 <p>La tabla</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span></code></pre></div>
 <pre><code>##            tip.label      SVL   PCI_limbs   PCII_head PCIII_padwidth_vs_tail
 ##   1:            ahli 4.039125 -3.24828599  0.37225191             -1.0422187
@@ -904,7 +907,7 @@
 ## 100: Puerto Rico
 ##           island</code></pre>
 <p>Y el árbol</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tree</span></code></pre></div>
 <pre><code>## 
 ## Phylogenetic tree with 100 tips and 99 internal nodes.
