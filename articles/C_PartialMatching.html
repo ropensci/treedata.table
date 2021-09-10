@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">treedata.table</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -130,8 +130,8 @@
 <span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>, data <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Phylo object detected</code></pre>
-<pre><code>## No tips were dropped from the original tree/dataset</code></pre>
-<p>Tips that are not common between the tree (or trees) and dataset are dropped from the resulting <code>treedata.table</code> object. For instance, below I have modified the original anole phylogeny such that <em>A. ahli</em> (<strong>ahi</strong>) is replaced for a label that is not present in the dataset (<strong>NAA</strong>).</p>
+<pre><code>## All tips from original tree/dataset were preserved</code></pre>
+<p>Tips that are not common between the tree (or trees) and dataset are dropped from the resulting <code>treedata.table</code> object. For instance, below I have modified the original anole phylogeny such that <em>A. ahli</em> (<strong>ahli</strong>) is replaced for a label that is not present in the dataset (<strong>NAA</strong>).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">anolis_newtip</span><span class="op">&lt;-</span><span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>
 <span class="va">anolis_newtip</span><span class="op">$</span><span class="va">tip.label</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">&lt;-</span><span class="st">'NAA'</span>
@@ -149,7 +149,7 @@
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Phylo object detected</code></pre>
 <pre><code>## 1 tip(s) dropped from the original tree
-## 1 tip(s) dropped from the original dataset</code></pre>
+## 1 row(s) dropped from the original dataset</code></pre>
 <p>Note that <code>as.treedata.table</code> drops all non-overlapping tips (<strong>NAA</strong> [present in the tree but not in the trait data] and <strong>ahi</strong> [present in the database but not in tree] in this case) and returns a <code>treedata.table</code> object with fully matching <code>phy</code> and <code>data</code> objects.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span></code></pre></div>
@@ -194,7 +194,7 @@
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Multiphylo object detected</code></pre>
 <pre><code>## 1 tip(s) dropped from 2 trees
-## 1 tip(s)  dropped from the original dataset</code></pre>
+## 1 row(s) dropped from the original dataset</code></pre>
 <p>Note that 1 tip was dropped for all trees in the <code>multiPhylo</code> object and a single row was deleted from the <code>data.table</code> object in the <code>treedata.table</code> object.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span></code></pre></div>

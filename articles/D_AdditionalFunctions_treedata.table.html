@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">treedata.table</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <div id="additional-functions-for-manipulating-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#additional-functions-for-manipulating-data" class="anchor"></a>Additional functions for manipulating data</h2>
-<p><code>treedata.table</code> includes additional functions that allow the identification of <code>discrete</code> and <code>continuous</code> character in a given dataset. We first load the dataset:</p>
+<p><code>treedata.table</code> includes additional functions that allow the identification of <code>discrete</code> and <code>continuous</code> characters in a given dataset. We first load the dataset:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropensci.github.io/treedata.table">treedata.table</a></span><span class="op">)</span></code></pre></div>
@@ -130,7 +130,7 @@
 <span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>, data <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Phylo object detected</code></pre>
-<pre><code>## No tips were dropped from the original tree/dataset</code></pre>
+<pre><code>## All tips from original tree/dataset were preserved</code></pre>
 <p>The <code><a href="../reference/detectCharacterType.html">detectCharacterType()</a></code> function can be used to examine whether <code>SVL</code> is <code>discrete</code> or <code>continuous</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/detectCharacterType.html">detectCharacterType</a></span><span class="op">(</span><span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">$</span><span class="va">SVL</span><span class="op">)</span></code></pre></div>

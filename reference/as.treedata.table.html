@@ -88,7 +88,7 @@ treedata.table, which can be manipulated as a data.table." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">treedata.table</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -206,15 +206,15 @@ column</p></td>
 
 <span class='co'># A phylo object that fully matches the data</span>
 <span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'>as.treedata.table</span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='co'># A multiphylo object that fully matches the data</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>All tips from original tree/dataset were preserved</span></div><div class='input'><span class='co'># A multiphylo object that fully matches the data</span>
 <span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'>as.treedata.table</span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>treesFM</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='co'># A phylo object that partially matches the data</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>All tips from original tree/dataset were preserved</span></div><div class='input'><span class='co'># A phylo object that partially matches the data</span>
 <span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'>as.treedata.table</span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>anolis1</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
-#&gt; <span class='message'>1 tip(s) dropped from the original dataset</span></div><div class='input'><span class='co'># A multiphylo object that partially matches the data</span>
+#&gt; <span class='message'>1 row(s) dropped from the original dataset</span></div><div class='input'><span class='co'># A multiphylo object that partially matches the data</span>
 <span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'>as.treedata.table</span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>trees</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
-#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div></pre>
+#&gt; <span class='message'>1 row(s) dropped from the original dataset</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

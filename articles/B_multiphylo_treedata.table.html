@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">treedata.table</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <div id="working-with-multiphylo-objects" class="section level2">
 <h2 class="hasAnchor">
 <a href="#working-with-multiphylo-objects" class="anchor"></a>Working with multiphylo objects</h2>
-<p><code>treedata.table</code> further allows the matching of multiple phylogenies (<code>multiPhylo</code>) against a single dataset (<code>data.frame</code>). Below, we modified the anole dataset to explain the extended functionality of <code>treedata.table</code> with <code>multiPhylo</code> objects.</p>
+<p><code>treedata.table</code> further allows the matching of multiple phylogenies (<code>multiPhylo</code>) against a single dataset (<code>data.frame</code>). Below, we modified the anole dataset to explain the extended functionality of <code>treedata.table</code> with <code>multiPhylo</code> objects. Note that all the trees in the <code>multiPhylo</code> must have exactly the same taxa.</p>
 <p>We first load the sample dataset.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span>
@@ -131,20 +131,21 @@
 <span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>, data <span class="op">=</span> <span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Phylo object detected</code></pre>
-<pre><code>## No tips were dropped from the original tree/dataset</code></pre>
-<p>We then create a <code>multiPhylo</code> object including only two <code>phylo</code> objects. Users can provide any number of <code>phylo</code> objects within the <code>multiPhylo</code> object. However, trees should only differ in their topology. In other words, all trees must have the same tip labels. Nevertheless, both the provided <code>multiPhylo</code> and <code>data.frame</code> should partially overlap.</p>
+<pre><code>## All tips from original tree/dataset were preserved</code></pre>
+<p>We then create a <code>multiPhylo</code> object including only two <code>phylo</code> objects. Users can provide any number of <code>phylo</code> objects within the <code>multiPhylo</code> object. However, trees can only differ in their topology. In other words, all trees must have the same tip labels.</p>
+<p>We also note that both the provided <code>multiPhylo</code> and <code>data.frame</code> should partially overlap</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">trees</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">anolis</span><span class="op">$</span><span class="va">phy</span>,<span class="va">anolis</span><span class="op">$</span><span class="va">phy</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">trees</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"multiPhylo"</span>
 <span class="va">trees</span></code></pre></div>
 <pre><code>## 2 phylogenetic trees</code></pre>
-<p>Now, we create our treedata.table object by combining the trait data (<code>data.frame</code>) and the newly generated <code>multiPhylo</code> object.</p>
+<p>Now, we create our treedata.table object by combining the trait data (<code>data.frame</code>) and the newly generated <code>multiPhylo</code> object. Note that there is only a single character matrix.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">td</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as.treedata.table.html">as.treedata.table</a></span><span class="op">(</span>tree<span class="op">=</span><span class="va">trees</span>, data<span class="op">=</span><span class="va">anolis</span><span class="op">$</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## Tip labels detected in column: X</code></pre>
 <pre><code>## Multiphylo object detected</code></pre>
-<pre><code>## No tips were dropped from the original trees/dataset</code></pre>
-<p>The resulting <code>td</code> object now returns a <code>multiPhylo</code> object under <code>phy</code></p>
+<pre><code>## All tips from original tree/dataset were preserved</code></pre>
+<p>The resulting <code>td</code> object now returns a <code>multiPhylo</code> object under <code>phy</code>. This objectcontains only the overlapping taxa between the multiphylo objects and the input dataset.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">td</span><span class="op">$</span><span class="va">phy</span><span class="op">)</span>;<span class="va">td</span><span class="op">$</span><span class="va">phy</span></code></pre></div>
 <pre><code>## [1] "multiPhylo"</code></pre>

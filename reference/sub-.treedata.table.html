@@ -83,7 +83,7 @@ data.table." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">treedata.table</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -197,8 +197,8 @@ corresponding with the changes set to <code>$dat</code> using
 
 <span class='co'># A phylo object that fully matches the data</span>
 <span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original tree/dataset</span></div><div class='input'><span class='va'>td</span><span class='op'>[</span>, <span class='va'>SVL</span><span class='op'>]</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>All tips from original tree/dataset were preserved</span></div><div class='input'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>anolis</span><span class='op'>$</span><span class='va'>phy</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>All tips from original tree/dataset were preserved</span></div><div class='input'><span class='va'>td</span><span class='op'>[</span>, <span class='va'>SVL</span><span class='op'>]</span>
 </div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 100 tips and 99 internal nodes.
@@ -259,8 +259,8 @@ corresponding with the changes set to <code>$dat</code> using
 #&gt; 6:              1.8543308        0.1288233 -0.08837008  0.46528679 -0.5675490</div><div class='input'>
 <span class='co'># A multiphylo object that fully matches the data</span>
 <span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>treesFM</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>treesFM</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>No tips were dropped from the original trees/dataset</span></div><div class='input'><span class='va'>td</span><span class='op'>[</span>, <span class='va'>SVL</span><span class='op'>]</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>All tips from original tree/dataset were preserved</span></div><div class='input'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>treesFM</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>All tips from original tree/dataset were preserved</span></div><div class='input'><span class='va'>td</span><span class='op'>[</span>, <span class='va'>SVL</span><span class='op'>]</span>
 </div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
@@ -304,9 +304,9 @@ corresponding with the changes set to <code>$dat</code> using
 <span class='co'># A phylo object that partially matches the data</span>
 <span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>anolis1</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
-#&gt; <span class='message'>1 tip(s) dropped from the original dataset</span></div><div class='input'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>anolis1</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+#&gt; <span class='message'>1 row(s) dropped from the original dataset</span></div><div class='input'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>anolis1</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Phylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from the original tree</span>
-#&gt; <span class='message'>1 tip(s) dropped from the original dataset</span></div><div class='input'><span class='va'>td</span><span class='op'>[</span>, <span class='va'>SVL</span><span class='op'>]</span>
+#&gt; <span class='message'>1 row(s) dropped from the original dataset</span></div><div class='input'><span class='va'>td</span><span class='op'>[</span>, <span class='va'>SVL</span><span class='op'>]</span>
 </div><div class='output co'>#&gt; $phy 
 #&gt; 
 #&gt; Phylogenetic tree with 99 tips and 98 internal nodes.
@@ -368,9 +368,9 @@ corresponding with the changes set to <code>$dat</code> using
 <span class='co'># A multiphylo object that partially matches the data</span>
 <span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span>tree <span class='op'>=</span> <span class='va'>trees</span>, data <span class='op'>=</span> <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
-#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div><div class='input'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>trees</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
+#&gt; <span class='message'>1 row(s) dropped from the original dataset</span></div><div class='input'><span class='va'>td</span> <span class='op'>&lt;-</span> <span class='fu'><a href='as.treedata.table.html'>as.treedata.table</a></span><span class='op'>(</span><span class='va'>trees</span>, <span class='va'>anolis</span><span class='op'>$</span><span class='va'>dat</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Tip labels detected in column: X</span></div><div class='output co'>#&gt; <span class='message'>Multiphylo object detected </span></div><div class='output co'>#&gt; <span class='message'>1 tip(s) dropped from 2 trees</span>
-#&gt; <span class='message'>1 tip(s)  dropped from the original dataset</span></div><div class='input'><span class='va'>td</span><span class='op'>[</span>, <span class='va'>SVL</span><span class='op'>]</span>
+#&gt; <span class='message'>1 row(s) dropped from the original dataset</span></div><div class='input'><span class='va'>td</span><span class='op'>[</span>, <span class='va'>SVL</span><span class='op'>]</span>
 </div><div class='output co'>#&gt; $phy 
 #&gt; 2 phylogenetic trees
 #&gt; 
