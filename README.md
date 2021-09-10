@@ -86,7 +86,7 @@ Please see the package [DESCRIPTION](DESCRIPTION) for package authors.
 
 Please use the following citation when using the package:
 
-`Cristian Román-Palacios, Josef Uyeda, and April Wright (2021). treedata.table: Manipulation of Matched Phylogenies and Data using 'data.table'. Available at: https://cran.r-project.org/web/packages/treedata.table/`
+*Josef Uyeda, Cristian Román-Palacios, and April Wright (2021). treedata.table: Manipulation of Matched Phylogenies and Data using 'data.table'. Available at: https://cran.r-project.org/web/packages/treedata.table/*
 
 
 ## License

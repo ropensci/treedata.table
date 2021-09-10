@@ -7,7 +7,7 @@ articles:
   B_multiphylo_treedata.table: B_multiphylo_treedata.table.html
   C_PartialMatching: C_PartialMatching.html
   D_AdditionalFunctions_treedata.table: D_AdditionalFunctions_treedata.table.html
-last_built: 2021-09-10T21:00Z
+last_built: 2021-09-10T21:04Z
 urls:
   reference: https://ropensci.github.io/treedata.table/reference
   article: https://ropensci.github.io/treedata.table/articles
