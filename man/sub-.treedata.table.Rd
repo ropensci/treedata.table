@@ -16,11 +16,11 @@ on the \code{treedata.table} object}
 \value{
 A new object of class \code{treedata.table} with \verb{$dat} and \verb{$phy}
 corresponding with the changes set to \verb{$dat} using
-\link[data.table:data.table]{data.table}'s structure.
+\link[data.table]{data.table}'s structure.
 }
 \description{
 This function can be used to subset rows, select and compute on columns
-\link[data.table:data.table]{data.table}.
+\link[data.table]{data.table}.
 }
 \examples{
 
@@ -61,7 +61,4 @@ td <- as.treedata.table(trees, anolis$dat)
 td[, SVL]
 td[island == "Cuba" & ecomorph == "TG", .(ecomorph, island, SVL)]
 td[, utils::head(.SD, 1), by = .(ecomorph, island)]
-}
-\seealso{
-\link[data.table:data.table]{data.table}
 }

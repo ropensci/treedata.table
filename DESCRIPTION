@@ -42,7 +42,7 @@ Depends:
   ape
 Imports: 
   lazyeval, geiger, utils,  data.table
-RoxygenNote: 7.1.1
+RoxygenNote: 7.3.2
 Suggests: 
     covr,
     knitr,

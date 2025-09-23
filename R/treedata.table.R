@@ -2,15 +2,14 @@
 #' `treedata.table`
 #'
 #' This function can be used to subset rows, select and compute on columns
-#' [data.table][data.table::data.table].
+#' \link[data.table]{data.table}.
 #'
 #' @param x An object of class `treedata.table`
 #' @param ... Arguments in the structure of `data.table` used to perform changes
 #' on the `treedata.table` object
 #' @return A new object of class `treedata.table` with `$dat` and `$phy`
 #' corresponding with the changes set to `$dat` using
-#' [data.table][data.table::data.table]'s structure.
-#' @seealso [data.table][data.table::data.table]
+#' \link[data.table]{data.table}'s structure.
 #' @examples
 #'
 #' data(anolis)
@@ -94,7 +93,6 @@
 #' @param exact whether exact search should be conducted
 #' @return A new object of class `vector` with names set to labels corresponding
 #' to tip labels in the provided `treedata.table` object.
-#' @seealso [data.table()]
 #' @examples
 #' data(anolis)
 #' # With a phylo object
