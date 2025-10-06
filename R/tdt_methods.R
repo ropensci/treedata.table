@@ -2,6 +2,7 @@
 #'
 #' @param x a treedata.table object
 #' @param ... Additional arguments passed to head.data.table
+#' @return First part of an treedata.table object
 #' @examples
 #' data(anolis)
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
@@ -17,6 +18,7 @@ head.treedata.table <- function(x, ...) {
 #'
 #' @param x a treedata.table object
 #' @param ... Additional arguments passed to head.data.table
+#' @return Last part of an treedata.table object
 #' @examples
 #' data(anolis)
 #' td <- as.treedata.table(anolis$phy, anolis$dat)
