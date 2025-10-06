@@ -11,6 +11,9 @@
 
 \item{...}{Additional arguments passed to head.data.table}
 }
+\value{
+Last part of an treedata.table object
+}
 \description{
 Return the last part of an treedata.table object
 }

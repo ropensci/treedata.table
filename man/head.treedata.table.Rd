@@ -11,6 +11,9 @@
 
 \item{...}{Additional arguments passed to head.data.table}
 }
+\value{
+First part of an treedata.table object
+}
 \description{
 Return the first part of an treedata.table object
 }
